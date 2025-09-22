@@ -12,30 +12,12 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
 
-    // Find products by color
-    List<Product> findByColorIgnoreCase(String color);
-
-    // Find products by size
-    List<Product> findBySizeIgnoreCase(String size);
-
-    // Find products by price range
-    List<Product> findByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
-
-    // Find products by color and size
-    List<Product> findByColorIgnoreCaseAndSizeIgnoreCase(String color, String size);
-
-    // Search in description
-    @Query("SELECT p FROM Product p WHERE LOWER(p.description) LIKE LOWER(CONCAT('%', :keyword, '%'))")
-    List<Product> findByDescriptionContaining(@Param("keyword") String keyword);
-
-    // Find products by multiple criteria
+    // Find products by price with specific operator
     @Query("SELECT p FROM Product p WHERE " +
-           "(:color IS NULL OR LOWER(p.color) = LOWER(:color)) AND " +
-           "(:size IS NULL OR LOWER(p.size) = LOWER(:size)) AND " +
-           "(:minPrice IS NULL OR p.price >= :minPrice) AND " +
-           "(:maxPrice IS NULL OR p.price <= :maxPrice)")
-    List<Product> findByCriteria(@Param("color") String color, 
-                                @Param("size") String size,
-                                @Param("minPrice") BigDecimal minPrice, 
-                                @Param("maxPrice") BigDecimal maxPrice);
+           "(:operator = 'LESS_THAN' AND p.price < :price) OR " +
+           "(:operator = 'GREATER_THAN' AND p.price > :price) OR " +
+           "(:operator = 'LESS_THAN_OR_EQUAL' AND p.price <= :price) OR " +
+           "(:operator = 'GREATER_THAN_OR_EQUAL' AND p.price >= :price) " +
+            "ORDER BY p.price ASC")
+    List<Product> findByPrice(@Param("price") BigDecimal price, @Param("operator") String operator);
 }
