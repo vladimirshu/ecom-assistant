@@ -1,6 +1,7 @@
 package com.ecomassistant.controller;
 
 import com.ecomassistant.entity.Product;
+import com.ecomassistant.service.ProductSearchService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,20 +23,24 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class ChatController {
+public class ProductsController {
 
-    private static final Logger log = LoggerFactory.getLogger(ChatController.class);
+    private static final Logger log = LoggerFactory.getLogger(ProductsController.class);
     private final ChatClient chatClient;
     private final ProductRepository productRepository;
+    private final ProductSearchService productSearchService;
 
-    public ChatController(final ChatClient assistantChatClient, ProductRepository productRepository) {
+    public ProductsController(final ChatClient assistantChatClient,
+                              ProductRepository productRepository,
+                              ProductSearchService productSearchService) {
         this.chatClient = assistantChatClient;
         this.productRepository = productRepository;
+        this.productSearchService = productSearchService;
     }
 
-    @GetMapping("/chat")
+    @GetMapping("/search")
     @ResponseBody
-    public ChatResponseDto model(
+    public ChatResponseDto findProducts(
             @RequestParam(value = "message", defaultValue = "I need a winter jacket that I can wear in summer as well (below 200 euro)") String message,
             @RequestParam(value = "conversationId", defaultValue = "1") String conversationId) {
         UserMessage userMessage = UserMessage.builder().text(message).build();
@@ -45,16 +50,24 @@ public class ChatController {
                 .toolContext(Map.of(AssistantToolsCallback.class.getName(), assistantToolsCallback))
                 .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, conversationId)).call().chatResponse();
 
+
         if (!assistantToolsCallback.isValidPrompt()) {
             return new ChatResponseDto(null, assistantToolsCallback.getSuggestedPrompt());
         } else if (assistantToolsCallback.isFilterByPrice()) {
             BigDecimal price = new BigDecimal(assistantToolsCallback.getFilterProductsByPriceValue());
             String operator = assistantToolsCallback.getFilterProductsByPriceOperator().name();
             List<Product> filteredProducts = productRepository.findByPrice(price, operator);
-            return new ChatResponseDto(filteredProducts, null);
+            List<Product> searchResults;
+            if (assistantToolsCallback.isSortByPriceAsc()) {
+                searchResults = productSearchService.searchProducts(message, filteredProducts, "asc");
+            } else {
+                searchResults = productSearchService.searchWithinProducts(message, filteredProducts);
+            }
+            return new ChatResponseDto(searchResults, null);
         } else {
-            return new ChatResponseDto(null, "results of similarities search " + (assistantToolsCallback.isSortByPriceAsc() ? "sorted by price ascending" : ""));
+            String sortParameter = assistantToolsCallback.isSortByPriceAsc() ? "asc" : null;
+            List<Product> searchResults = productSearchService.searchProductsWithSort(message, sortParameter);
+            return new ChatResponseDto(searchResults, null);
         }
     }
-
 }

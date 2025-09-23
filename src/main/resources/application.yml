@@ -30,6 +30,9 @@ spring:
   # AI Configuration
   ai:
     openai:
+      embedding:
+        options:
+          model: text-embedding-3-small
       api-key: ${OPEN_AI_TOKEN}
       chat:
         options:
@@ -38,6 +41,7 @@ spring:
 #      chat:
 #        options:
 #          model: qwen3:latest
+
 
 # Application Configuration
 logging:

@@ -22,10 +22,12 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("org.springframework.ai:spring-ai-bom:1.1.0-20250919.113626-495"))
-//    implementation(platform("org.springframework.ai:spring-ai-bom:1.1.0-M1-PLATFORM-2"))
+//    implementation(platform("org.springframework.ai:spring-ai-bom:1.1.0-20250919.113626-495"))
+    implementation(platform("org.springframework.ai:spring-ai-bom:1.1.0-M1-PLATFORM-2"))
     implementation("org.springframework.ai:spring-ai-autoconfigure-model-openai")
 //    implementation("org.springframework.ai:spring-ai-starter-model-ollama")
+    implementation("org.springframework.ai:spring-ai-chroma-store")
+//    implementation("org.springframework.ai:spring-ai-starter-vector-store-chroma")
     implementation("org.springframework.ai:spring-ai-rag")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

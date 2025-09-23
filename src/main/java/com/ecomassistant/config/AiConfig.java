@@ -13,10 +13,16 @@ import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.ChatOptions;
+import org.springframework.ai.chroma.vectorstore.ChromaApi;
+import org.springframework.ai.chroma.vectorstore.ChromaVectorStore;
+import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.model.tool.ToolCallingChatOptions;
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.web.client.RestClient;
 
 import java.io.IOException;
 
@@ -70,6 +76,26 @@ public class AiConfig {
         } catch (IOException e) {
             throw new RuntimeException("Failed to load system instructions", e);
         }
+    }
+
+    @Bean
+    public RestClient.Builder restClientBuilder() {
+        return RestClient.builder().requestFactory(new SimpleClientHttpRequestFactory());
+    }
+
+
+    @Bean
+    public ChromaApi chromaApi(RestClient.Builder restClientBuilder) {
+        return ChromaApi.builder().restClientBuilder(restClientBuilder).build();
+    }
+
+    @Bean
+    public VectorStore chromaVectorStore(EmbeddingModel embeddingModel, ChromaApi chromaApi) {
+        return ChromaVectorStore.builder(chromaApi, embeddingModel)
+                .databaseName("eas")
+                .collectionName("eas-products")
+                .initializeSchema(true)
+                .build();
     }
 
 }
