@@ -37,10 +37,15 @@ spring:
       chat:
         options:
           model: gpt-4o-mini
+    vectorstore:
+      qdrant:
+        collection-name: "products"
+
 #    ollama:
 #      chat:
 #        options:
 #          model: qwen3:latest
+
 
 
 # Application Configuration

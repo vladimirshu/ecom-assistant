@@ -28,7 +28,7 @@ public class AssistantTools {
         }
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
         toolCallback.setValidPrompt(false);
-        toolCallback.appendSuggestedPrompt(
+        toolCallback.addSuggestedPrompt(
                 "Consider removing not relevant content: " + String.join("; ", notRelevantContentPieces) + ". ");
         return "";
     }
@@ -49,7 +49,7 @@ public class AssistantTools {
         }
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
         toolCallback.setValidPrompt(false);
-        toolCallback.appendSuggestedPrompt("Please rephrase your prompt for better results: " + suggestedPrompt);
+        toolCallback.addSuggestedPrompt("Please rephrase your prompt for better results: " + suggestedPrompt);
         return "";
     }
 
@@ -69,8 +69,21 @@ public class AssistantTools {
             toolCallback.setSortByPriceAsc(true);
         } else {
             toolCallback.setFilterByPrice(true);
-            toolCallback.setFilterProductsByPriceCall(price, operator);
+            toolCallback.setFilterProductsByPriceValue(price);
+            toolCallback.setFilterProductsByPriceOperator(operator);
         }
+        return "";
+    }
+
+    @Tool(description = "accepts parts of the user's input that are negatives (negative examples) to exclude them from the vector store similarity search")
+    public String excludeNegativeExamples(@ToolParam(description = "negative examples to exclude from the vector store similarity search") List<String> negativeExamples,
+                                          ToolContext toolContext) {
+        logger.info("Excluding negative examples: {}", negativeExamples);
+        if (CollectionUtils.isEmpty(negativeExamples) || negativeExamples.stream().anyMatch(StringUtils::isBlank)) {
+            return "";
+        }
+        AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
+        toolCallback.addNegativeExamples(negativeExamples);
         return "";
     }
 }

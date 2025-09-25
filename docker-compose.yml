@@ -29,13 +29,25 @@ services:
       timeout: 20s
       retries: 10
 
-  chroma:
-    image: chromadb/chroma:latest
+#  chroma:
+#    image: chromadb/chroma:latest
+#    ports:
+#      - "8000:8000"
+#    volumes:
+#      - chroma-data:/chroma/chroma
+
+  qdrant:
+    image: qdrant/qdrant:latest
     ports:
-      - "8000:8000"
+      - "6333:6333"
+      - "6334:6334"
     volumes:
-      - chroma-data:/chroma/chroma
+      - qdrant-data:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__HTTP_PORT=6333
+      - QDRANT__SERVICE__GRPC_PORT=6334
 
 volumes:
   mysql-data:
-  chroma-data:
+#  chroma-data:
+  qdrant-data:

@@ -1,5 +1,6 @@
 package com.ecomassistant.service;
 
+import com.ecomassistant.VectorStoreUtils;
 import com.ecomassistant.entity.Product;
 import com.ecomassistant.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import java.io.Reader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -32,16 +34,18 @@ public class ProductImportService {
 
 
     public void importSampleProducts() {
-        boolean isProductsEmpty = productRepository.count() == 0;
+        boolean isRelationalDBInitialized = productRepository.count() > 0;
         boolean isVectorStoreInitialized = isVectorStoreInitialized();
-        if (!isProductsEmpty && isVectorStoreInitialized) {
+        if (isRelationalDBInitialized && isVectorStoreInitialized) {
             log.info("Products already imported. Skipping");
             return;
         }
 
         List<Product> products = extractProducts();
         if (!products.isEmpty()) {
-            productRepository.saveAll(products);
+            if (!isRelationalDBInitialized) {
+                productRepository.saveAll(products);
+            }
             if (!isVectorStoreInitialized) {
                 initVectorStore(products);
             }
@@ -54,8 +58,8 @@ public class ProductImportService {
         List<Product> products = new ArrayList<>();
 
         try (Reader reader = new InputStreamReader(
-                resource.getInputStream()); CSVParser csvParser = CSVFormat.Builder.create().setSkipHeaderRecord(true)
-                .setDelimiter(";").build().parse(reader)) {
+                resource.getInputStream()); CSVParser csvParser = CSVFormat.Builder.create().setHeader()
+                .setSkipHeaderRecord(true).setDelimiter(";").build().parse(reader)) {
 
             for (CSVRecord csvRecord : csvParser) {
                 Product product = parseProductFromRecord(csvRecord);
@@ -76,8 +80,14 @@ public class ProductImportService {
     private boolean isVectorStoreInitialized() {
         try {
             var results = vectorStore.similaritySearch(SearchRequest.builder().query(" ").topK(1).build());
-            log.info("Vector store document: " + results.get(0).getMetadata().get("sku") + " - " + results.get(0).getText());
-            return !results.isEmpty();
+            if (results.isEmpty()) {
+                log.info("Vector store is not initialized - no documents found");
+                return false;
+            } else {
+                log.info("Vector store document: " + results.get(0).getMetadata().get("sku") + " - " + results.get(0)
+                        .getText());
+                return true;
+            }
         } catch (Exception e) {
             log.error("Error checking if vector store is initialized", e);
             return false;
@@ -86,18 +96,10 @@ public class ProductImportService {
 
 
     private void initVectorStore(List<Product> products) {
-        vectorStore.add(products.stream().map(this::convertToDocument).toList());
+        vectorStore.add(products.stream().map(VectorStoreUtils::productToDocument).toList());
     }
 
-    private Document convertToDocument(Product product) {
-        String text = String.format("SKU: %s; Color: %s; Size: %s; Price: %s; Description: %s", product.getSku(),
-                product.getColors(), product.getSizes(), product.getPrice().toString(), product.getDescription());
-        return Document.builder()
-                .id(product.getSku())
-                .text(text)
-                .metadata("sku", product.getSku())
-                .build();
-    }
+
 
     private Product parseProductFromRecord(CSVRecord record) {
         try {

@@ -15,7 +15,7 @@ import java.util.List;
 public class Product {
 
     @Id
-    @Column(name = "sku", length = 100, nullable = false)
+    @Column(name = "sku", length = 100, nullable = false, unique = true)
     private String sku;
 
     @Column(name = "colors", length = 50)

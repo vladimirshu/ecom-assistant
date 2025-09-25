@@ -23,13 +23,17 @@ public class HttpClientConfig {
     public RestClientCustomizer restClientLogger() {
         return restClient -> restClient.requestInterceptor(
                 (request, body, execution) -> {
-                    // Log basic request line
-                    System.out.println("AI REQUEST: " + request.getMethod() + " " + request.getURI());
+                    if (request.getURI().getPath().endsWith("/embeddings")) {
+                        // Skip logging for embedding requests
+                        return execution.execute(request, body);
+                    }
+
+                    logger.info("AI REQUEST: " + request.getMethod() + " " + request.getURI());
 
                     // Log body (if present)
                     if (body != null && body.length > 0) {
                         String payload = new String(body, StandardCharsets.UTF_8);
-                        System.out.println("BODY: " + payload);
+                        logger.info("BODY: " + payload);
                     }
 
                     ClientHttpResponse response = execution.execute(request, body);
@@ -39,7 +43,7 @@ public class HttpClientConfig {
                     try (InputStream inputStream = bufferedResponse.getBody()) {
                         byte[] bytes = inputStream.readAllBytes();
                         if (bytes.length > 0) {
-                            System.out.println("AI RESPONSE BODY: " + new String(bytes, StandardCharsets.UTF_8));
+                            logger.info("AI RESPONSE BODY: " + new String(bytes, StandardCharsets.UTF_8));
                         }
                     }
 

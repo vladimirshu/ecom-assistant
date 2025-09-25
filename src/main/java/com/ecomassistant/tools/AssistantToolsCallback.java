@@ -3,37 +3,28 @@ package com.ecomassistant.tools;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Custom tools callback because of flaws in the early Spring AI versions.
  * */
+@Getter @Setter
 public class AssistantToolsCallback {
-    @Setter
-    @Getter
     private boolean isValidPrompt = true;
-    @Setter
-    @Getter
     private boolean sortByPriceAsc;
-    @Setter
-    @Getter
     private boolean filterByPrice;
-    private final StringBuilder suggestedPromptBuilder = new StringBuilder();
-
-    @Getter
     private String filterProductsByPriceValue;
-    @Getter
     private PriceOperator filterProductsByPriceOperator;
+    private final List<String> negativeExamples = new ArrayList<>();
+    private final List<String> suggestedPrompts = new ArrayList<>();
 
-    public void appendSuggestedPrompt(String prompt) {
-        suggestedPromptBuilder.append("  - ").append(prompt);
+    public void addSuggestedPrompt(String prompt) {
+        suggestedPrompts.add(prompt);
     }
 
-    public String getSuggestedPrompt() {
-        return suggestedPromptBuilder.toString();
-    }
-
-    public void setFilterProductsByPriceCall(String price, PriceOperator operator) {
-        this.filterProductsByPriceValue = price;
-        this.filterProductsByPriceOperator = operator;
+    public void addNegativeExamples(List<String> negativeExamples) {
+        this.negativeExamples.addAll(negativeExamples);
     }
 
 }

@@ -26,7 +26,8 @@ dependencies {
     implementation(platform("org.springframework.ai:spring-ai-bom:1.1.0-M1-PLATFORM-2"))
     implementation("org.springframework.ai:spring-ai-autoconfigure-model-openai")
 //    implementation("org.springframework.ai:spring-ai-starter-model-ollama")
-    implementation("org.springframework.ai:spring-ai-chroma-store")
+//    implementation("org.springframework.ai:spring-ai-chroma-store")
+    implementation("org.springframework.ai:spring-ai-qdrant-store")
 //    implementation("org.springframework.ai:spring-ai-starter-vector-store-chroma")
     implementation("org.springframework.ai:spring-ai-rag")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -35,9 +36,20 @@ dependencies {
     implementation("com.mysql:mysql-connector-j:8.2.0")
     implementation("org.apache.commons:commons-csv:1.10.0")
 
+    // Security and validation dependencies
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20240325.1")
+    implementation("commons-validator:commons-validator:1.8.0")
+
+    // Add gRPC dependencies for Qdrant client
+    implementation("io.grpc:grpc-netty-shaded:1.62.2")
+    implementation("io.grpc:grpc-protobuf:1.62.2")
+    implementation("io.grpc:grpc-stub:1.62.2")
+
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
-    implementation("org.apache.commons:commons-lang3:3.14.0")
+    implementation("org.apache.commons:commons-lang3:3.18.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.testcontainers:mysql")
