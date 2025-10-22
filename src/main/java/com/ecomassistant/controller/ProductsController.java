@@ -4,6 +4,7 @@ import com.ecomassistant.dto.ProductSearchRequestDto;
 import com.ecomassistant.entity.Product;
 import com.ecomassistant.service.InputSanitizationService;
 import com.ecomassistant.service.ProductSearchService;
+import com.ecomassistant.utils.ValidationUtils;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -53,8 +54,8 @@ public class ProductsController {
     public ChatResponseDto findProducts(@Valid @ModelAttribute ProductSearchRequestDto searchRequest) {
 
         // Sanitize inputs
-        String sanitizedMessage = inputSanitizationService.sanitizeInput(searchRequest.getMessage());
-        String sanitizedConversationId = inputSanitizationService.sanitizeInput(searchRequest.getConversationId());
+        String sanitizedMessage = ValidationUtils.validateAndSanitize(searchRequest.getMessage());
+        String sanitizedConversationId = ValidationUtils.validateAndSanitize(searchRequest.getConversationId());
 
         if (searchRequest.isClearMemory()) {
             chatMemory.clear(sanitizedConversationId);

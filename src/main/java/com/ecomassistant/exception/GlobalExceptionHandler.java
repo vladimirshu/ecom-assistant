@@ -45,4 +45,13 @@ public class GlobalExceptionHandler {
         log.warn("Illegal argument: {}", ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(IllegalAssistantResponseException.class)
+    public ResponseEntity<Map<String, String>> handleIllegalAssistantResponseException(IllegalAssistantResponseException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", "Illegal assistant response");
+        error.put("message", ex.getMessage());
+        log.error("Illegal assistant response: {}: Response: {}", ex.getMessage(), ex.getResponse());
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

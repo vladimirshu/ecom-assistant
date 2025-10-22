@@ -1,5 +1,6 @@
 package com.ecomassistant.config;
 
+import com.ecomassistant.advisors.LlmOutputValidationAdvisor;
 import com.ecomassistant.tools.AssistantTools;
 import io.qdrant.client.QdrantClient;
 import io.qdrant.client.QdrantGrpcClient;
@@ -61,6 +62,11 @@ public class AiConfig {
     }
 
     @Bean
+    public Advisor llmOutputValidationAdvisor() {
+        return new LlmOutputValidationAdvisor();
+    }
+
+    @Bean
     public ChatClient assistantChatClient(ChatModel chatModel, ChatMemory chatMemory, AssistantTools assistantTools) {
         ChatOptions chatOptions = ToolCallingChatOptions.builder()
                 .model(REASONING_MODEL)
@@ -72,7 +78,9 @@ public class AiConfig {
                 .defaultOptions(chatOptions)
                 .defaultTools(assistantTools)
                 .defaultSystem(loadSystemInstructions())
-                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build()).build();
+                .defaultAdvisors(loggingAdvisor(),
+                        llmOutputValidationAdvisor(),
+                        MessageChatMemoryAdvisor.builder(chatMemory).build()).build();
     }
 
     private static String loadSystemInstructions() {

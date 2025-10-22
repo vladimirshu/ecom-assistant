@@ -8,6 +8,7 @@ import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+import com.ecomassistant.utils.ValidationUtils;
 
 import java.util.List;
 
@@ -22,14 +23,16 @@ public class AssistantTools {
     public String passNotRelevantContent(
             @ToolParam(description = "not relevant pieces of content") List<String> notRelevantContentPieces,
             ToolContext toolContext) {
-        logger.info("Passing not relevant content pieces: {}", notRelevantContentPieces);
         if (CollectionUtils.isEmpty(notRelevantContentPieces) || notRelevantContentPieces.stream().anyMatch(StringUtils::isBlank)) {
             return "";
         }
+        List<String> sanitizedNotRelevantContentPieces = notRelevantContentPieces.stream().map(ValidationUtils::validateAndSanitize).toList();
+        logger.info("Passing not relevant content pieces: {}", sanitizedNotRelevantContentPieces);
+
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
         toolCallback.setValidPrompt(false);
         toolCallback.addSuggestedPrompt(
-                "Consider removing not relevant content: " + String.join("; ", notRelevantContentPieces) + ". ");
+                "Consider removing not relevant content: " + String.join("; ", sanitizedNotRelevantContentPieces) + ". ");
         return "";
     }
 
@@ -43,13 +46,14 @@ public class AssistantTools {
     public String updateConfusingPrompt(
             @ToolParam(description = "new prompt (message template). Pass here a new recommended prompt or message template. Or explanation what has to be improved in the prompt") String suggestedPrompt,
             ToolContext toolContext) {
-        logger.info("Suggesting user prompt: {}", suggestedPrompt);
         if (StringUtils.isBlank(suggestedPrompt)) {
             return "";
         }
+        String sanitizedSuggestedPrompt = ValidationUtils.validateAndSanitize(suggestedPrompt);
+        logger.info("Suggesting user prompt: {}", sanitizedSuggestedPrompt);
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
         toolCallback.setValidPrompt(false);
-        toolCallback.addSuggestedPrompt("Please rephrase your prompt for better results: " + suggestedPrompt);
+        toolCallback.addSuggestedPrompt("Please rephrase your prompt for better results: " + sanitizedSuggestedPrompt);
         return "";
     }
 
@@ -60,16 +64,18 @@ public class AssistantTools {
     public String filterProductsByPrice(@ToolParam(description = "numerical price value") String price,
                                         @ToolParam(description = "price comparison operator") PriceOperator operator,
                                         ToolContext toolContext) {
-        logger.info("Filtering items with price {} {}", operator, price);
         if (StringUtils.isBlank(price) || operator == null || PriceOperator.NOT_RELEVANT.equals(operator)) {
             return "";
         }
+        String sanitizedPriceString = ValidationUtils.validateAndSanitize(price);
+        logger.info("Filtering items with price {} {}", operator, sanitizedPriceString);
+
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
         if (PriceOperator.LOWEST.equals(operator)) {
             toolCallback.setSortByPriceAsc(true);
         } else {
             toolCallback.setFilterByPrice(true);
-            toolCallback.setFilterProductsByPriceValue(price);
+            toolCallback.setFilterProductsByPriceValue(sanitizedPriceString);
             toolCallback.setFilterProductsByPriceOperator(operator);
         }
         return "";
@@ -78,6 +84,10 @@ public class AssistantTools {
     @Tool(description = "accepts parts of the user's input that are negatives (negative examples) to exclude them from the vector store similarity search")
     public String excludeNegativeExamples(@ToolParam(description = "negative examples to exclude from the vector store similarity search") List<String> negativeExamples,
                                           ToolContext toolContext) {
+        if (CollectionUtils.isEmpty(negativeExamples)) {
+            return "";
+        }
+        List<String> sanitizedNegativeExamples = negativeExamples.stream().map(ValidationUtils::validateAndSanitize).toList();
         logger.info("Excluding negative examples: {}", negativeExamples);
         if (CollectionUtils.isEmpty(negativeExamples) || negativeExamples.stream().anyMatch(StringUtils::isBlank)) {
             return "";
