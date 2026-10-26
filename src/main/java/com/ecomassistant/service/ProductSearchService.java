@@ -7,6 +7,7 @@ import com.nimbusds.oauth2.sdk.util.CollectionUtils;
 import io.qdrant.client.QdrantClient;
 import io.qdrant.client.VectorInputFactory;
 import io.qdrant.client.WithPayloadSelectorFactory;
+import io.qdrant.client.grpc.Common;
 import io.qdrant.client.grpc.Points;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -104,7 +105,7 @@ public class ProductSearchService {
     private void addProductsFilterToPointsBuilder(List<Product> products, Points.QueryPoints.Builder queryPointsBuilder) {
         List<String> skus = products.stream().map(Product::getSku).toList();
         Filter.Expression filterExpression = new FilterExpressionBuilder().in("sku", skus.toArray()).build();
-        Points.Filter filter = filterExpressionConverter.convertExpression(filterExpression);
+        Common.Filter filter = filterExpressionConverter.convertExpression(filterExpression);
         queryPointsBuilder.setFilter(filter);
     }
 

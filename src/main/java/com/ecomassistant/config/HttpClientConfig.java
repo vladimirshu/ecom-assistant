@@ -2,7 +2,7 @@ package com.ecomassistant.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.web.client.RestClientCustomizer;
+import org.springframework.boot.restclient.RestClientCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -63,11 +63,6 @@ public class HttpClientConfig {
         @Override
         public HttpStatusCode getStatusCode() throws IOException {
             return this.response.getStatusCode();
-        }
-
-        @Override
-        public int getRawStatusCode() throws IOException {
-            return this.response.getRawStatusCode();
         }
 
         @Override

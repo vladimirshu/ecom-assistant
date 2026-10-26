@@ -15,7 +15,6 @@ import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.model.tool.ToolCallingChatOptions;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -68,14 +67,14 @@ public class AiConfig {
 
     @Bean
     public ChatClient assistantChatClient(ChatModel chatModel, ChatMemory chatMemory, AssistantTools assistantTools) {
-        ChatOptions chatOptions = ToolCallingChatOptions.builder()
+        ToolCallingChatOptions.Builder chatOptionsBuilder = ToolCallingChatOptions.builder()
                 .model(REASONING_MODEL)
                 .temperature(TEMPERATURE)
                 .topP(TOP_P)
                 .frequencyPenalty(FREQUENCY_PENALTY)
-                .presencePenalty(PRESENCE_PENALTY).build();
+                .presencePenalty(PRESENCE_PENALTY);
         return ChatClient.builder(chatModel)
-                .defaultOptions(chatOptions)
+                .defaultOptions(chatOptionsBuilder)
                 .defaultTools(assistantTools)
                 .defaultSystem(loadSystemInstructions())
                 .defaultAdvisors(loggingAdvisor(),
