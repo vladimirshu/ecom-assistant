@@ -1,0 +1,11 @@
+schema: spec-driven
+
+context: |
+  Project: storefront web app for the AI e-commerce assistant ("describe what you want, we find the best match").
+  Separate project in the `frontend/` directory of the ecom-assistant repository; the Spring Boot backend is the sibling
+  project `../backend` with its own OpenSpec root (`../backend/openspec`). Backend specs are the source of truth for the API contract,
+  in particular `storefront-search-api` (product representation, interpretation) and `query-analysis-guardrail` (422 rejection).
+  Tech stack: Next.js (App Router), React, TypeScript (strict), Tailwind CSS, next/font, npm, Vitest + React Testing Library,
+  Playwright for end-to-end tests with a mocked backend, ESLint.
+  Look and feel: premium minimal fashion shop (lots of white space, monochrome palette, serif display type, sans body type).
+  Interface language: English only; prices in EUR. The customer may type search requests in any language.
