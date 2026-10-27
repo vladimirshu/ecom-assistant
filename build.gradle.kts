@@ -20,11 +20,10 @@ repositories {
 
 dependencies {
     implementation(platform("org.springframework.ai:spring-ai-bom:2.0.2"))
-    implementation("org.springframework.ai:spring-ai-autoconfigure-model-openai")
+    implementation("org.springframework.ai:spring-ai-starter-model-openai")
 //    implementation("org.springframework.ai:spring-ai-starter-model-ollama")
 //    implementation("org.springframework.ai:spring-ai-chroma-store")
-    implementation("org.springframework.ai:spring-ai-qdrant-store")
-//    implementation("org.springframework.ai:spring-ai-starter-vector-store-chroma")
+    implementation("org.springframework.ai:spring-ai-starter-vector-store-qdrant")
     implementation("org.springframework.ai:spring-ai-rag")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-restclient")
@@ -36,16 +35,17 @@ dependencies {
     // Security and validation dependencies
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20261011.1")
-    implementation("commons-validator:commons-validator:1.11.0")
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     implementation("org.apache.commons:commons-lang3:3.21.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.testcontainers:mysql")
-    testImplementation("org.testcontainers:junit-jupiter")
+    testImplementation("org.springframework.boot:spring-boot-webmvc-test")
+    testImplementation("org.testcontainers:testcontainers-mysql")
+    testImplementation("org.testcontainers:testcontainers-junit-jupiter")
+    testImplementation("org.testcontainers:testcontainers-qdrant")
+    testImplementation("org.springframework.ai:spring-ai-spring-boot-testcontainers")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

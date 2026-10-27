@@ -8,13 +8,14 @@ import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-import com.ecomassistant.utils.ValidationUtils;
+import com.ecomassistant.validation.PlainTextPolicy;
 
 import java.util.List;
 
 @Component
 public class AssistantTools {
     private static final Logger logger = LoggerFactory.getLogger(AssistantTools.class);
+    private static final int MAX_TOOL_ARGUMENT_LENGTH = 1000;
 
 
     @Tool(description = """
@@ -26,7 +27,8 @@ public class AssistantTools {
         if (CollectionUtils.isEmpty(notRelevantContentPieces) || notRelevantContentPieces.stream().anyMatch(StringUtils::isBlank)) {
             return "";
         }
-        List<String> sanitizedNotRelevantContentPieces = notRelevantContentPieces.stream().map(ValidationUtils::validateAndSanitize).toList();
+        List<String> sanitizedNotRelevantContentPieces = notRelevantContentPieces.stream()
+                .map(piece -> PlainTextPolicy.requirePlainText(piece, MAX_TOOL_ARGUMENT_LENGTH)).toList();
         logger.info("Passing not relevant content pieces: {}", sanitizedNotRelevantContentPieces);
 
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
@@ -49,7 +51,7 @@ public class AssistantTools {
         if (StringUtils.isBlank(suggestedPrompt)) {
             return "";
         }
-        String sanitizedSuggestedPrompt = ValidationUtils.validateAndSanitize(suggestedPrompt);
+        String sanitizedSuggestedPrompt = PlainTextPolicy.requirePlainText(suggestedPrompt, MAX_TOOL_ARGUMENT_LENGTH);
         logger.info("Suggesting user prompt: {}", sanitizedSuggestedPrompt);
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
         toolCallback.setValidPrompt(false);
@@ -67,7 +69,7 @@ public class AssistantTools {
         if (StringUtils.isBlank(price) || operator == null || PriceOperator.NOT_RELEVANT.equals(operator)) {
             return "";
         }
-        String sanitizedPriceString = ValidationUtils.validateAndSanitize(price);
+        String sanitizedPriceString = PlainTextPolicy.requirePlainText(price, MAX_TOOL_ARGUMENT_LENGTH);
         logger.info("Filtering items with price {} {}", operator, sanitizedPriceString);
 
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
@@ -87,13 +89,14 @@ public class AssistantTools {
         if (CollectionUtils.isEmpty(negativeExamples)) {
             return "";
         }
-        List<String> sanitizedNegativeExamples = negativeExamples.stream().map(ValidationUtils::validateAndSanitize).toList();
-        logger.info("Excluding negative examples: {}", negativeExamples);
-        if (CollectionUtils.isEmpty(negativeExamples) || negativeExamples.stream().anyMatch(StringUtils::isBlank)) {
+        List<String> sanitizedNegativeExamples = negativeExamples.stream()
+                .map(example -> PlainTextPolicy.requirePlainText(example, MAX_TOOL_ARGUMENT_LENGTH)).toList();
+        logger.info("Excluding negative examples: {}", sanitizedNegativeExamples);
+        if (CollectionUtils.isEmpty(sanitizedNegativeExamples) || sanitizedNegativeExamples.stream().anyMatch(StringUtils::isBlank)) {
             return "";
         }
         AssistantToolsCallback toolCallback = getAssistantToolCallback(toolContext);
-        toolCallback.addNegativeExamples(negativeExamples);
+        toolCallback.addNegativeExamples(sanitizedNegativeExamples);
         return "";
     }
 }

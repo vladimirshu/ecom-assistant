@@ -1,135 +1,78 @@
 package com.ecomassistant.service;
 
 import com.ecomassistant.VectorStoreUtils;
-import com.ecomassistant.converter.QdrantFilterExpressionConverter;
 import com.ecomassistant.entity.Product;
-import com.nimbusds.oauth2.sdk.util.CollectionUtils;
-import io.qdrant.client.QdrantClient;
-import io.qdrant.client.VectorInputFactory;
-import io.qdrant.client.WithPayloadSelectorFactory;
-import io.qdrant.client.grpc.Common;
-import io.qdrant.client.grpc.Points;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.ecomassistant.retrieval.QdrantRecommendDocumentRetriever;
+import com.ecomassistant.retrieval.RetrievalContextKeys;
+import com.ecomassistant.tools.AssistantToolsCallback;
+import com.ecomassistant.tools.PriceOperator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.embedding.EmbeddingModel;
-import org.springframework.ai.model.EmbeddingUtils;
-import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.ai.rag.Query;
 import org.springframework.ai.vectorstore.filter.Filter;
 import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.stream.Collectors;
-
-import static io.qdrant.client.QueryFactory.recommend;
-import static io.qdrant.client.VectorInputFactory.vectorInput;
-import static io.qdrant.client.VectorsFactory.vectors;
+import java.util.Map;
 
 @Service
 public class ProductSearchService {
 
     private static final Logger log = LoggerFactory.getLogger(ProductSearchService.class);
-    public static final int TOP_K = 10;
-    public static final float SIMILARITY_THRESHOLD = 0.25f;
-    private final VectorStore vectorStore;
-    private final EmbeddingModel embeddingModel;
-    private final QdrantFilterExpressionConverter filterExpressionConverter = new QdrantFilterExpressionConverter();
-    
-    @Value("${spring.ai.vectorstore.qdrant.collection-name:products}")
-    private String collectionName;
 
-    public ProductSearchService(VectorStore vectorStore, EmbeddingModel embeddingModel) {
-        this.vectorStore = vectorStore;
-        this.embeddingModel = embeddingModel;
+    private final QdrantRecommendDocumentRetriever retriever;
+
+    public ProductSearchService(QdrantRecommendDocumentRetriever retriever) {
+        this.retriever = retriever;
     }
 
     /**
-     * Search products using similarity search with optional sorting
-     *
-     * @param query       The search query text
-     * @param products    Optional list of predefined products to search within (null for all products)
-     * @param sortByPrice Optional sort parameter: "asc", "desc", or null for no sorting
-     * @return List of matching products
+     * Search products by building a retrieval {@link Query} from the values collected on
+     * the {@link AssistantToolsCallback} and delegating to the retriever.
      */
-    public List<Product> searchProducts(String query, List<String> negativeExamples, List<Product> products,
-                                        String sortByPrice) {
-        log.info(
-                "Searching products with query: '{}', having negativeExamples: {}, predefined products count: {}, sort: {}",
-                query, negativeExamples, products != null ? products.size() : "all", sortByPrice);
+    public List<Product> searchProducts(String query, AssistantToolsCallback callback) {
+        log.info("Searching products with query: '{}', negatives: {}, filterByPrice: {}, sortByPriceAsc: {}",
+                query, callback.getNegativeExamples(), callback.isFilterByPrice(), callback.isSortByPriceAsc());
 
-        // execute similarity search
-        List<Document> foundDocuments = doSearch(query, negativeExamples, products);
-
-        // Convert documents to products
-        List<Product> foundProducts = foundDocuments.stream().map(VectorStoreUtils::documentToProduct).collect(Collectors.toList());
-
-        // Apply sorting if requested
-        if (sortByPrice != null) {
-            foundProducts = sortProducts(foundProducts, sortByPrice);
-        }
+        List<Document> foundDocuments = retriever.retrieve(buildQuery(query, callback));
+        List<Product> foundProducts = foundDocuments.stream().map(VectorStoreUtils::documentToProduct).toList();
 
         log.info("Found {} products matching the search criteria", foundProducts.size());
         return foundProducts;
     }
 
-    private List<Document> doSearch(String query, List<String> negativeExamples, List<Product> products) {
-        QdrantClient qdrantClient = (QdrantClient) vectorStore.getNativeClient().get();
-        Points.RecommendInput.Builder recommendInputBuilder = getRecommendInputBuilder(query, negativeExamples);
-        Points.QueryPoints.Builder queryPointsBuilder = Points.QueryPoints.newBuilder();
-        queryPointsBuilder
-                .setQuery(recommend(recommendInputBuilder.build()))
-                .setWithPayload(WithPayloadSelectorFactory.enable(true))
-                .setScoreThreshold(SIMILARITY_THRESHOLD)
-                .setLimit(TOP_K)
-                .setCollectionName(collectionName);
+    private Query buildQuery(String query, AssistantToolsCallback callback) {
+        Map<String, Object> context = new HashMap<>();
 
-        // If specific products are provided, create a filter to search only among them
-        if (CollectionUtils.isNotEmpty(products)) {
-            addProductsFilterToPointsBuilder(products, queryPointsBuilder);
+        if (callback.isFilterByPrice()) {
+            context.put(RetrievalContextKeys.FILTER_EXPRESSION, buildPriceFilterExpression(callback));
+        }
+        if (callback.isSortByPriceAsc()) {
+            context.put(RetrievalContextKeys.SORT_BY_LOWEST_PRICE, Boolean.TRUE);
+        }
+        if (!callback.getNegativeExamples().isEmpty()) {
+            context.put(RetrievalContextKeys.NEGATIVE_EXAMPLES, callback.getNegativeExamples());
         }
 
-        try {
-            List<Points.ScoredPoint> scoredPoints = qdrantClient.queryAsync(queryPointsBuilder.build()).get();
-            return scoredPoints.stream().map(VectorStoreUtils::qdrantPointToDocument).toList();
-        } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
-        }
+        return Query.builder().text(query).context(context).build();
     }
 
-    private void addProductsFilterToPointsBuilder(List<Product> products, Points.QueryPoints.Builder queryPointsBuilder) {
-        List<String> skus = products.stream().map(Product::getSku).toList();
-        Filter.Expression filterExpression = new FilterExpressionBuilder().in("sku", skus.toArray()).build();
-        Common.Filter filter = filterExpressionConverter.convertExpression(filterExpression);
-        queryPointsBuilder.setFilter(filter);
-    }
+    private Filter.Expression buildPriceFilterExpression(AssistantToolsCallback callback) {
+        BigDecimal price = new BigDecimal(callback.getFilterProductsByPriceValue());
+        PriceOperator operator = callback.getFilterProductsByPriceOperator();
+        FilterExpressionBuilder builder = new FilterExpressionBuilder();
 
-    private Points.RecommendInput.Builder getRecommendInputBuilder(String query, List<String> negativeExamples) {
-        float[] queryEmbedding = embeddingModel.embed(query);
-        Points.RecommendInput.Builder recommendInputBuilder = Points.RecommendInput.newBuilder()
-                .addAllPositive(List.of(vectorInput(queryEmbedding)))
-                .setStrategy(Points.RecommendStrategy.BestScore);
-        if (CollectionUtils.isNotEmpty(negativeExamples)) {
-            recommendInputBuilder.addAllNegative(negativeExamples.stream()
-                    .map(embeddingModel::embed).map(VectorInputFactory::vectorInput).toList());
-        }
-        return recommendInputBuilder;
-    }
-
-    /**
-     * Sort products by price
-     */
-    private List<Product> sortProducts(List<Product> products, String sortByPrice) {
-        if ("asc".equalsIgnoreCase(sortByPrice)) {
-            return products.stream()
-                    .sorted(Comparator.comparing(Product::getPrice, Comparator.nullsLast(Comparator.naturalOrder())))
-                    .collect(Collectors.toList());
-        }
-        return products;
+        return switch (operator) {
+            case LESS_THAN -> builder.lt("price", price.doubleValue()).build();
+            case GREATER_THAN -> builder.gt("price", price.doubleValue()).build();
+            case LESS_THAN_OR_EQUAL -> builder.lte("price", price.doubleValue()).build();
+            case GREATER_THAN_OR_EQUAL -> builder.gte("price", price.doubleValue()).build();
+            case LOWEST, NOT_RELEVANT ->
+                throw new IllegalArgumentException("Unsupported price operator: " + operator);
+        };
     }
 }

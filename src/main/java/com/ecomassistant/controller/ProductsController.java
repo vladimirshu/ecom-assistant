@@ -2,17 +2,12 @@ package com.ecomassistant.controller;
 
 import com.ecomassistant.dto.ProductSearchRequestDto;
 import com.ecomassistant.entity.Product;
-import com.ecomassistant.service.InputSanitizationService;
 import com.ecomassistant.service.ProductSearchService;
-import com.ecomassistant.utils.ValidationUtils;
 import org.springframework.ai.chat.messages.AssistantMessage;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.math.BigDecimal;
-
-import com.ecomassistant.repository.ProductRepository;
 import com.ecomassistant.dto.ChatResponseDto;
 import com.ecomassistant.tools.AssistantToolsCallback;
 import org.slf4j.Logger;
@@ -32,60 +27,46 @@ public class ProductsController {
 
     private static final Logger log = LoggerFactory.getLogger(ProductsController.class);
     private final ChatClient chatClient;
-    private final ProductRepository productRepository;
     private final ProductSearchService productSearchService;
     private final ChatMemory chatMemory;
-    private final InputSanitizationService inputSanitizationService;
 
     public ProductsController(final ChatClient assistantChatClient,
-                              ProductRepository productRepository,
                               ProductSearchService productSearchService,
-                              ChatMemory chatMemory,
-                              InputSanitizationService inputSanitizationService) {
+                              ChatMemory chatMemory) {
         this.chatClient = assistantChatClient;
-        this.productRepository = productRepository;
         this.productSearchService = productSearchService;
         this.chatMemory = chatMemory;
-        this.inputSanitizationService = inputSanitizationService;
     }
 
     @GetMapping("/search")
     @ResponseBody
     public ChatResponseDto findProducts(@Valid @ModelAttribute ProductSearchRequestDto searchRequest) {
 
-        // Sanitize inputs
-        String sanitizedMessage = ValidationUtils.validateAndSanitize(searchRequest.getMessage());
-        String sanitizedConversationId = ValidationUtils.validateAndSanitize(searchRequest.getConversationId());
+        String message = searchRequest.getMessage();
+        String conversationId = searchRequest.getConversationId();
 
         if (searchRequest.isClearMemory()) {
-            chatMemory.clear(sanitizedConversationId);
-            log.info("Conversation with id {} cleared", sanitizedConversationId);
+            chatMemory.clear(conversationId);
+            log.info("Conversation with id {} cleared", conversationId);
         }
-        log.info("User message: {}", sanitizedMessage);
+        log.info("User message: {}", message);
 
-        UserMessage userMessage = UserMessage.builder().text(sanitizedMessage).build();
+        UserMessage userMessage = UserMessage.builder().text(message).build();
         Prompt prompt = Prompt.builder().messages(userMessage).build();
         AssistantToolsCallback assistantToolsCallback = new AssistantToolsCallback();
         AssistantMessage assistantMessage = chatClient.prompt(prompt)
                 .toolContext(Map.of(AssistantToolsCallback.class.getName(), assistantToolsCallback))
-                .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, sanitizedConversationId))
+                .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, conversationId))
                 .call().chatResponse().getResult()
                 .getOutput();
         String responseMessage = assistantMessage.getText();
         log.info("Assistant response: {}", responseMessage);
 
-        List<Product> filteredProducts = null;
         if (!assistantToolsCallback.isValidPrompt()) {
             return new ChatResponseDto(null, assistantToolsCallback.getSuggestedPrompts());
         }
 
-        if (assistantToolsCallback.isFilterByPrice()) {
-            BigDecimal price = new BigDecimal(assistantToolsCallback.getFilterProductsByPriceValue());
-            String operator = assistantToolsCallback.getFilterProductsByPriceOperator().name();
-            filteredProducts = productRepository.findByPrice(price, operator);
-        }
-        String sortParameter = assistantToolsCallback.isSortByPriceAsc() ? "asc" : null;
-        var searchResults = productSearchService.searchProducts(responseMessage, assistantToolsCallback.getNegativeExamples(), filteredProducts, sortParameter);
+        List<Product> searchResults = productSearchService.searchProducts(responseMessage, assistantToolsCallback);
         return new ChatResponseDto(searchResults, null);
 
     }

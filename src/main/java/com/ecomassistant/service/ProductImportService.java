@@ -1,6 +1,7 @@
 package com.ecomassistant.service;
 
 import com.ecomassistant.VectorStoreUtils;
+import com.ecomassistant.config.EcomImportProperties;
 import com.ecomassistant.entity.Product;
 import com.ecomassistant.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,7 @@ public class ProductImportService {
 
     private final VectorStore vectorStore;
     private final ProductRepository productRepository;
-
-    private static final String CSV_FILE_PATH = "sampledata/apparel_jackets_sample.csv";
+    private final EcomImportProperties importProperties;
 
 
     public void importSampleProducts() {
@@ -54,7 +54,7 @@ public class ProductImportService {
     }
 
     private List<Product> extractProducts() {
-        ClassPathResource resource = new ClassPathResource(CSV_FILE_PATH);
+        ClassPathResource resource = new ClassPathResource(importProperties.sampleFile());
         List<Product> products = new ArrayList<>();
 
         try (Reader reader = new InputStreamReader(

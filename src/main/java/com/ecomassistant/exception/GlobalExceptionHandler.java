@@ -28,15 +28,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(SecurityException.class)
-    public ResponseEntity<Map<String, String>> handleSecurityException(SecurityException ex) {
-        Map<String, String> error = new HashMap<>();
-        error.put("error", "Security validation failed");
-        error.put("message", "Invalid input detected");
-        log.warn("Security exception: {}", ex.getMessage());
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    }
-
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, String>> handleIllegalArgumentException(IllegalArgumentException ex) {
         Map<String, String> error = new HashMap<>();

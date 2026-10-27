@@ -2,8 +2,6 @@ package com.ecomassistant.config;
 
 import com.ecomassistant.advisors.LlmOutputValidationAdvisor;
 import com.ecomassistant.tools.AssistantTools;
-import io.qdrant.client.QdrantClient;
-import io.qdrant.client.QdrantGrpcClient;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ChatClientRequest;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
@@ -15,16 +13,10 @@ import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.model.tool.ToolCallingChatOptions;
-import org.springframework.ai.vectorstore.VectorStore;
-import org.springframework.ai.vectorstore.qdrant.QdrantVectorStore;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
-import org.springframework.web.client.RestClient;
 
 import java.io.IOException;
 
@@ -37,13 +29,7 @@ public class AiConfig {
     private static final double FREQUENCY_PENALTY = 1.0;
     private static final double PRESENCE_PENALTY = 1.0;
 
-    // Qdrant configuration
-    private static final String QDRANT_HOST = "localhost";
-    private static final int QDRANT_PORT = 6334;
-    private static final boolean USE_TLS = false;
     public static final double TOP_P = 0.8;
-    @Value("${spring.ai.vectorstore.qdrant.collection-name:products}")
-    private String collectionName;
 
     @Bean
     public ChatMemoryRepository chatMemoryRepository() {
@@ -89,19 +75,5 @@ public class AiConfig {
         } catch (IOException e) {
             throw new RuntimeException("Failed to load system instructions", e);
         }
-    }
-
-    @Bean
-    public QdrantClient qdrantClient() {
-        QdrantGrpcClient.Builder grpcClientBuilder = QdrantGrpcClient.newBuilder(QDRANT_HOST, QDRANT_PORT, USE_TLS);
-        return new QdrantClient(grpcClientBuilder.build());
-    }
-
-    @Bean
-    public VectorStore vectorStore(QdrantClient qdrantClient, EmbeddingModel embeddingModel) {
-        return QdrantVectorStore.builder(qdrantClient, embeddingModel)
-                .initializeSchema(true)
-                .collectionName(collectionName)
-                .build();
     }
 }

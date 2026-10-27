@@ -108,26 +108,28 @@ public class VectorStoreUtils {
         product.setSku((String) metadata.get("sku"));
         product.setColors((String) metadata.get("colors"));
         product.setSizes((String) metadata.get("sizes"));
-        product.setPrice(BigDecimal.valueOf((Double) metadata.get("price")));
-        product.setDescription(document.getText());
-
-        // Handle price conversion
-        Object priceObj = metadata.get("price");
-        if (priceObj != null) {
-            if (priceObj instanceof BigDecimal) {
-                product.setPrice((BigDecimal) priceObj);
-            } else if (priceObj instanceof Number) {
-                product.setPrice(new BigDecimal(priceObj.toString()));
-            } else {
-                try {
-                    product.setPrice(new BigDecimal(priceObj.toString()));
-                } catch (NumberFormatException e) {
-                    log.warn("Could not parse price: {}", priceObj);
-                    product.setPrice(BigDecimal.ZERO);
-                }
-            }
-        }
+        product.setPrice(toBigDecimal(metadata.get("price")));
+        product.setDescription((String) metadata.get("description"));
 
         return product;
+    }
+
+    private static BigDecimal toBigDecimal(Object priceObj) {
+        if (priceObj == null) {
+            return null;
+        }
+        if (priceObj instanceof BigDecimal bigDecimal) {
+            return bigDecimal;
+        }
+        if (priceObj instanceof Number number) {
+            return new BigDecimal(number.toString());
+        }
+        try {
+            return new BigDecimal(priceObj.toString());
+        }
+        catch (NumberFormatException e) {
+            log.warn("Could not parse price: {}", priceObj);
+            return BigDecimal.ZERO;
+        }
     }
 }
