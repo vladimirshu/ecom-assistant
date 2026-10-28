@@ -1,6 +1,8 @@
 package com.ecomassistant.controller;
 
 import com.ecomassistant.service.ProductSearchService;
+import com.ecomassistant.service.SearchResult;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,9 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -58,5 +62,40 @@ class ProductsControllerTest {
                 .andExpect(jsonPath("$.conversationId").exists());
 
         verifyNoInteractions(productSearchService);
+    }
+
+    @Test
+    void missingConversationIdReturnsBadRequestWithoutInvokingSearch() throws Exception {
+        mockMvc.perform(get("/search")
+                        .param("message", "rain jacket"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.conversationId").exists());
+
+        verifyNoInteractions(productSearchService);
+    }
+
+    @Test
+    void emptyConversationIdReturnsBadRequestWithoutInvokingSearch() throws Exception {
+        mockMvc.perform(get("/search")
+                        .param("message", "rain jacket")
+                        .param("conversationId", ""))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.conversationId").exists());
+
+        verifyNoInteractions(productSearchService);
+    }
+
+    @Test
+    void uuidConversationIdIsAccepted() throws Exception {
+        String uuid = "3f2b9c1e-7a4d-4e8f-9b21-5c6d7e8f9a0b";
+        when(productSearchService.searchProducts("rain jacket", uuid))
+                .thenReturn(new SearchResult(List.of(), null));
+
+        mockMvc.perform(get("/search")
+                        .param("message", "rain jacket")
+                        .param("conversationId", uuid))
+                .andExpect(status().isOk());
+
+        verify(productSearchService).searchProducts("rain jacket", uuid);
     }
 }

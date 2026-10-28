@@ -1,18 +1,18 @@
 package com.ecomassistant.config;
 
 import com.ecomassistant.guardrails.QueryAnalysis;
+import com.ecomassistant.memory.ExpiringInMemoryChatMemoryRepository;
 import com.ecomassistant.guardrails.QueryAnalysisGuardrailAdvisor;
+import com.ecomassistant.memory.ValidatedQueryAnalysisMemoryAdvisor;
 import com.ecomassistant.rag.EmptyRetrievalAdvisor;
 import com.ecomassistant.rag.ProductSelection;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ChatClientRequest;
-import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.client.advisor.StructuredOutputValidationAdvisor;
 import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.ChatMemoryRepository;
-import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
@@ -23,6 +23,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
+import java.time.Clock;
 
 @Configuration
 public class AiConfig {
@@ -35,9 +36,16 @@ public class AiConfig {
 
     public static final double TOP_P = 0.8;
 
+    /**
+     * Conversation memory model: the client owns the token ({@code conversationId}, a random
+     * UUID recommended), history is kept per token for the query-analysis call only, windowed
+     * to the last {@link #MAX_MESSAGES} messages, and dropped after 24 hours (configurable)
+     * without a new turn. Memory is in-process only: lost on restart and not shared between
+     * instances. Replace this bean with a persistent repository to change that.
+     */
     @Bean
-    public ChatMemoryRepository chatMemoryRepository() {
-        return new InMemoryChatMemoryRepository();
+    public ChatMemoryRepository chatMemoryRepository(Clock clock, EcomMemoryProperties properties) {
+        return new ExpiringInMemoryChatMemoryRepository(clock, properties);
     }
 
     @Bean
@@ -71,7 +79,7 @@ public class AiConfig {
                 .defaultSystem(loadSystemInstructions())
                 .defaultAdvisors(loggingAdvisor(),
                         queryAnalysisSchemaValidationAdvisor(),
-                        MessageChatMemoryAdvisor.builder(chatMemory).build())
+                        new ValidatedQueryAnalysisMemoryAdvisor(chatMemory))
                 .build();
     }
 

@@ -32,6 +32,9 @@ ecom:
     top-k: 30
     max-results: 10
     similarity-threshold: 0.15
+  memory:
+    inactivity-timeout: 24h
+    cleanup-interval: 1h
   import:
     sample-file: sampledata/apparel_jackets_sample.csv
   assets:

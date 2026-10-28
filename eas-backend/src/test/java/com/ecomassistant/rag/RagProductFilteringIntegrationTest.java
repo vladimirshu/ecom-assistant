@@ -83,7 +83,7 @@ class RagProductFilteringIntegrationTest {
         OpenAiWireMockStubs.stubProductSelection(wireMock,
                 new ProductSelection(List.of("HALLUCINATED999", "RAIN2", "RAIN1")));
 
-        HttpResult result = get("blue cotton jacket under 200 euro, no wool", "session-1");
+        HttpResult result = get("blue cotton jacket under 200 euro, no wool", java.util.UUID.randomUUID().toString());
 
         assertThat(result.status()).isEqualTo(HttpStatus.OK.value());
         JsonNode root = JSON_MAPPER.readTree(result.body());
@@ -125,7 +125,7 @@ class RagProductFilteringIntegrationTest {
                 "rain jacket", List.of(), null, true));
         OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of("RAIN3", "RAIN1")));
 
-        HttpResult result = get("cheapest rain jacket", "session-1");
+        HttpResult result = get("cheapest rain jacket", java.util.UUID.randomUUID().toString());
 
         assertThat(result.status()).isEqualTo(HttpStatus.OK.value());
         JsonNode root = JSON_MAPPER.readTree(result.body());
@@ -139,7 +139,7 @@ class RagProductFilteringIntegrationTest {
                 List.of("not a clothing search"), List.of("winter jacket under 200 euro"), "", List.of(), null,
                 false));
 
-        HttpResult result = get("tell me a joke", "session-1");
+        HttpResult result = get("tell me a joke", java.util.UUID.randomUUID().toString());
 
         assertThat(result.status()).isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY.value());
         assertThat(requests()).hasSize(1);
@@ -150,7 +150,7 @@ class RagProductFilteringIntegrationTest {
         OpenAiWireMockStubs.stubQueryAnalysis(wireMock, new QueryAnalysis(true, List.of(), List.of(),
                 "zzzz nomatch", List.of(), null, false));
 
-        HttpResult result = get("zzzz nomatch", "session-1");
+        HttpResult result = get("zzzz nomatch", java.util.UUID.randomUUID().toString());
 
         assertThat(result.status()).isEqualTo(HttpStatus.OK.value());
         JsonNode root = JSON_MAPPER.readTree(result.body());
@@ -186,7 +186,7 @@ class RagProductFilteringIntegrationTest {
                 List.of("лёгкая летняя куртка", "тёплая зимняя куртка"), "", List.of(), null, false);
         OpenAiWireMockStubs.stubQueryAnalysis(wireMock, analysis);
 
-        HttpResult result = get("зимняя куртка для лета", "session-1");
+        HttpResult result = get("зимняя куртка для лета", java.util.UUID.randomUUID().toString());
 
         assertThat(result.status()).isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY.value());
         JsonNode root = JSON_MAPPER.readTree(result.body());
@@ -204,7 +204,7 @@ class RagProductFilteringIntegrationTest {
         OpenAiWireMockStubs.stubChatCompletionForMarker(wireMock, OpenAiWireMockStubs.PRODUCT_FILTER_MARKER,
                 "{\"skus\": 123}");
 
-        HttpResult result = get("rain jacket", "session-1");
+        HttpResult result = get("rain jacket", java.util.UUID.randomUUID().toString());
 
         assertThat(result.status()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR.value());
         JsonNode root = JSON_MAPPER.readTree(result.body());

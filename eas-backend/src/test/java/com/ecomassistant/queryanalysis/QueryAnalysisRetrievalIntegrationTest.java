@@ -40,7 +40,7 @@ class QueryAnalysisRetrievalIntegrationTest extends AbstractQueryAnalysisIntegra
 
         MvcResult result = mockMvc.perform(get("/search")
                         .param("message", "I want a jacket up to 150 euro")
-                        .param("conversationId", "session-1"))
+                        .param("conversationId", java.util.UUID.randomUUID().toString()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -74,7 +74,7 @@ class QueryAnalysisRetrievalIntegrationTest extends AbstractQueryAnalysisIntegra
 
         mockMvc.perform(get("/search")
                         .param("message", "show me a rain jacket")
-                        .param("conversationId", "session-1"))
+                        .param("conversationId", java.util.UUID.randomUUID().toString()))
                 .andExpect(status().isOk());
 
         List<LoggedRequest> requests = wireMock.getAllServeEvents().stream()

@@ -12,11 +12,9 @@ import tools.jackson.core.JacksonException;
 /**
  * Runs the single query-analysis LLM call and returns its structured {@link QueryAnalysis}.
  *
- * <p>Schema conformance is enforced by the {@link org.springframework.ai.chat.client.advisor.StructuredOutputValidationAdvisor}
- * configured on the {@code queryAnalysisChatClient}; semantic validation is performed
- * separately by {@link QueryAnalysisValidator}. When the response still cannot be converted
- * after the advisor has exhausted its retries, an {@link IllegalAssistantResponseException}
- * is thrown.
+ * <p>The query-analysis client retries schema-invalid responses and commits a turn only
+ * when the final response is schema-valid and convertible. Semantic validation is performed
+ * separately by {@link QueryAnalysisValidator}, after the turn has been stored.
  */
 @Component
 public class QueryAnalyzer {

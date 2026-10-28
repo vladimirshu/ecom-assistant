@@ -67,24 +67,29 @@ paths:
           example: Show me a red waterproof jacket under 100 euro
         - name: conversationId
           in: query
-          required: false
+          required: true
           description: |
-            Identifies the conversation so the assistant can keep multi-turn
-            context (e.g. "show me the same jacket but in blue"). Must be 1 to
-            50 characters and contain only ASCII letters, digits, `-` and `_`.
+            Client-generated conversation token (a random UUID, e.g. from
+            `crypto.randomUUID()`, is recommended). The assistant keeps
+            multi-turn context per token (e.g. "show me the same jacket but in
+            blue"); a token it has not seen starts an empty conversation. History
+            expires after 24 hours without a new turn and is held in backend
+            process memory only (lost on restart, not shared between instances).
+            Must be 1 to 50 characters and contain only ASCII letters, digits,
+            `-` and `_`.
           schema:
             type: string
             minLength: 1
             maxLength: 50
             pattern: '^[a-zA-Z0-9_-]+$'
-            default: "1"
           example: session_42-a
         - name: clearMemory
           in: query
           required: false
           description: |
             When `true`, the assistant forgets the conversation history for the
-            given `conversationId` before processing the message.
+            given `conversationId` (and only that conversation) before processing
+            the message.
           schema:
             type: boolean
             default: false
@@ -132,6 +137,10 @@ paths:
                   summary: Invalid message
                   value:
                     message: Message must be 3 to 500 characters and contain only letters, digits, spaces and basic punctuation
+                missingConversationId:
+                  summary: Missing or empty conversation id
+                  value:
+                    conversationId: Conversation ID cannot be blank
                 invalidConversationId:
                   summary: Invalid conversation id
                   value:

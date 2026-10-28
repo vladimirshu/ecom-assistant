@@ -19,7 +19,7 @@ public class ProductSearchRequestDto {
     @Pattern(regexp = "^[a-zA-Z0-9\\-_]+$",
              message = "Conversation ID can only contain alphanumeric characters, hyphens, and underscores")
     @Size(min = 1, max = 50, message = "Conversation ID must be between 1 and 50 characters")
-    private String conversationId = "1";
+    private String conversationId;
 
     private boolean clearMemory = false;
 

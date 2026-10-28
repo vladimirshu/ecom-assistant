@@ -22,6 +22,14 @@ For each search request the query-analysis LLM call SHALL receive the stored his
 - **WHEN** a client sends the second search of a conversation
 - **THEN** the product-filtering LLM request contains no messages from earlier turns
 
+#### Scenario: Query analysis fails
+- **WHEN** the query-analysis call fails or exhausts its schema-validation retries without a requested reset
+- **THEN** the conversation history remains unchanged
+
+#### Scenario: Overlapping requests
+- **WHEN** requests for the same conversation overlap, including a reset
+- **THEN** their searches and resets are processed serially without losing a completed turn or restoring history cleared by a later reset
+
 ### Requirement: Rejected turns are remembered
 The system SHALL record a turn whose query analysis returned `allowed = false` in the same way as an allowed turn, so that a following request in the conversation is analysed with that context.
 
