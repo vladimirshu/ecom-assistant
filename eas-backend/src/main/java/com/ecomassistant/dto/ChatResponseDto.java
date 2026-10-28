@@ -1,8 +1,14 @@
 package com.ecomassistant.dto;
 
-import com.ecomassistant.entity.Product;
-
 import java.util.List;
 
-public record ChatResponseDto(List<Product> products, List<String> suggestedPrompts) {
+/**
+ * Result of a search request. On HTTP 200 {@code products} is populated and
+ * {@code suggestedPrompts} is {@code null}; on HTTP 422 {@code products} and
+ * {@code interpretation} are {@code null} and {@code suggestedPrompts} is populated.
+ */
+public record ChatResponseDto(
+        List<ProductDto> products,
+        SearchInterpretationDto interpretation,
+        List<String> suggestedPrompts) {
 }

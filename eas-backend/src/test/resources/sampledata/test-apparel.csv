@@ -1,9 +1,9 @@
-sku;colors;sizes;price;description
-RAIN1;blue;M;50.00;waterproof nylon rain jacket lightweight
-RAIN2;green;L;150.00;waterproof nylon rain jacket durable
-RAIN3;navy;L;260.00;waterproof rain jacket premium
-WOOL1;red;M;300.00;wool winter coat warm heavy
-WOOL2;grey;S;120.00;wool blend jacket warm
-WOOL3;brown;XL;400.00;wool overcoat luxurious
-SHIRT1;black;M;80.00;cotton summer shirt breathable
-DENIM1;white;M;200.00;denim jacket casual
+sku;title;category;colors;sizes;price;image;description
+RAIN1;Lightweight Rain Shell;rain;blue;M;50.00;;waterproof nylon rain jacket lightweight
+RAIN2;Durable Rain Shell;rain;green;L;150.00;;waterproof nylon rain jacket durable
+RAIN3;Premium Rain Shell;rain;navy;L;260.00;;waterproof rain jacket premium
+WOOL1;Warm Wool Coat;coat;red;M;300.00;;wool winter coat warm heavy
+WOOL2;Wool Blend Coat;coat;grey;S;120.00;;wool blend jacket warm
+WOOL3;Luxurious Wool Overcoat;coat;brown;XL;400.00;;wool overcoat luxurious
+SHIRT1;Summer Cotton Shirt;windbreaker;black;M;80.00;;cotton summer shirt breathable
+DENIM1;Casual Denim Jacket;denim;white;M;200.00;;denim jacket casual

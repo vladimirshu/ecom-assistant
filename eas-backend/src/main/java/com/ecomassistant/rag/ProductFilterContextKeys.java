@@ -13,6 +13,13 @@ public final class ProductFilterContextKeys {
     /** Value: {@link com.ecomassistant.guardrails.PriceConstraint} or {@code null}. */
     public static final String PRICE_CONSTRAINT = "ecom_price_constraint";
 
+    /**
+     * Value: {@link com.ecomassistant.guardrails.QueryAnalysis} - the validated analysis
+     * of the request, written by the query-analysis guardrail and read back by the search
+     * service to build the response interpretation.
+     */
+    public static final String QUERY_ANALYSIS = "ecom_query_analysis";
+
     private ProductFilterContextKeys() {
     }
 }

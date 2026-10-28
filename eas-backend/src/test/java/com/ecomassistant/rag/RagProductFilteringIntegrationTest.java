@@ -81,7 +81,7 @@ class RagProductFilteringIntegrationTest {
     RestClient.Builder restClientBuilder;
 
     @Test
-    void happyPathReturnsSelectedSkusAndDropsHallucinated() throws Exception {
+    void happyPathReturnsProductsWithNewFieldsAndInterpretation() throws Exception {
         OpenAiWireMockStubs.stubQueryAnalysis(wireMock, new QueryAnalysis(true, List.of(), List.of(),
                 "rain jacket", List.of("wool"), new PriceConstraint(PriceOperator.LESS_THAN, new BigDecimal("200")),
                 false));
@@ -94,6 +94,26 @@ class RagProductFilteringIntegrationTest {
         JsonNode root = JSON_MAPPER.readTree(result.body());
         assertThat(skus(root)).containsExactly(retrievalOrder(productFilterBody(), "RAIN1", "RAIN2"));
         assertThat(skus(root)).doesNotContain("HALLUCINATED999");
+
+        JsonNode rain1 = productBySku(root, "RAIN1");
+        assertThat(rain1.get("title").asText()).isEqualTo("Lightweight Rain Shell");
+        assertThat(rain1.get("category").asText()).isEqualTo("Rain Jackets");
+        assertThat(rain1.get("colors")).hasSize(1);
+        assertThat(rain1.get("colors").get(0).asText()).isEqualTo("blue");
+        assertThat(rain1.get("sizes")).hasSize(1);
+        assertThat(rain1.get("sizes").get(0).asText()).isEqualTo("M");
+        assertThat(rain1.get("imageUrl").asText()).isEqualTo("/images/categories/rain.webp");
+        assertThat(rain1.has("imageKey")).isFalse();
+
+        JsonNode interpretation = root.get("interpretation");
+        assertThat(interpretation).isNotNull();
+        assertThat(interpretation.get("searchQuery").asText()).isEqualTo("rain jacket");
+        assertThat(interpretation.get("negativeExamples")).hasSize(1);
+        assertThat(interpretation.get("negativeExamples").get(0).asText()).isEqualTo("wool");
+        assertThat(interpretation.get("priceConstraint").get("operator").asText()).isEqualTo("LESS_THAN");
+        assertThat(interpretation.get("priceConstraint").get("value").asDouble()).isEqualTo(200.0);
+        assertThat(interpretation.get("sortByLowestPrice").asBoolean()).isFalse();
+        assertThat(root.get("suggestedPrompts").isNull()).isTrue();
 
         List<LoggedRequest> requests = requests();
         assertThat(requests).hasSize(2);
@@ -131,7 +151,7 @@ class RagProductFilteringIntegrationTest {
     }
 
     @Test
-    void emptyRetrievalReturns200WithEmptyListAndSingleCall() throws Exception {
+    void emptyRetrievalReturnsEmptyProductsWithInterpretation() throws Exception {
         OpenAiWireMockStubs.stubQueryAnalysis(wireMock, new QueryAnalysis(true, List.of(), List.of(),
                 "zzzz nomatch", List.of(), null, false));
 
@@ -140,7 +160,46 @@ class RagProductFilteringIntegrationTest {
         assertThat(result.status()).isEqualTo(HttpStatus.OK.value());
         JsonNode root = JSON_MAPPER.readTree(result.body());
         assertThat(skus(root)).isEmpty();
+        assertThat(root.get("interpretation")).isNotNull();
+        assertThat(root.get("interpretation").get("searchQuery").asText()).isEqualTo("zzzz nomatch");
         assertThat(requests()).hasSize(1);
+    }
+
+    @Test
+    void refinementReturnsSecondAnalysisSearchQuery() throws Exception {
+        QueryAnalysis first = new QueryAnalysis(true, List.of(), List.of(),
+                "warm winter jacket", List.of(), null, false);
+        QueryAnalysis second = new QueryAnalysis(true, List.of(), List.of(),
+                "warm navy winter jacket", List.of(), null, false);
+
+        OpenAiWireMockStubs.stubChatCompletionForMarkerSequence(wireMock, OpenAiWireMockStubs.QUERY_ANALYSIS_MARKER,
+                OpenAiWireMockStubs.queryAnalysisJson(first), OpenAiWireMockStubs.queryAnalysisJson(second));
+        OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of()));
+
+        get("warm winter jacket", "refine-conv");
+        HttpResult secondResult = get("same but in navy", "refine-conv");
+
+        assertThat(secondResult.status()).isEqualTo(HttpStatus.OK.value());
+        JsonNode root = JSON_MAPPER.readTree(secondResult.body());
+        assertThat(root.get("interpretation").get("searchQuery").asText()).isEqualTo("warm navy winter jacket");
+    }
+
+    @Test
+    void nonEnglishRejectionPassesSuggestionsThroughUnchanged() throws Exception {
+        QueryAnalysis analysis = new QueryAnalysis(false,
+                List.of("The request is contradictory: a winter jacket cannot be for summer."),
+                List.of("лёгкая летняя куртка", "тёплая зимняя куртка"), "", List.of(), null, false);
+        OpenAiWireMockStubs.stubQueryAnalysis(wireMock, analysis);
+
+        HttpResult result = get("зимняя куртка для лета", "session-1");
+
+        assertThat(result.status()).isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY.value());
+        JsonNode root = JSON_MAPPER.readTree(result.body());
+        assertThat(root.get("products").isNull()).isTrue();
+        assertThat(root.get("interpretation").isNull()).isTrue();
+        assertThat(root.get("suggestedPrompts")).hasSize(2);
+        assertThat(root.get("suggestedPrompts").get(0).asText()).isEqualTo("лёгкая летняя куртка");
+        assertThat(root.get("suggestedPrompts").get(1).asText()).isEqualTo("тёплая зимняя куртка");
     }
 
     @Test
@@ -202,6 +261,15 @@ class RagProductFilteringIntegrationTest {
             result.add(product.get("sku").asText());
         }
         return result;
+    }
+
+    private static JsonNode productBySku(JsonNode root, String sku) {
+        for (JsonNode product : root.get("products")) {
+            if (product.get("sku").asText().equals(sku)) {
+                return product;
+            }
+        }
+        return null;
     }
 
     private static List<Double> prices(JsonNode root) {

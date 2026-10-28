@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Deterministic bag-of-words embedding model used in tests so similarity assertions are
@@ -24,6 +25,8 @@ import java.util.Locale;
 public class FakeEmbeddingModel implements EmbeddingModel {
 
     private static final int DIMENSIONS = 256;
+
+    private final AtomicLong embedCount = new AtomicLong();
 
     @Override
     public EmbeddingResponse call(EmbeddingRequest request) {
@@ -42,6 +45,7 @@ public class FakeEmbeddingModel implements EmbeddingModel {
 
     @Override
     public float[] embed(String text) {
+        embedCount.incrementAndGet();
         float[] vector = new float[DIMENSIONS];
         for (String token : tokenize(text)) {
             int hash = token.hashCode();
@@ -67,6 +71,16 @@ public class FakeEmbeddingModel implements EmbeddingModel {
     @Override
     public int dimensions() {
         return DIMENSIONS;
+    }
+
+    /** Number of texts embedded so far, for asserting that an import did no embedding work. */
+    public long getEmbedCount() {
+        return embedCount.get();
+    }
+
+    /** Resets the embed counter, e.g. before re-running an import. */
+    public void resetEmbedCount() {
+        embedCount.set(0);
     }
 
     private static List<String> tokenize(String text) {

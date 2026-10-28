@@ -1,5 +1,6 @@
 package com.ecomassistant;
 
+import com.ecomassistant.catalog.ProductCategory;
 import com.ecomassistant.entity.Product;
 import io.qdrant.client.grpc.JsonWithInt;
 import io.qdrant.client.grpc.Points;
@@ -9,6 +10,7 @@ import org.springframework.ai.document.DocumentMetadata;
 import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -73,29 +75,38 @@ public class VectorStoreUtils {
         return listValue.getValuesList().stream().map(VectorStoreUtils::object).collect(Collectors.toList());
     }
 
-
+    /**
+     * Converts a product to a vector-store document. The document id is deterministic
+     * ({@code UUID.nameUUIDFromBytes(sku)}) so re-importing a SKU overwrites the same
+     * point instead of creating a duplicate.
+     */
     public static Document productToDocument(Product product) {
         // Convert BigDecimal to Double for Qdrant compatibility
         Double price = product.getPrice() != null ? product.getPrice().doubleValue() : null;
 
-        Map<String, Object> metadata = Map.of(
-                "sku", product.getSku(),
-                "colors", product.getColors(),
-                "sizes", product.getSizes(),
-                "price", price != null ? price : 0.0,
-                "description", product.getDescription()
-        );
+        Map<String, Object> metadata = new HashMap<>();
+        metadata.put("sku", product.getSku());
+        metadata.put("title", product.getTitle());
+        metadata.put("category", product.getCategory() != null ? product.getCategory().slug() : null);
+        metadata.put("colors", product.getColors());
+        metadata.put("sizes", product.getSizes());
+        metadata.put("price", price != null ? price : 0.0);
+        metadata.put("description", product.getDescription());
+        metadata.put("imageKey", product.getImageKey());
 
-        // Create searchable text content
-        String content = String.format("SKU: %s, Colors: %s, Sizes: %s, Price: %.2f, Description: %s",
-                product.getSku(),
-                product.getColors(),
-                product.getSizes(),
-                price != null ? price : 0.0,
-                product.getDescription()
-        );
+        // Searchable text: title, category name, colors, sizes and description. SKU and
+        // price are omitted: they are noise for similarity, and price is handled by the
+        // payload filter.
+        String content = String.format("%s. %s. Colors: %s. Sizes: %s. Description: %s",
+                nullToEmpty(product.getTitle()),
+                product.getCategory() != null ? product.getCategory().displayName() : "",
+                nullToEmpty(product.getColors()),
+                nullToEmpty(product.getSizes()),
+                nullToEmpty(product.getDescription()));
 
-        return new Document(content, metadata);
+        String id = UUID.nameUUIDFromBytes(product.getSku().getBytes(StandardCharsets.UTF_8)).toString();
+
+        return Document.builder().id(id).text(content).metadata(metadata).build();
     }
 
     /**
@@ -106,6 +117,9 @@ public class VectorStoreUtils {
 
         Product product = new Product();
         product.setSku((String) metadata.get("sku"));
+        product.setTitle((String) metadata.get("title"));
+        product.setCategory(ProductCategory.fromSlug((String) metadata.get("category")));
+        product.setImageKey((String) metadata.get("imageKey"));
         product.setColors((String) metadata.get("colors"));
         product.setSizes((String) metadata.get("sizes"));
         product.setPrice(toBigDecimal(metadata.get("price")));
@@ -131,5 +145,9 @@ public class VectorStoreUtils {
             log.warn("Could not parse price: {}", priceObj);
             return BigDecimal.ZERO;
         }
+    }
+
+    private static String nullToEmpty(String value) {
+        return value == null ? "" : value;
     }
 }

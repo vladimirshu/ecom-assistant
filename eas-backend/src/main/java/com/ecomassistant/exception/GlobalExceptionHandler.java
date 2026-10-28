@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ChatResponseDto> handleGuardrailRejectedException(GuardrailRejectedException ex) {
         log.info("Request rejected by query analysis: {}", ex.getQueryAnalysis().rejectionReasons());
         return new ResponseEntity<>(
-                new ChatResponseDto(null, ex.getQueryAnalysis().suggestedPrompts()),
+                new ChatResponseDto(null, null, ex.getQueryAnalysis().suggestedPrompts()),
                 HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }

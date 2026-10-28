@@ -23,6 +23,7 @@ The final `searchQuery` must be the apparel intent only, in English, with irrele
 
 # Rejection rules
 - When `allowed = false`, fill `rejectionReasons` with short, concrete reasons and `suggestedPrompts` with 1-5 example prompts the customer could send instead (plain text, no code).
+- Write `suggestedPrompts` in the language of the customer's latest message; `rejectionReasons` stays in English. `searchQuery` is always English (the catalog is English).
 - When `allowed = false`, leave `searchQuery` empty, `negativeExamples` empty, `priceConstraint` null and `sortByLowestPrice` false.
 
 # Price rules
@@ -135,6 +136,21 @@ Return ONLY a JSON object with exactly these fields, and nothing else (no markdo
   "searchQuery": "blue cotton winter jacket",
   "negativeExamples": ["puffer jackets"],
   "priceConstraint": { "operator": "LESS_THAN", "value": 200 },
+  "sortByLowestPrice": false
+}
+```
+
+## Example 7: non-English rejection with suggestions in the customer's language
+- User: "зимняя куртка для лета"
+- Response:
+```json
+{
+  "allowed": false,
+  "rejectionReasons": ["The request is contradictory: a winter jacket cannot be for summer."],
+  "suggestedPrompts": ["лёгкая летняя куртка", "тёплая зимняя куртка"],
+  "searchQuery": "",
+  "negativeExamples": [],
+  "priceConstraint": null,
   "sortByLowestPrice": false
 }
 ```

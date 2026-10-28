@@ -101,10 +101,20 @@ paths:
                   value:
                     products:
                       - sku: JKT0001
-                        colors: navy,red
-                        sizes: M,XS,S
+                        title: Metro Commuter Rain Jacket
+                        category: Rain Jackets
+                        colors: [navy, red]
+                        sizes: [XS, S, M]
                         price: 262.73
                         description: Urban explorer jacket crafted from water-resistant nylon, lightweight and durable.
+                        imageUrl: /images/categories/rain.webp
+                    interpretation:
+                      searchQuery: blue cotton jacket
+                      negativeExamples: [wool]
+                      priceConstraint:
+                        operator: LESS_THAN
+                        value: 200
+                      sortByLowestPrice: false
                     suggestedPrompts: null
         '400':
           description: |
@@ -143,6 +153,7 @@ paths:
                 $ref: '#/components/schemas/ChatResponse'
               example:
                 products: null
+                interpretation: null
                 suggestedPrompts:
                   - a light summer jacket
                   - a warm winter jacket
@@ -168,19 +179,38 @@ components:
       description: A product from the apparel catalog.
       required:
         - sku
+        - title
+        - category
+        - colors
+        - sizes
+        - price
+        - description
+        - imageUrl
       properties:
         sku:
           type: string
           description: Unique stock-keeping unit (SKU) identifier.
           example: JKT0001
+        title:
+          type: string
+          description: Human-readable product title.
+          example: Metro Commuter Rain Jacket
+        category:
+          type: string
+          description: Category name of the product.
+          example: Rain Jackets
         colors:
-          type: string
-          description: Comma-separated list of available colors.
-          example: navy,red
+          type: array
+          description: Available colors, in catalog order.
+          items:
+            type: string
+          example: [navy, red]
         sizes:
-          type: string
-          description: Comma-separated list of available sizes.
-          example: M,XS,S
+          type: array
+          description: Available sizes in canonical order (XXS..XXXL), unknown sizes last.
+          items:
+            type: string
+          example: [XS, S, M]
         price:
           type: number
           format: double
@@ -191,13 +221,56 @@ components:
           type: string
           description: Product description used as the semantic search content.
           example: Urban explorer jacket crafted from water-resistant nylon, lightweight and durable.
+        imageUrl:
+          type: string
+          description: Public URL of the product image, resolved from the configured assets base URL and the image key.
+          example: /images/categories/rain.webp
+
+    Interpretation:
+      type: object
+      description: |
+        The system's interpretation of a successful search request, derived from the
+        validated query analysis.
+      required:
+        - searchQuery
+        - negativeExamples
+        - sortByLowestPrice
+      properties:
+        searchQuery:
+          type: string
+          description: The compressed English search query, with negatives and price removed.
+          example: blue cotton jacket
+        negativeExamples:
+          type: array
+          description: Negative examples excluded from the search. Empty when there are none.
+          items:
+            type: string
+          example: [wool]
+        priceConstraint:
+          type: object
+          nullable: true
+          description: The price constraint, or null when there is none.
+          required:
+            - operator
+            - value
+          properties:
+            operator:
+              type: string
+              enum: [LESS_THAN, LESS_THAN_OR_EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL]
+            value:
+              type: number
+              example: 200
+        sortByLowestPrice:
+          type: boolean
+          description: Whether results are ordered by ascending price.
+          example: false
 
     ChatResponse:
       type: object
       description: |
-        Result of a search request. On HTTP 200 `products` is populated and
-        `suggestedPrompts` is `null`; on HTTP 422 `products` is `null` and
-        `suggestedPrompts` is populated.
+        Result of a search request. On HTTP 200 `products` and `interpretation` are
+        populated and `suggestedPrompts` is `null`; on HTTP 422 `products` and
+        `interpretation` are `null` and `suggestedPrompts` is populated.
       properties:
         products:
           type: array
@@ -208,6 +281,9 @@ components:
             rejected (HTTP 422).
           items:
             $ref: '#/components/schemas/Product'
+        interpretation:
+          $ref: '#/components/schemas/Interpretation'
+          nullable: true
         suggestedPrompts:
           type: array
           nullable: true

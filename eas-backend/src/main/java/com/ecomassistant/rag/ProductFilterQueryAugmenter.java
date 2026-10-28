@@ -22,9 +22,10 @@ import java.util.stream.Collectors;
  *
  * <p>The rendered prompt is {@code prompts/product-filter.md} with the following values:
  * the English {@code searchQuery} (the query text), the customer's original message, the
- * negative examples, a human-readable price constraint and one {@code SKU | colors |
- * sizes | price | description} line per candidate. Negatives and the original wording are
- * re-injected here because call #1 strips them from {@code searchQuery}.
+ * negative examples, a human-readable price constraint and one {@code SKU | title |
+ * category | colors | sizes | price | description} line per candidate. Negatives and the
+ * original wording are re-injected here because call #1 strips them from
+ * {@code searchQuery}.
  */
 @Component
 public class ProductFilterQueryAugmenter implements QueryAugmenter {
@@ -62,11 +63,13 @@ public class ProductFilterQueryAugmenter implements QueryAugmenter {
     private static String renderCandidate(Document document) {
         Map<String, Object> metadata = document.getMetadata();
         String sku = stringOrEmpty(metadata.get("sku"));
+        String title = stringOrEmpty(metadata.get("title"));
+        String category = stringOrEmpty(metadata.get("category"));
         String colors = stringOrEmpty(metadata.get("colors"));
         String sizes = stringOrEmpty(metadata.get("sizes"));
         String price = renderPriceValue(metadata.get("price"));
         String description = stringOrEmpty(metadata.get("description"));
-        return String.join(" | ", sku, colors, sizes, price, description);
+        return String.join(" | ", sku, title, category, colors, sizes, price, description);
     }
 
     @SuppressWarnings("unchecked")

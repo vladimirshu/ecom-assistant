@@ -64,6 +64,27 @@ public final class OpenAiWireMockStubs {
         stubChatCompletionForMarker(server, QUERY_ANALYSIS_MARKER, queryAnalysisJson(analysis));
     }
 
+    /**
+     * Stubs a sequence of responses for the given marker, one per successive request
+     * containing that marker, using a scenario. Useful for multi-turn conversations where
+     * successive query-analysis calls must return different results.
+     */
+    public static void stubChatCompletionForMarkerSequence(WireMockServer server, String marker, String... contents) {
+        String scenario = "marker-sequence-" + marker;
+        for (int i = 0; i < contents.length; i++) {
+            String currentState = i == 0 ? Scenario.STARTED : "step-" + i;
+            String nextState = i == contents.length - 1 ? Scenario.STARTED : "step-" + (i + 1);
+            server.stubFor(WireMock.post(WireMock.urlPathMatching(CHAT_COMPLETIONS_PATH_PATTERN))
+                .withRequestBody(WireMock.containing(marker))
+                .inScenario(scenario)
+                .whenScenarioStateIs(currentState)
+                .willReturn(WireMock.aResponse()
+                    .withHeader("Content-Type", "application/json")
+                    .withBody(chatCompletionResponse(contents[i])))
+                .willSetStateTo(nextState));
+        }
+    }
+
     /** Stubs the product-filtering call to return the given {@link ProductSelection}. */
     public static void stubProductSelection(WireMockServer server, ProductSelection selection) {
         stubChatCompletionForMarker(server, PRODUCT_FILTER_MARKER, productSelectionJson(selection));

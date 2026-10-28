@@ -46,6 +46,7 @@ public class QueryAnalysisGuardrailAdvisor implements BaseAdvisor {
         Map<String, Object> context = new HashMap<>(chatClientRequest.context());
         context.putAll(retrievalParametersMapper.toContext(analysis));
         context.put(ProductFilterContextKeys.ORIGINAL_MESSAGE, message);
+        context.put(ProductFilterContextKeys.QUERY_ANALYSIS, analysis);
         if (analysis.priceConstraint() != null) {
             context.put(ProductFilterContextKeys.PRICE_CONSTRAINT, analysis.priceConstraint());
         }

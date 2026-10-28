@@ -6,7 +6,7 @@ You are the product-filtering step of an apparel webshop search system. You rece
 - Customer's original message: {{originalMessage}}
 - Negative examples (a product matching any of these must NOT be selected): {{negatives}}
 - Price constraint: {{price}}
-- Candidate products, one per line, formatted as `SKU | colors | sizes | price | description`:
+- Candidate products, one per line, formatted as `SKU | title | category | colors | sizes | price | description`:
 {{candidates}}
 
 # Task

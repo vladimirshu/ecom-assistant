@@ -28,7 +28,9 @@ class ProductFilterQueryAugmenterTest {
                     RetrievalContextKeys.NEGATIVE_EXAMPLES, List.of("wool")))
             .build();
 
-        Query augmented = augmenter.augment(query, List.of(doc("JKT0001", "blue", "M", "120.00", "blue cotton jacket")));
+        Query augmented = augmenter.augment(query,
+                List.of(doc("JKT0001", "Classic Bomber Jacket", "bomber", "blue", "M", "120.00",
+                        "blue cotton jacket")));
 
         assertThat(augmented.text())
             .contains("blue cotton jacket")
@@ -38,7 +40,7 @@ class ProductFilterQueryAugmenterTest {
     }
 
     @Test
-    void rendersOneLinePerCandidateWithSkuColorsSizesPriceAndDescription() {
+    void rendersOneLinePerCandidateWithTitleAndCategory() {
         Query query = Query.builder()
             .text("rain jacket")
             .context(Map.of(
@@ -47,12 +49,14 @@ class ProductFilterQueryAugmenterTest {
             .build();
 
         Query augmented = augmenter.augment(query, List.of(
-                doc("JKT0001", "navy", "M", "120.00", "waterproof rain jacket"),
-                doc("JKT0007", "red", "L", "80.58", "denim jacket")));
+                doc("JKT0001", "Classic Bomber Jacket", "bomber", "navy", "M", "120.00",
+                        "waterproof rain jacket"),
+                doc("JKT0007", "Vintage Sherpa Denim Jacket", "denim", "red", "L", "80.58",
+                        "denim jacket")));
 
         assertThat(augmented.text())
-            .contains("JKT0001 | navy | M | 120.00 | waterproof rain jacket")
-            .contains("JKT0007 | red | L | 80.58 | denim jacket");
+            .contains("JKT0001 | Classic Bomber Jacket | bomber | navy | M | 120.00 | waterproof rain jacket")
+            .contains("JKT0007 | Vintage Sherpa Denim Jacket | denim | red | L | 80.58 | denim jacket");
     }
 
     @Test
@@ -68,12 +72,15 @@ class ProductFilterQueryAugmenterTest {
             .contains("(none)");
     }
 
-    private static Document doc(String sku, String colors, String sizes, String price, String description) {
+    private static Document doc(String sku, String title, String category, String colors, String sizes,
+            String price, String description) {
         return Document.builder()
             .id(sku)
             .text(description)
             .metadata(Map.of(
                     "sku", sku,
+                    "title", title,
+                    "category", category,
                     "colors", colors,
                     "sizes", sizes,
                     "price", new BigDecimal(price),
