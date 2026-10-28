@@ -1,10 +1,9 @@
 package com.ecomassistant.service;
 
 import com.ecomassistant.VectorStoreUtils;
+import com.ecomassistant.catalog.Product;
 import com.ecomassistant.catalog.ProductCategory;
 import com.ecomassistant.config.EcomImportProperties;
-import com.ecomassistant.entity.Product;
-import com.ecomassistant.repository.ProductRepository;
 import io.qdrant.client.ConditionFactory;
 import io.qdrant.client.QdrantClient;
 import io.qdrant.client.grpc.Common;
@@ -32,28 +31,27 @@ import java.util.concurrent.ExecutionException;
 public class ProductImportService {
 
     private final VectorStore vectorStore;
-    private final ProductRepository productRepository;
     private final EcomImportProperties importProperties;
     private final QdrantClient qdrantClient;
 
-    /** Matches the length of the {@code products.title} column. */
+    /** Maximum accepted title length. */
     private static final int MAX_TITLE_LENGTH = 80;
 
     @Value("${spring.ai.vectorstore.qdrant.collection-name:products}")
     private String collectionName;
 
     /**
-     * Idempotent upsert import. Runs when the products table is empty, the vector store
-     * is empty, or any stored product lacks a category (the upgrade path from the
-     * previous schema). Products are upserted by SKU in both stores, so re-running the
-     * import does not create duplicates.
+     * Idempotent upsert import with Qdrant as the only store. Runs when the collection is
+     * empty or missing, or when any stored point lacks a category (the upgrade path from
+     * the previous schema). Points have deterministic IDs derived from the SKU, so
+     * re-running the import does not create duplicates. The check uses point counts only
+     * and never calls the embedding model.
      */
     public void importSampleProducts() {
-        boolean tableEmpty = productRepository.count() == 0;
-        boolean vectorStoreEmpty = !isVectorStoreInitialized();
-        boolean needsUpgrade = productRepository.existsByCategoryIsNull();
+        long total = countPoints(null);
+        long withoutCategory = total == 0 ? 0 : countPoints(categoryMissingFilter());
 
-        if (!tableEmpty && !vectorStoreEmpty && !needsUpgrade) {
+        if (total > 0 && withoutCategory == 0) {
             log.info("Products already imported. Skipping");
             return;
         }
@@ -63,19 +61,9 @@ public class ProductImportService {
             return;
         }
 
-        // Upsert into MySQL: SKU is the primary key, so saveAll merges existing rows.
-        productRepository.saveAll(products);
-
-        // Legacy rows that were not upserted (SKU no longer in the CSV, or its row is now
-        // invalid) would keep the upgrade trigger true and re-run the import forever.
-        long removed = productRepository.deleteByCategoryIsNull();
-        if (removed > 0) {
-            log.warn("Removed {} stored products without category that are not in the catalog CSV", removed);
-        }
-
         // Delete stale points from the previous random-ID import (those without a
         // category payload) before upserting the deterministic points.
-        if (!vectorStoreEmpty) {
+        if (withoutCategory > 0) {
             deletePointsWithoutCategory();
         }
 
@@ -109,21 +97,29 @@ public class ProductImportService {
         return products;
     }
 
-    private boolean isVectorStoreInitialized() {
+    /** Exact point count for the filter, or 0 when the collection does not exist. */
+    private long countPoints(Common.Filter filter) {
         try {
             if (!qdrantClient.collectionExistsAsync(collectionName).get()) {
-                return false;
+                return 0;
             }
-            return qdrantClient.countAsync(collectionName, null, true).get() > 0;
+            return qdrantClient.countAsync(collectionName, filter, true).get();
         }
         catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            return false;
+            throw new IllegalStateException("Interrupted while counting Qdrant points", e);
         }
         catch (ExecutionException e) {
-            log.error("Error checking if vector store is initialized", e);
-            return false;
+            throw new IllegalStateException("Failed to count Qdrant points", e);
         }
+    }
+
+    // `isEmpty` matches a missing, null or empty value, unlike `isNull` which only
+    // matches a field that exists with a NULL value.
+    private static Common.Filter categoryMissingFilter() {
+        return Common.Filter.newBuilder()
+            .addMust(ConditionFactory.isEmpty("category"))
+            .build();
     }
 
     /**
@@ -137,12 +133,7 @@ public class ProductImportService {
             if (!qdrantClient.collectionExistsAsync(collectionName).get()) {
                 return;
             }
-            // `isEmpty` matches a missing, null or empty value, unlike `isNull` which
-            // only matches a field that exists with a NULL value.
-            Common.Filter filter = Common.Filter.newBuilder()
-                .addMust(ConditionFactory.isEmpty("category"))
-                .build();
-            qdrantClient.deleteAsync(collectionName, filter).get();
+            qdrantClient.deleteAsync(collectionName, categoryMissingFilter()).get();
         }
         catch (InterruptedException e) {
             Thread.currentThread().interrupt();

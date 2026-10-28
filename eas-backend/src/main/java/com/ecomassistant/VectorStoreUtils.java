@@ -1,7 +1,7 @@
 package com.ecomassistant;
 
 import com.ecomassistant.catalog.ProductCategory;
-import com.ecomassistant.entity.Product;
+import com.ecomassistant.catalog.Product;
 import io.qdrant.client.grpc.JsonWithInt;
 import io.qdrant.client.grpc.Points;
 import lombok.extern.slf4j.Slf4j;

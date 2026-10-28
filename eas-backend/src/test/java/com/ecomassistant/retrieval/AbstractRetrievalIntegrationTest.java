@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.qdrant.QdrantContainer;
@@ -19,10 +18,6 @@ public abstract class AbstractRetrievalIntegrationTest {
     @Container
     @ServiceConnection
     static final QdrantContainer qdrant = new QdrantContainer("qdrant/qdrant:v1.13.4");
-
-    @Container
-    @ServiceConnection
-    static final MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.4");
 
     @DynamicPropertySource
     static void registerProperties(DynamicPropertyRegistry registry) {

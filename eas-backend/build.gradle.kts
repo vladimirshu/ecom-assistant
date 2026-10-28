@@ -27,9 +27,7 @@ dependencies {
     implementation("org.springframework.ai:spring-ai-rag")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-restclient")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
-    implementation("com.mysql:mysql-connector-j:26.10.0")
     implementation("org.apache.commons:commons-csv:1.14.1")
 
     // Security and validation dependencies
@@ -42,7 +40,6 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-webmvc-test")
-    testImplementation("org.testcontainers:testcontainers-mysql")
     testImplementation("org.testcontainers:testcontainers-junit-jupiter")
     testImplementation("org.testcontainers:testcontainers-qdrant")
     testImplementation("org.springframework.ai:spring-ai-spring-boot-testcontainers")

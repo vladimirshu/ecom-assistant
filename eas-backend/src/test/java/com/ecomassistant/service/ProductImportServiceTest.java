@@ -2,8 +2,7 @@ package com.ecomassistant.service;
 
 import com.ecomassistant.catalog.ProductCategory;
 import com.ecomassistant.config.EcomImportProperties;
-import com.ecomassistant.entity.Product;
-import com.ecomassistant.repository.ProductRepository;
+import com.ecomassistant.catalog.Product;
 import io.qdrant.client.QdrantClient;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -22,7 +21,6 @@ class ProductImportServiceTest {
 
     private final ProductImportService service = new ProductImportService(
             mock(VectorStore.class),
-            mock(ProductRepository.class),
             new EcomImportProperties("sampledata/apparel_jackets_sample.csv"),
             mock(QdrantClient.class));
 

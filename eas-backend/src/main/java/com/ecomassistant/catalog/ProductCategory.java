@@ -5,8 +5,8 @@ package com.ecomassistant.catalog;
  * cross-project contract with the frontend's image directory) and a human-readable
  * {@code displayName} used in prompts and embedded text.
  *
- * <p>Categories are persisted as the slug via {@link ProductCategoryConverter}; the
- * display name is presentation-only and is not stored.
+ * <p>Categories are stored as the slug; the display name is presentation-only and is
+ * not stored.
  */
 public enum ProductCategory {
 
@@ -44,8 +44,8 @@ public enum ProductCategory {
 
     /**
      * Resolves a category from its slug, or returns {@code null} when the slug is
-     * unknown. Used both by the import validation (to reject unknown categories) and by
-     * the JPA {@link ProductCategoryConverter} when reading rows back.
+     * unknown. Used both by the import validation (to reject unknown categories) and when
+     * reading products back from the vector store payload.
      */
     public static ProductCategory fromSlug(String slug) {
         if (slug == null) {

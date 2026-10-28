@@ -1,7 +1,7 @@
 package com.ecomassistant.dto;
 
 import com.ecomassistant.config.EcomAssetsProperties;
-import com.ecomassistant.entity.Product;
+import com.ecomassistant.catalog.Product;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

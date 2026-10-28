@@ -1,12 +1,14 @@
 package com.ecomassistant.service;
 
 import com.ecomassistant.VectorStoreUtils;
-import com.ecomassistant.entity.Product;
-import com.ecomassistant.repository.ProductRepository;
+import com.ecomassistant.catalog.Product;
 import com.ecomassistant.retrieval.FakeEmbeddingModel;
 import io.qdrant.client.QdrantClient;
 import io.qdrant.client.grpc.Common;
 import io.qdrant.client.grpc.Points;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.document.Document;
@@ -14,14 +16,18 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.qdrant.QdrantContainer;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UncheckedIOException;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -31,7 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Integration tests for the idempotent catalog import, running against its own
- * Testcontainers MySQL + Qdrant with the {@code FakeEmbeddingModel} so assertions about
+ * Testcontainers Qdrant with the {@code FakeEmbeddingModel} so assertions about
  * embedding work and vector-store contents are meaningful.
  */
 @SpringBootTest
@@ -41,10 +47,6 @@ class ProductImportServiceIntegrationTest {
     @Container
     @ServiceConnection
     static final QdrantContainer qdrant = new QdrantContainer("qdrant/qdrant:v1.13.4");
-
-    @Container
-    @ServiceConnection
-    static final MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.4");
 
     @DynamicPropertySource
     static void registerProperties(DynamicPropertyRegistry registry) {
@@ -57,9 +59,6 @@ class ProductImportServiceIntegrationTest {
 
     @Autowired
     private ProductImportService productImportService;
-
-    @Autowired
-    private ProductRepository productRepository;
 
     @Autowired
     private VectorStore vectorStore;
@@ -75,16 +74,14 @@ class ProductImportServiceIntegrationTest {
 
     @BeforeEach
     void cleanState() {
-        productRepository.deleteAll();
         clearVectorStore();
         fakeEmbeddingModel.resetEmbedCount();
     }
 
     @Test
-    void freshImportStoresAllProductsInBothStores() {
+    void freshImportStoresAllProducts() {
         productImportService.importSampleProducts();
 
-        assertThat(productRepository.count()).isEqualTo(8);
         assertThat(qdrantPointCount()).isEqualTo(8);
         assertThat(fakeEmbeddingModel.getEmbedCount()).isGreaterThan(0);
     }
@@ -97,43 +94,21 @@ class ProductImportServiceIntegrationTest {
         productImportService.importSampleProducts();
 
         assertThat(fakeEmbeddingModel.getEmbedCount()).isZero();
-        assertThat(productRepository.count()).isEqualTo(8);
         assertThat(qdrantPointCount()).isEqualTo(8);
     }
 
     @Test
-    void upgradeFromRowsWithoutCategoryLeavesExactlyOnePointPerSku() {
+    void legacyPointWithoutCategoryTriggersReimportWithOnePointPerSku() {
         productImportService.importSampleProducts();
 
-        // Simulate the previous schema: no category in MySQL, plus a leftover Qdrant
-        // point (random id) without a category payload.
-        clearCategories();
+        // Simulate the previous schema: a leftover point (random id) without a category
+        // payload next to the current points.
         addLegacyPoint("RAIN1");
+        assertThat(qdrantPointCount()).isEqualTo(9);
 
         productImportService.importSampleProducts();
 
-        assertThat(productRepository.existsByCategoryIsNull()).isFalse();
-        assertThat(productRepository.count()).isEqualTo(8);
         assertThat(qdrantPointCount()).isEqualTo(8);
-    }
-
-    @Test
-    void legacyRowMissingFromCsvIsRemovedSoImportDoesNotRepeat() {
-        productImportService.importSampleProducts();
-
-        Product orphan = new Product();
-        orphan.setSku("LEGACY1");
-        orphan.setColors("blue");
-        orphan.setSizes("M");
-        orphan.setPrice(new java.math.BigDecimal("10.00"));
-        orphan.setDescription("legacy row without category");
-        productRepository.save(orphan);
-
-        productImportService.importSampleProducts();
-
-        assertThat(productRepository.existsByCategoryIsNull()).isFalse();
-        assertThat(productRepository.existsById("LEGACY1")).isFalse();
-        assertThat(productRepository.count()).isEqualTo(8);
 
         fakeEmbeddingModel.resetEmbedCount();
         productImportService.importSampleProducts();
@@ -142,9 +117,7 @@ class ProductImportServiceIntegrationTest {
 
     @Test
     void documentRoundTripKeepsAllAttributes() {
-        productImportService.importSampleProducts();
-
-        Product product = productRepository.findById("RAIN1").orElseThrow();
+        Product product = productFromCsv("RAIN1");
         Document document = VectorStoreUtils.productToDocument(product);
         Product roundTripped = VectorStoreUtils.documentToProduct(document);
 
@@ -158,12 +131,21 @@ class ProductImportServiceIntegrationTest {
         assertThat(roundTripped.getImageKey()).isEqualTo(product.getImageKey());
     }
 
-    private void clearCategories() {
-        List<Product> products = productRepository.findAll();
-        for (Product product : products) {
-            product.setCategory(null);
+    private Product productFromCsv(String sku) {
+        try (Reader reader = new InputStreamReader(
+                new ClassPathResource("sampledata/test-apparel.csv").getInputStream());
+             CSVParser parser = CSVFormat.Builder.create().setHeader().setSkipHeaderRecord(true)
+                     .setDelimiter(";").build().parse(reader)) {
+            for (CSVRecord csvRecord : parser) {
+                if (sku.equals(csvRecord.get("sku").trim())) {
+                    return productImportService.parseProductFromRecord(csvRecord);
+                }
+            }
         }
-        productRepository.saveAll(products);
+        catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+        throw new IllegalStateException("SKU not in test CSV: " + sku);
     }
 
     private void addLegacyPoint(String sku) {

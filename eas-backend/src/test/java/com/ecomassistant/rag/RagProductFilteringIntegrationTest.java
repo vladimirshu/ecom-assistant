@@ -17,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.web.client.RestClient;
-import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.qdrant.QdrantContainer;
@@ -35,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * End-to-end tests for the RAG product-filtering pipeline: {@code GET /search} over a
- * real HTTP connection with Testcontainers MySQL + Qdrant, the {@code FakeEmbeddingModel}
+ * real HTTP connection with Testcontainers Qdrant, the {@code FakeEmbeddingModel}
  * and WireMock stubs for both LLM calls.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -47,10 +46,6 @@ class RagProductFilteringIntegrationTest {
     @Container
     @ServiceConnection
     static final QdrantContainer qdrant = new QdrantContainer("qdrant/qdrant:v1.13.4");
-
-    @Container
-    @ServiceConnection
-    static final MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.4");
 
     static final WireMockServer wireMock =
             new WireMockServer(WireMockConfiguration.options().dynamicPort());

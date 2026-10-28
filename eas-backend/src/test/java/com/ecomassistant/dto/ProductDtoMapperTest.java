@@ -2,7 +2,7 @@ package com.ecomassistant.dto;
 
 import com.ecomassistant.catalog.ProductCategory;
 import com.ecomassistant.config.EcomAssetsProperties;
-import com.ecomassistant.entity.Product;
+import com.ecomassistant.catalog.Product;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
