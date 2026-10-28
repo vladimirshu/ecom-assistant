@@ -53,7 +53,8 @@ spring:
 # Application Configuration
 ecom:
   search:
-    top-k: 10
+    top-k: 30
+    max-results: 10
     similarity-threshold: 0.25
   import:
     sample-file: sampledata/apparel_jackets_sample.csv

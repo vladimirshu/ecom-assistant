@@ -1,6 +1,7 @@
 package com.ecomassistant.support;
 
 import com.ecomassistant.guardrails.QueryAnalysis;
+import com.ecomassistant.rag.ProductSelection;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.stubbing.Scenario;
@@ -13,12 +14,19 @@ import java.util.Map;
 /**
  * WireMock stubs for the OpenAI chat-completions endpoint. Each stub returns an OpenAI
  * chat-completion response whose {@code choices[0].message.content} is the provided JSON
- * string (typically a {@link QueryAnalysis} serialized to JSON).
+ * string (typically a {@link QueryAnalysis} or {@link ProductSelection} serialized to
+ * JSON).
  */
 public final class OpenAiWireMockStubs {
 
     /** Matches both {@code /chat/completions} and {@code /v1/chat/completions}. */
     public static final String CHAT_COMPLETIONS_PATH_PATTERN = ".*/chat/completions";
+
+    /** Marker present in the query-analysis system prompt. */
+    public static final String QUERY_ANALYSIS_MARKER = "query-analysis step";
+
+    /** Marker present in the product-filtering prompt. */
+    public static final String PRODUCT_FILTER_MARKER = "product-filtering step";
 
     private static final JsonMapper JSON_MAPPER = JsonMapper.builder().build();
 
@@ -35,6 +43,30 @@ public final class OpenAiWireMockStubs {
             .willReturn(WireMock.aResponse()
                 .withHeader("Content-Type", "application/json")
                 .withBody(chatCompletionResponse(content))));
+    }
+
+    /**
+     * Stubs a single response matched on the request body containing the given marker.
+     * Used to distinguish the query-analysis call from the product-filtering call, whose
+     * prompts carry the {@link #QUERY_ANALYSIS_MARKER} and
+     * {@link #PRODUCT_FILTER_MARKER} markers respectively.
+     */
+    public static void stubChatCompletionForMarker(WireMockServer server, String marker, String content) {
+        server.stubFor(WireMock.post(WireMock.urlPathMatching(CHAT_COMPLETIONS_PATH_PATTERN))
+            .withRequestBody(WireMock.containing(marker))
+            .willReturn(WireMock.aResponse()
+                .withHeader("Content-Type", "application/json")
+                .withBody(chatCompletionResponse(content))));
+    }
+
+    /** Stubs the query-analysis call to return the given {@link QueryAnalysis}. */
+    public static void stubQueryAnalysis(WireMockServer server, QueryAnalysis analysis) {
+        stubChatCompletionForMarker(server, QUERY_ANALYSIS_MARKER, queryAnalysisJson(analysis));
+    }
+
+    /** Stubs the product-filtering call to return the given {@link ProductSelection}. */
+    public static void stubProductSelection(WireMockServer server, ProductSelection selection) {
+        stubChatCompletionForMarker(server, PRODUCT_FILTER_MARKER, productSelectionJson(selection));
     }
 
     /** Stubs a sequence of responses, one per successive request, using a scenario. */
@@ -67,6 +99,13 @@ public final class OpenAiWireMockStubs {
                     "value", analysis.priceConstraint().value()));
         }
         map.put("sortByLowestPrice", analysis.sortByLowestPrice());
+        return write(map);
+    }
+
+    /** Serializes a {@link ProductSelection} to JSON. */
+    public static String productSelectionJson(ProductSelection selection) {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("skus", selection.skus());
         return write(map);
     }
 

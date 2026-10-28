@@ -148,7 +148,10 @@ class QueryAnalysisGuardrailIntegrationTest extends AbstractQueryAnalysisIntegra
 
         Query query = capturedQuery();
         assertThat(query.text()).isEqualTo("winter jacket");
-        assertThat(query.context()).isEmpty();
+        assertThat(query.context()).doesNotContainKeys(
+                RetrievalContextKeys.NEGATIVE_EXAMPLES,
+                RetrievalContextKeys.FILTER_EXPRESSION,
+                RetrievalContextKeys.SORT_BY_LOWEST_PRICE);
     }
 
     @Test
