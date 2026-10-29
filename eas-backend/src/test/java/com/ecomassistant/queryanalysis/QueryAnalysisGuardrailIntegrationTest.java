@@ -132,7 +132,7 @@ class QueryAnalysisGuardrailIntegrationTest extends AbstractQueryAnalysisIntegra
                 .andExpect(jsonPath("$.error").value("Illegal assistant response"));
 
         verifyNoInteractions(retriever);
-        assertThat(wireMock.getAllServeEvents()).hasSize(3);
+        assertThat(wireMock.getAllServeEvents()).hasSize(2);
     }
 
     @Test

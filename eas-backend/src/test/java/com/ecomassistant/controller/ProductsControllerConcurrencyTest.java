@@ -1,6 +1,8 @@
 package com.ecomassistant.controller;
 
 import com.ecomassistant.dto.ProductSearchRequestDto;
+import com.ecomassistant.limits.ClientKeyResolver;
+import com.ecomassistant.limits.SearchAdmission;
 import com.ecomassistant.service.ProductSearchService;
 import com.ecomassistant.service.SearchResult;
 import org.junit.jupiter.api.Test;
@@ -21,7 +23,9 @@ class ProductsControllerConcurrencyTest {
     void resetWaitsForEarlierSearchButOtherConversationsCanProceed() throws Exception {
         ProductSearchService service = mock(ProductSearchService.class);
         ChatMemory memory = mock(ChatMemory.class);
-        ProductsController controller = new ProductsController(service, memory);
+        SearchAdmission searchAdmission = mock(SearchAdmission.class);
+        ClientKeyResolver clientKeyResolver = mock(ClientKeyResolver.class);
+        ProductsController controller = new ProductsController(service, memory, searchAdmission, clientKeyResolver);
         CountDownLatch firstStarted = new CountDownLatch(1);
         CountDownLatch finishFirst = new CountDownLatch(1);
         SearchResult result = new SearchResult(List.of(), null);
@@ -34,15 +38,15 @@ class ProductsControllerConcurrencyTest {
         when(service.searchProducts("other search", "b")).thenReturn(result);
         var pool = Executors.newFixedThreadPool(3);
         try {
-            var first = pool.submit(() -> controller.findProducts(new ProductSearchRequestDto("first search", "a", false)));
+            var first = pool.submit(() -> controller.findProducts(new ProductSearchRequestDto("first search", "a", false), null));
             assertThat(firstStarted.await(5, TimeUnit.SECONDS)).isTrue();
             CountDownLatch resetStarted = new CountDownLatch(1);
             var reset = pool.submit(() -> {
                 resetStarted.countDown();
-                return controller.findProducts(new ProductSearchRequestDto("reset search", "a", true));
+                return controller.findProducts(new ProductSearchRequestDto("reset search", "a", true), null);
             });
             assertThat(resetStarted.await(5, TimeUnit.SECONDS)).isTrue();
-            var other = pool.submit(() -> controller.findProducts(new ProductSearchRequestDto("other search", "b", false)));
+            var other = pool.submit(() -> controller.findProducts(new ProductSearchRequestDto("other search", "b", false), null));
             assertThat(other.get(5, TimeUnit.SECONDS)).isNotNull();
             assertThatThrownBy(() -> reset.get(200, TimeUnit.MILLISECONDS)).isInstanceOf(TimeoutException.class);
             verify(memory, never()).clear("a");

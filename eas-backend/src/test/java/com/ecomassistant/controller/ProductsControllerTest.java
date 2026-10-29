@@ -1,5 +1,7 @@
 package com.ecomassistant.controller;
 
+import com.ecomassistant.limits.ClientKeyResolver;
+import com.ecomassistant.limits.SearchAdmission;
 import com.ecomassistant.service.ProductSearchService;
 import com.ecomassistant.service.SearchResult;
 import java.util.List;
@@ -30,6 +32,12 @@ class ProductsControllerTest {
 
     @MockitoBean
     private ChatMemory chatMemory;
+
+    @MockitoBean
+    private SearchAdmission searchAdmission;
+
+    @MockitoBean
+    private ClientKeyResolver clientKeyResolver;
 
     @Test
     void angleBracketsReturnBadRequestWithoutInvokingSearch() throws Exception {

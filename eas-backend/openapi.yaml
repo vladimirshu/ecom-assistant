@@ -168,6 +168,38 @@ paths:
                 suggestedPrompts:
                   - a light summer jacket
                   - a warm winter jacket
+        '429':
+          description: |
+            The request was rejected by the search rate limits or the global daily
+            budget. No LLM, embedding or vector store call is made for a rejected
+            request, and it counts against no quota. The `Retry-After` header
+            carries the number of seconds until a search is allowed again (for the
+            daily budget, the seconds until the next UTC midnight). The `code`
+            distinguishes the client rate limit (`RATE_LIMITED`, at most 5 searches
+            per minute and 20 per hour per client by default) from the global daily
+            budget (`DAILY_BUDGET_EXHAUSTED`, 300 accepted searches per UTC day by
+            default); all limits are configurable.
+          headers:
+            Retry-After:
+              description: Seconds until the client may search again.
+              schema:
+                type: integer
+                minimum: 1
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchRejected'
+              examples:
+                rateLimited:
+                  summary: Client over its per-minute or per-hour limit
+                  value:
+                    code: RATE_LIMITED
+                    message: Too many searches. Retry after 12 seconds.
+                budgetExhausted:
+                  summary: Global daily budget exhausted
+                  value:
+                    code: DAILY_BUDGET_EXHAUSTED
+                    message: Daily search budget exhausted. Retry after 3600 seconds.
         '500':
           description: |
             Internal server error. Returned when the LLM produced an invalid
@@ -371,3 +403,21 @@ components:
           type: string
           description: Human-readable error detail.
           example: price is not a valid number
+
+    SearchRejected:
+      type: object
+      description: |
+        Body of an HTTP 429 response. `code` distinguishes the per-client rate limit
+        from the global daily budget; the storefront renders its own message per code.
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          enum: [RATE_LIMITED, DAILY_BUDGET_EXHAUSTED]
+          description: Which limit rejected the search.
+        message:
+          type: string
+          description: Human-readable reason, in English.
+          example: Too many searches. Retry after 12 seconds.

@@ -28,6 +28,11 @@ public abstract class AbstractRetrievalIntegrationTest {
         registry.add("spring.ai.model.embedding", () -> "none");
         registry.add("spring.ai.openai.api-key", () -> "test-key");
         registry.add("ecom.import.sample-file", () -> "sampledata/test-apparel.csv");
+        // The rate limiter and daily budget are exercised by their own tests; keep them
+        // effectively unlimited so unrelated integration tests never hit a 429.
+        registry.add("ecom.limits.per-minute", () -> "1000000");
+        registry.add("ecom.limits.per-hour", () -> "1000000");
+        registry.add("ecom.limits.daily-budget", () -> "1000000");
     }
 
     @Autowired

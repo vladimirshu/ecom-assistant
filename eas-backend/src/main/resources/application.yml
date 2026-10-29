@@ -35,6 +35,14 @@ ecom:
   memory:
     inactivity-timeout: 24h
     cleanup-interval: 1h
+  limits:
+    per-minute: 5
+    per-hour: 20
+    daily-budget: 300
+    trusted-proxy-hops: 1
+  llm:
+    query-analysis-max-output-tokens: 500
+    product-filter-max-output-tokens: 300
   import:
     sample-file: sampledata/apparel_jackets_sample.csv
   assets:

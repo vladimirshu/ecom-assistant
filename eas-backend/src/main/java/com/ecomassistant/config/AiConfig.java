@@ -62,18 +62,20 @@ public class AiConfig {
     public StructuredOutputValidationAdvisor queryAnalysisSchemaValidationAdvisor() {
         return StructuredOutputValidationAdvisor.builder()
             .outputType(QueryAnalysis.class)
-            .maxRepeatAttempts(2)
+            .maxRepeatAttempts(1)
             .build();
     }
 
     @Bean
-    public ChatClient queryAnalysisChatClient(ChatModel chatModel, ChatMemory chatMemory) {
+    public ChatClient queryAnalysisChatClient(ChatModel chatModel, ChatMemory chatMemory,
+            EcomLlmProperties llmProperties) {
         ToolCallingChatOptions.Builder chatOptionsBuilder = ToolCallingChatOptions.builder()
                 .model(REASONING_MODEL)
                 .temperature(TEMPERATURE)
                 .topP(TOP_P)
                 .frequencyPenalty(FREQUENCY_PENALTY)
-                .presencePenalty(PRESENCE_PENALTY);
+                .presencePenalty(PRESENCE_PENALTY)
+                .maxTokens(llmProperties.queryAnalysisMaxOutputTokens());
         return ChatClient.builder(chatModel)
                 .defaultOptions(chatOptionsBuilder)
                 .defaultSystem(loadSystemInstructions())
@@ -87,7 +89,7 @@ public class AiConfig {
     public StructuredOutputValidationAdvisor productSelectionSchemaValidationAdvisor() {
         return StructuredOutputValidationAdvisor.builder()
             .outputType(ProductSelection.class)
-            .maxRepeatAttempts(2)
+            .maxRepeatAttempts(1)
             .advisorOrder(-100)
             .build();
     }
@@ -105,13 +107,15 @@ public class AiConfig {
             RetrievalAugmentationAdvisor productSearchRetrievalAdvisor,
             EmptyRetrievalAdvisor emptyRetrievalAdvisor,
             @Qualifier("productSelectionSchemaValidationAdvisor") StructuredOutputValidationAdvisor productSelectionSchemaValidationAdvisor,
-            SimpleLoggerAdvisor loggingAdvisor) {
+            SimpleLoggerAdvisor loggingAdvisor,
+            EcomLlmProperties llmProperties) {
         ToolCallingChatOptions.Builder chatOptionsBuilder = ToolCallingChatOptions.builder()
                 .model(REASONING_MODEL)
                 .temperature(TEMPERATURE)
                 .topP(TOP_P)
                 .frequencyPenalty(FREQUENCY_PENALTY)
-                .presencePenalty(PRESENCE_PENALTY);
+                .presencePenalty(PRESENCE_PENALTY)
+                .maxTokens(llmProperties.productFilterMaxOutputTokens());
         return ChatClient.builder(chatModel)
                 .defaultOptions(chatOptionsBuilder)
                 .defaultAdvisors(queryAnalysisGuardrailAdvisor,

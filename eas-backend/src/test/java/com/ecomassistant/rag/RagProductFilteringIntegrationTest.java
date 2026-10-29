@@ -62,6 +62,10 @@ class RagProductFilteringIntegrationTest {
         registry.add("spring.ai.openai.api-key", () -> "test-key");
         registry.add("spring.ai.openai.base-url", wireMock::baseUrl);
         registry.add("ecom.import.sample-file", () -> "sampledata/test-apparel.csv");
+        // Keep the rate limiter and daily budget out of the way of these pipeline tests.
+        registry.add("ecom.limits.per-minute", () -> "1000000");
+        registry.add("ecom.limits.per-hour", () -> "1000000");
+        registry.add("ecom.limits.daily-budget", () -> "1000000");
     }
 
     @BeforeEach
