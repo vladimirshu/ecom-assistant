@@ -110,5 +110,5 @@ When the backend responds with HTTP 5xx, the request fails on the network, or no
 - **THEN** the request is aborted and the error state is shown
 
 #### Scenario: Service is down
-- **WHEN** a search fails with HTTP 502 and the health probe also fails
+- **WHEN** a search fails with HTTP 502 and the availability check (health inside opening hours, control outside hours) does not confirm readiness
 - **THEN** the availability gate takes over instead of the error state, and the typed message is kept

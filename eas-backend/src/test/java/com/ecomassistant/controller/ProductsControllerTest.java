@@ -33,7 +33,7 @@ class ProductsControllerTest {
 
     @Test
     void angleBracketsReturnBadRequestWithoutInvokingSearch() throws Exception {
-        mockMvc.perform(get("/search")
+        mockMvc.perform(get("/api/v1/search")
                         .param("message", "jacket <script>")
                         .param("conversationId", "session_1"))
                 .andExpect(status().isBadRequest())
@@ -44,7 +44,7 @@ class ProductsControllerTest {
 
     @Test
     void tooShortMessageReturnsBadRequestWithoutInvokingSearch() throws Exception {
-        mockMvc.perform(get("/search")
+        mockMvc.perform(get("/api/v1/search")
                         .param("message", "  a  ")
                         .param("conversationId", "session_1"))
                 .andExpect(status().isBadRequest())
@@ -55,7 +55,7 @@ class ProductsControllerTest {
 
     @Test
     void invalidConversationIdReturnsBadRequestWithoutInvokingSearch() throws Exception {
-        mockMvc.perform(get("/search")
+        mockMvc.perform(get("/api/v1/search")
                         .param("message", "blue jacket")
                         .param("conversationId", "abc;drop"))
                 .andExpect(status().isBadRequest())
@@ -66,7 +66,7 @@ class ProductsControllerTest {
 
     @Test
     void missingConversationIdReturnsBadRequestWithoutInvokingSearch() throws Exception {
-        mockMvc.perform(get("/search")
+        mockMvc.perform(get("/api/v1/search")
                         .param("message", "rain jacket"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.conversationId").exists());
@@ -76,7 +76,7 @@ class ProductsControllerTest {
 
     @Test
     void emptyConversationIdReturnsBadRequestWithoutInvokingSearch() throws Exception {
-        mockMvc.perform(get("/search")
+        mockMvc.perform(get("/api/v1/search")
                         .param("message", "rain jacket")
                         .param("conversationId", ""))
                 .andExpect(status().isBadRequest())
@@ -91,11 +91,22 @@ class ProductsControllerTest {
         when(productSearchService.searchProducts("rain jacket", uuid))
                 .thenReturn(new SearchResult(List.of(), null));
 
-        mockMvc.perform(get("/search")
+        mockMvc.perform(get("/api/v1/search")
                         .param("message", "rain jacket")
                         .param("conversationId", uuid))
                 .andExpect(status().isOk());
 
         verify(productSearchService).searchProducts("rain jacket", uuid);
+    }
+
+    @Test
+    void oldSearchPathReturnsNotFoundWithoutInvokingSearch() throws Exception {
+        mockMvc.perform(get("/search")
+                        .param("message", "blue jacket")
+                        .param("conversationId", "session_1"))
+                .andExpect(status().isNotFound());
+
+        verifyNoInteractions(productSearchService);
+        verifyNoInteractions(chatMemory);
     }
 }

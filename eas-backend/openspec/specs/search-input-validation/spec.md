@@ -60,7 +60,7 @@ The system SHALL require a conversation id on every search request and SHALL acc
 - **THEN** the request passes input validation and `session_42-a` is used as the conversation id
 
 #### Scenario: Missing conversation id
-- **WHEN** a client sends `GET /search?message=rain jacket` without a `conversationId` parameter
+- **WHEN** a client sends `GET /api/v1/search?message=rain jacket` without a `conversationId` parameter
 - **THEN** the system responds with HTTP 400 and a field error for `conversationId`, and no LLM or vector store call is made
 
 #### Scenario: Blank conversation id

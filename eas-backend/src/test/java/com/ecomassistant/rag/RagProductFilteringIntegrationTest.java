@@ -33,7 +33,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * End-to-end tests for the RAG product-filtering pipeline: {@code GET /search} over a
+ * End-to-end tests for the RAG product-filtering pipeline: {@code GET /api/v1/search} over a
  * real HTTP connection with Testcontainers Qdrant, the {@code FakeEmbeddingModel}
  * and WireMock stubs for both LLM calls.
  */
@@ -215,7 +215,7 @@ class RagProductFilteringIntegrationTest {
         return restClientBuilder.baseUrl("http://localhost:" + port)
             .build()
             .get()
-            .uri(uriBuilder -> uriBuilder.path("/search")
+            .uri(uriBuilder -> uriBuilder.path("/api/v1/search")
                 .queryParam("message", message)
                 .queryParam("conversationId", conversationId)
                 .build())

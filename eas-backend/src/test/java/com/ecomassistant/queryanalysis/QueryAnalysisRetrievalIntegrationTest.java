@@ -38,7 +38,7 @@ class QueryAnalysisRetrievalIntegrationTest extends AbstractQueryAnalysisIntegra
         OpenAiWireMockStubs.stubProductSelection(wireMock,
                 new ProductSelection(List.of("RAIN1", "RAIN2", "RAIN3", "DENIM1")));
 
-        MvcResult result = mockMvc.perform(get("/search")
+        MvcResult result = mockMvc.perform(get("/api/v1/search")
                         .param("message", "I want a jacket up to 150 euro")
                         .param("conversationId", java.util.UUID.randomUUID().toString()))
                 .andExpect(status().isOk())
@@ -72,7 +72,7 @@ class QueryAnalysisRetrievalIntegrationTest extends AbstractQueryAnalysisIntegra
                 List.of(), null, false));
         OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of("RAIN1")));
 
-        mockMvc.perform(get("/search")
+        mockMvc.perform(get("/api/v1/search")
                         .param("message", "show me a rain jacket")
                         .param("conversationId", java.util.UUID.randomUUID().toString()))
                 .andExpect(status().isOk());

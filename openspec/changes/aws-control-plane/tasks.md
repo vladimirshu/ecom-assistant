@@ -11,6 +11,7 @@
 - [ ] 2.2 Implement the sweeper Lambda (every 5 minutes): stop when running, outside the window (same constants as the schedules, same zone) and uptime from `LaunchTime` is at least 20 minutes
 - [ ] 2.3 Unit tests for the window logic with a fixed clock: weekday inside/outside, weekend, DST change day, 19 vs 20 minutes of uptime, 21:50 start
 - [ ] 2.4 Verify that `LaunchTime` changes after each stop/start cycle; if not, switch to a one-time schedule per wake (document in design)
+- [ ] 2.5 Generate frontend `VITE_OPEN_TZ`, `VITE_OPEN_DAYS`, `VITE_OPEN_FROM`, `VITE_OPEN_TO` from the same deployment configuration as Scheduler and sweeper; validate them and document rebuilding/redeploying the frontend with schedule changes
 
 ## 3. Data and wiring
 

@@ -30,9 +30,11 @@ servers:
 tags:
   - name: Search
     description: Natural-language product search
+  - name: Health
+    description: Application readiness
 
 paths:
-  /search:
+  /api/v1/search:
     get:
       tags:
         - Search
@@ -181,8 +183,52 @@ paths:
                 error: Illegal assistant response
                 message: Assistant response must not be blank
 
+  /api/v1/health:
+    get:
+      tags:
+        - Health
+      summary: Readiness probe
+      description: |
+        Reports whether the application is ready to serve searches. Returns HTTP 200
+        with `{"status":"UP"}` only when all startup runners have completed (including
+        the catalog import and the price index creation) and the vector store is
+        reachable; otherwise HTTP 503 with `{"status":"DOWN"}`.
+
+        The probe makes no LLM or embedding call and exposes no component details,
+        versions or configuration, so it is safe to poll frequently.
+      operationId: health
+      responses:
+        '200':
+          description: The application is ready to serve searches.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+              example:
+                status: UP
+        '503':
+          description: |
+            The application is not ready: startup runners have not finished or the
+            vector store is unreachable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+              example:
+                status: DOWN
+
 components:
   schemas:
+    HealthStatus:
+      type: object
+      description: Readiness status. The body carries only the `status` property.
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum: [UP, DOWN]
+          description: Whether the application is ready to serve searches.
     Product:
       type: object
       description: A product from the apparel catalog.

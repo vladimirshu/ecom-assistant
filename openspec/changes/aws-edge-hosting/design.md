@@ -55,7 +55,7 @@ Standard logging to a private S3 bucket with a 90-day lifecycle rule. One log li
 - wake = `/api/v1/control/up`.
 Analysis runs locally with DuckDB reading the downloaded log files (zero service cost, small request charges); Athena over the same bucket is optional.
 - Privacy: client IP addresses are personal data. Retention is limited to 90 days, the bucket is private, and the README states what is logged and why. Queries aggregate and do not export raw IPs.
-- Alternative: JavaScript beacon to a Lambda on every page view (contradicts "call the Lambda only when the health probe fails" and costs requests).
+- Alternative: JavaScript beacon to a Lambda on every page view (duplicates the existing CloudFront visit logging and costs requests).
 
 **9. Optional custom domain section.**
 When the owner decides on a domain: ACM public certificate in us-east-1 (DNS validation), alternate domain name on the distribution, DNS alias record (Route 53 or the registrar's DNS), then optionally HTTPS to the origin (Caddy or similar on the host with a DNS-challenge certificate) and removal of the plain-HTTP exception. None of the other tasks depend on it.

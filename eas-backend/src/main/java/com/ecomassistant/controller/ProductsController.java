@@ -7,6 +7,7 @@ import com.ecomassistant.service.SearchResult;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ecomassistant.dto.ChatResponseDto;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("/api/v1")
 public class ProductsController {
 
     private static final Logger log = LoggerFactory.getLogger(ProductsController.class);

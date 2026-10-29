@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Conversation memory behaviour of {@code GET /search}, observed in the LLM request bodies.
+ * Conversation memory behaviour of {@code GET /api/v1/search}, observed in the LLM request bodies.
  * The context is discarded afterwards because it is bound to this class's Qdrant container.
  */
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
@@ -37,7 +37,7 @@ class ConversationMemoryIntegrationTest extends AbstractQueryAnalysisIntegration
     }
 
     private void search(String message, String conversationId, boolean clear, int expectedStatus) throws Exception {
-        mockMvc.perform(get("/search")
+        mockMvc.perform(get("/api/v1/search")
                         .param("message", message)
                         .param("conversationId", conversationId)
                         .param("clearMemory", String.valueOf(clear)))

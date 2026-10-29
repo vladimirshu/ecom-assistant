@@ -15,6 +15,13 @@ The system SHALL expose `GET /api/v1/control/up`, which starts the backend insta
 - **WHEN** the instance is running and the health probe answers non-200, times out or is refused
 - **THEN** the response is `{"state":"STARTING"}`
 
+### Requirement: Readiness confirmation for frontend routing
+A valid UP response SHALL mean the running origin answered its readiness check successfully within the existing 2-second timeout. The frontend SHALL be able to use this response to open the shop without an additional backend health request. Calls outside opening hours SHALL remain valid even when the instance is already running and ready; they SHALL NOT restart it or extend its off-hours session.
+
+#### Scenario: Off-hours visitor finds an already ready instance
+- **WHEN** a visitor calls the endpoint outside opening hours and the running origin passes its readiness check
+- **THEN** the endpoint returns UP without restarting the instance or changing the session start time
+
 ### Requirement: Idempotent and repeatable
 Repeated calls SHALL be safe: calling the endpoint while the instance is pending, running or already being started MUST NOT cause an error, a second start or any other side effect besides a wake event record.
 

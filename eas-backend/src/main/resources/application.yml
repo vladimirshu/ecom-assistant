@@ -47,3 +47,23 @@ logging:
         ai: DEBUG
     com:
       ecomassistant: DEBUG
+
+# Actuator: expose only the health endpoint under the public API base path.
+# Readiness (startup runners finished + vector store reachable) is reported by the
+# QdrantHealthIndicator and ReadinessHealthIndicator beans; the response body carries
+# only the aggregate `status` field (`UP`/`DOWN`).
+#
+# The built-in availability probes are disabled: their readiness state reports
+# `OUT_OF_SERVICE` (not `DOWN`) and would add a `groups` field to the body, while the
+# contract requires a bare `status` of `UP` or `DOWN`.
+management:
+  endpoints:
+    web:
+      base-path: /api/v1
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: false

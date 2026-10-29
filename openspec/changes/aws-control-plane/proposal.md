@@ -8,7 +8,7 @@ To keep cost near zero, the backend instance runs only on weekdays from 08:00 to
 - Add EventBridge Scheduler rules in a configurable time zone: start Monday to Friday 08:00, stop every day 22:00.
 - Add a sweeper (every 5 minutes) that stops the instance when it is outside the open window and has been running for at least 20 minutes, so an off-hours wake lasts 20 minutes.
 - Record every `/up` call as a wake event in a DynamoDB table sized within the always-free tier, with TTL expiry.
-- The SPA sends no heartbeat; the Lambda is called only when the SPA's health probe fails.
+- The SPA sends no heartbeat. It calls Lambda immediately outside opening hours (on arrival and before a search), after a failed in-hours health probe, and while waiting for startup. A valid UP response confirms readiness without a client-side backend health probe.
 
 ## Capabilities
 

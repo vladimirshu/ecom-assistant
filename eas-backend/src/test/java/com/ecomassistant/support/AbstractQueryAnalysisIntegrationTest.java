@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 /**
  * Base class for query-analysis integration tests: Testcontainers Qdrant, the
  * {@code FakeEmbeddingModel}, a WireMock server standing in for the OpenAI chat
- * completions endpoint, and a MockMvc client to exercise {@code GET /search}.
+ * completions endpoint, and a MockMvc client to exercise {@code GET /api/v1/search}.
  */
 @AutoConfigureMockMvc
 public abstract class AbstractQueryAnalysisIntegrationTest extends AbstractRetrievalIntegrationTest {

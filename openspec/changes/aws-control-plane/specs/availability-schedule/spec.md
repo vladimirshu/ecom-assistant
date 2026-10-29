@@ -44,3 +44,14 @@ Starting and stopping SHALL NOT depend on any signal from visitors other than ca
 #### Scenario: Active visitor at the end of a session
 - **WHEN** a visitor is searching when the 20-minute session expires
 - **THEN** the instance is stopped regardless
+
+### Requirement: Shared frontend schedule
+The deployment SHALL generate the frontend opening days, times and IANA time zone from the same configuration used by the schedules and sweeper. The opening interval SHALL include its start and exclude its end in that zone. Schedule changes SHALL include rebuilding and deploying the frontend with the updated configuration.
+
+#### Scenario: Matching configuration
+- **WHEN** the stack and frontend are built for a deployment
+- **THEN** their opening days, times and IANA time zone match, including daylight-saving rules
+
+#### Scenario: Schedule change
+- **WHEN** the opening window or time zone changes
+- **THEN** the corresponding frontend build receives the updated configuration and is deployed with the schedule change
