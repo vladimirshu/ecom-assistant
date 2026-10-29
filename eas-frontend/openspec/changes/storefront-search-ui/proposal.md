@@ -4,15 +4,16 @@ The assistant's value is that a customer describes what they want, in their own 
 
 ## What Changes
 
-- New standalone Next.js (App Router) + React + TypeScript + Tailwind CSS application in `frontend/`, independent of the Gradle build.
+- New standalone client-only Vite + React + TypeScript + Tailwind CSS single-page application in `eas-frontend/`, independent of the Gradle build. It builds to static files that are served from S3 behind CloudFront.
 - One-page storefront: a minimal header and a hero with a single large search field, rotating example placeholders (including non-English ones) and clickable example prompts. There is deliberately no category navigation.
-- Conversational search: the first request starts a conversation, follow-ups refine it ("same but in navy"), and "New search" clears it. The conversation is kept for the browser tab.
+- Conversational search: the first request starts a conversation, follow-ups refine it ("same but in navy"), and "New search" clears it. The conversation token lives in application memory only: a new token on every page load and on "New search".
 - "We understood" bar showing the backend's interpretation: English search query, price limit, excluded items and lowest-price ordering, plus the trail of the customer's own messages.
 - Product grid of premium cards (black-and-white category image, serif title, EUR price, color swatches, sizes) and a quick-view panel with the full description.
 - Staged loading story during the backend's multi-second LLM pipeline, skeleton cards, cancellation of superseded requests.
-- Friendly states for rejection (HTTP 422 suggested prompts as clickable chips), invalid input (HTTP 400), empty results, and server/network failure with retry.
+- Friendly states for rejection (HTTP 422 suggested prompts as clickable chips), invalid input (HTTP 400), usage limits (HTTP 429 `RATE_LIMITED` / `DAILY_BUDGET_EXHAUSTED`), empty results, and server/network failure with retry.
 - Black-and-white images, one per catalog category plus a default, in `public/images/categories/`.
-- Same-origin proxy `/api/*` → backend, so the browser never calls the backend directly.
+- The browser calls the same-origin path `/api/v1/search`. In production CloudFront routes `/api/v1/*` to the backend, and in development the Vite dev server proxies it to `http://localhost:8080`. No application proxy and no CORS configuration are needed.
+- Backend availability (the service is asleep outside business hours) is handled by the separate change `service-availability-gate`.
 
 ## Capabilities
 
@@ -26,7 +27,8 @@ The assistant's value is that a customer describes what they want, in their own 
 
 ## Impact
 
-- New project `frontend/` (package.json, Next.js app, tests, static images); no changes to backend code.
-- Runtime configuration: `BACKEND_URL` (server-side, default `http://localhost:8080`).
-- API contract consumed: backend `GET /search` as specified by backend changes `storefront-search-api`, `rag-product-filtering` and `query-analysis-guardrail` (`../backend/openspec/changes/`). Category slugs must match the backend `product-catalog` category list.
-- Depends on: backend change `storefront-search-api` for titles, images and interpretation. Until it is deployed, end-to-end tests run against a mocked backend.
+- New project `eas-frontend/` (package.json, Vite app, tests, static images); no changes to backend code.
+- No runtime configuration: the browser uses relative `/api/v1/...` URLs. The Vite dev server proxy target is a development setting (`VITE_DEV_BACKEND_URL`, default `http://localhost:8080`).
+- API contract consumed: backend `GET /api/v1/search` as specified by backend changes `api-versioned-search-path`, `storefront-search-api`, `rag-product-filtering`, `query-analysis-guardrail`, `conversation-memory` and `demo-cost-controls` (`../eas-backend/openspec/changes/`). Category slugs must match the backend `product-catalog` category list.
+- Depends on: backend change `storefront-search-api` for titles, images and interpretation, and `api-versioned-search-path` for the path. Until they are deployed, end-to-end tests run against a mocked backend.
+- Deployment (S3 + CloudFront) is out of scope here; see the root-level `aws-edge-hosting` change.

@@ -1,21 +1,25 @@
 ## ADDED Requirements
 
-### Requirement: Backend access through same-origin proxy
-The browser SHALL call only the storefront's own origin at `GET /api/search`, which SHALL forward the query parameters unchanged to `<BACKEND_URL>/search` and return the backend's status code and JSON body unchanged; `BACKEND_URL` SHALL be server-side configuration defaulting to `http://localhost:8080`.
+### Requirement: Backend access through the same-origin API path
+The browser SHALL call only its own origin, at `GET /api/v1/search` with the query parameters `message`, `conversationId` and `clearMemory`, SHALL use a relative URL so that no backend host is configured in the application, and SHALL handle the status code and JSON body returned by the backend.
 
-#### Scenario: Forwarding
-- **WHEN** the browser requests `/api/search?message=rain%20jacket&conversationId=abc&clearMemory=false`
-- **THEN** the backend receives `GET /search?message=rain%20jacket&conversationId=abc&clearMemory=false` and the browser receives the backend's status and body
+#### Scenario: Request shape
+- **WHEN** a visitor submits `rain jacket`
+- **THEN** the browser requests `/api/v1/search?message=rain%20jacket&conversationId=<uuid>&clearMemory=true` on the page's own origin
 
-#### Scenario: Backend unreachable
-- **WHEN** the backend cannot be reached
-- **THEN** `/api/search` responds with HTTP 502 and the UI shows the server error state
+#### Scenario: Development proxy
+- **WHEN** the application runs on the Vite dev server
+- **THEN** requests to `/api/v1/*` are forwarded to the backend at `http://localhost:8080` (or `VITE_DEV_BACKEND_URL`)
 
 ### Requirement: Conversation identity
-The application SHALL generate a random UUID conversation id per browser tab, keep it in session storage across reloads of that tab, and send it with every search.
+The application SHALL generate a random UUID conversation id, keep it in application memory only (not in session or local storage), create a new one on every page load and on "New search", and send it with every search.
 
-#### Scenario: Reload keeps conversation
-- **WHEN** a visitor searches, reloads the tab and refines
+#### Scenario: Reload starts a new conversation
+- **WHEN** a visitor searches, reloads the page and searches again
+- **THEN** the two requests carry different conversation ids
+
+#### Scenario: Same conversation while the page stays open
+- **WHEN** a visitor searches and then refines without reloading
 - **THEN** both requests carry the same conversation id
 
 #### Scenario: Separate tabs
@@ -83,8 +87,19 @@ When the backend responds with HTTP 400, the application SHALL show the field er
 - **WHEN** the backend responds 400 with `{"message": "Message contains unsupported characters"}`
 - **THEN** that text is shown under the search field and the field still contains the typed message
 
+### Requirement: Usage limits
+When the backend responds with HTTP 429, the application SHALL show a calm message that depends on the body `code`: for `RATE_LIMITED`, a hint to wait (with the number of seconds from the `Retry-After` header when present) and a "Try again" action enabled after that time; for `DAILY_BUDGET_EXHAUSTED`, a message that today's demo quota is used up and that the shop reopens tomorrow, with no retry action. The application SHALL keep the previous results and the typed text, and SHALL NOT treat HTTP 429 as a sleeping service.
+
+#### Scenario: Rate limited
+- **WHEN** the backend responds 429 with `{"code": "RATE_LIMITED"}` and `Retry-After: 30`
+- **THEN** the message mentions waiting about 30 seconds and "Try again" becomes available after 30 seconds
+
+#### Scenario: Daily budget exhausted
+- **WHEN** the backend responds 429 with `{"code": "DAILY_BUDGET_EXHAUSTED"}`
+- **THEN** the quota message is shown without a retry action and the previous results remain visible
+
 ### Requirement: Server and network errors
-When the backend responds with HTTP 5xx, the request fails on the network, or no response arrives within 30 seconds, the application SHALL show "Something went wrong on our side" with a "Try again" action that resends the same request, and SHALL keep the previous results if any.
+When the backend responds with HTTP 5xx, the request fails on the network, or no response arrives within 30 seconds, the application SHALL report the failure to the availability gate (capability `service-availability-gate`) and, if the service is healthy, SHALL show "Something went wrong on our side" with a "Try again" action that resends the same request, and SHALL keep the previous results if any.
 
 #### Scenario: Retry
 - **WHEN** a search fails with HTTP 500 and the visitor clicks "Try again"
@@ -93,3 +108,7 @@ When the backend responds with HTTP 5xx, the request fails on the network, or no
 #### Scenario: Timeout
 - **WHEN** the backend does not respond within 30 seconds
 - **THEN** the request is aborted and the error state is shown
+
+#### Scenario: Service is down
+- **WHEN** a search fails with HTTP 502 and the health probe also fails
+- **THEN** the availability gate takes over instead of the error state, and the typed message is kept
