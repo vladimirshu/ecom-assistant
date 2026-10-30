@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 1,
+  "suiteId": "seed-search-cases",
+  "sourceCatalogRevision": "seed-catalog-quality/v1",
+  "cases": [
+    {
+      "id": "root-men-jackets",
+      "family": "root-group",
+      "split": "development",
+      "language": "en",
+      "turns": ["men's jackets and coats"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["men membership", "jacket/coat style"],
+      "eligibleSkus": ["M-PUF-01", "M-PRK-01", "M-COA-01", "M-RAN-01", "M-SFT-01", "M-FLC-01", "M-TRK-01", "M-TCH-01", "M-FLD-01", "M-BMB-01", "M-DNM-01", "M-LTH-01", "M-WDB-01"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "W-COA-01", "reason": "women's coat, wrong root" },
+        { "sku": "M-SWT-01", "reason": "sweater, not a jacket/coat" }
+      ],
+      "notes": "Broad root/group case; at least three eligible designs required in the response."
+    },
+    {
+      "id": "root-women-jackets",
+      "family": "root-group",
+      "split": "development",
+      "language": "en",
+      "turns": ["women's jackets and coats"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["women membership", "jacket/coat style"],
+      "eligibleSkus": ["W-PUF-01", "W-PRK-01", "W-COA-01", "W-RAN-01", "W-SFT-01", "W-FLC-01", "W-TRK-01", "W-TCH-01", "W-FLD-01", "W-BMB-01", "W-DNM-01", "W-LTH-01", "W-WDB-01"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "M-COA-01", "reason": "men's coat, wrong root" }
+      ],
+      "notes": "Broad root/group case."
+    },
+    {
+      "id": "root-men-knitwear",
+      "family": "root-group",
+      "split": "development",
+      "language": "en",
+      "turns": ["men's sweaters and hoodies"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["men membership", "sweater/hoodie style"],
+      "eligibleSkus": ["M-SWT-01", "M-SWT-03", "M-HDD-01", "M-HDD-02", "M-HDD-04"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "W-SWT-01", "reason": "women's sweater" },
+        { "sku": "M-FLC-01", "reason": "fleece jacket, not knitwear" }
+      ],
+      "notes": "Broad root/group case."
+    },
+    {
+      "id": "root-women-knitwear",
+      "family": "root-group",
+      "split": "development",
+      "language": "en",
+      "turns": ["women's sweaters and hoodies"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["women membership", "sweater/hoodie style"],
+      "eligibleSkus": ["W-SWT-01", "W-SWT-03", "W-HDD-01", "W-HDD-02", "W-HDD-04"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "M-SWT-01", "reason": "men's sweater" }
+      ],
+      "notes": "Broad root/group case."
+    },
+    {
+      "id": "root-men-jeans",
+      "family": "root-group",
+      "split": "development",
+      "language": "en",
+      "turns": ["men's jeans"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["men membership", "jeans style"],
+      "eligibleSkus": ["M-JNS-01", "M-JNS-02", "M-JNS-03", "M-JNS-10"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "W-JNS-01", "reason": "women's jeans" },
+        { "sku": "M-TRS-01", "reason": "trousers, not jeans" }
+      ],
+      "notes": "Broad root/group case."
+    },
+    {
+      "id": "root-women-jeans",
+      "family": "root-group",
+      "split": "development",
+      "language": "en",
+      "turns": ["women's jeans"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["women membership", "jeans style"],
+      "eligibleSkus": ["W-JNS-01", "W-JNS-02", "W-JNS-03", "W-JNS-05"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "M-JNS-01", "reason": "men's jeans" }
+      ],
+      "notes": "Broad root/group case."
+    },
+    {
+      "id": "root-men-trousers",
+      "family": "root-group",
+      "split": "development",
+      "language": "en",
+      "turns": ["men's trousers"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["men membership", "trousers style"],
+      "eligibleSkus": ["M-TRS-01", "M-TRS-02", "M-TRS-04", "M-TRS-09"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "M-JNS-01", "reason": "jeans, not trousers" }
+      ],
+      "notes": "Broad root/group case."
+    },
+    {
+      "id": "root-women-trousers",
+      "family": "root-group",
+      "split": "development",
+      "language": "en",
+      "turns": ["women's trousers"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["women membership", "trousers style"],
+      "eligibleSkus": ["W-TRS-01", "W-TRS-02", "W-TRS-04", "W-TRS-09"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "W-JNS-01", "reason": "jeans, not trousers" }
+      ],
+      "notes": "Broad root/group case."
+    },
+    {
+      "id": "pos-waterproof-cycling",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a waterproof jacket for cycling to work in heavy rain, under 150 euros"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["waterproof", "cycling/commuting", "price < 150"],
+      "eligibleSkus": ["M-RAN-01", "M-RAN-02"],
+      "acceptableSkus": ["W-RAN-01"],
+      "nearMissSkus": [
+        { "sku": "M-SFT-02", "reason": "cycling but only water-resistant" },
+        { "sku": "M-RAN-04", "reason": "waterproof but hiking, not cycling" }
+      ],
+      "notes": "Fact-verified: RAN-01/02 are waterproof with cycling occasions and under 150."
+    },
+    {
+      "id": "pos-warm-no-wool",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a warm sweater without any wool"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["sweater", "warm", "no animal fiber"],
+      "eligibleSkus": ["M-SWT-10", "M-SWT-12"],
+      "acceptableSkus": ["W-SWT-11"],
+      "nearMissSkus": [
+        { "sku": "M-SWT-03", "reason": "cashmere is animal fiber" },
+        { "sku": "M-SWT-01", "reason": "merino is wool" }
+      ],
+      "notes": "Cotton heavyweight and acrylic are known non-animal-fiber sweaters."
+    },
+    {
+      "id": "pos-no-down-puffer",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a warm puffer without down"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["puffer", "no animal down"],
+      "eligibleSkus": ["M-PUF-02", "M-PUF-03"],
+      "acceptableSkus": ["W-PUF-03"],
+      "nearMissSkus": [
+        { "sku": "M-PUF-01", "reason": "filled with animal down" },
+        { "sku": "M-PUF-04", "reason": "filled with animal down" }
+      ],
+      "notes": "Synthetic polyester fill satisfies no-down; animal down is a hard miss."
+    },
+    {
+      "id": "pos-relaxed-stretch-jeans",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["women's relaxed jeans with stretch, up to 90 euros"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["women", "relaxed fit", "stretch", "price <= 90"],
+      "eligibleSkus": ["W-JNS-13"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "W-JNS-03", "reason": "relaxed but rigid, no stretch" },
+        { "sku": "M-JNS-12", "reason": "men's, wrong root" }
+      ],
+      "notes": "W-JNS-13 is relaxed, low stretch, 89.00."
+    },
+    {
+      "id": "pos-smart-trousers-travel",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["men's smart trousers for a long train journey"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["men", "trousers", "office-appropriate", "comfort/stretch"],
+      "eligibleSkus": ["M-TRS-02", "M-TRS-10"],
+      "acceptableSkus": ["M-TRS-13"],
+      "nearMissSkus": [
+        { "sku": "M-TRS-05", "reason": "corduroy with no stretch" },
+        { "sku": "M-TRS-01", "reason": "tailored wool with no stretch" }
+      ],
+      "notes": "Travel chinos and stretch travel trousers are comfortable and office-appropriate."
+    },
+    {
+      "id": "pos-summer-sweater-no-wool",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a lightweight sweater for summer evenings, no wool"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["sweater", "lightweight", "summer", "no animal fiber"],
+      "eligibleSkus": ["M-SWT-06"],
+      "acceptableSkus": ["W-SWT-10"],
+      "nearMissSkus": [
+        { "sku": "M-SWT-11", "reason": "silk is an animal fiber" },
+        { "sku": "M-SWT-01", "reason": "merino wool" },
+        { "sku": "M-SWT-04", "reason": "heavy wool turtleneck" }
+      ],
+      "notes": "Cotton-linen is lightweight and non-animal-fiber; silk is an animal fiber and excluded."
+    },
+    {
+      "id": "pos-waterproof-hiking",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a waterproof shell for hiking in the mountains"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["waterproof", "hiking"],
+      "eligibleSkus": ["M-RAN-04", "M-TCH-02"],
+      "acceptableSkus": ["W-TCH-02"],
+      "nearMissSkus": [
+        { "sku": "M-SFT-01", "reason": "water-resistant, not waterproof" },
+        { "sku": "M-TCH-04", "reason": "water-resistant wind shell" }
+      ],
+      "notes": "RAN-04 and TCH-02 are waterproof with hiking/outdoor occasions."
+    },
+    {
+      "id": "pos-leather-free-evening",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a leather-free jacket for a casual evening out"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["no leather", "casual/evening"],
+      "eligibleSkus": ["M-BMB-03", "M-DNM-02"],
+      "acceptableSkus": ["W-BMB-03"],
+      "nearMissSkus": [
+        { "sku": "M-LTH-01", "reason": "genuine leather" },
+        { "sku": "M-LTH-02", "reason": "suede" }
+      ],
+      "notes": "Synthetic bomber and denim jacket contain no leather."
+    },
+    {
+      "id": "pos-warm-coat-no-animal",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a warm winter coat without any animal fiber"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["coat", "warm", "no animal fiber"],
+      "eligibleSkus": ["M-COA-03", "M-COA-07"],
+      "acceptableSkus": ["W-COA-03"],
+      "nearMissSkus": [
+        { "sku": "M-COA-01", "reason": "wool shell" },
+        { "sku": "M-COA-02", "reason": "cashmere and wool" }
+      ],
+      "notes": "Polyester coats are known non-animal-fiber."
+    },
+    {
+      "id": "pos-hooded-rain-commute",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a hooded jacket for a rainy commute"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["hood", "rain/waterproof", "commuting"],
+      "eligibleSkus": ["M-RAN-01", "M-PRK-03"],
+      "acceptableSkus": ["W-RAN-01"],
+      "nearMissSkus": [
+        { "sku": "M-RAN-03", "reason": "water-resistant, not waterproof" }
+      ],
+      "notes": "RAN-01 and PRK-03 are waterproof with fixed/removable hoods."
+    },
+    {
+      "id": "pos-stretch-office-trousers",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["stretch trousers for the office"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["trousers", "stretch", "office"],
+      "eligibleSkus": ["M-TRS-04", "M-TRS-13"],
+      "acceptableSkus": ["W-TRS-04"],
+      "nearMissSkus": [
+        { "sku": "M-TRS-01", "reason": "no stretch" },
+        { "sku": "M-TRS-07", "reason": "no stretch" }
+      ],
+      "notes": "Stretch office and slim twill trousers have stretch and office occasions."
+    },
+    {
+      "id": "pos-packable-travel",
+      "family": "positive",
+      "split": "development",
+      "language": "en",
+      "turns": ["a packable jacket I can carry for travel"],
+      "expectedStatus": 200,
+      "broad": true,
+      "expectedEmpty": false,
+      "hardConstraints": ["packable"],
+      "eligibleSkus": ["M-PUF-03", "M-WDB-01", "M-TCH-04", "M-SFT-01"],
+      "acceptableSkus": ["W-PUF-03"],
+      "nearMissSkus": [
+        { "sku": "M-PUF-04", "reason": "not packable, deep winter" }
+      ],
+      "notes": "Broad packable case with several eligible designs."
+    },
+    {
+      "id": "exc-no-wool-outdoor",
+      "family": "exclusion",
+      "split": "development",
+      "language": "en",
+      "turns": ["something warm for winter walks, no wool"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["warm", "outdoor", "no animal fiber"],
+      "eligibleSkus": ["M-PUF-02", "M-PRK-01"],
+      "acceptableSkus": ["M-FLC-01"],
+      "nearMissSkus": [
+        { "sku": "M-COA-01", "reason": "wool coat" },
+        { "sku": "M-SWT-07", "reason": "alpaca and wool" }
+      ],
+      "notes": "Synthetic insulated jackets are warm and non-wool."
+    },
+    {
+      "id": "exc-no-leather-casual",
+      "family": "exclusion",
+      "split": "development",
+      "language": "en",
+      "turns": ["a casual jacket with no leather"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["jacket", "no leather"],
+      "eligibleSkus": ["M-BMB-01", "M-DNM-01"],
+      "acceptableSkus": ["W-BMB-01"],
+      "nearMissSkus": [
+        { "sku": "M-LTH-03", "reason": "leather racer" }
+      ],
+      "notes": "Bomber and denim are leather-free."
+    },
+    {
+      "id": "exc-no-hood-cycling",
+      "family": "exclusion",
+      "split": "development",
+      "language": "en",
+      "turns": ["a water-resistant jacket with no hood for cycling"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["water-resistant", "no hood", "cycling"],
+      "eligibleSkus": ["M-TCH-01"],
+      "acceptableSkus": ["M-TCH-04"],
+      "nearMissSkus": [
+        { "sku": "M-RAN-02", "reason": "waterproof but has a fixed hood" }
+      ],
+      "notes": "TCH-01 is the hoodless water-resistant cycling shell."
+    },
+    {
+      "id": "exc-no-down-cheap",
+      "family": "exclusion",
+      "split": "development",
+      "language": "en",
+      "turns": ["a puffer under 100 euros with no down"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["puffer", "no down", "price < 100"],
+      "eligibleSkus": ["M-PUF-03"],
+      "acceptableSkus": ["W-PUF-03"],
+      "nearMissSkus": [
+        { "sku": "M-PUF-05", "reason": "down fill" },
+        { "sku": "M-PUF-02", "reason": "no down but 149.00, over budget" }
+      ],
+      "notes": "M-PUF-03 is a synthetic packable puffer at 89.90."
+    },
+    {
+      "id": "exc-no-wool-sweater",
+      "family": "exclusion",
+      "split": "held-out",
+      "language": "en",
+      "turns": ["a cosy knit that contains no wool or cashmere"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["sweater", "no animal fiber"],
+      "eligibleSkus": ["M-SWT-10", "M-SWT-12"],
+      "acceptableSkus": ["W-SWT-02"],
+      "nearMissSkus": [
+        { "sku": "M-SWT-03", "reason": "cashmere" },
+        { "sku": "M-SWT-05", "reason": "lambswool" }
+      ],
+      "notes": "Held-out wording; cotton/acrylic are the verified non-animal options."
+    },
+    {
+      "id": "exc-no-leather-evening",
+      "family": "exclusion",
+      "split": "development",
+      "language": "en",
+      "turns": ["an evening jacket with absolutely no leather or suede"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["evening", "no leather/suede"],
+      "eligibleSkus": ["M-BMB-03", "M-TRK-02"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "M-LTH-02", "reason": "suede bomber" }
+      ],
+      "notes": "Synthetic tailored bomber is the clean evening match."
+    },
+    {
+      "id": "exc-no-down-warm",
+      "family": "exclusion",
+      "split": "development",
+      "language": "en",
+      "turns": ["a warm insulated jacket with no animal down, under 150"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["insulated", "no down", "price < 150"],
+      "eligibleSkus": ["M-PUF-02"],
+      "acceptableSkus": ["W-PUF-03"],
+      "nearMissSkus": [
+        { "sku": "M-PUF-01", "reason": "animal down" }
+      ],
+      "notes": "Synthetic puffer at 149.00."
+    },
+    {
+      "id": "exc-no-wool-coat",
+      "family": "exclusion",
+      "split": "development",
+      "language": "en",
+      "turns": ["a winter coat with no wool, no cashmere and no animal hair"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["coat", "no animal fiber"],
+      "eligibleSkus": ["M-COA-03"],
+      "acceptableSkus": ["W-COA-03"],
+      "nearMissSkus": [
+        { "sku": "M-COA-01", "reason": "wool" },
+        { "sku": "M-COA-02", "reason": "cashmere and wool" }
+      ],
+      "notes": "Polyester tailored coat."
+    },
+    {
+      "id": "para-rainy-bike-commute",
+      "family": "paraphrase",
+      "split": "held-out",
+      "language": "en",
+      "turns": ["I cycle to work and need to stay dry when it pours, something breathable under 150"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["waterproof", "cycling", "price < 150"],
+      "eligibleSkus": ["M-RAN-01", "M-RAN-02"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "M-SFT-02", "reason": "water-resistant only" }
+      ],
+      "notes": "Paraphrase of pos-waterproof-cycling with held-out wording."
+    },
+    {
+      "id": "para-warm-outdoors",
+      "family": "paraphrase",
+      "split": "held-out",
+      "language": "en",
+      "turns": ["I want to stay warm standing outside for a long time in winter"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["warm", "winter", "outdoor"],
+      "eligibleSkus": ["M-PUF-04", "M-PUF-01"],
+      "acceptableSkus": ["M-PRK-01"],
+      "nearMissSkus": [
+        { "sku": "M-FLC-01", "reason": "mid-layer, insufficient standalone warmth" }
+      ],
+      "notes": "Paraphrase targeting high/extreme warmth."
+    },
+    {
+      "id": "para-comfortable-trousers-trip",
+      "family": "paraphrase",
+      "split": "development",
+      "language": "en",
+      "turns": ["trousers I can sit in all day on a long trip and still look tidy"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["trousers", "comfort/stretch", "smart"],
+      "eligibleSkus": ["M-TRS-02", "M-TRS-10"],
+      "acceptableSkus": ["M-TRS-13"],
+      "nearMissSkus": [
+        { "sku": "M-TRS-01", "reason": "no stretch" }
+      ],
+      "notes": "Paraphrase of smart-trousers-travel."
+    },
+    {
+      "id": "para-smart-flexible-office",
+      "family": "paraphrase",
+      "split": "held-out",
+      "language": "en",
+      "turns": ["something smart but flexible enough to wear all day at a desk job"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["office", "stretch"],
+      "eligibleSkus": ["M-TRS-04", "M-TRS-13"],
+      "acceptableSkus": ["W-TRS-04"],
+      "nearMissSkus": [
+        { "sku": "M-TRS-07", "reason": "no stretch" }
+      ],
+      "notes": "Paraphrase of stretch-office-trousers with held-out wording."
+    },
+    {
+      "id": "de-rain-cycling",
+      "family": "non-english",
+      "split": "held-out",
+      "language": "de",
+      "turns": ["Eine leichte Regenjacke zum Radfahren unter 150 Euro"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["waterproof", "cycling", "price < 150"],
+      "eligibleSkus": ["M-RAN-01", "M-RAN-02"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "M-SFT-02", "reason": "water-resistant only" }
+      ],
+      "notes": "German equivalent of the waterproof cycling positive case."
+    },
+    {
+      "id": "ru-warm-sweater-no-wool",
+      "family": "non-english",
+      "split": "held-out",
+      "language": "ru",
+      "turns": ["Тёплый свитер без шерсти до 80 евро"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["sweater", "warm", "no animal fiber", "price <= 80"],
+      "eligibleSkus": ["W-SWT-11", "W-SWT-12"],
+      "acceptableSkus": ["M-SWT-12"],
+      "nearMissSkus": [
+        { "sku": "M-SWT-03", "reason": "cashmere" },
+        { "sku": "M-SWT-10", "reason": "cotton but 85.00, over budget" }
+      ],
+      "notes": "Non-wool medium-warmth sweaters at or under 80 euros; M-SWT-10 is warm cotton but over budget."
+    },
+    {
+      "id": "fr-office-stretch-trousers",
+      "family": "non-english",
+      "split": "held-out",
+      "language": "fr",
+      "turns": ["Un pantalon confortable pour le bureau, avec de l'élasticité"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["trousers", "office", "stretch"],
+      "eligibleSkus": ["M-TRS-04", "M-TRS-13"],
+      "acceptableSkus": ["W-TRS-04"],
+      "nearMissSkus": [
+        { "sku": "M-TRS-01", "reason": "no stretch" }
+      ],
+      "notes": "French equivalent of stretch-office-trousers."
+    },
+    {
+      "id": "de-no-down-puffer",
+      "family": "non-english",
+      "split": "held-out",
+      "language": "de",
+      "turns": ["Eine warme Daunenjacke ohne echte Daunen"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["puffer", "no animal down"],
+      "eligibleSkus": ["M-PUF-02", "M-PUF-03"],
+      "acceptableSkus": [],
+      "nearMissSkus": [
+        { "sku": "M-PUF-01", "reason": "animal down" }
+      ],
+      "notes": "German down-free puffer case."
+    },
+    {
+      "id": "conv-warm-no-wool-budget-hood",
+      "family": "conversation",
+      "split": "development",
+      "language": "en",
+      "turns": [
+        "warm layers",
+        "without wool",
+        "under 100 euros",
+        "only with a hood"
+      ],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["warm", "no wool", "price < 100", "hood"],
+      "eligibleSkus": ["M-FLC-03", "M-HDD-02"],
+      "acceptableSkus": ["W-HDD-04"],
+      "nearMissSkus": [
+        { "sku": "M-SWT-03", "reason": "cashmere, reintroduces wool" },
+        { "sku": "M-HDD-04", "reason": "hooded and warm but 100.00, not under 100" }
+      ],
+      "notes": "Accumulated constraints: hood and no-wool and budget all hold at the final turn."
+    },
+    {
+      "id": "conv-navy-black-budget",
+      "family": "conversation",
+      "split": "development",
+      "language": "en",
+      "turns": [
+        "navy jeans",
+        "actually make it black",
+        "and up to 100 euros"
+      ],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["jeans", "black color", "price <= 100"],
+      "eligibleSkus": ["M-JNS-11"],
+      "acceptableSkus": ["M-JNS-02", "W-JNS-09"],
+      "nearMissSkus": [
+        { "sku": "M-JNS-01", "reason": "indigo, keeps the original navy-ish color" }
+      ],
+      "notes": "Color replaced (navy -> black); budget accumulates."
+    },
+    {
+      "id": "conv-rain-then-warm",
+      "family": "conversation",
+      "split": "held-out",
+      "language": "en",
+      "turns": [
+        "a rain jacket for the city",
+        "I also need it warm for winter"
+      ],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["rain/waterproof", "warm/insulated", "city"],
+      "eligibleSkus": ["M-PRK-03", "M-TCH-03"],
+      "acceptableSkus": ["W-PRK-02"],
+      "nearMissSkus": [
+        { "sku": "M-RAN-01", "reason": "waterproof but uninsulated" }
+      ],
+      "notes": "Second turn adds warmth; uninsulated rain shells no longer suffice."
+    },
+    {
+      "id": "conv-smart-casual-hood",
+      "family": "conversation",
+      "split": "held-out",
+      "language": "en",
+      "turns": [
+        "a hoodie for weekends",
+        "something I could also wear to a smart-casual office"
+      ],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": false,
+      "hardConstraints": ["hoodie", "smart-casual"],
+      "eligibleSkus": ["M-HDD-06"],
+      "acceptableSkus": ["W-HDD-06"],
+      "nearMissSkus": [
+        { "sku": "M-HDD-05", "reason": "athletic, not smart-casual" }
+      ],
+      "notes": "Wool-blend hoodie is the smart-casual option."
+    },
+    {
+      "id": "empty-leather-color-size",
+      "family": "empty",
+      "split": "development",
+      "language": "en",
+      "turns": ["a leather jacket in bright green, size XXS, under 30 euros"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": true,
+      "hardConstraints": ["leather", "green", "XXS", "price < 30"],
+      "eligibleSkus": [],
+      "acceptableSkus": [],
+      "nearMissSkus": [],
+      "notes": "No leather jacket exists under 30 euros; empty is the correct, fact-verified result."
+    },
+    {
+      "id": "empty-silk-wool-free",
+      "family": "empty",
+      "split": "development",
+      "language": "en",
+      "turns": ["a fully waterproof wool coat"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": true,
+      "hardConstraints": ["wool coat", "waterproof"],
+      "eligibleSkus": [],
+      "acceptableSkus": [],
+      "nearMissSkus": [],
+      "notes": "No wool coat is waterproof; waterproof shells are nylon/polyester."
+    },
+    {
+      "id": "empty-down-summer",
+      "family": "empty",
+      "split": "development",
+      "language": "en",
+      "turns": ["a down puffer for the beach in summer"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": true,
+      "hardConstraints": ["down puffer", "summer beach"],
+      "eligibleSkus": [],
+      "acceptableSkus": [],
+      "nearMissSkus": [],
+      "notes": "Puffers are winter/autumn garments; no summer beach puffer exists."
+    },
+    {
+      "id": "empty-cotton-rain-wool",
+      "family": "empty",
+      "split": "held-out",
+      "language": "en",
+      "turns": ["a cotton jacket that is also fully waterproof and insulated with wool"],
+      "expectedStatus": 200,
+      "broad": false,
+      "expectedEmpty": true,
+      "hardConstraints": ["cotton shell", "waterproof", "wool fill"],
+      "eligibleSkus": [],
+      "acceptableSkus": [],
+      "nearMissSkus": [],
+      "notes": "No product combines a cotton shell, waterproof membrane and wool fill."
+    }
+  ]
+}

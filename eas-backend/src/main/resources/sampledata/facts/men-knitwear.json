@@ -1,0 +1,1303 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "atelier-apparel",
+  "provenance": {
+    "part": "men-knitwear",
+    "note": "Authored demo facts; fictional products, not verified external certifications."
+  },
+  "products": [
+    {
+      "sku": "M-SWT-01",
+      "title": "Merino Crewneck Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "charcoal",
+        "navy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 120.0,
+      "imageKey": null,
+      "description": "A fine merino crewneck with a regular fit and ribbed cuffs for breathable, odor-resistant warmth. The merino wool shell regulates temperature and layers cleanly under a jacket. It works from the office to weekends. It is a mid-weight knit that needs gentle washing and offers no protection against wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "merino",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "layering"
+        ],
+        "limitations": [
+          "needs gentle washing",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-02",
+      "title": "Cotton Crewneck Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "grey",
+        "navy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 49.0,
+      "imageKey": null,
+      "description": "A breathable cotton crewneck with a regular fit for mild days and easy care. The pure cotton shell feels soft against the skin and washes simply. It is a light, casual layer for spring and autumn, best over a tee. There is no stretch, no hood and no weather protection, so it is a fair-weather knit.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-03",
+      "title": "Cashmere Crewneck Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "cream",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 200.0,
+      "imageKey": null,
+      "description": "A luxurious cashmere crewneck with a regular fit and a soft, light hand. The pure cashmere shell is warm without weight and sits comfortably under a coat. It suits evenings out and smart-casual office days. Cashmere is delicate, so it needs hand washing and offers no wind or rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cashmere",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "office"
+        ],
+        "limitations": [
+          "delicate",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-04",
+      "title": "Wool Turtleneck Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "black",
+        "charcoal"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 130.0,
+      "imageKey": null,
+      "description": "A slim wool turtleneck with a ribbed collar and cuffs for a sharp winter look. The wool shell is warm and naturally breathable, and the close cut layers under a blazer. It is an office and evening staple. Wool needs careful washing, and the knit offers no protection from wind or rain on its own.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "formal"
+        ],
+        "limitations": [
+          "needs careful washing",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-05",
+      "title": "Lambswool Crewneck Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "olive",
+        "rust"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 95.0,
+      "imageKey": null,
+      "description": "A relaxed lambswool crewneck with a cosy, textured feel for casual winter days. The lambswool shell is warm and springy, with ribbed trim at the collar and cuffs. It layers over a shirt for the weekend or a walk. It is a warm knit but needs care and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "lambswool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "needs care",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-06",
+      "title": "Cotton Linen Summer Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "natural",
+        "sand"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 70.0,
+      "imageKey": null,
+      "description": "A lightweight cotton and linen sweater with a relaxed fit for warm summer evenings. The breathable blend keeps air moving, and the open knit feels cool against the skin. It layers easily over a tee. This is a cool-weather-adjacent layer for summer only, with no insulation and no protection from wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 60
+              },
+              {
+                "fiber": "linen",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "travel"
+        ],
+        "limitations": [
+          "no insulation",
+          "summer only"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-07",
+      "title": "Alpaca Blend Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "oat",
+        "charcoal"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 170.0,
+      "imageKey": null,
+      "description": "A soft alpaca and wool blend sweater with a regular fit and a subtly brushed surface. Alpaca adds warmth and a smooth drape, while wool gives structure and resilience. It is a refined layer for cold evenings and smart casual wear. The knit is warm but delicate and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "alpaca",
+                "percent": 60
+              },
+              {
+                "fiber": "wool",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "casual"
+        ],
+        "limitations": [
+          "delicate",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-08",
+      "title": "Wool Blend Office Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 110.0,
+      "imageKey": null,
+      "description": "A machine-washable wool blend sweater with a regular fit and a smooth face for office wear. Wool is blended with polyester for durability and easy care, keeping warmth without itch. It layers under a blazer or over a shirt. It is a practical mid-weight knit with no hood and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 70
+              },
+              {
+                "fiber": "polyester",
+                "percent": 30
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "commuting"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-09",
+      "title": "Merino Zip Neck Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "blue",
+        "black"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 135.0,
+      "imageKey": null,
+      "description": "A slim merino zip-neck with stretch for active days and travel. The merino shell wicks moisture and resists odor, and the half-zip vents when you warm up. It packs small and layers under a shell. It is a performance-minded knit that is light and breathable but offers no wind or rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "merino",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "hiking",
+          "travel"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-10",
+      "title": "Heavyweight Cotton Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "forest",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 85.0,
+      "imageKey": null,
+      "description": "A heavyweight cotton sweater with a relaxed fit and a chunky knit for casual winter warmth. The thick cotton shell holds its shape and feels substantial, with ribbed cuffs and hem. It works over a tee on cool days. It is a warm, easy-care layer but heavy and without any weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "heavy",
+          "no weather protection"
+        ]
+      },
+      "warmth": "high"
+    },
+    {
+      "sku": "M-SWT-11",
+      "title": "Silk Cotton Evening Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "cream",
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 150.0,
+      "imageKey": null,
+      "description": "A slim silk and cotton sweater with a fine gauge and a smooth, lustrous finish for evenings. Silk adds a soft sheen and a light, cool feel, while cotton keeps it breathable. It drapes neatly over a shirt for dinners out. It is a delicate warm-weather layer with no stretch and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "silk",
+                "percent": 30
+              },
+              {
+                "fiber": "cotton",
+                "percent": 70
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "delicate",
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-SWT-12",
+      "title": "Synthetic Budget Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "grey",
+        "navy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 45.0,
+      "imageKey": null,
+      "description": "An affordable acrylic sweater with a regular fit and an easy-care, animal-fiber-free knit. The acrylic shell mimics the look of wool while washing and drying simply. It is a light, casual layer for cool days and layers under a jacket. It offers limited breathability and no weather protection, but it is a solid budget option.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "acrylic",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "winter",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "office"
+        ],
+        "limitations": [
+          "limited breathability"
+        ]
+      }
+    },
+    {
+      "sku": "M-HDD-01",
+      "title": "Cotton Zip Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "grey",
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 80.0,
+      "imageKey": null,
+      "description": "A full-zip hoodie in soft cotton fleece with a regular fit and a kangaroo pocket. The cotton and polyester fleece is warm inside and durable outside, with a drawcord hood and ribbed cuffs. It is an everyday layer for errands and weekends. It is cosy but not windproof and offers no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 80
+              },
+              {
+                "fiber": "polyester",
+                "percent": 20
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "not windproof",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-HDD-02",
+      "title": "Heavyweight Pullover Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "navy",
+        "forest"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 90.0,
+      "imageKey": null,
+      "description": "A heavyweight pullover hoodie in dense cotton fleece for cold, relaxed days. The thick cotton shell is brushed inside for warmth, with a relaxed fit, a drawcord hood and a kangaroo pocket. It is a sturdy everyday layer that holds its shape. It is warm and casual but not windproof and not for wet weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "winter",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "not windproof",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-HDD-03",
+      "title": "French Terry Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "sand",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 49.0,
+      "imageKey": null,
+      "description": "A light French terry hoodie with a regular fit and a loopback interior for warmer days. The cotton and polyester blend is breathable and easy to wear, with a drawcord hood and a kangaroo pocket. It layers over a tee in spring and summer evenings. It is light and comfortable but offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 70
+              },
+              {
+                "fiber": "polyester",
+                "percent": 30
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "medium",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "athleisure"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-HDD-04",
+      "title": "Fleece Lined Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "black",
+        "charcoal"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 100.0,
+      "imageKey": null,
+      "description": "A fleece-lined hoodie with a regular fit and extra warmth for cold commutes. The cotton and polyester shell is lined with soft fleece, and the drawcord hood plus kangaroo pocket add coverage. It is warm enough to wear instead of a light jacket in autumn. It is cosy but not windproof and not for rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 60
+              },
+              {
+                "fiber": "polyester",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "commuting"
+        ],
+        "limitations": [
+          "not windproof",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-HDD-05",
+      "title": "Stretch Athletic Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "black",
+        "blue"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 75.0,
+      "imageKey": null,
+      "description": "A slim athletic hoodie with four-way stretch and zip hand pockets for training. The polyester and elastane shell wicks moisture and moves with you, while the hood stays put during warm-ups. It is a performance layer for the gym and runs. It is light and quick-drying but offers no wind or rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 90
+              },
+              {
+                "fiber": "elastane",
+                "percent": 10
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "sport",
+          "running"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-HDD-06",
+      "title": "Wool Blend Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "oat",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 130.0,
+      "imageKey": null,
+      "description": "A wool-blend hoodie with a regular fit and a refined knit for smart casual winter wear. Wool is blended with polyester for warmth and easy care, and the drawcord hood plus kangaroo pocket keep it practical. It is warmer and smarter than a cotton hoodie. It offers no weather protection and needs careful washing.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 70
+              },
+              {
+                "fiber": "polyester",
+                "percent": 30
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "evening"
+        ],
+        "limitations": [
+          "needs careful washing",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-HDD-07",
+      "title": "Merino Travel Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "navy",
+        "charcoal"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 140.0,
+      "imageKey": null,
+      "description": "A merino hoodie with a slim fit and a packable design for travel and layering. The merino shell regulates temperature and resists odor over long trips, and the hood adds warmth when needed. A kangaroo pocket keeps hands warm. It is a light, breathable layer that offers no wind or rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "merino",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "layering"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-HDD-08",
+      "title": "Packable Nylon Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "men-sweaters"
+      ],
+      "colors": [
+        "olive",
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 47.0,
+      "imageKey": null,
+      "description": "A lightweight nylon hoodie that packs into its own pocket for changeable trips. The nylon shell blocks a light breeze and dries fast, with a regular fit and a drawcord hood. Zip hand pockets hold small essentials. It is a thin, packable layer for spring and summer, not insulated and not for heavy rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "casual"
+        ],
+        "limitations": [
+          "no insulation",
+          "not for heavy rain"
+        ]
+      }
+    }
+  ]
+}

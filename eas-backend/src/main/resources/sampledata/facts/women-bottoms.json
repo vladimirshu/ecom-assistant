@@ -1,0 +1,2009 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "atelier-apparel",
+  "provenance": {
+    "part": "women-bottoms",
+    "note": "Authored demo facts; fictional products, not verified external certifications."
+  },
+  "products": [
+    {
+      "sku": "W-JNS-01",
+      "title": "Womens High-Rise Straight Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "indigo"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30",
+        "32"
+      ],
+      "price": 92.0,
+      "imageKey": null,
+      "description": "A high-rise straight jean in rigid cotton denim with a flattering, classic cut. The regular fit sits at the natural waist with a button fly and a straight leg. A coin pocket joins the five-pocket layout. It is a durable everyday pair for cool, dry days, with no stretch and a firm, structured feel.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket",
+          "coin"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "office"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-02",
+      "title": "Womens High-Rise Skinny Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "black",
+        "indigo"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30",
+        "32"
+      ],
+      "price": 94.0,
+      "imageKey": null,
+      "description": "A high-rise skinny jean with medium stretch and a close, sculpted fit. The cotton and elastane denim hugs the leg and recovers its shape after wear. A zip fly and five pockets keep it clean. It is a versatile pair for year-round wear, with a fitted cut that moves with you.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 95
+              },
+              {
+                "fiber": "elastane",
+                "percent": 5
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "evening"
+        ],
+        "limitations": [
+          "fitted cut"
+        ]
+      },
+      "stretch": "medium",
+      "occasions": [
+        "casual",
+        "evening"
+      ]
+    },
+    {
+      "sku": "W-JNS-03",
+      "title": "Womens Mom Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "mid-blue"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30"
+      ],
+      "price": 86.0,
+      "imageKey": null,
+      "description": "A relaxed mom jean with a high waist and a tapered, slightly roomy leg. The rigid cotton denim holds its shape, with a button fly and five pockets. It is an easy, vintage-inspired pair for casual days. There is no stretch and no insulation, so it works best in mild weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-04",
+      "title": "Womens Wide-Leg Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "light-blue"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30",
+        "32"
+      ],
+      "price": 104.0,
+      "imageKey": null,
+      "description": "A wide-leg jean in soft washed denim with a high waist and a full, flowing leg. The cotton fabric is light and breathable for warm days, with five pockets and a zip fly. It is a relaxed, statement pair for summer. It has no stretch and a deliberately roomy, non-tapered cut.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "no stretch",
+          "roomy cut"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-05",
+      "title": "Womens Slim Stretch Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "black",
+        "navy"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30"
+      ],
+      "price": 97.0,
+      "imageKey": null,
+      "description": "A women's slim-fit jean with light stretch and a clean modern line for all-day comfort. The cotton and elastane denim has a soft hand and tapers through the leg. It moves with you when sitting and cycling. It is a versatile year-round pair, though the slim cut is snugger than a relaxed fit.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "commuting"
+        ],
+        "limitations": [
+          "snug fit"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-06",
+      "title": "Womens Boyfriend Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "mid-blue",
+        "grey"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30"
+      ],
+      "price": 90.0,
+      "imageKey": null,
+      "description": "A loose boyfriend jean with a relaxed, borrowed-from-the-boys fit and a low rise. The rigid cotton denim is soft and broken-in, with a straight leg and five pockets. It is a casual, easy pair for cooler days and layering. There is no stretch and no insulation.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-07",
+      "title": "Womens Flare Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "indigo",
+        "black"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30",
+        "32"
+      ],
+      "price": 98.0,
+      "imageKey": null,
+      "description": "A flare jean with a fitted thigh and a flared leg for a seventies-inspired line. The cotton and elastane denim has light stretch through the hip and seat. Five pockets and a zip fly keep it classic. It is a statement pair for evenings and weekends, with a close upper cut.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "weekend"
+        ],
+        "limitations": [
+          "fitted thigh"
+        ]
+      },
+      "fit": "regular",
+      "occasions": [
+        "evening",
+        "weekend"
+      ]
+    },
+    {
+      "sku": "W-JNS-08",
+      "title": "Womens Cropped Straight Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "light-blue",
+        "white"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30"
+      ],
+      "price": 49.0,
+      "imageKey": null,
+      "description": "A women's cropped straight jean in lightweight cotton denim for warm weather. The regular fit ends above the ankle, with five pockets and a zip fly. It is a cool, easy pair for holidays and weekends. It is a thin denim with no stretch and no insulation, best in mild weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "travel"
+        ],
+        "limitations": [
+          "thin denim",
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-09",
+      "title": "Womens Black Skinny Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "black"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30",
+        "32"
+      ],
+      "price": 93.0,
+      "imageKey": null,
+      "description": "A women's black skinny jean with medium stretch and a sleek, dressy look for evenings. The cotton and elastane denim holds a dark wash and hugs the leg without pinching. Five pockets and a slim ankle keep it sharp. It pairs with boots or heels and suits a smart night out.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 96
+              },
+              {
+                "fiber": "elastane",
+                "percent": 4
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "fitted cut"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-10",
+      "title": "Womens High-Rise Wide Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "ecru",
+        "indigo"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30"
+      ],
+      "price": 102.0,
+      "imageKey": null,
+      "description": "A high-rise wide jean in soft cotton denim with a dramatic, full leg. The regular waist and loose cut create a flattering, elongated line. Five pockets keep it classic. It is a statement pair for spring and autumn, with no stretch and no insulation, so it layers best over tights.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "evening"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      },
+      "occasions": [
+        "casual",
+        "evening"
+      ]
+    },
+    {
+      "sku": "W-JNS-11",
+      "title": "Womens Stretch Straight Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "navy",
+        "black"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30",
+        "32"
+      ],
+      "price": 99.0,
+      "imageKey": null,
+      "description": "A women's straight jean with a whisper of stretch and a clean regular fit for easy office-casual wear. The cotton denim keeps a classic look while a little elastane adds give. Five pockets and a zip fly round it out. It is a dependable year-round pair that leans smart rather than rugged.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 99
+              },
+              {
+                "fiber": "elastane",
+                "percent": 1
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "office"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-12",
+      "title": "Womens Fleece-Lined Winter Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "charcoal",
+        "indigo"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30",
+        "32"
+      ],
+      "price": 108.0,
+      "imageKey": null,
+      "description": "A women's winter jean with a soft fleece lining for warmth without an extra layer. The cotton denim shell looks like a regular jean, while the polyester lining traps heat on cold days. Five pockets and a straight leg keep it practical. It is warm and sturdy, though heavier than an unlined pair.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "outdoor"
+        ],
+        "limitations": [
+          "heavier than unlined"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-13",
+      "title": "Womens Relaxed Stretch Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "mid-blue",
+        "grey"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30"
+      ],
+      "price": 89.0,
+      "imageKey": null,
+      "description": "A women's relaxed jean with light stretch for comfort without losing its easy, casual shape. The cotton and elastane denim gives through the seat and thigh while staying neat. Five pockets and a straight leg keep it simple. It is an everyday pair for cooler days and laid-back plans.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "weekend"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-14",
+      "title": "Womens Ecru Wide-Leg Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "ecru"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30"
+      ],
+      "price": 87.0,
+      "imageKey": null,
+      "description": "A women's ecru wide-leg jean in a pale wash with a loose, contemporary cut. The soft cotton denim is light for warm days, and the high rise gives a flattering line. Five pockets keep it classic. It is a summery, easy pair with no stretch and a deliberately roomy silhouette.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "travel"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-JNS-15",
+      "title": "Womens Performance Stretch Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "women-jeans"
+      ],
+      "colors": [
+        "navy",
+        "black"
+      ],
+      "sizes": [
+        "26",
+        "28",
+        "30"
+      ],
+      "price": 95.0,
+      "imageKey": null,
+      "description": "A women's performance jean with high stretch and moisture-wicking polyester for active commutes. The cotton, polyester and elastane blend moves freely and dries faster than pure cotton. An athletic cut and five pockets keep it functional. It is a smart, sporty pair for biking to work and all-day wear.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 90
+              },
+              {
+                "fiber": "polyester",
+                "percent": 8
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "high",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "commuting"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-01",
+      "title": "Womens Tailored Wool Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "charcoal",
+        "navy"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 138.0,
+      "imageKey": null,
+      "description": "A women's tailored wool trouser with a flat front and a pressed crease for a sharp office look. The wool shell drapes cleanly and holds its shape, with a high waist and a straight leg. Slanted side pockets and a zip fly complete it. It is warm and refined but needs dry cleaning and has no stretch.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "formal",
+          "office"
+        ],
+        "limitations": [
+          "needs dry cleaning",
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-02",
+      "title": "Womens Travel Stretch Chinos",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "beige",
+        "olive"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 82.0,
+      "imageKey": null,
+      "description": "A women's lightweight cotton chino with stretch and slanted pockets for long journeys and warm days. The cotton and elastane fabric resists wrinkles and dries quickly, with a regular fit and a clean leg. It is a comfortable, easy-care trouser for travel and casual office days, though it is a warm-weather weight.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "office",
+          "travel"
+        ],
+        "limitations": [
+          "warm-weather weight"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-03",
+      "title": "Womens Wide-Leg Linen Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "natural",
+        "sand"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10"
+      ],
+      "price": 94.0,
+      "imageKey": null,
+      "description": "A women's wide-leg linen trouser with a relaxed fit and an elastic waist for hot days. The pure linen shell keeps air moving and feels cool against the skin. The full leg drapes softly. It is an easy summer pair for evenings and holidays. Linen wrinkles readily, and the trouser offers no stretch and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "linen",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "evening"
+        ],
+        "limitations": [
+          "wrinkles easily",
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-04",
+      "title": "Womens Stretch Office Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "black",
+        "charcoal"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 88.0,
+      "imageKey": null,
+      "description": "A women's slim office trouser with medium stretch for sitting and moving through a workday. The polyester and elastane fabric resists wrinkles and keeps a sharp crease. A clean front and slanted pockets stay professional. It is a versatile, easy-care pair for the office with a slimmer, modern cut.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 95
+              },
+              {
+                "fiber": "elastane",
+                "percent": 5
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "commuting",
+          "office"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-05",
+      "title": "Womens Corduroy Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "brown",
+        "navy"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 98.0,
+      "imageKey": null,
+      "description": "A women's corduroy trouser with a regular fit and a soft, textured wale for cooler days. The cotton shell is warm and hard-wearing, with a straight leg and side pockets. It is a smart-casual pair that works for weekends and relaxed offices. It has no stretch and is heavier than a summer chino.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "office"
+        ],
+        "limitations": [
+          "no stretch",
+          "heavier weight"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-06",
+      "title": "Womens Cargo Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "olive",
+        "black"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 78.0,
+      "imageKey": null,
+      "description": "A women's relaxed cargo trouser with large thigh pockets and a durable cotton shell for outdoor days. The straight leg and roomy fit allow easy movement, and the reinforced pockets carry tools and maps. It is a tough, casual pair for walks and projects. It has no stretch and no protection from weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "cargo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "outdoor"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-07",
+      "title": "Womens Pleated Wool Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "grey",
+        "charcoal"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 148.0,
+      "imageKey": null,
+      "description": "A women's pleated wool trouser with a tailored cut and a single front pleat for a refined, formal line. The wool shell drapes well and sits higher at the waist, with a straight leg and side pockets. It is a dressier option for suits and occasions. It needs dry cleaning and has no stretch.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "formal",
+          "evening"
+        ],
+        "limitations": [
+          "needs dry cleaning"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-08",
+      "title": "Womens Stretch Jogger Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "black",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 68.0,
+      "imageKey": null,
+      "description": "A women's slim jogger-style trouser with high stretch and a drawcord waist for travel and casual days. The polyester and elastane fabric moves freely and dries quickly, with a tapered leg and zipped pockets. It looks neat enough for errands while feeling like a jogger. It is lightweight and not for cold weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 88
+              },
+              {
+                "fiber": "elastane",
+                "percent": 12
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "athleisure",
+          "city",
+          "travel"
+        ],
+        "limitations": [
+          "not for cold weather"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-09",
+      "title": "Womens Cotton Twill Chinos",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "khaki",
+        "navy"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 48.9,
+      "imageKey": null,
+      "description": "A women's classic cotton twill chino with a regular fit and a clean, casual line. The pure cotton fabric is sturdy yet comfortable, with side pockets and a straight leg. It is an easy everyday trouser for spring and summer, dressed up or down. It has no stretch and is a lighter, fair-weather weight.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "office"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-10",
+      "title": "Womens Stretch Travel Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "charcoal",
+        "olive"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 92.0,
+      "imageKey": null,
+      "description": "A women's technical travel trouser with high stretch and quick-dry fabric for long trips and hikes. The polyester and elastane shell resists wrinkles and moves freely, with an athletic cut and zipped security pockets. It is a versatile, low-maintenance pair that packs small. It is lightweight and not insulated.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 90
+              },
+              {
+                "fiber": "elastane",
+                "percent": 10
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "hiking",
+          "travel"
+        ],
+        "limitations": [
+          "not insulated"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-11",
+      "title": "Womens Wool Blend Casual Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 126.0,
+      "imageKey": null,
+      "description": "A women's relaxed wool-blend trouser with a casual drape and easy warmth for cooler days. Wool is blended with polyester for comfort and easy care, with a straight leg and side pockets. It is a smart-casual pair that bridges the office and the weekend. It has light stretch and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 60
+              },
+              {
+                "fiber": "polyester",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "office"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-12",
+      "title": "Womens Summer Linen Cotton Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "sand",
+        "natural"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10"
+      ],
+      "price": 86.0,
+      "imageKey": null,
+      "description": "A women's light linen and cotton trouser with a regular fit for hot, easy days. The breathable blend keeps air moving and feels soft against the skin, with a straight leg and side pockets. It is a relaxed warm-weather pair for weekends and holidays. It wrinkles easily and has no stretch.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "linen",
+                "percent": 55
+              },
+              {
+                "fiber": "cotton",
+                "percent": 45
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "travel"
+        ],
+        "limitations": [
+          "wrinkles easily"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-13",
+      "title": "Womens Slim Twill Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "black",
+        "navy"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 80.0,
+      "imageKey": null,
+      "description": "A women's slim twill trouser with medium stretch and a tapered leg for a modern office look. The cotton and elastane fabric keeps a crisp crease while easing movement. Side pockets and a zip fly finish it cleanly. It is a versatile pair for work and evenings, with a closer cut than a classic chino.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 97
+              },
+              {
+                "fiber": "elastane",
+                "percent": 3
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "evening",
+          "office"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-14",
+      "title": "Womens Wide-Leg Polyester Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "black",
+        "charcoal"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10"
+      ],
+      "price": 108.0,
+      "imageKey": null,
+      "description": "A women's wide-leg trouser in fluid polyester with a loose, contemporary cut for evenings and the city. The smooth fabric drapes in soft folds, with a high waist and side pockets. It is a statement pair that moves with ease. It has no stretch and is a lightweight layer with no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "evening",
+          "travel"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRS-15",
+      "title": "Womens Commuter Stretch Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "women-trousers"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "6",
+        "8",
+        "10",
+        "12"
+      ],
+      "price": 90.0,
+      "imageKey": null,
+      "description": "A women's commuter trouser with high stretch and a durable, quick-drying blend for cycling to work. The cotton, polyester and elastane fabric moves freely and shrugs off light creases, with an athletic cut and zipped pockets. It looks neat enough for the office. It is a versatile year-round pair, unlined and breathable.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 68
+              },
+              {
+                "fiber": "polyester",
+                "percent": 28
+              },
+              {
+                "fiber": "elastane",
+                "percent": 4
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "commuting",
+          "office"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    }
+  ]
+}

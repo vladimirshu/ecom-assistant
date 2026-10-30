@@ -1,0 +1,1304 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "atelier-apparel",
+  "provenance": {
+    "part": "women-knitwear",
+    "note": "Authored demo facts; fictional products, not verified external certifications."
+  },
+  "products": [
+    {
+      "sku": "W-SWT-01",
+      "title": "Womens Merino Turtleneck",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "cream",
+        "charcoal"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 125.0,
+      "imageKey": null,
+      "description": "A slim merino turtleneck with a ribbed collar and cuffs for a refined winter look. The merino shell is warm and breathable, and the close cut layers under a blazer or dress. It works for the office and evenings. Merino needs gentle washing, and the knit offers no protection from wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "merino",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "evening"
+        ],
+        "limitations": [
+          "needs gentle washing"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-02",
+      "title": "Womens Relaxed Cotton Crewneck",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "grey",
+        "navy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 48.0,
+      "imageKey": null,
+      "description": "A relaxed cotton crewneck with a soft, easy feel for casual layering. The pure cotton shell is breathable and simple to wash, with a roomier cut over a tee or dress. It is a light, comfortable layer for spring and autumn. There is no stretch, no hood and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-03",
+      "title": "Womens Cashmere V-Neck",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "rose",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 195.0,
+      "imageKey": null,
+      "description": "A slim cashmere V-neck with a soft, light hand for smart evenings and layering. The pure cashmere shell is warm without weight and sits close under a blazer. A delicate V neck flatters the collarbone. Cashmere is delicate, so it needs hand washing and offers no wind or rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cashmere",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "office"
+        ],
+        "limitations": [
+          "delicate",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-04",
+      "title": "Womens Wool Cardigan",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "oat",
+        "navy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 135.0,
+      "imageKey": null,
+      "description": "A regular-fit wool cardigan with a button front and ribbed trim for easy office layering. The wool shell is warm and naturally breathable, and the open front layers over blouses. It is a versatile mid-weight knit for cool days. Wool needs care, and the cardigan offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "casual"
+        ],
+        "limitations": [
+          "needs care"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-05",
+      "title": "Womens Lambswool Turtleneck",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "black",
+        "olive"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 98.0,
+      "imageKey": null,
+      "description": "A lambswool turtleneck with a regular fit and a cosy, textured feel for cold office days. The lambswool shell is warm and springy, with a folded collar and ribbed cuffs. It layers under a coat for formal wear. It is a warm knit but needs care and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "lambswool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "formal"
+        ],
+        "limitations": [
+          "needs care"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-06",
+      "title": "Womens Cotton Silk Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "cream",
+        "blush"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 145.0,
+      "imageKey": null,
+      "description": "A slim cotton and silk sweater with a fine gauge and a soft sheen for warm evenings. Silk adds a smooth, cool feel while cotton keeps it breathable. It drapes neatly over a skirt or trousers. It is a delicate warm-weather layer with no stretch and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 55
+              },
+              {
+                "fiber": "silk",
+                "percent": 45
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "delicate",
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-07",
+      "title": "Womens Alpaca Crewneck",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "oat",
+        "rust"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 175.0,
+      "imageKey": null,
+      "description": "A relaxed alpaca crewneck with a softly brushed surface and a cosy, warm feel. Alpaca adds warmth and a smooth drape, and the relaxed cut layers over shirts. It is a refined layer for cold evenings and casual weekends. The knit is warm but delicate and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "alpaca",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "casual"
+        ],
+        "limitations": [
+          "delicate"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-08",
+      "title": "Womens Oversized Wool Blend Knit",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "grey",
+        "cream"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 115.0,
+      "imageKey": null,
+      "description": "An oversized wool-blend knit with a relaxed, boxy cut and drop shoulders for winter. Wool is blended with polyester for warmth and easy care, and the roomy fit layers over long sleeves. It is a cosy, casual statement layer. It has light stretch and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 70
+              },
+              {
+                "fiber": "polyester",
+                "percent": 30
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-09",
+      "title": "Womens Merino Cardigan",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "navy",
+        "charcoal"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 140.0,
+      "imageKey": null,
+      "description": "A merino cardigan with a regular fit and light stretch for travel and the office. The merino shell regulates temperature and resists odor, with a button front and patch pockets. It packs small and layers cleanly. It is a light, breathable knit that offers no wind or rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "merino",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "medium",
+        "pockets": [
+          "patch"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "office"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-10",
+      "title": "Womens Linen Knit Sweater",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "natural",
+        "sand"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 72.0,
+      "imageKey": null,
+      "description": "A breathable linen knit with a relaxed fit and an open weave for hot summer days. The pure linen shell keeps air moving and feels cool against the skin. It layers over a camisole or dress. It is a summery layer with no insulation and no protection from wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "linen",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "travel"
+        ],
+        "limitations": [
+          "no insulation"
+        ]
+      }
+    },
+    {
+      "sku": "W-SWT-11",
+      "title": "Womens Acrylic Turtleneck",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "black",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 44.0,
+      "imageKey": null,
+      "description": "An affordable acrylic turtleneck with a regular fit and an easy-care, animal-fiber-free knit. The acrylic shell mimics the look of wool while washing and drying simply. It is a light, casual layer for cool days and layers under a jacket. It offers limited breathability and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "acrylic",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "office"
+        ],
+        "limitations": [
+          "limited breathability"
+        ]
+      },
+      "fit": "slim"
+    },
+    {
+      "sku": "W-SWT-12",
+      "title": "Womens Ribbed Cotton Crewneck",
+      "category": "sweater",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "white",
+        "navy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 55.0,
+      "imageKey": null,
+      "description": "A ribbed cotton crewneck with a slim fit and a fitted, feminine line for easy layering. The pure cotton shell is soft and breathable, with ribbed texture through the body. It sits close under a jacket or on its own. It has no stretch beyond the rib and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "none"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-HDD-01",
+      "title": "Womens Cropped Cotton Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "sage",
+        "cream"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 78.0,
+      "imageKey": null,
+      "description": "A cropped cotton hoodie with a slim fit and a kangaroo pocket for casual layering. The cotton and polyester fleece is soft inside and durable outside, with a drawcord hood and ribbed hem. The shorter cut pairs with high-waist bottoms. It is cosy but not windproof and offers no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 80
+              },
+              {
+                "fiber": "polyester",
+                "percent": 20
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "not windproof",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-HDD-02",
+      "title": "Womens Oversized Pullover Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "navy",
+        "forest"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 88.0,
+      "imageKey": null,
+      "description": "An oversized pullover hoodie in soft cotton fleece for relaxed, cosy days. The cotton shell is brushed inside for warmth, with a roomy fit, a drawcord hood and a kangaroo pocket. It layers over leggings or joggers. It is warm and casual but not windproof and not for wet weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "not windproof",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-HDD-03",
+      "title": "Womens Zip French Terry Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "sand",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 47.0,
+      "imageKey": null,
+      "description": "A zip-front French terry hoodie with a regular fit and zip hand pockets for easy layering. The cotton and polyester blend is breathable and soft, with a loopback interior for warmer days. A drawcord hood adds coverage. It is a light, comfortable layer with no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 70
+              },
+              {
+                "fiber": "polyester",
+                "percent": 30
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "medium",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "athleisure"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-HDD-04",
+      "title": "Womens Fleece Lined Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "black",
+        "charcoal"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 96.0,
+      "imageKey": null,
+      "description": "A women's fleece-lined hoodie with a regular fit and extra warmth for cold commutes. The cotton and polyester shell is lined with soft fleece, and the drawcord hood plus kangaroo pocket add coverage. It is warm enough to wear instead of a light jacket in autumn. It is cosy but not windproof and not for rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 60
+              },
+              {
+                "fiber": "polyester",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "commuting"
+        ],
+        "limitations": [
+          "not windproof",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-HDD-05",
+      "title": "Womens Stretch Athletic Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "black",
+        "rose"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 72.0,
+      "imageKey": null,
+      "description": "A women's slim athletic hoodie with four-way stretch and zip hand pockets for training. The polyester and elastane shell wicks moisture and moves with you, while the hood stays put during warm-ups. It is a performance layer for the gym and runs. It is light and quick-drying but offers no wind or rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 90
+              },
+              {
+                "fiber": "elastane",
+                "percent": 10
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "running",
+          "sport"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-HDD-06",
+      "title": "Womens Wool Blend Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "oat",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 128.0,
+      "imageKey": null,
+      "description": "A women's wool-blend hoodie with a regular fit and a refined knit for smart casual winter wear. Wool is blended with polyester for warmth and easy care, and the drawcord hood plus kangaroo pocket keep it practical. It is warmer and smarter than a cotton hoodie. It offers no weather protection and needs careful washing.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 70
+              },
+              {
+                "fiber": "polyester",
+                "percent": 30
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "evening"
+        ],
+        "limitations": [
+          "needs careful washing"
+        ]
+      }
+    },
+    {
+      "sku": "W-HDD-07",
+      "title": "Womens Merino Travel Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "navy",
+        "charcoal"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 138.0,
+      "imageKey": null,
+      "description": "A women's merino hoodie with a slim fit and a packable design for travel and layering. The merino shell regulates temperature and resists odor over long trips, and the hood adds warmth when needed. A kangaroo pocket keeps hands warm. It is a light, breathable layer that offers no wind or rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "merino",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "layering",
+          "travel"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-HDD-08",
+      "title": "Womens Packable Nylon Hoodie",
+      "category": "hoodie",
+      "categoryIds": [
+        "women-sweaters"
+      ],
+      "colors": [
+        "olive",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 46.0,
+      "imageKey": null,
+      "description": "A women's lightweight nylon hoodie that packs into its own pocket for changeable trips. The nylon shell blocks a light breeze and dries fast, with a regular fit and a drawcord hood. Zip hand pockets hold small essentials. It is a thin, packable layer for spring and summer, not insulated and not for heavy rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "city",
+          "travel"
+        ],
+        "limitations": [
+          "no insulation",
+          "not for heavy rain"
+        ]
+      }
+    }
+  ]
+}

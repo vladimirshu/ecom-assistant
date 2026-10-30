@@ -1,0 +1,1975 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "atelier-apparel",
+  "provenance": {
+    "part": "men-bottoms",
+    "note": "Authored demo facts; fictional products, not verified external certifications."
+  },
+  "products": [
+    {
+      "sku": "M-JNS-01",
+      "title": "Straight-Leg Rigid Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "indigo"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 89.0,
+      "imageKey": null,
+      "description": "A straight-leg five-pocket jean in rigid cotton denim that holds its shape and breaks in over time. The regular fit sits at the waist with a zip fly and a classic silhouette. It is a durable everyday pair for cool, dry days. There is no stretch, so the fit stays firm rather than forgiving.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-02",
+      "title": "Slim Stretch Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "black"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 99.0,
+      "imageKey": null,
+      "description": "A slim-fit jean with a touch of elastane for all-day comfort and a clean modern line. The cotton denim has a soft hand and tapers through the leg. It moves with you when sitting and cycling. It is a versatile pair for year-round wear, though the slim cut is snugger than a relaxed fit.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "commuting"
+        ],
+        "limitations": [
+          "snug fit"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-03",
+      "title": "Relaxed Rigid Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "mid-blue"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 95.0,
+      "imageKey": null,
+      "description": "A relaxed-fit rigid jean with extra room through the seat and thigh for easy movement. The heavyweight cotton denim is durable and keeps its shape. A straight leg and five pockets keep it classic. It suits cooler days and layering, with no stretch and a roomier, more casual cut.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-04",
+      "title": "Loose Wide-Leg Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "light-blue"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 105.0,
+      "imageKey": null,
+      "description": "A loose wide-leg jean in soft washed denim with a relaxed, statement silhouette. The cotton fabric is light and breathable for warm days, with a high rise and a full leg. It is a casual, easy-going pair for summer. It has no stretch and a deliberately roomy, non-tapered cut.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch",
+          "roomy cut"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-05",
+      "title": "Skinny High-Stretch Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "black",
+        "indigo"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 92.0,
+      "imageKey": null,
+      "description": "A skinny jean with high-stretch denim for a close fit that still moves. The cotton and elastane blend recovers its shape after wear and feels comfortable through the day. A zip fly and five pockets keep it clean. It is a fitted, modern pair for year-round wear with plenty of give.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 92
+              },
+              {
+                "fiber": "elastane",
+                "percent": 8
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "evening"
+        ],
+        "limitations": [
+          "very fitted"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-06",
+      "title": "Tapered Stretch Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "grey",
+        "indigo"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 88.0,
+      "imageKey": null,
+      "description": "A tapered jean with a relaxed thigh and a slim ankle, cut with medium stretch for comfort. The cotton and elastane denim keeps its shape while easing movement. A coin pocket and five-pocket layout stay classic. It is a smart-casual pair that works for weekends and laid-back offices.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 97
+              },
+              {
+                "fiber": "elastane",
+                "percent": 3
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "five-pocket",
+          "coin"
+        ],
+        "packable": false,
+        "occasions": [
+          "weekend",
+          "office"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-07",
+      "title": "Selvedge Straight Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "indigo"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 120.0,
+      "imageKey": null,
+      "description": "A selvedge straight jean in rigid indigo denim for denim lovers who value a crisp fade. The cotton fabric is woven on traditional looms, and the regular cut sits cleanly at the waist. Five pockets and a button fly keep it classic. It is stiff at first and best on dry, cool days.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "winter",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket",
+          "coin"
+        ],
+        "packable": false,
+        "occasions": [
+          "weekend",
+          "casual"
+        ],
+        "limitations": [
+          "stiff at first"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-08",
+      "title": "Lightweight Summer Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "light-blue",
+        "white"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 49.0,
+      "imageKey": null,
+      "description": "A lightweight summer jean in breathable cotton denim for warm weather. The regular fit and soft wash keep it comfortable on hot days, with five pockets and a zip fly. It is a cool, easy pair for holidays and weekends. It is a thin denim with no stretch and no insulation.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "travel"
+        ],
+        "limitations": [
+          "thin denim",
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-09",
+      "title": "Fleece-Lined Winter Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "charcoal",
+        "indigo"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 110.0,
+      "imageKey": null,
+      "description": "A winter jean with a soft fleece lining for warmth without an extra layer. The cotton denim shell looks like a regular jean, while the polyester lining traps heat on cold days. Five pockets and a straight leg keep it practical. It is warm and sturdy, though heavier than an unlined pair.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "outdoor"
+        ],
+        "limitations": [
+          "heavier than unlined"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-10",
+      "title": "Stretch Straight Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "navy",
+        "black"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 100.0,
+      "imageKey": null,
+      "description": "A straight jean with a whisper of stretch and a clean regular fit for easy office-casual wear. The cotton denim keeps a classic look while a little elastane adds give. Five pockets and a zip fly round it out. It is a dependable year-round pair that leans smart rather than rugged.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 99
+              },
+              {
+                "fiber": "elastane",
+                "percent": 1
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "casual"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-11",
+      "title": "Black Skinny Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "black"
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 94.0,
+      "imageKey": null,
+      "description": "A black skinny jean with medium stretch and a sleek, dressy look for evenings. The cotton and elastane denim holds a dark wash and hugs the leg without pinching. Five pockets and a slim ankle keep it sharp. It pairs with boots or trainers and suits a smart night out.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 96
+              },
+              {
+                "fiber": "elastane",
+                "percent": 4
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "fitted cut"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-12",
+      "title": "Relaxed Stretch Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "mid-blue",
+        "grey"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 90.0,
+      "imageKey": null,
+      "description": "A relaxed jean with light stretch for comfort without losing its easy, casual shape. The cotton and elastane denim gives through the seat and thigh while staying neat. Five pockets and a straight leg keep it simple. It is an everyday pair for cooler days and laid-back plans.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "weekend",
+          "casual"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-13",
+      "title": "Carpenter Work Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "tan",
+        "indigo"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 98.0,
+      "imageKey": null,
+      "description": "A carpenter jean with utility loops and a hammer pocket for work and projects. The rigid cotton denim is tough, and the loose cut allows free movement. Reinforced seams and deep pockets handle tools. It is a durable, roomy pair for the workshop, with no stretch and a casual workwear look.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "cargo",
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "work",
+          "casual"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-JNS-14",
+      "title": "Ecru Wide-Leg Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "ecru",
+        "light-blue"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 88.0,
+      "imageKey": null,
+      "description": "An ecru wide-leg jean in a pale wash with a loose, contemporary cut. The soft cotton denim is light for warm days, and the high rise gives a flattering line. Five pockets keep it classic. It is a summery, easy pair with no stretch and a deliberately roomy silhouette.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "travel"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      },
+      "seasons": [
+        "spring",
+        "summer"
+      ],
+      "occasions": [
+        "casual",
+        "travel"
+      ]
+    },
+    {
+      "sku": "M-JNS-15",
+      "title": "Performance Stretch Jeans",
+      "category": "jeans",
+      "categoryIds": [
+        "men-jeans"
+      ],
+      "colors": [
+        "navy",
+        "black"
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 96.0,
+      "imageKey": null,
+      "description": "A performance jean with high stretch and moisture-wicking polyester for active commutes. The cotton, polyester and elastane blend moves freely and dries faster than pure cotton. An athletic cut and five pockets keep it functional. It is a smart, sporty pair for biking to work and all-day wear.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 90
+              },
+              {
+                "fiber": "polyester",
+                "percent": 8
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "high",
+        "pockets": [
+          "five-pocket"
+        ],
+        "packable": false,
+        "occasions": [
+          "commuting",
+          "casual"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-01",
+      "title": "Tailored Wool Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "charcoal",
+        "navy"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 140.0,
+      "imageKey": null,
+      "description": "A tailored wool trouser with a flat front and a pressed crease for a sharp office look. The wool shell drapes cleanly and holds its shape, with a mid-rise and a straight leg. Slanted side pockets and a zip fly complete it. It is warm and refined but needs dry cleaning and has no stretch.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "formal"
+        ],
+        "limitations": [
+          "needs dry cleaning",
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-02",
+      "title": "Travel Cotton Chinos",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "beige",
+        "olive"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 85.0,
+      "imageKey": null,
+      "description": "A lightweight cotton chino with stretch and slanted pockets for long journeys and warm days. The cotton and elastane fabric resists wrinkles and dries quickly, with a regular fit and a clean leg. It is a comfortable, easy-care trouser for travel and casual office days, though it is a warm-weather weight.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "travel",
+          "office"
+        ],
+        "limitations": [
+          "warm-weather weight"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-03",
+      "title": "Linen Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "natural",
+        "sand"
+      ],
+      "sizes": [
+        "32",
+        "34"
+      ],
+      "price": 95.0,
+      "imageKey": null,
+      "description": "A breathable linen trouser with a relaxed leg and an elastic waist for hot days. The pure linen shell keeps air moving and feels cool against the skin. It is an easy summer pair for evenings and holidays. Linen wrinkles readily, and the trouser offers no stretch and no protection from weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "linen",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "evening"
+        ],
+        "limitations": [
+          "wrinkles easily",
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-04",
+      "title": "Stretch Office Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "black",
+        "charcoal"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 90.0,
+      "imageKey": null,
+      "description": "A slim office trouser with medium stretch for sitting and moving through a workday. The polyester and elastane fabric resists wrinkles and keeps a sharp crease. A clean front and slanted pockets stay professional. It is a versatile, easy-care pair for the office with a slimmer, modern cut.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 95
+              },
+              {
+                "fiber": "elastane",
+                "percent": 5
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "commuting"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-05",
+      "title": "Corduroy Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "brown",
+        "navy"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 100.0,
+      "imageKey": null,
+      "description": "A corduroy trouser with a regular fit and a soft, textured wale for cooler days. The cotton shell is warm and hard-wearing, with a straight leg and side pockets. It is a smart-casual pair that works for weekends and relaxed offices. It has no stretch and is heavier than a summer chino.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "office"
+        ],
+        "limitations": [
+          "no stretch",
+          "heavier weight"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-06",
+      "title": "Cargo Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "olive",
+        "black"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 80.0,
+      "imageKey": null,
+      "description": "A relaxed cargo trouser with large thigh pockets and a durable cotton shell for outdoor days. The straight leg and roomy fit allow easy movement, and the reinforced pockets carry tools and maps. It is a tough, casual pair for walks and projects. It has no stretch and no protection from weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "cargo"
+        ],
+        "packable": false,
+        "occasions": [
+          "outdoor",
+          "casual"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-07",
+      "title": "Pleated Wool Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "grey",
+        "charcoal"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 150.0,
+      "imageKey": null,
+      "description": "A pleated wool trouser with a tailored cut and a single front pleat for a refined, formal line. The wool shell drapes well and sits higher at the waist, with a straight leg and side pockets. It is a dressier option for suits and occasions. It needs dry cleaning and has no stretch.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "formal"
+        ],
+        "limitations": [
+          "needs dry cleaning"
+        ]
+      },
+      "fit": "regular",
+      "occasions": [
+        "formal"
+      ]
+    },
+    {
+      "sku": "M-TRS-08",
+      "title": "Stretch Jogger Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "black",
+        "grey"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 70.0,
+      "imageKey": null,
+      "description": "A slim jogger-style trouser with high stretch and a drawcord waist for travel and casual days. The polyester and elastane fabric moves freely and dries quickly, with a tapered leg and zipped pockets. It looks neat enough for errands while feeling like a jogger. It is lightweight and not for cold weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 88
+              },
+              {
+                "fiber": "elastane",
+                "percent": 12
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "travel",
+          "athleisure"
+        ],
+        "limitations": [
+          "not for cold weather"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-09",
+      "title": "Cotton Twill Chinos",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "khaki",
+        "navy"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 49.9,
+      "imageKey": null,
+      "description": "A classic cotton twill chino with a regular fit and a clean, casual line. The pure cotton fabric is sturdy yet comfortable, with side pockets and a straight leg. It is an easy everyday trouser for spring and summer, dressed up or down. It has no stretch and is a lighter, fair-weather weight.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "office"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-10",
+      "title": "Stretch Travel Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "charcoal",
+        "olive"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 95.0,
+      "imageKey": null,
+      "description": "A technical travel trouser with high stretch and quick-dry fabric for long trips and hikes. The polyester and elastane shell resists wrinkles and moves freely, with an athletic cut and zipped security pockets. It is a versatile, low-maintenance pair that packs small. It is lightweight and not insulated.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 90
+              },
+              {
+                "fiber": "elastane",
+                "percent": 10
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "hiking"
+        ],
+        "limitations": [
+          "not insulated"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-11",
+      "title": "Wool Blend Casual Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 130.0,
+      "imageKey": null,
+      "description": "A relaxed wool-blend trouser with a casual drape and easy warmth for cooler days. Wool is blended with polyester for comfort and easy care, with a straight leg and side pockets. It is a smart-casual pair that bridges the office and the weekend. It has light stretch and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 60
+              },
+              {
+                "fiber": "polyester",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "office"
+        ],
+        "limitations": [
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-12",
+      "title": "Summer Linen Cotton Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "sand",
+        "natural"
+      ],
+      "sizes": [
+        "32",
+        "34"
+      ],
+      "price": 88.0,
+      "imageKey": null,
+      "description": "A light linen and cotton trouser with a regular fit for hot, easy days. The breathable blend keeps air moving and feels soft against the skin, with a straight leg and side pockets. It is a relaxed warm-weather pair for weekends and holidays. It wrinkles easily and has no stretch.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "linen",
+                "percent": 55
+              },
+              {
+                "fiber": "cotton",
+                "percent": 45
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "travel"
+        ],
+        "limitations": [
+          "wrinkles easily"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-13",
+      "title": "Slim Twill Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "black",
+        "navy"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 82.0,
+      "imageKey": null,
+      "description": "A slim twill trouser with medium stretch and a tapered leg for a modern office look. The cotton and elastane fabric keeps a crisp crease while easing movement. Side pockets and a zip fly finish it cleanly. It is a versatile pair for work and evenings, with a closer cut than a classic chino.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 97
+              },
+              {
+                "fiber": "elastane",
+                "percent": 3
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "evening"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-14",
+      "title": "Wide-Leg Polyester Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "black",
+        "charcoal"
+      ],
+      "sizes": [
+        "32",
+        "34"
+      ],
+      "price": 110.0,
+      "imageKey": null,
+      "description": "A wide-leg trouser in fluid polyester with a loose, contemporary cut for evenings and the city. The smooth fabric drapes in soft folds, with a high waist and side pockets. It is a statement pair that moves with ease. It has no stretch and is a lightweight layer with no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "loose",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "no stretch"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRS-15",
+      "title": "Commuter Stretch Trousers",
+      "category": "trousers",
+      "categoryIds": [
+        "men-trousers"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "32",
+        "34",
+        "36"
+      ],
+      "price": 92.0,
+      "imageKey": null,
+      "description": "A commuter trouser with high stretch and a durable, quick-drying blend for cycling to work. The cotton, polyester and elastane fabric moves freely and shrugs off light creases, with an athletic cut and zipped pockets. It looks neat enough for the office. It is a versatile year-round pair, unlined and breathable.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 68
+              },
+              {
+                "fiber": "polyester",
+                "percent": 28
+              },
+              {
+                "fiber": "elastane",
+                "percent": 4
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "commuting",
+          "office"
+        ],
+        "limitations": [
+          "none"
+        ]
+      }
+    }
+  ]
+}

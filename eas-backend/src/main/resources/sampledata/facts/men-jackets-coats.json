@@ -1,0 +1,3458 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "atelier-apparel",
+  "provenance": {
+    "part": "men-jackets-coats",
+    "note": "Authored demo facts; fictional products, not verified external certifications."
+  },
+  "products": [
+    {
+      "sku": "M-PUF-01",
+      "title": "Alpine Down Puffer Jacket",
+      "category": "puffer",
+      "categoryIds": [
+        "men-puffer"
+      ],
+      "colors": [
+        "navy",
+        "black"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 199.0,
+      "imageKey": null,
+      "description": "A quilted down puffer built for cold city winters. The nylon shell is filled with 90 percent duck down and 10 percent feather for high warmth, and a removable hood adds cover in wind. A water-repellent finish sheds light rain. It has zip hand pockets and an inner chest pocket, though the generous loft makes it bulky to pack.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "down",
+                "percent": 90
+              },
+              {
+                "fiber": "feather",
+                "percent": 10
+              }
+            ]
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "inner-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "bulky to pack",
+          "not fully waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-PUF-02",
+      "title": "Synthetic Insulated Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "men-puffer"
+      ],
+      "colors": [
+        "olive",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 149.0,
+      "imageKey": null,
+      "description": "A puffer insulated with synthetic polyester fill rather than animal down, so it keeps light warmth even when damp. The polyester shell and fixed hood make it easy to throw on for commuting. A water-resistant finish shrugs off showers, and it packs into its own pocket for travel. It is a mid-warmth layer, not deep-winter armour.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "commuting",
+          "travel"
+        ],
+        "limitations": [
+          "less warm than down",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-PUF-03",
+      "title": "Packable Travel Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "men-puffer"
+      ],
+      "colors": [
+        "black",
+        "navy"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 89.9,
+      "imageKey": null,
+      "description": "A slim, featherweight puffer with light polyester fill for cool autumn evenings and layering. The nylon shell is wind-resistant but has no hood, so it stays streamlined under a shell. It folds into its own hand pocket and suits city breaks and flights. This is light insulation only and offers little protection in steady rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "city"
+        ],
+        "limitations": [
+          "light insulation only",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "M-PUF-04",
+      "title": "Deep Winter Parka Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "men-puffer"
+      ],
+      "colors": [
+        "charcoal",
+        "navy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "price": 259.0,
+      "imageKey": null,
+      "description": "A long-cut puffer for very cold winters, insulated with pure duck down for extreme warmth. The nylon shell and removable hood are water-resistant, and the relaxed fit leaves room for layering. Zip hand, chest and inner pockets carry essentials. It resists strong wind but is too substantial to pack and is not fully waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "down",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "extreme",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "removable",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "chest",
+          "inner-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "outdoor"
+        ],
+        "limitations": [
+          "too substantial to pack",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-PUF-05",
+      "title": "Short Down Layer Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "men-puffer"
+      ],
+      "colors": [
+        "grey",
+        "black"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 169.0,
+      "imageKey": null,
+      "description": "A short, packable down puffer with a slim fit for layering under a shell on cold days. The nylon shell holds a down and feather fill for dependable mid-warmth, while a low collar replaces a hood to keep bulk down. It packs into its own pocket for travel but offers no hood and only light wind protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "down",
+                "percent": 85
+              },
+              {
+                "fiber": "feather",
+                "percent": 15
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "layering",
+          "city"
+        ],
+        "limitations": [
+          "no hood",
+          "light wind protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-PRK-01",
+      "title": "Insulated Commuter Parka",
+      "category": "parka",
+      "categoryIds": [
+        "men-parka"
+      ],
+      "colors": [
+        "olive",
+        "navy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 239.0,
+      "imageKey": null,
+      "description": "A mid-thigh parka with synthetic insulation and a fixed hood for everyday winter commuting. The water-resistant polyester shell shields changeable weather, and zip hand pockets plus flap chest pockets hold daily essentials. The regular fit layers over knitwear. It is warm for the city but not a waterproof hard shell for heavy rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "flap-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "commuting",
+          "city"
+        ],
+        "limitations": [
+          "not a waterproof shell",
+          "bulky"
+        ]
+      }
+    },
+    {
+      "sku": "M-PRK-02",
+      "title": "Lightweight Travel Parka",
+      "category": "parka",
+      "categoryIds": [
+        "men-parka"
+      ],
+      "colors": [
+        "black",
+        "grey"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 129.0,
+      "imageKey": null,
+      "description": "A long-line travel parka with a removable hood and light synthetic fill for shoulder-season trips. The water-resistant nylon shell is wind-resistant and packs down small into a stuff sack. An adjustable waist and roomy flap pockets add practicality. It is lightly insulated, so it suits cool, not freezing, weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "city"
+        ],
+        "limitations": [
+          "lightly insulated",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-PRK-03",
+      "title": "Storm Parka",
+      "category": "parka",
+      "categoryIds": [
+        "men-parka"
+      ],
+      "colors": [
+        "charcoal",
+        "olive"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 289.0,
+      "imageKey": null,
+      "description": "A fully waterproof storm parka with taped seams, a fixed hood and high wind protection for wet, exposed days. The nylon shell is waterproof rather than merely resistant, while light synthetic fill adds warmth without weight. Zip hand and inner pockets stay dry. It is warm and protective but not the most breathable for high-output activity.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter",
+          "spring"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "inner-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "outdoor",
+          "commuting"
+        ],
+        "limitations": [
+          "limited breathability"
+        ]
+      }
+    },
+    {
+      "sku": "M-COA-01",
+      "title": "Wool Overcoat",
+      "category": "coat",
+      "categoryIds": [
+        "men-coats"
+      ],
+      "colors": [
+        "charcoal",
+        "navy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 320.0,
+      "imageKey": null,
+      "description": "A tailored wool overcoat with notch lapels and a quilted lining for formal winter layering. The wool shell provides natural warmth without bulk, and the straight cut fits over a suit. Flap pockets and a single vent keep the silhouette sharp. It is elegant over office wear but offers only light wind protection and no weatherproofing.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "formal"
+        ],
+        "limitations": [
+          "no weather protection",
+          "needs dry cleaning"
+        ]
+      }
+    },
+    {
+      "sku": "M-COA-02",
+      "title": "Cashmere Blend Coat",
+      "category": "coat",
+      "categoryIds": [
+        "men-coats"
+      ],
+      "colors": [
+        "camel",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 420.0,
+      "imageKey": null,
+      "description": "A refined cashmere-blend coat with a relaxed fit and a soft, luxurious hand. Cashmere is blended with wool for warmth that feels light, and the smooth lining slides over knitwear. Welt pockets and a clean front keep it minimal for evenings and smart casual wear. It is warm and elegant but delicate and not suited to wet weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cashmere",
+                "percent": 60
+              },
+              {
+                "fiber": "wool",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "viscose",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "delicate fabric",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-COA-03",
+      "title": "Non-Wool Tailored Coat",
+      "category": "coat",
+      "categoryIds": [
+        "men-coats"
+      ],
+      "colors": [
+        "black",
+        "charcoal"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 250.0,
+      "imageKey": null,
+      "description": "A tailored coat made entirely without wool for those avoiding animal fibers. The recycled polyester shell has a smooth, crisp drape and a quilted lining for warmth. Notch lapels and flap pockets keep it office-ready. It layers comfortably over tailoring and is easy to clean, though it is not a waterproof garment.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "formal"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-COA-04",
+      "title": "Duffle Coat",
+      "category": "coat",
+      "categoryIds": [
+        "men-coats"
+      ],
+      "colors": [
+        "navy",
+        "olive"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 210.0,
+      "imageKey": null,
+      "description": "A casual duffle coat with a fixed hood, toggle closures and a roomy, relaxed cut for weekend layering. The wool-blend shell is warm, and patch pockets hold gloves and hats. The hood adds wind cover without a waterproof membrane. It is cosy and practical for autumn walks but heavy when wet and not packable.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 70
+              },
+              {
+                "fiber": "polyester",
+                "percent": 30
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "patch"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "heavy when wet",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-COA-05",
+      "title": "Trench Coat",
+      "category": "coat",
+      "categoryIds": [
+        "men-coats"
+      ],
+      "colors": [
+        "beige",
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 280.0,
+      "imageKey": null,
+      "description": "A classic trench coat with a water-repellent cotton shell, an adjustable belt and a removable hood for changeable spring weather. The double-breasted front and epaulettes nod to tradition, while the tailored cut stays sharp over office wear. It sheds light rain but is not waterproof, and the cotton shell offers only light warmth.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "welt",
+          "flap-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "city"
+        ],
+        "limitations": [
+          "light warmth",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-COA-06",
+      "title": "Linen Summer Blazer Coat",
+      "category": "coat",
+      "categoryIds": [
+        "men-coats"
+      ],
+      "colors": [
+        "natural",
+        "sand"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 160.0,
+      "imageKey": null,
+      "description": "A lightweight linen-blend coat cut for warm evenings and smart summer events. The breathable linen and cotton shell keeps air moving, and the half-lined construction stays cool. A relaxed, unstructured fit and patch pockets give it an easy elegance. It is a warm-weather layer with no insulation and no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "linen",
+                "percent": 55
+              },
+              {
+                "fiber": "cotton",
+                "percent": 45
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "patch"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "no insulation",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-COA-07",
+      "title": "Stretch Office Coat",
+      "category": "coat",
+      "categoryIds": [
+        "men-coats"
+      ],
+      "colors": [
+        "navy",
+        "charcoal"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 190.0,
+      "imageKey": null,
+      "description": "A tailored office coat with a touch of elastane for easy movement over a suit. The synthetic shell resists wrinkles and light showers, while the smooth lining slides on and off. Slant pockets and a clean front keep it polished for commuting. It is a moderate-warmth layer that is water-resistant, not waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 95
+              },
+              {
+                "fiber": "elastane",
+                "percent": 5
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "low",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "commuting"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-RAN-01",
+      "title": "Commuter Waterproof Rain Jacket",
+      "category": "rain",
+      "categoryIds": [
+        "men-rain"
+      ],
+      "colors": [
+        "navy",
+        "red"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 120.0,
+      "imageKey": null,
+      "description": "A genuinely waterproof commuter rain jacket with taped seams, a fixed hood and adjustable cuffs. The nylon shell is seam-sealed against heavy rain and folds into its own pocket for the ride home. Underarm vents and a mesh lining add breathability for cycling. It is waterproof but uninsulated, so layer underneath in cold weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "commuting",
+          "cycling"
+        ],
+        "limitations": [
+          "uninsulated"
+        ]
+      }
+    },
+    {
+      "sku": "M-RAN-02",
+      "title": "Packable Cycling Rain Shell",
+      "category": "rain",
+      "categoryIds": [
+        "men-rain"
+      ],
+      "colors": [
+        "yellow",
+        "black"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 75.0,
+      "imageKey": null,
+      "description": "A lightweight waterproof cycling shell with a drop tail, reflective details and a fixed hood that fits over a helmet. The nylon shell packs into a jersey pocket and blocks wind as well as rain. A half-length zip and elastic cuffs keep out spray. It is waterproof and packable but offers no warmth of its own.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "cycling",
+          "outdoor"
+        ],
+        "limitations": [
+          "no insulation",
+          "slim fit"
+        ]
+      }
+    },
+    {
+      "sku": "M-RAN-03",
+      "title": "City Water-Resistant Anorak",
+      "category": "rain",
+      "categoryIds": [
+        "men-rain"
+      ],
+      "colors": [
+        "olive",
+        "navy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 85.0,
+      "imageKey": null,
+      "description": "A pullover anorak with a water-resistant shell and a roomy front pocket for easy city errands. The fixed hood and half-zip keep light showers out, and the relaxed fit layers over a hoodie. It is water-resistant rather than waterproof, so it suits drizzle, not a downpour, and it has no insulation for cold days.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "not waterproof",
+          "light warmth"
+        ]
+      }
+    },
+    {
+      "sku": "M-RAN-04",
+      "title": "Hiking Waterproof Shell",
+      "category": "rain",
+      "categoryIds": [
+        "men-rain"
+      ],
+      "colors": [
+        "green",
+        "blue"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 140.0,
+      "imageKey": null,
+      "description": "A waterproof hiking shell with a storm hood, pit zips and articulated sleeves for moving through wet trails. The nylon shell is seam-sealed and breathable, and adjustable cuffs and hem seal out weather. Zip hand and chest pockets sit clear of a pack belt. It is a technical waterproof layer with no insulation for cold camps.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "hiking",
+          "outdoor"
+        ],
+        "limitations": [
+          "no insulation"
+        ]
+      }
+    },
+    {
+      "sku": "M-RAN-05",
+      "title": "Budget Rain Poncho Jacket",
+      "category": "rain",
+      "categoryIds": [
+        "men-rain"
+      ],
+      "colors": [
+        "grey",
+        "blue"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 45.0,
+      "imageKey": null,
+      "description": "An inexpensive waterproof rain jacket with a fixed hood and elastic cuffs for occasional downpours. The lightweight nylon shell is seam-taped and packs into its own pouch. It keeps you dry on short errands but has a boxy fit and little breathability, and it offers no warmth. A simple, functional budget waterproof layer.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "outdoor"
+        ],
+        "limitations": [
+          "boxy fit",
+          "limited breathability"
+        ]
+      }
+    },
+    {
+      "sku": "M-SFT-01",
+      "title": "Stretch Softshell Jacket",
+      "category": "softshell",
+      "categoryIds": [
+        "men-softshell"
+      ],
+      "colors": [
+        "black",
+        "blue"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 110.0,
+      "imageKey": null,
+      "description": "A four-way stretch softshell that is windproof and breathable for hiking and travel. The polyester shell has a water-resistant finish, while the brushed interior adds light warmth. Zip hand and chest pockets hold essentials, and the athletic cut moves with you. It is a versatile mid-layer but is not fully waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 90
+              },
+              {
+                "fiber": "elastane",
+                "percent": 10
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand",
+          "chest"
+        ],
+        "packable": true,
+        "occasions": [
+          "hiking",
+          "travel"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-SFT-02",
+      "title": "Cycling Softshell",
+      "category": "softshell",
+      "categoryIds": [
+        "men-softshell"
+      ],
+      "colors": [
+        "red",
+        "black"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 130.0,
+      "imageKey": null,
+      "description": "A close-fitting cycling softshell with a windproof front, breathable back and reflective trims for commutes. The polyester shell sheds light rain and has a high collar instead of a hood. A slim, stretchy cut avoids flapping at speed, and a rear zip pocket holds a phone. It is weather-resistant but uninsulated.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 85
+              },
+              {
+                "fiber": "elastane",
+                "percent": 15
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "cycling",
+          "commuting"
+        ],
+        "limitations": [
+          "uninsulated",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "M-SFT-03",
+      "title": "Insulated Softshell Jacket",
+      "category": "softshell",
+      "categoryIds": [
+        "men-softshell"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 150.0,
+      "imageKey": null,
+      "description": "A softshell with a light synthetic lining for extra warmth on cool, active days. The polyester shell is windproof and water-resistant, with a regular fit that layers over a base. Zip pockets and a stand collar add comfort. It bridges a jacket and a mid-layer, though the insulation is light and it is not waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 92
+              },
+              {
+                "fiber": "elastane",
+                "percent": 8
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "medium",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "outdoor",
+          "casual"
+        ],
+        "limitations": [
+          "light insulation",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-SFT-04",
+      "title": "Hooded Softshell",
+      "category": "softshell",
+      "categoryIds": [
+        "men-softshell"
+      ],
+      "colors": [
+        "green",
+        "charcoal"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 125.0,
+      "imageKey": null,
+      "description": "A hooded softshell with a windproof, water-resistant shell and a brushed interior for brisk walks and errands. The fixed hood and high stretch let you move freely, while zip hand pockets keep essentials secure. The relaxed fit layers over a sweater. It resists wind and drizzle but will not keep you dry in sustained rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 88
+              },
+              {
+                "fiber": "elastane",
+                "percent": 12
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "outdoor"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-FLC-01",
+      "title": "Trail Fleece Jacket",
+      "category": "fleece",
+      "categoryIds": [
+        "men-fleece"
+      ],
+      "colors": [
+        "green",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 80.0,
+      "imageKey": null,
+      "description": "A brushed fleece mid-layer with zipped pockets and a stand collar for cool walks and alpine treks. The polyester fleece traps warm air while staying quick-drying, and the regular fit layers under a shell. It is warm and breathable as a mid-layer but provides no wind or rain protection on its own.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "hiking",
+          "layering"
+        ],
+        "limitations": [
+          "no wind or rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-FLC-02",
+      "title": "Lightweight Grid Fleece",
+      "category": "fleece",
+      "categoryIds": [
+        "men-fleece"
+      ],
+      "colors": [
+        "black",
+        "blue"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 48.0,
+      "imageKey": null,
+      "description": "A lightweight grid fleece with a breathable waffle back and a slim fit for high-output layering. The polyester fleece dries fast and moves moisture, while the low collar stays out of the way. It is a cool-weather base or mid-layer for running and hiking, with no hood and no protection against wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "hiking",
+          "running"
+        ],
+        "limitations": [
+          "no hood",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-FLC-03",
+      "title": "Full-Zip Hooded Fleece",
+      "category": "fleece",
+      "categoryIds": [
+        "men-fleece"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 90.0,
+      "imageKey": null,
+      "description": "A full-zip fleece with a fixed hood and a relaxed fit for easy everyday warmth. The soft polyester fleece insulates on cool evenings, and zip hand pockets warm your hands. It layers over a tee or under a shell. It is cosy and casual but not windproof, and it offers no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "not windproof",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-FLC-04",
+      "title": "Cotton-Blend Fleece",
+      "category": "fleece",
+      "categoryIds": [
+        "men-fleece"
+      ],
+      "colors": [
+        "cream",
+        "olive"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 50.0,
+      "imageKey": null,
+      "description": "A soft cotton-blend fleece with a quarter zip and a regular fit for fireside evenings and errands. The cotton and polyester blend feels natural against the skin while drying faster than pure cotton. A stand collar and hand pockets add comfort. It is a light, casual layer with no hood and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 60
+              },
+              {
+                "fiber": "polyester",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no hood",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRK-01",
+      "title": "Retro Track Jacket",
+      "category": "track",
+      "categoryIds": [
+        "men-track"
+      ],
+      "colors": [
+        "black",
+        "red"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 49.0,
+      "imageKey": null,
+      "description": "A retro track jacket with bold color blocking and a soft inner lining, inspired by nineties sportswear. The lightweight polyester shell has a full zip and a relaxed fit, with ribbed cuffs and hem. It is a casual throw-on layer for mild days, offering little warmth and no protection from wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "athleisure"
+        ],
+        "limitations": [
+          "no weather protection",
+          "light warmth"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRK-02",
+      "title": "Stretch Track Jacket",
+      "category": "track",
+      "categoryIds": [
+        "men-track"
+      ],
+      "colors": [
+        "navy",
+        "white"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 75.0,
+      "imageKey": null,
+      "description": "A modern track jacket with stretch and a slim, athletic cut for runs and warm-ups. The polyester and elastane shell moves with you and wicks moisture, while a full zip and stand collar add coverage. Zip pockets keep keys secure. It is a lightweight performance layer with no hood and no rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 88
+              },
+              {
+                "fiber": "elastane",
+                "percent": 12
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "running",
+          "athleisure"
+        ],
+        "limitations": [
+          "no hood",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-TRK-03",
+      "title": "Warm Lined Track Jacket",
+      "category": "track",
+      "categoryIds": [
+        "men-track"
+      ],
+      "colors": [
+        "grey",
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 85.0,
+      "imageKey": null,
+      "description": "A track jacket with a brushed lining for extra warmth on cool commutes and gym runs. The polyester shell is smooth outside and softly lined inside, with a regular fit and ribbed trim. Hand pockets and a full zip keep it practical. It is warmer than a basic track jacket but still not weatherproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "athleisure",
+          "casual"
+        ],
+        "limitations": [
+          "not weatherproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-TCH-01",
+      "title": "Aerodynamic Cycling Jacket",
+      "category": "technical",
+      "categoryIds": [
+        "men-technical"
+      ],
+      "colors": [
+        "black",
+        "red"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 160.0,
+      "imageKey": null,
+      "description": "A technical cycling jacket with an aerodynamic fit, a windproof front and breathable back panels. The polyester shell has reflective trims for night visibility and a low collar that stays out of the way. A rear zip pocket holds a phone. It is fast and wind-resistant but uninsulated and not a rain shell.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "cycling",
+          "commuting"
+        ],
+        "limitations": [
+          "uninsulated",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-TCH-02",
+      "title": "Alpine Hardshell",
+      "category": "technical",
+      "categoryIds": [
+        "men-technical"
+      ],
+      "colors": [
+        "green",
+        "blue"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 240.0,
+      "imageKey": null,
+      "description": "A fully waterproof alpine hardshell with a helmet-compatible hood, taped seams and a high breathability membrane. The nylon shell is built for exposed mountain weather, with a high collar and pit zips. Articulated sleeves and an athletic cut move with climbing and trekking. It is a technical waterproof layer with no insulation.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "athletic",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "hiking",
+          "outdoor"
+        ],
+        "limitations": [
+          "no insulation"
+        ]
+      }
+    },
+    {
+      "sku": "M-TCH-03",
+      "title": "Insulated Ski Shell",
+      "category": "technical",
+      "categoryIds": [
+        "men-technical"
+      ],
+      "colors": [
+        "navy",
+        "red"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 270.0,
+      "imageKey": null,
+      "description": "A waterproof ski shell with light synthetic insulation, a removable hood and a powder skirt. The nylon shell is seam-sealed and windproof for resort days, with a high collar and zip vents. Zip hand and chest pockets carry passes and snacks. It is warm and protective but heavier than an uninsulated hardshell.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "removable",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "sport",
+          "outdoor"
+        ],
+        "limitations": [
+          "heavier than a hardshell"
+        ]
+      }
+    },
+    {
+      "sku": "M-TCH-04",
+      "title": "Trail Running Wind Shell",
+      "category": "technical",
+      "categoryIds": [
+        "men-technical"
+      ],
+      "colors": [
+        "yellow",
+        "grey"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 95.0,
+      "imageKey": null,
+      "description": "An ultralight trail-running shell with a hoodless, slim cut and a packable design. The nylon shell blocks wind and sheds light showers while staying breathable. It stuffs into its own pocket for a vest or belt. It is a minimalist layer for fast outings, not a waterproof jacket and not insulated.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "running",
+          "outdoor"
+        ],
+        "limitations": [
+          "not waterproof",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "M-FLD-01",
+      "title": "Waxed Cotton Field Jacket",
+      "category": "field",
+      "categoryIds": [
+        "men-field"
+      ],
+      "colors": [
+        "olive",
+        "brown"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 180.0,
+      "imageKey": null,
+      "description": "A heritage field jacket with a waxed cotton finish, four flap pockets and a corduroy collar. The weather-resistant cotton shell handles light rain and brambles, and the regular fit layers over knitwear. It is a durable, casual outdoor layer that softens with wear, though it is heavy and not fully waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "cargo"
+        ],
+        "packable": false,
+        "occasions": [
+          "outdoor",
+          "casual"
+        ],
+        "limitations": [
+          "heavy",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-FLD-02",
+      "title": "Lightweight Utility Field Jacket",
+      "category": "field",
+      "categoryIds": [
+        "men-field"
+      ],
+      "colors": [
+        "khaki",
+        "navy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 100.0,
+      "imageKey": null,
+      "description": "A lightweight utility field jacket with plenty of pockets for travel and everyday errands. The cotton and polyester shell is easy to pack and dries quickly, while the relaxed fit stays comfortable. Flap and cargo pockets organise the essentials. It is a casual warm-weather layer with no insulation and only light weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 65
+              },
+              {
+                "fiber": "polyester",
+                "percent": 35
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "cargo"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "casual"
+        ],
+        "limitations": [
+          "no insulation",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-FLD-03",
+      "title": "Insulated Field Parka Jacket",
+      "category": "field",
+      "categoryIds": [
+        "men-field"
+      ],
+      "colors": [
+        "brown",
+        "green"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 200.0,
+      "imageKey": null,
+      "description": "A field jacket with a warm quilted lining and a detachable hood for cool, damp days outdoors. The cotton shell is weather-resistant, and the synthetic lining adds warmth without animal fill. Four flap pockets carry tools and maps. It is a rugged, insulated layer, though heavier than a shell and not fully waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "cargo"
+        ],
+        "packable": false,
+        "occasions": [
+          "outdoor",
+          "casual"
+        ],
+        "limitations": [
+          "heavy",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-BMB-01",
+      "title": "Classic Bomber Jacket",
+      "category": "bomber",
+      "categoryIds": [
+        "men-bomber"
+      ],
+      "colors": [
+        "olive",
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 140.0,
+      "imageKey": null,
+      "description": "A ribbed-hem bomber with a recycled polyester shell and a light lining for transitional weather. The relaxed streetwear cut sits at the waist, with a zip front and two hand pockets. It is a simple, versatile outer layer that blocks a little wind but offers no hood and no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "no hood",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-BMB-02",
+      "title": "Warm Quilted Bomber",
+      "category": "bomber",
+      "categoryIds": [
+        "men-bomber"
+      ],
+      "colors": [
+        "navy",
+        "burgundy"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 165.0,
+      "imageKey": null,
+      "description": "A quilted bomber with synthetic fill and a ribbed collar for extra warmth in autumn and winter. The nylon shell is smooth outside and lightly insulated inside, with a regular fit and a zip front. Hand pockets and an inner pocket keep small items close. It is warm and neat but not waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "hand",
+          "inner-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "no hood",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "M-BMB-03",
+      "title": "Suede Trim Bomber",
+      "category": "bomber",
+      "categoryIds": [
+        "men-bomber"
+      ],
+      "colors": [
+        "black",
+        "brown"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 220.0,
+      "imageKey": null,
+      "description": "A refined bomber with a leather-trimmed collar and a smooth synthetic shell for evenings out. The tailored cut is sharper than a sport bomber, and the zip front and welt pockets keep it minimal. The leather trim is a detailing accent rather than a full hide. It is a light layer with no hood and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "viscose",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "no hood",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-DNM-01",
+      "title": "Rigid Denim Trucker Jacket",
+      "category": "denim",
+      "categoryIds": [
+        "men-denim"
+      ],
+      "colors": [
+        "indigo"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 110.0,
+      "imageKey": null,
+      "description": "A rigid denim trucker jacket with contrast stitching, chest flap pockets and a button front. The heavyweight cotton denim breaks in over time for a personal fit. It is a rugged, durable layer for cool, dry days. There is no stretch, no hood and no insulation, so it works best as an outer layer over knitwear.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "M-DNM-02",
+      "title": "Stretch Denim Jacket",
+      "category": "denim",
+      "categoryIds": [
+        "men-denim"
+      ],
+      "colors": [
+        "black",
+        "blue"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 125.0,
+      "imageKey": null,
+      "description": "A slim denim jacket with a touch of elastane for comfortable movement through the shoulders. The soft-washed cotton denim has a modern cut and simple patch pockets. It layers neatly over a tee or shirt. The stretch improves comfort, but the jacket still offers no hood, no insulation and no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "patch"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "no insulation",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "M-DNM-03",
+      "title": "Sherpa-Lined Denim Jacket",
+      "category": "denim",
+      "categoryIds": [
+        "men-denim"
+      ],
+      "colors": [
+        "indigo",
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 145.0,
+      "imageKey": null,
+      "description": "A denim jacket lined with a cosy synthetic fleece for chilly days. The cotton denim shell is durable, while the soft lining adds warmth through autumn. A button front and chest pockets keep the classic trucker look. It is warm and sturdy but heavy, with no hood and no water protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "weekend"
+        ],
+        "limitations": [
+          "heavy",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "M-LTH-01",
+      "title": "Classic Leather Biker Jacket",
+      "category": "leather",
+      "categoryIds": [
+        "men-leather"
+      ],
+      "colors": [
+        "black",
+        "brown"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 350.0,
+      "imageKey": null,
+      "description": "A full-grain leather biker jacket with an asymmetric zip, notched lapels and two zipped pockets. The genuine leather shell develops a rich patina over time, and the satin lining slides easily over a shirt. It is a structured, durable layer for evenings out, though it is heavy, needs care and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "leather",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "heavy",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "M-LTH-02",
+      "title": "Suede Bomber Jacket",
+      "category": "leather",
+      "categoryIds": [
+        "men-leather"
+      ],
+      "colors": [
+        "tan",
+        "brown"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 380.0,
+      "imageKey": null,
+      "description": "A soft suede bomber with a ribbed collar, hem and cuffs for a relaxed, refined look. The suede shell is supple and warm, with a smooth lining and simple hand pockets. It suits smart-casual evenings and cool autumn days. Suede is delicate in rain and requires careful cleaning, so it is best in dry weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "suede",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "viscose",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "casual"
+        ],
+        "limitations": [
+          "delicate in rain"
+        ]
+      }
+    },
+    {
+      "sku": "M-LTH-03",
+      "title": "Slim Leather Racer Jacket",
+      "category": "leather",
+      "categoryIds": [
+        "men-leather"
+      ],
+      "colors": [
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 320.0,
+      "imageKey": null,
+      "description": "A slim leather racer jacket with a stand collar and a clean, minimal front. The smooth leather shell is structured and durable, with a zip front and zipped hand pockets. It is cut close for a sharp silhouette over a tee. Leather is warm against the wind but heavy, and it offers no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "leather",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "city"
+        ],
+        "limitations": [
+          "heavy",
+          "no weather protection"
+        ]
+      },
+      "windProtection": "low"
+    },
+    {
+      "sku": "M-WDB-01",
+      "title": "Packable Windbreaker",
+      "category": "windbreaker",
+      "categoryIds": [
+        "men-windbreaker"
+      ],
+      "colors": [
+        "black",
+        "red"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 45.0,
+      "imageKey": null,
+      "description": "A quick-dry windbreaker with a packable hood and reflective details for night runs. The lightweight nylon shell blocks wind and stows into its own pocket. A slim cut keeps it streamlined, and elastic cuffs seal out drafts. It is a thin, breathable layer for wind, not rain, and it offers no warmth of its own.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "running",
+          "casual"
+        ],
+        "limitations": [
+          "not for rain",
+          "no insulation"
+        ]
+      }
+    },
+    {
+      "sku": "M-WDB-02",
+      "title": "Water-Resistant Windbreaker",
+      "category": "windbreaker",
+      "categoryIds": [
+        "men-windbreaker"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 70.0,
+      "imageKey": null,
+      "description": "A water-resistant windbreaker with a fixed hood and a relaxed fit for everyday changeable weather. The polyester shell sheds light showers and blocks a steady breeze, while hand pockets keep things simple. It packs down for a bag. It is weather-resistant rather than waterproof, with no insulation for cold days.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "travel"
+        ],
+        "limitations": [
+          "not waterproof",
+          "light warmth"
+        ]
+      }
+    },
+    {
+      "sku": "M-WDB-03",
+      "title": "Hooded Stretch Windbreaker",
+      "category": "windbreaker",
+      "categoryIds": [
+        "men-windbreaker"
+      ],
+      "colors": [
+        "green",
+        "black"
+      ],
+      "sizes": [
+        "M",
+        "L"
+      ],
+      "price": 90.0,
+      "imageKey": null,
+      "description": "A hooded windbreaker with a touch of stretch and a regular fit for hikes and commutes. The nylon shell is windproof and lightly water-resistant, with a fixed hood that rolls away when not needed. Zip hand pockets keep small items secure. It is a breathable wind layer, not a waterproof or insulated jacket.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 92
+              },
+              {
+                "fiber": "elastane",
+                "percent": 8
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "summer",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "hiking",
+          "commuting"
+        ],
+        "limitations": [
+          "not waterproof",
+          "no insulation"
+        ]
+      }
+    }
+  ]
+}

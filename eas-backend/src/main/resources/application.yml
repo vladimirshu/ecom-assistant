@@ -44,7 +44,7 @@ ecom:
     query-analysis-max-output-tokens: 500
     product-filter-max-output-tokens: 300
   import:
-    sample-file: sampledata/apparel_catalog_sample.csv
+    sample-file: sampledata/apparel_catalog.csv
   assets:
     base-url: ${ECOM_ASSETS_BASE_URL:/images/}
   browsing:

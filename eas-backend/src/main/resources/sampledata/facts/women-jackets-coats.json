@@ -1,0 +1,3552 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "atelier-apparel",
+  "provenance": {
+    "part": "women-jackets-coats",
+    "note": "Authored demo facts; fictional products, not verified external certifications."
+  },
+  "products": [
+    {
+      "sku": "W-PUF-01",
+      "title": "Womens Cropped Down Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "women-puffer"
+      ],
+      "colors": [
+        "burgundy",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 185.0,
+      "imageKey": null,
+      "description": "A cropped down puffer with a slim fit and a fixed hood for winter city wear. The nylon shell is filled with down and feather for dependable warmth, and a water-repellent finish sheds light snow. Zip hand pockets and a high collar seal out cold. The short hem is flattering but leaves the hips less covered.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "down",
+                "percent": 90
+              },
+              {
+                "fiber": "feather",
+                "percent": 10
+              }
+            ]
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "short hem",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-PUF-02",
+      "title": "Womens Long Down Parka Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "women-puffer"
+      ],
+      "colors": [
+        "navy",
+        "cream"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 275.0,
+      "imageKey": null,
+      "description": "A long down puffer that reaches mid-calf for deep winter warmth. The nylon shell holds pure down fill and a removable hood for full coverage. A water-repellent finish and high wind protection keep the cold out, and the relaxed fit layers over knitwear. It is warm and protective but long and heavy to carry.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "down",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "extreme",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "removable",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "inner-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "outdoor"
+        ],
+        "limitations": [
+          "long and heavy",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-PUF-03",
+      "title": "Womens Synthetic Travel Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "women-puffer"
+      ],
+      "colors": [
+        "sage",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 145.0,
+      "imageKey": null,
+      "description": "A packable travel puffer with synthetic fill and a slim fit for shoulder-season trips. The polyester shell is water-resistant and the synthetic insulation keeps some warmth when damp. A fixed hood and zip hand pockets add coverage, and it packs into its own pocket. It is a mid-warmth layer, not deep-winter gear.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "commuting"
+        ],
+        "limitations": [
+          "not deep-winter",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-PUF-04",
+      "title": "Womens Hoodless Layering Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "women-puffer"
+      ],
+      "colors": [
+        "black",
+        "navy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 165.0,
+      "imageKey": null,
+      "description": "A hoodless down puffer with a regular fit and a packable body for layering under a coat. The nylon shell holds a down and feather fill for light, even warmth, and a low stand collar replaces a hood. It packs small for travel. It offers no hood and only light wind protection, so it works best under a shell.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "down",
+                "percent": 85
+              },
+              {
+                "fiber": "feather",
+                "percent": 15
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "layering",
+          "travel"
+        ],
+        "limitations": [
+          "no hood",
+          "light wind protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-PUF-05",
+      "title": "Womens Belted Down Coat Puffer",
+      "category": "puffer",
+      "categoryIds": [
+        "women-puffer"
+      ],
+      "colors": [
+        "charcoal",
+        "olive"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 230.0,
+      "imageKey": null,
+      "description": "A belted down puffer with a shaped waist and a fixed hood for a flattering winter silhouette. The nylon shell is filled with down and feather for high warmth, and the adjustable belt defines the waist. A water-repellent finish and zip hand pockets keep it practical. It is warm and feminine but not fully waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "down",
+                "percent": 80
+              },
+              {
+                "fiber": "feather",
+                "percent": 20
+              }
+            ]
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "evening"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-PRK-01",
+      "title": "Womens Insulated Travel Parka",
+      "category": "parka",
+      "categoryIds": [
+        "women-parka"
+      ],
+      "colors": [
+        "olive",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 220.0,
+      "imageKey": null,
+      "description": "A mid-length travel parka with synthetic insulation and a removable hood for cold trips. The water-resistant polyester shell is wind-resistant and has a belt to adjust the waist. Zip hand and flap pockets hold essentials. It is warm and practical for winter travel but not a waterproof hard shell for heavy rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "flap-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "travel",
+          "commuting"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-PRK-02",
+      "title": "Womens Waterproof Parka",
+      "category": "parka",
+      "categoryIds": [
+        "women-parka"
+      ],
+      "colors": [
+        "charcoal",
+        "navy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 265.0,
+      "imageKey": null,
+      "description": "A fully waterproof parka with taped seams, a fixed hood and light synthetic fill for wet, windy winters. The nylon shell is waterproof and windproof, keeping you dry on exposed commutes. Zip hand and inner pockets stay dry. It is warm and protective but less breathable during high-output activity.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "inner-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "commuting",
+          "outdoor"
+        ],
+        "limitations": [
+          "limited breathability"
+        ]
+      }
+    },
+    {
+      "sku": "W-PRK-03",
+      "title": "Womens Light Packable Parka",
+      "category": "parka",
+      "categoryIds": [
+        "women-parka"
+      ],
+      "colors": [
+        "black",
+        "sage"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 115.0,
+      "imageKey": null,
+      "description": "A lightweight packable parka with a removable hood and slim synthetic fill for spring travel. The water-resistant nylon shell folds into its own pouch and weighs little in a bag. A drawcord waist and zip pockets add shape and function. It is a cool-weather layer, lightly insulated and not a winter parka.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "travel",
+          "city"
+        ],
+        "limitations": [
+          "lightly insulated",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-COA-01",
+      "title": "Womens Wool Wrap Coat",
+      "category": "coat",
+      "categoryIds": [
+        "women-coats"
+      ],
+      "colors": [
+        "camel",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 300.0,
+      "imageKey": null,
+      "description": "A wool wrap coat with a tie belt and a long, elegant line for office days and evenings. The wool shell is warm and drapes well, with a smooth lining and patch pockets. The wrap front and tailored cut flatter the waist. It is refined and warm but needs dry cleaning and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "viscose",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "patch"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "evening"
+        ],
+        "limitations": [
+          "needs dry cleaning",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-COA-02",
+      "title": "Womens Cashmere Longline Coat",
+      "category": "coat",
+      "categoryIds": [
+        "women-coats"
+      ],
+      "colors": [
+        "cream",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 450.0,
+      "imageKey": null,
+      "description": "A longline cashmere coat with a relaxed fit and a soft, luxurious hand for cold evenings. Cashmere is blended with wool for warmth that feels light, and the smooth lining slides over dresses. Welt pockets keep the silhouette clean. It is elegant and warm but delicate, and it offers no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cashmere",
+                "percent": 70
+              },
+              {
+                "fiber": "wool",
+                "percent": 30
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "viscose",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "evening",
+          "travel"
+        ],
+        "limitations": [
+          "delicate",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-COA-03",
+      "title": "Womens Non-Wool Trench Coat",
+      "category": "coat",
+      "categoryIds": [
+        "women-coats"
+      ],
+      "colors": [
+        "beige",
+        "navy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 260.0,
+      "imageKey": null,
+      "description": "A non-wool trench coat in a smooth recycled polyester shell for those avoiding animal fibers. The water-repellent fabric sheds light rain, and the tailored cut with a belt keeps a classic line. A removable hood and flap pockets add function. It is a light-to-medium layer that is water-resistant, not waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "commuting"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-COA-04",
+      "title": "Womens Belted Wool Coat",
+      "category": "coat",
+      "categoryIds": [
+        "women-coats"
+      ],
+      "colors": [
+        "burgundy",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 340.0,
+      "imageKey": null,
+      "description": "A belted wool coat with a removable hood and a structured, tailored cut for smart winter wear. The wool shell is warm and holds its shape, with a quilted lining for extra comfort. Flap pockets and a tie belt add polish. It is warm and refined but needs dry cleaning and has no weatherproofing.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 80
+              },
+              {
+                "fiber": "polyester",
+                "percent": 20
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "office",
+          "formal"
+        ],
+        "limitations": [
+          "needs dry cleaning"
+        ]
+      }
+    },
+    {
+      "sku": "W-COA-05",
+      "title": "Womens Linen Duster Coat",
+      "category": "coat",
+      "categoryIds": [
+        "women-coats"
+      ],
+      "colors": [
+        "natural",
+        "sand"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 155.0,
+      "imageKey": null,
+      "description": "A long linen duster with a relaxed, open front for warm evenings and resort wear. The breathable linen shell keeps air moving, and the unstructured cut layers over dresses and tops. Patch pockets keep it simple. It is a summery layer with no insulation, no closure and no protection from wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "linen",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "patch"
+        ],
+        "packable": false,
+        "occasions": [
+          "evening",
+          "travel"
+        ],
+        "limitations": [
+          "no closure",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-COA-06",
+      "title": "Womens Cocoon Coat",
+      "category": "coat",
+      "categoryIds": [
+        "women-coats"
+      ],
+      "colors": [
+        "charcoal",
+        "camel"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 290.0,
+      "imageKey": null,
+      "description": "A cocoon coat with a rounded, relaxed silhouette and drop shoulders for a modern winter look. The wool-blend shell is warm and soft, with a smooth lining and hidden side pockets. It slips over chunky knitwear easily. It is cosy and stylish but heavy, needs dry cleaning and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "wool",
+                "percent": 65
+              },
+              {
+                "fiber": "polyester",
+                "percent": 35
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "viscose",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "heavy",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-COA-07",
+      "title": "Womens Stretch Office Coat",
+      "category": "coat",
+      "categoryIds": [
+        "women-coats"
+      ],
+      "colors": [
+        "navy",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 180.0,
+      "imageKey": null,
+      "description": "A tailored office coat with a touch of elastane for easy movement over workwear. The synthetic shell resists wrinkles and light showers, with a smooth lining and slanted pockets. The sharp cut and clean front keep it professional for commuting. It is a moderate-warmth layer that is water-resistant, not waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 95
+              },
+              {
+                "fiber": "elastane",
+                "percent": 5
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "low",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "commuting",
+          "office"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-RAN-01",
+      "title": "Womens Waterproof Commuter Raincoat",
+      "category": "rain",
+      "categoryIds": [
+        "women-rain"
+      ],
+      "colors": [
+        "navy",
+        "red"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 118.0,
+      "imageKey": null,
+      "description": "A waterproof commuter raincoat with taped seams, a fixed hood and a shaped waist. The nylon shell is seam-sealed against heavy rain and folds into its own pocket. A mesh lining and underarm vents add breathability for cycling. It is genuinely waterproof but uninsulated, so layer underneath in cold weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "commuting",
+          "cycling"
+        ],
+        "limitations": [
+          "uninsulated"
+        ]
+      }
+    },
+    {
+      "sku": "W-RAN-02",
+      "title": "Womens Packable Cycling Rain Shell",
+      "category": "rain",
+      "categoryIds": [
+        "women-rain"
+      ],
+      "colors": [
+        "yellow",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 72.0,
+      "imageKey": null,
+      "description": "A lightweight waterproof cycling shell with a drop tail, reflective details and a helmet-friendly hood. The nylon shell packs into a jersey pocket and blocks wind as well as rain. A half-zip and elastic cuffs keep out spray. It is waterproof and packable but offers no warmth of its own.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "cycling",
+          "outdoor"
+        ],
+        "limitations": [
+          "no insulation"
+        ]
+      }
+    },
+    {
+      "sku": "W-RAN-03",
+      "title": "Womens Water-Resistant Anorak",
+      "category": "rain",
+      "categoryIds": [
+        "women-rain"
+      ],
+      "colors": [
+        "olive",
+        "cream"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 82.0,
+      "imageKey": null,
+      "description": "A pullover anorak with a water-resistant shell and a roomy front pocket for easy errands. The fixed hood and half-zip keep light showers out, and the relaxed fit layers over a knit. It is water-resistant rather than waterproof, so it suits drizzle, not a downpour, and it has no insulation for cold days.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "kangaroo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "evening"
+        ],
+        "limitations": [
+          "not waterproof",
+          "light warmth"
+        ]
+      }
+    },
+    {
+      "sku": "W-RAN-04",
+      "title": "Womens Hiking Waterproof Shell",
+      "category": "rain",
+      "categoryIds": [
+        "women-rain"
+      ],
+      "colors": [
+        "green",
+        "blue"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 138.0,
+      "imageKey": null,
+      "description": "A waterproof hiking shell with a storm hood, pit zips and articulated sleeves for wet trails. The nylon shell is seam-sealed and breathable, with adjustable cuffs and hem. Zip hand and chest pockets sit clear of a pack belt. It is a technical waterproof layer with no insulation for cold camps.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "hiking",
+          "outdoor"
+        ],
+        "limitations": [
+          "no insulation"
+        ]
+      }
+    },
+    {
+      "sku": "W-RAN-05",
+      "title": "Womens Budget Rain Poncho Jacket",
+      "category": "rain",
+      "categoryIds": [
+        "women-rain"
+      ],
+      "colors": [
+        "grey",
+        "blue"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 42.0,
+      "imageKey": null,
+      "description": "An inexpensive waterproof rain jacket with a fixed hood and elastic cuffs for occasional downpours. The lightweight nylon shell is seam-taped and packs into its own pouch. It keeps you dry on short errands but has a boxy fit and little breathability, and it offers no warmth. A simple, functional budget layer.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "low",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "city",
+          "outdoor"
+        ],
+        "limitations": [
+          "boxy fit",
+          "limited breathability"
+        ]
+      }
+    },
+    {
+      "sku": "W-SFT-01",
+      "title": "Womens Stretch Softshell",
+      "category": "softshell",
+      "categoryIds": [
+        "women-softshell"
+      ],
+      "colors": [
+        "black",
+        "rose"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 105.0,
+      "imageKey": null,
+      "description": "A four-way stretch softshell cut with a slimmer line for women who move between trail and town. The polyester and elastane shell is windproof and breathable, with a water-resistant finish and a brushed interior for light warmth. Zip hand and chest pockets hold essentials. It is a versatile mid-layer but is not fully waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 90
+              },
+              {
+                "fiber": "elastane",
+                "percent": 10
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand",
+          "chest"
+        ],
+        "packable": true,
+        "occasions": [
+          "hiking",
+          "city"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-SFT-02",
+      "title": "Womens Cycling Softshell",
+      "category": "softshell",
+      "categoryIds": [
+        "women-softshell"
+      ],
+      "colors": [
+        "red",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 128.0,
+      "imageKey": null,
+      "description": "A women's cycling softshell with a windproof front, breathable back panels and reflective trims for night commutes. The polyester and elastane shell sheds light rain and sits close without flapping at speed. A rear zip pocket keeps a phone close, and the high collar replaces a hood. It is weather-resistant but uninsulated.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 85
+              },
+              {
+                "fiber": "elastane",
+                "percent": 15
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "commuting",
+          "cycling"
+        ],
+        "limitations": [
+          "uninsulated",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "W-SFT-03",
+      "title": "Womens Insulated Softshell",
+      "category": "softshell",
+      "categoryIds": [
+        "women-softshell"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 148.0,
+      "imageKey": null,
+      "description": "A women's insulated softshell with light synthetic lining for cool, active days. The polyester shell is windproof and water-resistant, with a tapered fit that layers over a base. Zip pockets and a stand collar add comfort. It bridges a jacket and a mid-layer, though the insulation is light and it is not waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 92
+              },
+              {
+                "fiber": "elastane",
+                "percent": 8
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "outdoor",
+          "casual"
+        ],
+        "limitations": [
+          "light insulation",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-SFT-04",
+      "title": "Womens Hooded Softshell",
+      "category": "softshell",
+      "categoryIds": [
+        "women-softshell"
+      ],
+      "colors": [
+        "sage",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 122.0,
+      "imageKey": null,
+      "description": "A women's hooded softshell with a windproof, water-resistant shell and a brushed interior for brisk walks and errands. The fixed hood and high stretch let you move freely, while zip hand pockets keep essentials secure. The shaped cut layers over a sweater. It resists wind and drizzle but not sustained rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 88
+              },
+              {
+                "fiber": "elastane",
+                "percent": 12
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "spring",
+          "autumn"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-FLC-01",
+      "title": "Womens Trail Fleece",
+      "category": "fleece",
+      "categoryIds": [
+        "women-fleece"
+      ],
+      "colors": [
+        "rose",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 78.0,
+      "imageKey": null,
+      "description": "A women's brushed fleece mid-layer with zipped pockets and a stand collar for cool walks and alpine treks. The polyester fleece traps warm air while staying quick-drying, and the regular fit layers under a shell. It is warm and breathable as a mid-layer but provides no wind or rain protection on its own.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "hiking",
+          "layering"
+        ],
+        "limitations": [
+          "no wind or rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-FLC-02",
+      "title": "Womens Lightweight Grid Fleece",
+      "category": "fleece",
+      "categoryIds": [
+        "women-fleece"
+      ],
+      "colors": [
+        "blue",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 46.0,
+      "imageKey": null,
+      "description": "A women's lightweight grid fleece with a breathable waffle back and a slim fit for high-output layering. The polyester fleece dries fast and moves moisture, while the low collar stays out of the way. It is a cool-weather base or mid-layer for running and hiking, with no hood and no protection against wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "medium",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "hiking",
+          "running"
+        ],
+        "limitations": [
+          "no hood",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-FLC-03",
+      "title": "Womens Hooded Fleece",
+      "category": "fleece",
+      "categoryIds": [
+        "women-fleece"
+      ],
+      "colors": [
+        "cream",
+        "navy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 88.0,
+      "imageKey": null,
+      "description": "A women's full-zip fleece with a fixed hood and a relaxed fit for easy everyday warmth. The soft polyester fleece insulates on cool evenings, and zip hand pockets warm your hands. It layers over a tee or under a shell. It is cosy and casual but not windproof, and it offers no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "evening"
+        ],
+        "limitations": [
+          "not windproof",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-FLC-04",
+      "title": "Womens Cotton-Blend Fleece",
+      "category": "fleece",
+      "categoryIds": [
+        "women-fleece"
+      ],
+      "colors": [
+        "sage",
+        "cream"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 50.0,
+      "imageKey": null,
+      "description": "A women's soft cotton-blend fleece with a quarter zip and a regular fit for fireside evenings and errands. The cotton and polyester blend feels natural against the skin while drying faster than pure cotton. A stand collar and hand pockets add comfort. It is a light, casual layer with no hood and no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 60
+              },
+              {
+                "fiber": "polyester",
+                "percent": 40
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "none",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "weekend"
+        ],
+        "limitations": [
+          "no hood",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRK-01",
+      "title": "Womens Retro Track Jacket",
+      "category": "track",
+      "categoryIds": [
+        "women-track"
+      ],
+      "colors": [
+        "black",
+        "red"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 47.0,
+      "imageKey": null,
+      "description": "A women's retro track jacket with bold color blocking and a soft inner lining, inspired by nineties sportswear. The lightweight polyester shell has a full zip and a relaxed fit, with ribbed cuffs and hem. It is a casual throw-on layer for mild days, offering little warmth and no protection from wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "athleisure",
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "no weather protection",
+          "light warmth"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRK-02",
+      "title": "Womens Stretch Track Jacket",
+      "category": "track",
+      "categoryIds": [
+        "women-track"
+      ],
+      "colors": [
+        "navy",
+        "white"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 72.0,
+      "imageKey": null,
+      "description": "A women's modern track jacket with stretch and a slim, athletic cut for runs and warm-ups. The polyester and elastane shell moves with you and wicks moisture, while a full zip and stand collar add coverage. Zip pockets keep keys secure. It is a lightweight performance layer with no hood and no rain protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 88
+              },
+              {
+                "fiber": "elastane",
+                "percent": 12
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "high",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "athleisure",
+          "city",
+          "running"
+        ],
+        "limitations": [
+          "no hood",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-TRK-03",
+      "title": "Womens Warm Lined Track Jacket",
+      "category": "track",
+      "categoryIds": [
+        "women-track"
+      ],
+      "colors": [
+        "grey",
+        "rose"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 84.0,
+      "imageKey": null,
+      "description": "A women's track jacket with a brushed lining for extra warmth on cool commutes and gym runs. The polyester shell is smooth outside and softly lined inside, with a regular fit and ribbed trim. Hand pockets and a full zip keep it practical. It is warmer than a basic track jacket but still not weatherproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "athleisure",
+          "casual",
+          "city"
+        ],
+        "limitations": [
+          "not weatherproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-TCH-01",
+      "title": "Womens Aerodynamic Cycling Jacket",
+      "category": "technical",
+      "categoryIds": [
+        "women-technical"
+      ],
+      "colors": [
+        "black",
+        "red"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 158.0,
+      "imageKey": null,
+      "description": "A women's technical cycling jacket with an aerodynamic fit, a windproof front and breathable back panels. The polyester shell has reflective trims for night visibility and a low collar that stays out of the way. A rear zip pocket holds a phone. It is fast and wind-resistant but uninsulated and not a rain shell.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "none",
+        "fit": "athletic",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "commuting",
+          "cycling"
+        ],
+        "limitations": [
+          "uninsulated",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-TCH-02",
+      "title": "Womens Alpine Hardshell",
+      "category": "technical",
+      "categoryIds": [
+        "women-technical"
+      ],
+      "colors": [
+        "green",
+        "blue"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 235.0,
+      "imageKey": null,
+      "description": "A women's fully waterproof alpine hardshell with a helmet-compatible hood, taped seams and a high breathability membrane. The nylon shell is built for exposed mountain weather, with a high collar and pit zips. Articulated sleeves and an athletic cut move with climbing and trekking. It is a technical waterproof layer with no insulation.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "spring"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "athletic",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "hiking",
+          "outdoor"
+        ],
+        "limitations": [
+          "no insulation"
+        ]
+      }
+    },
+    {
+      "sku": "W-TCH-03",
+      "title": "Womens Insulated Ski Shell",
+      "category": "technical",
+      "categoryIds": [
+        "women-technical"
+      ],
+      "colors": [
+        "navy",
+        "white"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 265.0,
+      "imageKey": null,
+      "description": "A women's waterproof ski shell with light synthetic insulation, a removable hood and a powder skirt. The nylon shell is seam-sealed and windproof for resort days, with a high collar and zip vents. Zip hand and chest pockets carry passes and snacks. It is warm and protective but heavier than an uninsulated hardshell.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "winter"
+        ],
+        "weatherProtection": "waterproof",
+        "windProtection": "high",
+        "hood": "removable",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand",
+          "chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "outdoor",
+          "sport"
+        ],
+        "limitations": [
+          "heavier than a hardshell"
+        ]
+      }
+    },
+    {
+      "sku": "W-TCH-04",
+      "title": "Womens Trail Running Wind Shell",
+      "category": "technical",
+      "categoryIds": [
+        "women-technical"
+      ],
+      "colors": [
+        "yellow",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 92.0,
+      "imageKey": null,
+      "description": "A women's ultralight trail-running shell with a hoodless, slim cut and a packable design. The nylon shell blocks wind and sheds light showers while staying breathable. It stuffs into its own pocket for a vest or belt. It is a minimalist layer for fast outings, not a waterproof jacket and not insulated.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "outdoor",
+          "running"
+        ],
+        "limitations": [
+          "not waterproof",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "W-FLD-01",
+      "title": "Womens Waxed Cotton Field Jacket",
+      "category": "field",
+      "categoryIds": [
+        "women-field"
+      ],
+      "colors": [
+        "olive",
+        "brown"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 178.0,
+      "imageKey": null,
+      "description": "A women's heritage field jacket with a waxed cotton finish, four flap pockets and a corduroy collar. The weather-resistant cotton shell handles light rain and brambles, and the regular fit layers over knitwear. It is a durable, casual outdoor layer that softens with wear, though it is heavy and not fully waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "cargo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "outdoor"
+        ],
+        "limitations": [
+          "heavy",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-FLD-02",
+      "title": "Womens Lightweight Utility Field Jacket",
+      "category": "field",
+      "categoryIds": [
+        "women-field"
+      ],
+      "colors": [
+        "khaki",
+        "navy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 98.0,
+      "imageKey": null,
+      "description": "A women's lightweight utility field jacket with plenty of pockets for travel and everyday errands. The cotton and polyester shell is easy to pack and dries quickly, while the relaxed fit stays comfortable. Flap and cargo pockets organise the essentials. It is a casual warm-weather layer with no insulation and only light weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 65
+              },
+              {
+                "fiber": "polyester",
+                "percent": 35
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "cargo"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "city",
+          "travel"
+        ],
+        "limitations": [
+          "no insulation",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-FLD-03",
+      "title": "Womens Insulated Field Jacket",
+      "category": "field",
+      "categoryIds": [
+        "women-field"
+      ],
+      "colors": [
+        "brown",
+        "green"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 195.0,
+      "imageKey": null,
+      "description": "A women's field jacket with a warm quilted lining and a detachable hood for cool, damp days outdoors. The cotton shell is weather-resistant, and the synthetic lining adds warmth without animal fill. Four flap pockets carry tools and maps. It is a rugged, insulated layer, though heavier than a shell and not fully waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "high",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "removable",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "cargo"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "outdoor"
+        ],
+        "limitations": [
+          "heavy",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-BMB-01",
+      "title": "Womens Classic Bomber",
+      "category": "bomber",
+      "categoryIds": [
+        "women-bomber"
+      ],
+      "colors": [
+        "olive",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 138.0,
+      "imageKey": null,
+      "description": "A women's ribbed-hem bomber with a recycled polyester shell and a light lining for transitional weather. The relaxed streetwear cut sits at the waist, with a zip front and two hand pockets. It is a simple, versatile outer layer that blocks a little wind but offers no hood and no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "evening"
+        ],
+        "limitations": [
+          "no hood",
+          "no rain protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-BMB-02",
+      "title": "Womens Quilted Bomber",
+      "category": "bomber",
+      "categoryIds": [
+        "women-bomber"
+      ],
+      "colors": [
+        "navy",
+        "burgundy"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 162.0,
+      "imageKey": null,
+      "description": "A women's quilted bomber with synthetic fill and a ribbed collar for extra warmth in autumn and winter. The nylon shell is smooth outside and lightly insulated inside, with a regular fit and a zip front. Hand pockets and an inner pocket keep small items close. It is warm and neat but not waterproof.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "hand",
+          "inner-chest"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "evening"
+        ],
+        "limitations": [
+          "no hood",
+          "not waterproof"
+        ]
+      }
+    },
+    {
+      "sku": "W-BMB-03",
+      "title": "Womens Tailored Bomber",
+      "category": "bomber",
+      "categoryIds": [
+        "women-bomber"
+      ],
+      "colors": [
+        "black",
+        "cream"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 205.0,
+      "imageKey": null,
+      "description": "A women's refined bomber with a tailored cut and a smooth synthetic shell for evenings out. The sharper silhouette and zip front with welt pockets keep it minimal and smart. It is a light layer with a cleaner line than a sport bomber. It offers no hood and no protection from wind or rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "viscose",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "tailored",
+        "stretch": "none",
+        "pockets": [
+          "welt"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "evening",
+          "travel"
+        ],
+        "limitations": [
+          "no hood",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-DNM-01",
+      "title": "Womens Rigid Denim Trucker Jacket",
+      "category": "denim",
+      "categoryIds": [
+        "women-denim"
+      ],
+      "colors": [
+        "indigo"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 108.0,
+      "imageKey": null,
+      "description": "A women's rigid denim trucker jacket with contrast stitching, chest flap pockets and a button front. The heavyweight cotton denim breaks in over time for a personal fit. It is a rugged, durable layer for cool, dry days. There is no stretch, no hood and no insulation, so it works best as an outer layer over knitwear.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "weekend"
+        ],
+        "limitations": [
+          "no stretch",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "W-DNM-02",
+      "title": "Womens Stretch Denim Jacket",
+      "category": "denim",
+      "categoryIds": [
+        "women-denim"
+      ],
+      "colors": [
+        "black",
+        "blue"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 122.0,
+      "imageKey": null,
+      "description": "A women's slim denim jacket with a touch of elastane for comfortable movement through the shoulders. The soft-washed cotton denim has a modern cut and simple patch pockets. It layers neatly over a tee or shirt. The stretch improves comfort, but the jacket still offers no hood, no insulation and no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 98
+              },
+              {
+                "fiber": "elastane",
+                "percent": 2
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "low",
+        "pockets": [
+          "patch"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "evening"
+        ],
+        "limitations": [
+          "no insulation",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "W-DNM-03",
+      "title": "Womens Sherpa-Lined Denim Jacket",
+      "category": "denim",
+      "categoryIds": [
+        "women-denim"
+      ],
+      "colors": [
+        "indigo",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 142.0,
+      "imageKey": null,
+      "description": "A women's denim jacket lined with a cosy synthetic fleece for chilly days. The cotton denim shell is durable, while the soft lining adds warmth through autumn. A button front and chest pockets keep the classic trucker look. It is warm and sturdy but heavy, with no hood and no water protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "cotton",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "winter"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "flap-chest",
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "weekend"
+        ],
+        "limitations": [
+          "heavy",
+          "no hood"
+        ]
+      }
+    },
+    {
+      "sku": "W-LTH-01",
+      "title": "Womens Leather Biker Jacket",
+      "category": "leather",
+      "categoryIds": [
+        "women-leather"
+      ],
+      "colors": [
+        "black",
+        "brown"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 345.0,
+      "imageKey": null,
+      "description": "A women's full-grain leather biker jacket with an asymmetric zip, notched lapels and two zipped pockets. The genuine leather shell develops a rich patina over time, and the satin lining slides easily over a shirt. It is a structured, durable layer for evenings out, though it is heavy, needs care and offers no weather protection.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "leather",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "medium",
+        "hood": "none",
+        "fit": "regular",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "evening",
+          "travel"
+        ],
+        "limitations": [
+          "heavy",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-LTH-02",
+      "title": "Womens Suede Bomber",
+      "category": "leather",
+      "categoryIds": [
+        "women-leather"
+      ],
+      "colors": [
+        "tan",
+        "brown"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 375.0,
+      "imageKey": null,
+      "description": "A women's soft suede bomber with a ribbed collar, hem and cuffs for a relaxed, refined look. The suede shell is supple and warm, with a smooth lining and simple hand pockets. It suits smart-casual evenings and cool autumn days. Suede is delicate in rain and requires careful cleaning, so it is best in dry weather.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "suede",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "viscose",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "casual",
+          "city",
+          "evening"
+        ],
+        "limitations": [
+          "delicate in rain"
+        ]
+      }
+    },
+    {
+      "sku": "W-LTH-03",
+      "title": "Womens Slim Leather Racer Jacket",
+      "category": "leather",
+      "categoryIds": [
+        "women-leather"
+      ],
+      "colors": [
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 318.0,
+      "imageKey": null,
+      "description": "A women's slim leather racer jacket with a stand collar and a clean, minimal front. The smooth leather shell is structured and durable, with a zip front and zipped hand pockets. It is cut close for a sharp silhouette over a tee. Leather is warm against the wind but heavy, and it offers no protection from rain.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "leather",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "medium",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "low",
+        "hood": "none",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": false,
+        "occasions": [
+          "city",
+          "evening",
+          "travel"
+        ],
+        "limitations": [
+          "heavy",
+          "no weather protection"
+        ]
+      }
+    },
+    {
+      "sku": "W-WDB-01",
+      "title": "Womens Packable Windbreaker",
+      "category": "windbreaker",
+      "categoryIds": [
+        "women-windbreaker"
+      ],
+      "colors": [
+        "black",
+        "red"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 44.0,
+      "imageKey": null,
+      "description": "A women's quick-dry windbreaker with a packable hood and reflective details for night runs. The lightweight nylon shell blocks wind and stows into its own pocket. A slim cut keeps it streamlined, and elastic cuffs seal out drafts. It is a thin, breathable layer for wind, not rain, and it offers no warmth of its own.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "none",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "none",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "slim",
+        "stretch": "none",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "city",
+          "running"
+        ],
+        "limitations": [
+          "not for rain",
+          "no insulation"
+        ]
+      }
+    },
+    {
+      "sku": "W-WDB-02",
+      "title": "Womens Water-Resistant Windbreaker",
+      "category": "windbreaker",
+      "categoryIds": [
+        "women-windbreaker"
+      ],
+      "colors": [
+        "navy",
+        "grey"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 68.0,
+      "imageKey": null,
+      "description": "A women's water-resistant windbreaker with a fixed hood and a relaxed fit for everyday changeable weather. The polyester shell sheds light showers and blocks a steady breeze, while hand pockets keep things simple. It packs down for a bag. It is weather-resistant rather than waterproof, with no insulation for cold days.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "lining": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "polyester",
+                "percent": 100
+              }
+            ]
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "medium",
+        "hood": "fixed",
+        "fit": "relaxed",
+        "stretch": "none",
+        "pockets": [
+          "hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "casual",
+          "city",
+          "travel"
+        ],
+        "limitations": [
+          "not waterproof",
+          "light warmth"
+        ]
+      }
+    },
+    {
+      "sku": "W-WDB-03",
+      "title": "Womens Hooded Stretch Windbreaker",
+      "category": "windbreaker",
+      "categoryIds": [
+        "women-windbreaker"
+      ],
+      "colors": [
+        "green",
+        "black"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 88.0,
+      "imageKey": null,
+      "description": "A women's hooded windbreaker with a touch of stretch and a regular fit for hikes and commutes. The nylon shell is windproof and lightly water-resistant, with a fixed hood that rolls away when not needed. Zip hand pockets keep small items secure. It is a breathable wind layer, not a waterproof or insulated jacket.",
+      "facts": {
+        "materials": {
+          "shell": {
+            "state": "known",
+            "fibers": [
+              {
+                "fiber": "nylon",
+                "percent": 92
+              },
+              {
+                "fiber": "elastane",
+                "percent": 8
+              }
+            ]
+          },
+          "lining": {
+            "state": "not-applicable",
+            "fibers": []
+          },
+          "fill": {
+            "state": "not-applicable",
+            "fibers": []
+          }
+        },
+        "warmth": "light",
+        "seasons": [
+          "autumn",
+          "spring",
+          "summer",
+          "winter"
+        ],
+        "weatherProtection": "water-resistant",
+        "windProtection": "high",
+        "hood": "fixed",
+        "fit": "regular",
+        "stretch": "low",
+        "pockets": [
+          "zip-hand"
+        ],
+        "packable": true,
+        "occasions": [
+          "city",
+          "commuting",
+          "hiking"
+        ],
+        "limitations": [
+          "not waterproof",
+          "no insulation"
+        ]
+      }
+    }
+  ]
+}

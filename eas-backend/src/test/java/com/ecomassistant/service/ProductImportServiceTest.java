@@ -23,7 +23,7 @@ class ProductImportServiceTest {
 
     private final ProductImportService service = new ProductImportService(
             mock(VectorStore.class),
-            new EcomImportProperties("sampledata/apparel_catalog_sample.csv"),
+            new EcomImportProperties("sampledata/apparel_catalog.csv"),
             mock(QdrantClient.class),
             new CatalogCategoryRegistry("catalog/browsing-categories.json"),
             new CatalogReadiness());

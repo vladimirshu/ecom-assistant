@@ -18,16 +18,16 @@ Shared/unisex membership is permitted by the backend contract but cannot count o
 
 ## Authoring facts as source, CSV as export
 
-Proposed source: `src/main/resources/sampledata/apparel_catalog_facts.json`, with a versioned schema, catalog id, products and authoring provenance. It contains the ordinary import fields (SKU, title, category, categoryIds, colors, sizes, price, image, description) plus authoring-only functional facts. Export the CSV format owned by apparel-catalog-browsing, proposed `sampledata/apparel_catalog.csv`. Validate export equality so JSON and CSV cannot drift independently. Update ecom.import.sample-file explicitly during implementation; do not leave the old jacket-only source configured.
+Proposed source: versioned authoring-facts part files under `src/main/resources/sampledata/facts/` (Men/Women × jackets-coats/knitwear/bottoms), each a complete `CatalogFacts` document sharing one schema version and catalog id; the definitive layout, field names and controlled vocabularies are in `facts-schema.md`. Each product carries the ordinary import fields (SKU, title, category, categoryIds, colors, sizes, price, imageKey, description) plus authoring-only functional facts. Export the CSV format owned by apparel-catalog-browsing, proposed `sampledata/apparel_catalog.csv`. Validate export equality so the facts source and CSV cannot drift independently. Update ecom.import.sample-file explicitly during implementation; do not leave the old jacket-only source configured.
 
 Example fact structure (illustrative schema, not an accepted product or invented real SKU):
 
 ```json
 {
   "materials": {
-    "shell": [{"fiber": "cotton", "percent": 80}, {"fiber": "polyester", "percent": 20}],
-    "lining": {"state": "not-applicable"},
-    "fill": {"state": "not-applicable"}
+    "shell":  { "state": "known", "fibers": [ { "fiber": "cotton", "percent": 80 }, { "fiber": "polyester", "percent": 20 } ] },
+    "lining": { "state": "not-applicable" },
+    "fill":   { "state": "not-applicable" }
   },
   "warmth": "medium",
   "seasons": ["spring", "autumn"],
@@ -36,7 +36,7 @@ Example fact structure (illustrative schema, not an accepted product or invented
   "hood": "fixed",
   "fit": "relaxed",
   "stretch": "low",
-  "pockets": {"kind": "kangaroo", "count": 1},
+  "pockets": ["kangaroo"],
   "packable": false,
   "occasions": ["casual", "travel"],
   "limitations": ["not a rain shell"]
