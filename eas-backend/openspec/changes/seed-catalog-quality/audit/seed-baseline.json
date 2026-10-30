@@ -1,0 +1,254 @@
+{
+  "auditDate": "2026-10-30",
+  "scope": "Configured repository seed file only; no running Qdrant inspection or live relevance evaluation",
+  "source": "eas-backend/src/main/resources/sampledata/apparel_jackets_sample.csv",
+  "sha256": "e884f4c5cf446e4f37d603ee187555a7a17084adea154877db179f3308002ee6",
+  "configuredBy": "eas-backend/src/main/resources/application.yml:ecom.import.sample-file",
+  "products": 100,
+  "uniqueSkus": 100,
+  "uniqueTitles": 100,
+  "uniqueDescriptions": 20,
+  "duplicateDescriptionSurplus": 80,
+  "productsInRepeatedDescriptionGroups": 95,
+  "categoryCounts": {
+    "bomber": 1,
+    "coat": 12,
+    "denim": 2,
+    "field": 5,
+    "fleece": 11,
+    "leather": 1,
+    "parka": 1,
+    "puffer": 25,
+    "rain": 14,
+    "softshell": 5,
+    "technical": 10,
+    "track": 11,
+    "windbreaker": 2
+  },
+  "uniqueDescriptionsByCategory": {
+    "bomber": 1,
+    "coat": 3,
+    "denim": 1,
+    "field": 2,
+    "fleece": 1,
+    "leather": 1,
+    "parka": 1,
+    "puffer": 1,
+    "rain": 3,
+    "softshell": 1,
+    "technical": 3,
+    "track": 1,
+    "windbreaker": 1
+  },
+  "priceRange": [
+    50.78,
+    296.96
+  ],
+  "priceBandCounts": {
+    "200-and-over": 42,
+    "50-to-under-100": 27,
+    "100-to-under-200": 31
+  },
+  "emptyImageCells": 100,
+  "csvFields": [
+    "sku",
+    "title",
+    "category",
+    "colors",
+    "sizes",
+    "price",
+    "image",
+    "description"
+  ],
+  "descriptionWordsRange": [
+    15,
+    25
+  ],
+  "duplicateGroups": [
+    {
+      "skus": [
+        "JKT0006",
+        "JKT0021",
+        "JKT0022",
+        "JKT0023",
+        "JKT0024",
+        "JKT0029",
+        "JKT0038",
+        "JKT0042",
+        "JKT0050",
+        "JKT0052",
+        "JKT0053",
+        "JKT0055",
+        "JKT0059",
+        "JKT0063",
+        "JKT0066",
+        "JKT0067",
+        "JKT0068",
+        "JKT0069",
+        "JKT0071",
+        "JKT0072",
+        "JKT0084",
+        "JKT0086",
+        "JKT0088",
+        "JKT0092",
+        "JKT0095"
+      ],
+      "count": 25,
+      "description": "Quilted puffer jacket filled with responsibly sourced down. Lightweight yet warm, designed for cold city winters. Water-repellent finish and inner chest pocket."
+    },
+    {
+      "skus": [
+        "JKT0001",
+        "JKT0030",
+        "JKT0033",
+        "JKT0034",
+        "JKT0037",
+        "JKT0056",
+        "JKT0073",
+        "JKT0075",
+        "JKT0078",
+        "JKT0080",
+        "JKT0081",
+        "JKT0087"
+      ],
+      "count": 12,
+      "description": "Urban explorer jacket crafted from water-resistant nylon, lightweight and durable. Features adjustable cuffs, hidden pockets, and breathable mesh lining. Ideal for commuting in unpredictable weather."
+    },
+    {
+      "skus": [
+        "JKT0014",
+        "JKT0026",
+        "JKT0028",
+        "JKT0032",
+        "JKT0039",
+        "JKT0040",
+        "JKT0041",
+        "JKT0051",
+        "JKT0058",
+        "JKT0074",
+        "JKT0099"
+      ],
+      "count": 11,
+      "description": "Hybrid fleece jacket with insulated panels for core warmth. Ideal mid-layer for alpine expeditions or standalone in cool weather."
+    },
+    {
+      "skus": [
+        "JKT0016",
+        "JKT0027",
+        "JKT0031",
+        "JKT0035",
+        "JKT0043",
+        "JKT0046",
+        "JKT0048",
+        "JKT0062",
+        "JKT0077",
+        "JKT0085",
+        "JKT0096"
+      ],
+      "count": 11,
+      "description": "Retro track jacket with bold color blocking. Lightweight polyester fabric with soft inner lining, inspired by 90s sportswear."
+    },
+    {
+      "skus": [
+        "JKT0003",
+        "JKT0044",
+        "JKT0049",
+        "JKT0064",
+        "JKT0076"
+      ],
+      "count": 5,
+      "description": "Minimalist softshell jacket with 4-way stretch. Designed for layering, providing comfort and flexibility. Key features: windproof, breathable, and packable."
+    },
+    {
+      "skus": [
+        "JKT0015",
+        "JKT0036",
+        "JKT0070",
+        "JKT0083",
+        "JKT0098"
+      ],
+      "count": 5,
+      "description": "Trench-style overcoat with water-repellent treatment. Tailored fit with adjustable belt, perfect for both business and casual looks."
+    },
+    {
+      "skus": [
+        "JKT0020",
+        "JKT0045",
+        "JKT0047",
+        "JKT0054",
+        "JKT0060"
+      ],
+      "count": 5,
+      "description": "Technical cycling jacket with aerodynamic fit. Windproof front, breathable back panels, and reflective trims for safety."
+    },
+    {
+      "skus": [
+        "JKT0019",
+        "JKT0065",
+        "JKT0090",
+        "JKT0093"
+      ],
+      "count": 4,
+      "description": "Premium cashmere blend jacket, lightweight but luxuriously warm. Minimal details, timeless design for elegant city wear."
+    },
+    {
+      "skus": [
+        "JKT0002",
+        "JKT0061",
+        "JKT0091"
+      ],
+      "count": 3,
+      "description": "Heritage wool-blend jacket with quilted lining. Warmth without bulk, perfect for evening walks in autumn and winter. Classic cut with a modern finish."
+    },
+    {
+      "skus": [
+        "JKT0005",
+        "JKT0089",
+        "JKT0097"
+      ],
+      "count": 3,
+      "description": "Performance ski jacket with waterproof zippers, detachable hood, and powder skirt. High breathability (10,000 g/m\u00b2/24h) and waterproof rating (15,000 mm)."
+    },
+    {
+      "skus": [
+        "JKT0010",
+        "JKT0057",
+        "JKT0100"
+      ],
+      "count": 3,
+      "description": "Field jacket with waxed cotton finish, heritage-inspired. Weather-resistant with roomy cargo pockets, designed for outdoor adventures."
+    },
+    {
+      "skus": [
+        "JKT0007",
+        "JKT0094"
+      ],
+      "count": 2,
+      "description": "Vintage-inspired denim jacket with sherpa lining. Rugged look with comfort for chilly days. Durable hardware and reinforced seams."
+    },
+    {
+      "skus": [
+        "JKT0009",
+        "JKT0025"
+      ],
+      "count": 2,
+      "description": "Sporty windbreaker jacket in quick-dry fabric. Reflective details for night visibility, compact enough to fit into its own pocket."
+    },
+    {
+      "skus": [
+        "JKT0013",
+        "JKT0079"
+      ],
+      "count": 2,
+      "description": "Mountain hiking jacket reinforced with abrasion-resistant panels. Ventilation zippers, articulated sleeves, and storm guard hood."
+    },
+    {
+      "skus": [
+        "JKT0018",
+        "JKT0082"
+      ],
+      "count": 2,
+      "description": "Camo-print tactical jacket with reinforced elbows and multiple utility pockets. Built for durability in outdoor activities."
+    }
+  ]
+}

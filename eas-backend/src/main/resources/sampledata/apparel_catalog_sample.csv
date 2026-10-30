@@ -1,0 +1,31 @@
+sku;title;category;categoryIds;colors;sizes;price;image;description
+M-JKT-001;Metro Commuter Rain Jacket;rain;men-rain;navy,red;M,XS,S,L,XL;262.73;;Water-resistant nylon shell with taped seams, adjustable cuffs and a hidden hood. Lightweight and breathable for city commuting in changeable weather.
+M-JKT-002;Heritage Wool-Blend Coat;coat;men-coats;grey,charcoal;M,L,XL;289.72;;Wool-blend overcoat with a quilted lining that keeps warmth without bulk. A tailored cut with notch lapels, made for autumn and winter layering.
+M-JKT-003;Alpine Quilted Puffer Jacket;puffer;men-puffer;navy,olive;M,L,XL;284.50;;Quilted puffer with responsibly sourced down fill and a water-repellent finish. Lightweight insulation with an inner chest pocket for cold city winters.
+M-JKT-004;Summit Stretch Softshell Jacket;softshell;men-softshell;black,blue;M,L;296.96;;Four-way stretch softshell that is windproof and breathable, designed for layering. Packable and flexible for hiking and travel.
+M-JKT-005;Trail Fleece Jacket;fleece;men-fleece;green,grey;M,L,XL;257.16;;Brushed fleece mid-layer with zipped pockets and a stand collar. Warm and quick-drying for cool-weather walks and alpine treks.
+M-JKT-006;Classic Bomber Jacket;bomber;men-bomber;olive,black;S,M,L;166.93;;Ribbed-hem bomber with a recycled polyester shell and insulated lining. A relaxed streetwear cut for transitional weather.
+M-JKT-007;Vintage Denim Jacket;denim;men-denim;indigo;M,L,XL;180.58;;Rigid denim jacket with contrast stitching and chest pockets. Rugged and durable, built to break in over time.
+M-JKT-008;Luxe Leather Jacket;leather;men-leather;black,brown;M,L;353.96;;Full-grain leather jacket with a minimalist silhouette and satin lining. A refined, structured layer for evenings out.
+M-JKT-009;Nightfall Windbreaker;windbreaker;men-windbreaker;black,red;M,L,XL;170.25;;Quick-dry windbreaker with reflective details and a packable hood. Compact enough to stow in its own pocket.
+M-SWT-001;Merino Crewneck Sweater;sweater;men-sweaters;charcoal,navy;M,L,XL;120.00;;Fine merino crewneck with a regular fit and ribbed cuffs. Breathable, odor-resistant warmth for layering or wearing alone.
+M-SWT-002;Cotton Zip Hoodie;hoodie;men-sweaters;grey,black;M,L,XL;95.50;;Heavyweight cotton fleece hoodie with a full zip and kangaroo pocket. A relaxed, everyday layer for casual wear.
+M-JNS-001;Straight-Fit Five-Pocket Jeans;jeans;men-jeans;indigo;30,32,34,36;89.00;;Straight-leg jeans in rigid denim with five pockets and a zip fly. A durable, classic cut that holds its shape.
+M-JNS-002;Slim Stretch Jeans;jeans;men-jeans;black;30,32,34;99.00;;Slim-fit jeans with a touch of stretch for all-day comfort. Tapered through the leg with a clean, modern line.
+M-TRS-001;Tailored Wool Trousers;trousers;men-trousers;charcoal,navy;32,34,36;140.00;;Tailored wool trousers with a flat front and creased leg. A sharp office staple with a comfortable mid-rise.
+M-TRS-002;Travel Cotton Chinos;trousers;men-trousers;beige,olive;32,34,36;85.00;;Lightweight cotton chinos with stretch and slanted pockets. Wrinkle-resistant enough for long journeys and warm days.
+W-JKT-001;Womens Metro Rain Shell;rain;women-rain;navy,red;XS,S,M;242.73;;Water-resistant rain shell with a shaped hood and adjustable hem. Light and packable for commuting in wet weather.
+W-JKT-002;Womens Wool Wrap Coat;coat;women-coats;camel,grey;S,M,L;310.00;;Wool-blend wrap coat with a tie belt and long line. Warm and refined for office days and evenings.
+W-JKT-003;Womens Quilted Puffer;puffer;women-puffer;navy,burgundy;XS,S,M;264.50;;Quilted puffer with down fill and a water-repellent finish. Warm without weight for winter city wear.
+W-JKT-004;Womens Travel Parka;parka;women-parka;olive,black;XS,S,M,L;250.78;;Long-line parka with a removable liner and roomy pockets. Built for travel with a protective hood and adjustable waist.
+W-JKT-005;Womens Fleece Jacket;fleece;women-fleece;cream,rose;XS,S,M;177.16;;Soft fleece jacket with a high collar and zipped pockets. A cosy, breathable layer for cool evenings.
+W-JKT-006;Womens Softshell Jacket;softshell;women-softshell;black,grey;XS,S,M;276.96;;Stretch softshell that is windproof and water-resistant, cut for movement. Ideal for layering on active days.
+W-SWT-001;Womens Cashmere Crewneck;sweater;women-sweaters;cream,grey;XS,S,M;160.00;;Cashmere crewneck with a relaxed fit and ribbed trim. Soft, lightweight warmth that layers easily.
+W-SWT-002;Womens Cotton Hoodie;hoodie;women-sweaters;grey,black;XS,S,M;95.50;;Brushed cotton hoodie with an adjustable drawcord and front pocket. A comfortable, relaxed everyday layer.
+W-SWT-003;Womens Turtleneck Sweater;sweater;women-sweaters;black,olive;XS,S,M;130.00;;Ribbed turtleneck in a fine knit with a close but easy fit. Warm and versatile for cold-weather layering.
+W-JNS-001;Womens High-Rise Straight Jeans;jeans;women-jeans;indigo;26,28,30,32;92.00;;High-rise straight jeans in rigid denim with a button fly. A flattering, durable everyday cut.
+W-JNS-002;Womens Slim Ankle Jeans;jeans;women-jeans;black;26,28,30;99.00;;Slim ankle jeans with stretch and a cropped hem. Comfortable all-day denim with a clean silhouette.
+W-JNS-003;Womens Wide-Leg Jeans;jeans;women-jeans;light-blue;26,28,30,32;105.00;;Wide-leg jeans in soft washed denim with a high waist. A relaxed, statement cut for casual styling.
+W-TRS-001;Womens Tailored Trousers;trousers;women-trousers;charcoal,navy;6,8,10,12;135.00;;Tailored trousers with a straight leg and pressed crease. A polished office staple with a comfortable fit.
+W-TRS-002;Womens Linen Trousers;trousers;women-trousers;natural,olive;6,8,10;110.00;;Breathable linen trousers with a relaxed leg and elastic waist. Light and airy for warm-weather wear.
+W-TRS-003;Womens Stretch Chinos;trousers;women-trousers;beige,black;6,8,10,12;85.00;;Stretch cotton chinos with a slim leg and slanted pockets. Easy-care and versatile for work or weekends.

@@ -3,6 +3,8 @@ package com.ecomassistant.exception;
 import com.ecomassistant.dto.ChatResponseDto;
 import com.ecomassistant.guardrails.GuardrailRejectedException;
 import com.ecomassistant.limits.SearchRejectedException;
+import com.ecomassistant.listing.CatalogRequestException;
+import com.ecomassistant.listing.CatalogUnavailableException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -68,5 +70,17 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(
                 new ChatResponseDto(null, null, ex.getQueryAnalysis().suggestedPrompts()),
                 HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    @ExceptionHandler(CatalogRequestException.class)
+    public ResponseEntity<Map<String, String>> handleCatalogRequestException(CatalogRequestException ex) {
+        log.info("Catalog listing request rejected: {}", ex.getMessage());
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CatalogUnavailableException.class)
+    public ResponseEntity<Map<String, String>> handleCatalogUnavailableException(CatalogUnavailableException ex) {
+        log.info("Catalog listing unavailable: {}", ex.getMessage());
+        return new ResponseEntity<>(Map.of("error", ex.getMessage()), HttpStatus.SERVICE_UNAVAILABLE);
     }
 }

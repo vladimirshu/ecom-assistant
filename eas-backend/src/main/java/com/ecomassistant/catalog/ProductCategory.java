@@ -22,7 +22,11 @@ public enum ProductCategory {
     BOMBER("bomber", "Bomber Jackets"),
     DENIM("denim", "Denim Jackets"),
     LEATHER("leather", "Leather Jackets"),
-    WINDBREAKER("windbreaker", "Windbreakers");
+    WINDBREAKER("windbreaker", "Windbreakers"),
+    SWEATER("sweater", "Sweaters"),
+    HOODIE("hoodie", "Hoodies"),
+    JEANS("jeans", "Jeans"),
+    TROUSERS("trousers", "Trousers");
 
     private final String slug;
     private final String displayName;

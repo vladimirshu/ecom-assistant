@@ -1,36 +1,45 @@
 # product-catalog Specification
 
 ## Purpose
-TBD - created by syncing change storefront-search-api. Update Purpose after archive.
+TBD - updated by syncing change apparel-catalog-browsing. Update Purpose after archive.
+
 ## Requirements
 ### Requirement: Product attributes
-Every product SHALL have a SKU, a title (1 to 80 characters), a category from the catalog category list, one or more colors, one or more sizes, a positive price in EUR, a description and an image key.
+Every product SHALL have a SKU, a title (1 to 80 characters), a category from the catalog category list, one or more colors, one or more sizes, a positive price in EUR, a description, an image key and at least one valid direct browsing category id.
 
 #### Scenario: Complete product
 - **WHEN** the catalog is imported
-- **THEN** every stored product has a non-blank SKU, title, category, at least one color, at least one size, a price greater than 0, a non-blank description and a non-blank image key
+- **THEN** every stored product has a non-blank SKU, title, category, at least one color, at least one size, a price greater than 0, a non-blank description, a non-blank image key and valid browsing memberships
 
 ### Requirement: Catalog categories
-The system SHALL support exactly these category slugs: `puffer`, `parka`, `coat`, `rain`, `softshell`, `fleece`, `track`, `technical`, `field`, `bomber`, `denim`, `leather`, `windbreaker`.
+The system SHALL retain the existing garment-style slugs puffer, parka, coat, rain, softshell, fleece, track, technical, field, bomber, denim, leather and windbreaker, and SHALL also support sweater, hoodie, jeans and trousers. These slugs SHALL describe garments independently of hierarchical Men/Women browsing ids. The initial authored assortment SHALL include both Men and Women branches with Jackets & Coats, Sweaters, Jeans and Trousers represented. Underwear, briefs, lingerie, undershirts, tank tops and bras SHALL be excluded. Unknown garment styles SHALL still be skipped with a warning naming the SKU. T-shirts SHALL remain outside the initial required assortment.
 
-#### Scenario: Known category
-- **WHEN** a CSV row has category `puffer`
-- **THEN** the product is imported with category `puffer`
+#### Scenario: Existing jacket
+- **WHEN** an authored row has style puffer and a valid browsing membership
+- **THEN** it remains a valid puffer product
 
-#### Scenario: Unknown category
-- **WHEN** a CSV row has category `hoodie`
-- **THEN** the row is skipped and a warning naming the SKU is logged
+#### Scenario: Expanded garment
+- **WHEN** an authored row has style hoodie and a valid Women sweaters membership
+- **THEN** it is imported as a hoodie in that branch
+
+#### Scenario: Unknown style
+- **WHEN** a row has an unsupported category value
+- **THEN** the row is skipped with a warning identifying its SKU
 
 ### Requirement: Catalog CSV format
-The sample import SHALL read a semicolon-separated CSV with the header `sku;title;category;colors;sizes;price;image;description`, where `colors` and `sizes` are comma-separated lists and `image` is optional, and SHALL skip and log rows with a missing required field or an unparsable price.
+The authored import SHALL use semicolon-separated header `sku;title;category;categoryIds;colors;sizes;price;image;description`. categoryIds, colors and sizes SHALL be comma-separated lists; image SHALL remain optional. Direct categoryIds SHALL resolve against the agreed backend browsing configuration. Rows missing required fields, using unknown membership ids or containing unparsable/non-positive prices SHALL be skipped and logged with their SKU. Title length SHALL remain 1–80 characters. An old eight-column dataset SHALL require explicit upgrade before it can be accepted as the current catalog revision; memberships SHALL NOT be guessed from a jacket style alone.
 
-#### Scenario: Row parsed
-- **WHEN** the CSV contains `JKT0004;Classic Bomber Jacket;bomber;white,green,beige;XS,S,L,XL,M;66.93;;Classic bomber jacket with ribbed hems…`
-- **THEN** a product `JKT0004` with title `Classic Bomber Jacket`, category `bomber` and price `66.93` is imported
+#### Scenario: Expanded row
+- **WHEN** a row has `category=jeans` and `categoryIds=women-jeans`
+- **THEN** it is imported with jeans style and direct Women jeans membership
 
 #### Scenario: Missing title
-- **WHEN** a CSV row has an empty `title`
-- **THEN** the row is skipped and a warning naming the SKU is logged
+- **WHEN** an authored row has an empty title
+- **THEN** it is skipped with a warning naming the SKU
+
+#### Scenario: Unknown membership
+- **WHEN** an authored row names a category id absent from the agreed tree
+- **THEN** it is skipped with a warning and cannot silently become an unscoped product
 
 ### Requirement: Default category image
 When the `image` column of a row is empty, the system SHALL set the product's image key to `categories/<category>.webp`; otherwise it SHALL use the given value unchanged.
@@ -55,34 +64,44 @@ The system SHALL expose a product's image as `imageUrl` = the configured `ecom.a
 - **THEN** `imageUrl` is `https://cdn.example.com/catalog/categories/parka.webp`
 
 ### Requirement: Vector-store product payload
-Each product SHALL be stored in the vector store with payload fields `sku`, `title`, `category`, `colors`, `sizes`, `price`, `description` and `imageKey`, and with an embedded text containing its title, category, colors, sizes and description, so that a document retrieved from the vector store maps back to a product with all attributes.
+Each product SHALL retain sku, title, category, colors, sizes, price, description and imageKey payload fields and add direct categoryIds, ancestor-inclusive categoryPathIds and catalogRevision. Its embedded text SHALL contain title, readable garment category, colors, sizes and description, and meaningful audience/ancestry text where applicable. Category metadata used for browsing SHALL be queryable without embeddings. Search retrieval and direct catalog listing SHALL map the same product payload through the same public Product representation, without exposing internal membership/revision/image-key fields in that DTO.
 
 #### Scenario: Round trip
-- **WHEN** product `JKT0004` is retrieved by similarity search
-- **THEN** the mapped product has the same title, category, colors, sizes, price, description and image key as the imported product
+- **WHEN** a product is returned from search or catalog listing
+- **THEN** its title, readable category, colors, sizes, EUR price, description and resolved imageUrl agree
 
-#### Scenario: Title is searchable
-- **WHEN** the retriever is called with query text `bomber jacket`
-- **THEN** products with category `bomber` are among the results
+#### Scenario: Ancestor membership
+- **WHEN** a product directly belongs to women-jeans
+- **THEN** its categoryPathIds includes women-jeans and women for non-semantic metadata listing
 
 ### Requirement: Idempotent catalog import
-At startup the system SHALL import the sample catalog into the vector store when the vector store holds no products or any stored product has no category, and SHALL upsert products by SKU, so that repeating the import does not create duplicates. The vector store SHALL be the only persistent store of products. Deciding whether to import SHALL NOT make embedding requests.
+The system SHALL use a desired catalog revision and valid SKU manifest to decide whether the authored dataset is fully imported. Initial empty stores, legacy/missing payloads, revision mismatch, missing expected SKUs or an interrupted prior import SHALL trigger import/recovery. Products SHALL be upserted by deterministic SKU-derived ids without duplicates. No embeddings SHALL be requested merely to decide whether an already complete current revision can be skipped. Qdrant SHALL remain the only persistent product store.
+
+Replacement products SHALL be upserted and verified before obsolete or legacy points are removed. Any failed write or incomplete manifest SHALL leave the revision unverified, SHALL prevent ready status and successful catalog listing, and SHALL be retried on the next startup. Having some points with category populated SHALL NOT cause a partial upgrade to be skipped. Completing the manifest and cleanup SHALL leave exactly the desired products, one point per SKU.
 
 #### Scenario: Fresh start
-- **WHEN** the application starts with an empty vector store
-- **THEN** all valid CSV products are stored in the vector store, one point per SKU
+- **WHEN** the vector store is empty
+- **THEN** all valid authored products are imported and verified before readiness
 
-#### Scenario: Restart with current data
-- **WHEN** the application restarts and every stored product has a category
-- **THEN** no import is performed and no embedding requests are made
+#### Scenario: Current restart
+- **WHEN** all desired SKUs and required payloads match the current revision
+- **THEN** import is skipped without embedding calls
 
-#### Scenario: Upgrade from the previous schema
-- **WHEN** the application starts and the vector store contains products without a category
-- **THEN** all products are upserted with the current attributes and the vector store holds exactly one point per SKU
+#### Scenario: Jacket-only upgrade
+- **WHEN** the stored jacket-only catalog has category populated but no current browsing/revision metadata
+- **THEN** the expanded catalog is imported and verified rather than skipped
 
-#### Scenario: No relational database required
-- **WHEN** the application starts without any relational database configured or reachable
-- **THEN** startup succeeds and searches return products built from the vector-store payload
+#### Scenario: Interrupted upgrade
+- **WHEN** upserting the new catalog fails after some products were written and the application restarts
+- **THEN** the incomplete revision is detected and retried, with no successful partial catalog response
+
+#### Scenario: Safe replacement
+- **WHEN** replacement upserts fail before the full desired manifest is verified
+- **THEN** legacy points are not deleted before those replacement writes complete
+
+#### Scenario: No relational database
+- **WHEN** the application starts without a relational database
+- **THEN** import and verified catalog access still use Qdrant alone
 
 ### Requirement: Product representation in API responses
 The system SHALL represent a product in API responses as an object with `sku`, `title`, `category`, `colors` (array of strings in catalog order), `sizes` (array ordered `XXS, XS, S, M, L, XL, XXL, XXXL`, unknown sizes last in catalog order), `price` (number, EUR), `description` and `imageUrl`, and SHALL NOT expose the internal image key or persistence fields.
@@ -94,3 +113,14 @@ The system SHALL represent a product in API responses as an object with `sku`, `
 #### Scenario: Colors as array
 - **WHEN** product `JKT0001` with colors `navy,red` is returned
 - **THEN** its `colors` are `["navy", "red"]`
+
+### Requirement: Direct browsing membership
+Every imported product SHALL have one or more direct browsing category ids, and the backend SHALL compute a unique ancestor-inclusive membership set from the configured hierarchy. A direct membership MAY be a root, intermediate node or leaf. Invalid or cyclic hierarchy configuration SHALL fail validation before import. Frontend labels and image keys SHALL NOT determine membership.
+
+#### Scenario: Shared roots
+- **WHEN** a valid unisex SKU is assigned to Men and Women descendants
+- **THEN** it has both ancestor paths but remains one stored point and one product in an unfiltered traversal
+
+#### Scenario: Invalid hierarchy
+- **WHEN** category parentage forms a cycle or references a missing parent
+- **THEN** import configuration validation fails before products are written

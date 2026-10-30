@@ -44,9 +44,14 @@ ecom:
     query-analysis-max-output-tokens: 500
     product-filter-max-output-tokens: 300
   import:
-    sample-file: sampledata/apparel_jackets_sample.csv
+    sample-file: sampledata/apparel_catalog_sample.csv
   assets:
     base-url: ${ECOM_ASSETS_BASE_URL:/images/}
+  browsing:
+    categories-file: catalog/browsing-categories.json
+    frontend-categories-file: ../eas-frontend/src/data/categories.json
+    cursor-ttl: PT30M
+    default-limit: 24
 
 logging:
   level:

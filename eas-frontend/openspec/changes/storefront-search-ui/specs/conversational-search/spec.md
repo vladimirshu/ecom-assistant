@@ -38,11 +38,11 @@ The first search of a conversation SHALL be sent with `clearMemory=true`; every 
 - **THEN** the request has `message=same but in navy`, the same conversation id and `clearMemory=false`
 
 ### Requirement: New search
-The "New search" action SHALL discard the conversation trail, results and interpretation, return to the hero, and make the next search start a fresh conversation with `clearMemory=true`.
+The "New search" action SHALL close any product dialog, discard the conversation trail, stored snapshots, selected turn, results and interpretation, return to the hero on `/` without loading the catalog, and make the next search start a fresh conversation with `clearMemory=true`.
 
 #### Scenario: Start over
 - **WHEN** a visitor clicks "New search" and then submits `leather jacket`
-- **THEN** the hero is shown before the submit, and the request has `clearMemory=true`
+- **THEN** the hero is shown on `/` before the submit, no catalog is displayed or fetched, and the request has `clearMemory=true`
 
 ### Requirement: Client-side input check
 Before sending, the application SHALL trim the message and SHALL NOT send it if it is shorter than 3 or longer than 500 characters or contains `<` or `>`, showing an inline hint under the search field instead; the backend remains authoritative.
@@ -56,7 +56,7 @@ Before sending, the application SHALL trim the message and SHALL NOT send it if 
 - **THEN** the request is sent
 
 ### Requirement: Loading state
-While a search is in progress, the application SHALL show skeleton product cards and a staged progress message advancing through "Reading your request", "Searching the collection" and "Picking the best matches", SHALL announce the progress in the live region, and SHALL keep the previous results dimmed during a refinement.
+While a search is in progress, the application SHALL show skeleton product cards and a staged progress message advancing through "Reading your request", "Searching the collection" and "Picking the best matches", SHALL announce the progress in the live region, and SHALL show the pending state in the selected results pane rather than appending another product grid to history. The previous successful snapshots SHALL remain stored and selectable, without being labelled as matches for the pending request. Progress messages SHALL describe intent, not report unconfirmed pipeline completion.
 
 #### Scenario: Slow response
 - **WHEN** the backend takes 5 seconds to respond
@@ -88,7 +88,7 @@ When the backend responds with HTTP 400, the application SHALL show the field er
 - **THEN** that text is shown under the search field and the field still contains the typed message
 
 ### Requirement: Usage limits
-When the backend responds with HTTP 429, the application SHALL show a calm message that depends on the body `code`: for `RATE_LIMITED`, a hint to wait (with the number of seconds from the `Retry-After` header when present) and a "Try again" action enabled after that time; for `DAILY_BUDGET_EXHAUSTED`, a message that today's demo quota is used up and that the shop reopens tomorrow, with no retry action. The application SHALL keep the previous results and the typed text, and SHALL NOT treat HTTP 429 as a sleeping service.
+When the backend responds with HTTP 429, the application SHALL show a calm message that depends on the body `code`: for `RATE_LIMITED`, a hint to wait (with the number of seconds from the `Retry-After` header when present) and a "Try again" action enabled after that time; for `DAILY_BUDGET_EXHAUSTED`, a message that today's search demo quota is used up and that search can be retried tomorrow; catalog browsing remains available, with no retry action. The application SHALL keep the previous results and the typed text, and SHALL NOT treat HTTP 429 as a sleeping service.
 
 #### Scenario: Rate limited
 - **WHEN** the backend responds 429 with `{"code": "RATE_LIMITED"}` and `Retry-After: 30`
@@ -96,7 +96,7 @@ When the backend responds with HTTP 429, the application SHALL show a calm messa
 
 #### Scenario: Daily budget exhausted
 - **WHEN** the backend responds 429 with `{"code": "DAILY_BUDGET_EXHAUSTED"}`
-- **THEN** the quota message is shown without a retry action and the previous results remain visible
+- **THEN** the quota message is shown without a retry action and previous results remain available as labelled successful snapshots
 
 ### Requirement: Server and network errors
 When the backend responds with HTTP 5xx, the request fails on the network, or no response arrives within 30 seconds, the application SHALL report the failure to the availability gate (capability `service-availability-gate`) and, if the service is healthy, SHALL show "Something went wrong on our side" with a "Try again" action that resends the same request, and SHALL keep the previous results if any.
@@ -112,3 +112,14 @@ When the backend responds with HTTP 5xx, the request fails on the network, or no
 #### Scenario: Service is down
 - **WHEN** a search fails with HTTP 502 and the availability check (health inside opening hours, control outside hours) does not confirm readiness
 - **THEN** the availability gate takes over instead of the error state, and the typed message is kept
+
+### Requirement: Feedback placement and retained results
+Pending, rejection, quota and failure states SHALL be identified on their attempted conversation turn and in the selected results pane. HTTP 400 field errors SHALL remain beside the appropriate input. For rejection, quota or failed requests, retained successful products MAY remain visible below a concise notice only when explicitly labelled as results of the last successful request; they SHALL NOT be represented as a successful response to the failed attempt. Full request text and the latest interpretation available from an actual successful response SHALL remain inspectable. Backend-provided suggested prompts SHALL be used unchanged. Development-only state selectors and scripted MagicPath matches SHALL NOT ship as production search behavior.
+
+#### Scenario: Failed refinement
+- **WHEN** the latest refinement fails and earlier successful products are retained
+- **THEN** a failure notice identifies the attempted request and any retained grid is labelled as previous successful results
+
+#### Scenario: Switch between result snapshots
+- **WHEN** a visitor views an older successful turn after a failure
+- **THEN** that stored turn is displayed without retrying the failed request or calling the search API

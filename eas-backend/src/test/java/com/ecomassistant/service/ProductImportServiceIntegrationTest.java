@@ -116,6 +116,24 @@ class ProductImportServiceIntegrationTest {
     }
 
     @Test
+    void jacketOnlyDataWithCategoryButNoRevisionTriggersUpgrade() {
+        // Simulate the pre-upgrade jacket-only catalog: category populated, but no browsing
+        // membership or revision metadata. The old count-of-missing-category skip condition
+        // would have skipped this; the revision-aware check must re-import instead.
+        addLegacyPointWithCategory("OLDJKT1", "puffer");
+        fakeEmbeddingModel.resetEmbedCount();
+
+        productImportService.importSampleProducts();
+
+        assertThat(fakeEmbeddingModel.getEmbedCount()).isGreaterThan(0);
+        assertThat(qdrantPointCount()).isEqualTo(8);
+
+        fakeEmbeddingModel.resetEmbedCount();
+        productImportService.importSampleProducts();
+        assertThat(fakeEmbeddingModel.getEmbedCount()).isZero();
+    }
+
+    @Test
     void documentRoundTripKeepsAllAttributes() {
         Product product = productFromCsv("RAIN1");
         Document document = VectorStoreUtils.productToDocument(product);
@@ -129,6 +147,8 @@ class ProductImportServiceIntegrationTest {
         assertThat(roundTripped.getPrice()).isEqualByComparingTo(product.getPrice());
         assertThat(roundTripped.getDescription()).isEqualTo(product.getDescription());
         assertThat(roundTripped.getImageKey()).isEqualTo(product.getImageKey());
+        assertThat(roundTripped.getCategoryIds()).isEqualTo(product.getCategoryIds());
+        assertThat(roundTripped.getCategoryPathIds()).isEqualTo(product.getCategoryPathIds());
     }
 
     private Product productFromCsv(String sku) {
@@ -154,6 +174,21 @@ class ProductImportServiceIntegrationTest {
             .text("legacy " + sku)
             .metadata(Map.of(
                     "sku", sku,
+                    "colors", "blue",
+                    "sizes", "M",
+                    "price", 50.0,
+                    "description", "legacy description"))
+            .build();
+        vectorStore.add(List.of(legacy));
+    }
+
+    private void addLegacyPointWithCategory(String sku, String category) {
+        Document legacy = Document.builder()
+            .id(UUID.randomUUID().toString())
+            .text("legacy " + sku)
+            .metadata(Map.of(
+                    "sku", sku,
+                    "category", category,
                     "colors", "blue",
                     "sizes", "M",
                     "price", 50.0,

@@ -11,7 +11,9 @@ import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -93,18 +95,25 @@ public class VectorStoreUtils {
         metadata.put("price", price != null ? price : 0.0);
         metadata.put("description", product.getDescription());
         metadata.put("imageKey", product.getImageKey());
+        metadata.put("categoryIds", stringListOrEmpty(product.getCategoryIds()));
+        metadata.put("categoryPathIds", stringListOrEmpty(product.getCategoryPathIds()));
+        if (product.getCatalogRevision() != null) {
+            metadata.put("catalogRevision", product.getCatalogRevision());
+        }
 
-        // Searchable text: title, category name, colors, sizes and description. SKU and
-        // price are omitted: they are noise for similarity, and price is handled by the
-        // payload filter.
-        String content = String.format("%s. %s. Colors: %s. Sizes: %s. Description: %s",
+        // Searchable text: title, category name, readable audience/ancestry, colors, sizes
+        // and description. SKU and price are omitted: they are noise for similarity, and
+        // price is handled by the payload filter.
+        String audience = product.getBrowsingText();
+        String content = String.format("%s. %s%s. Colors: %s. Sizes: %s. Description: %s",
                 nullToEmpty(product.getTitle()),
                 product.getCategory() != null ? product.getCategory().displayName() : "",
+                audience == null || audience.isBlank() ? "" : ". " + audience,
                 nullToEmpty(product.getColors()),
                 nullToEmpty(product.getSizes()),
                 nullToEmpty(product.getDescription()));
 
-        String id = UUID.nameUUIDFromBytes(product.getSku().getBytes(StandardCharsets.UTF_8)).toString();
+        String id = skuPointId(product.getSku());
 
         return Document.builder().id(id).text(content).metadata(metadata).build();
     }
@@ -113,8 +122,18 @@ public class VectorStoreUtils {
      * Convert Document to Product entity
      */
     public static Product documentToProduct(Document document) {
-        Map<String, Object> metadata = document.getMetadata();
+        return metadataToProduct(document.getMetadata());
+    }
 
+    /**
+     * Convert a raw Qdrant payload (e.g. from a scroll result) to a Product entity, for
+     * the catalog listing path that reads points directly rather than through a Document.
+     */
+    public static Product payloadToProduct(Map<String, JsonWithInt.Value> payload) {
+        return metadataToProduct(toObjectMap(payload));
+    }
+
+    private static Product metadataToProduct(Map<String, Object> metadata) {
         Product product = new Product();
         product.setSku((String) metadata.get("sku"));
         product.setTitle((String) metadata.get("title"));
@@ -124,8 +143,41 @@ public class VectorStoreUtils {
         product.setSizes((String) metadata.get("sizes"));
         product.setPrice(toBigDecimal(metadata.get("price")));
         product.setDescription((String) metadata.get("description"));
-
+        product.setCategoryIds(stringList(metadata.get("categoryIds")));
+        product.setCategoryPathIds(stringList(metadata.get("categoryPathIds")));
+        product.setCatalogRevision((String) metadata.get("catalogRevision"));
         return product;
+    }
+
+    /**
+     * The deterministic Qdrant point id for a SKU, shared by import and listing so the
+     * two never drift.
+     */
+    public static String skuPointId(String sku) {
+        return UUID.nameUUIDFromBytes(sku.getBytes(StandardCharsets.UTF_8)).toString();
+    }
+
+    private static List<String> stringList(Object value) {
+        if (value == null) {
+            return List.of();
+        }
+        if (value instanceof List<?> list) {
+            List<String> result = new ArrayList<>(list.size());
+            for (Object item : list) {
+                if (item != null) {
+                    result.add(item.toString());
+                }
+            }
+            return List.copyOf(result);
+        }
+        if (value instanceof String string) {
+            return List.of(string);
+        }
+        return List.of();
+    }
+
+    private static List<String> stringListOrEmpty(List<String> value) {
+        return value == null ? List.of() : List.copyOf(value);
     }
 
     private static BigDecimal toBigDecimal(Object priceObj) {

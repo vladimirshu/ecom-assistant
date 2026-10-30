@@ -1,115 +1,121 @@
 ## Context
 
-The backend (`../eas-backend/`, Spring Boot) exposes one search endpoint. Its contract after the backend changes `api-versioned-search-path`, `storefront-search-api`, `conversation-memory` and `demo-cost-controls` is the source of truth:
+The approved ATELIER Sage design is recorded in `design-reference.md`, with pinned MagicPath component/revision ids and a checked-in illustration reference. MagicPath frames are interactive prototypes with sample products, simulated matches/timers and reference-only state selectors. This change specifies the real implementation. The latest written requirements take precedence over prototype shortcuts.
+
+Backend contract already available:
 
 ```
 GET /api/v1/search?message=<text>&conversationId=<[A-Za-z0-9_-]{1,50}>&clearMemory=<bool>
 200 { products: Product[], interpretation: Interpretation, suggestedPrompts: null }
-422 { products: null, interpretation: null, suggestedPrompts: string[] }   // guardrail rejection
-400 { <field>: <message> }                                                 // input validation
-429 { code: "RATE_LIMITED" | "DAILY_BUDGET_EXHAUSTED", message }          // usage limits, Retry-After header
-500 { error: "Illegal assistant response" | … }
+422 { products: null, interpretation: null, suggestedPrompts: string[] }
+400 { <field>: <message> }
+429 { code: "RATE_LIMITED" | "DAILY_BUDGET_EXHAUSTED", message }
+500 { error: string }
 
-Product        = { sku, title, category, colors: string[], sizes: string[], price: number /*EUR*/, description, imageUrl }
+Product = { sku, title, category, colors: string[], sizes: string[], price: number, description, imageUrl }
 Interpretation = { searchQuery, negativeExamples: string[],
-                   priceConstraint: { operator: "LESS_THAN"|"LESS_THAN_OR_EQUAL"|"GREATER_THAN"|"GREATER_THAN_OR_EQUAL", value: number } | null,
-                   sortByLowestPrice: boolean }
+  priceConstraint: { operator: "LESS_THAN"|"LESS_THAN_OR_EQUAL"|"GREATER_THAN"|"GREATER_THAN_OR_EQUAL", value: number } | null,
+  sortByLowestPrice: boolean }
 ```
 
-A successful search makes two LLM calls (about 3–6 s). Conversation memory is server-side, keyed by `conversationId`; `clearMemory=true` resets it. The backend returns at most 10 products. There is no product-detail, catalog or category endpoint. The same origin also serves `GET /api/v1/health`, which the separate change `service-availability-gate` uses.
-
-Production shape: the SPA is a set of static files in S3. CloudFront serves everything from one domain: `/*` → S3 and `/api/v1/*` → the backend, so the browser only ever sees relative URLs.
+Search returns at most 10 products in ranked order. The product dialog can be populated entirely from this representation: no product-detail endpoint or new material attribute is needed. The expanded apparel assortment and browsing API are owned by backend change `apparel-catalog-browsing`; they are not yet implemented.
 
 ## Goals / Non-Goals
 
-**Goals:**
-- A storefront that reads as a premium minimal fashion shop at first glance.
-- Make the concept explicit: no browsing; you describe, we show what we understood and the matches.
-- Robust behaviour around a slow, sometimes rejecting, LLM-backed API.
-- A standalone project: own toolchain, own tests, own OpenSpec root.
+Goals: match the approved Sage visual hierarchy; make search/refinement immediately understandable; keep history and current matches visible together on desktop; offer compact products with complete accessible dialogs; browse the Men/Women hierarchy; handle actual availability and API feedback without losing work.
 
-**Non-Goals:**
-- Cart, checkout, accounts, wishlist, product detail pages or SEO for product pages (out of product scope).
-- Interface localization (English only). Request text can be in any language.
-- Editing the interpretation by removing chips (a possible follow-up: it would send a refinement such as "remove the price limit").
-- Streaming progress from the backend (the staged loading text is client-timed).
-- Deployment pipeline and hosting (root changes `aws-edge-hosting`, `aws-backend-host`).
-- Handling a sleeping backend (change `service-availability-gate`).
+Non-goals: cart, checkout, accounts, wishlist, separate product routes, attribute-filter panels, manual catalog sorting, search pagination, ranking changes, interface localization, extra prose-generation APIs, deploying the website or turning prototype matching logic into production behavior.
 
 ## Decisions
 
-**1. Stack: Vite + React + TypeScript + Tailwind CSS, client-only.**
-The storefront is one interactive page, so nothing needs server rendering. Vite builds it to static files (`dist/`) that S3 can serve, which is the deployment target. Versions are the current stable Vite, React and Tailwind CSS v4 at implementation time, pinned in `package.json`. Package manager: npm. Vitest shares the Vite config, so unit tests use the same module resolution as the app.
-- Alternative considered: Next.js App Router. Its server features (Route Handler proxy, `next/image` optimization, `next/font`) would be unused or disabled in a static export, so it adds weight for no benefit. It was the first choice because a proxy was needed; CloudFront path routing removed that need.
+### 1. Application and API boundaries
 
-**2. No application proxy: relative `/api/v1/...` URLs.**
-The client calls `GET /api/v1/search` on its own origin. In production CloudFront routes `/api/v1/*` to the backend, so there is no CORS. In development, `vite.config.ts` sets `server.proxy` for `/api` to `VITE_DEV_BACKEND_URL` (default `http://localhost:8080`). The 30 s request timeout and error mapping move into the client (`AbortController`).
-- Alternative: a Route Handler or Node proxy. Rejected: it needs a server in production, which a static site does not have.
+Use client-only Vite + React + strict TypeScript + Tailwind v4, npm, Vitest/RTL/MSW and Playwright. Build static files for S3/CloudFront. Requests use relative same-origin `/api/v1/...` URLs; the Vite `/api` proxy targets VITE_DEV_BACKEND_URL (default localhost:8080). No application server, Next.js migration or CORS layer is required. Keep production package versions pinned at implementation time. Use system Georgia/Arial stacks to match the approved sketch; no font service is required.
 
-**3. State: one reducer, no data-fetching library.**
-`useSearchSession()` holds `{ conversationId, turns: {message}[], status: idle|loading|success|rejected|invalid|error, products, interpretation, suggestions, fieldError, lastRequest }`. A search is a sequential, conversational command, not cacheable server state, so TanStack Query would add little. An `AbortController` per request implements supersede and timeout, and a monotonically increasing request id guards against late responses. `conversationId` is `crypto.randomUUID()` (36 characters, within the backend's 50-character rule) kept in React state only: a new token on every page load and on "New search", as the backend change `conversation-memory` specifies. The turns are kept in memory too, so a reload starts a fresh conversation with an empty trail.
+### 2. Theme and first screen
 
-**4. Typed API client.**
-`lib/api/search.ts` returns a discriminated union `{kind: "ok", products, interpretation} | {kind: "rejected", suggestions} | {kind: "invalid", message} | {kind: "limited", code: "RATE_LIMITED" | "DAILY_BUDGET_EXHAUSTED", retryAfterSeconds?} | {kind: "error"}`, which keeps HTTP details out of components. A network failure, timeout or 5xx result is also reported to the availability gate (`service-availability-gate`) so it can check health inside opening hours or control outside hours. Search submission also passes through the gate: outside opening hours a control UP response is required before sending the search; STARTING preserves input and opens the gate without submitting (see `service-availability-gate`). Types live in `lib/api/types.ts` and mirror the contract above.
+Tokens: paper #F6F8F0, wash #E5ECD7, action #4E704E, ink #303B30, muted #68745F, border #D6DFCC. The header contains ATELIER, the small portfolio note, and quiet Men/Women links. No Catalog link. A 23–25 px serif headline, Describe it. We'll find it., sits above a full-content-width search component around 48–52 px high. Desktop input is normal 14 px text; mobile uses at least 16 px to avoid browser zoom. A Sage fill, border and green action give search priority over headings. Under it, display concise clickable examples. Keep a stable real-field placeholder.
 
-**5. Component structure.**
+The next row places Clothes for what you have in mind. / Tell us what you need, in any language. to the left of an isolated demonstration. Stack these on mobile. Use generous spacing, unobtrusive hairlines and borderless product cards. Price formatting preserves fractional EUR values. Service feedback uses the same theme rather than a separate decorative shop-door treatment.
+
+### 3. Search session and selected results
+
+`useSearchSession` owns conversationId, completed/attempted turns, per-turn interpretation/products/suggestions/status, draft, activeTurnId, request generation and lastRequest. Generate a UUID in memory on load/New search; use clearMemory=true only on the first request, false for subsequent requests. No browser storage. Preserve app-level state during catalog navigation.
+
+Render `/` as Homepage before submission and SearchWorkspace afterwards. SearchWorkspace consists of ConversationHistory + FollowUpComposer and CurrentMatches. History stores structured replies but never duplicates product grids. A successful turn offers Show these matches. Inspecting stored results is local: it neither rewinds the backend conversation nor changes subsequent refinement semantics. New requests select their pending state. If a visitor explicitly switches to an earlier snapshot during a request, preserve that choice when the response arrives and offer New matches available. Return to latest matches uses the newest successful snapshot. New search clears all snapshots/draft/dialog state and returns to the introduction.
+
+Desktop uses a roughly 280–310 px history column and a flexible results pane. Constrain history overflow locally while keeping its composer visible. The pane shows one selected product array, its interpretation and returned-match count. The first row and composer must coexist at 1440×900. Additional rows may scroll; no promise that all 10 matches fit one screen. On mobile use Matches/Conversation tabs, retaining the same state and draft; new requests and historical result selection open Matches. A selected-request summary remains above the mobile grid. Avoid a page-wide chat feed that buries current products below prior turns.
+
+### 4. Asynchronous behavior and feedback
+
+Use AbortController (30 s timeout) and monotonically increasing generation ids. Abort superseded/route-exited requests and ignore late completions. Store original customer text for history while sending validated trimmed text. Guard 3–500 characters and angle brackets locally; backend validation remains authoritative. Retry repeats the same request tuple without creating duplicate visible history entries.
+
+During selected pending state show loading skeletons and client-timed intent messages at 0/1.5/3 s: Reading your request → Searching the collection → Picking the best matches. Do not claim pipeline-stage completion. Keep earlier snapshots available through history. Success with zero products selects an empty snapshot, not a stale grid.
+
+422 uses backend suggestions unchanged. 400 stays by the relevant input. 429 RATE_LIMITED uses Retry-After when present; DAILY_BUDGET_EXHAUSTED has no retry and does not disable catalog browsing. Network/timeout/5xx report to availability; confirmed readiness leaves a normal retry notice. Retained products after a failed/rejected/limited attempt must be labelled last successful results. Do not replace them with fictional matches. Polite announcements describe terminal states rather than every animation frame.
+
+### 5. Product components and dialog
+
+Use one ProductCard/ProductGrid for catalog, selected search snapshots and example fixtures. Cards contain drawing, title, price and View details only. Full Product data remains in memory for ProductDialog. Use a native dialog or equivalent accessible implementation: opaque Sage panel centered with an explicit margin:auto, subdued backdrop, focus containment, Escape/Close, return focus to the invoking card, and vertically scrollable content on narrow screens. Show image/title/price/full description/category/colors/sizes/SKU; optional swatches never replace readable color names. Material information comes from description, not an invented API property.
+
+A dialog opens without network requests, quota use or route changes. Closing preserves category, pagination, scroll position, draft and selected snapshot. Close stale dialogs on route/category/snapshot changes. Catalog and search must display the same data for the same loaded SKU. No separate product pages.
+
+### 6. Illustration assets
+
+Use separate graphite drawings with genuine transparent alpha. Fine contour lines, light crosshatching, no solid black fills, paper textures, people, hangers, labels or neighboring garments. Keep fabric shading inside the silhouette. Reserve a 4:5 frame and contain the full garment with consistent margins; do not crop it with object-fit:cover. Export individual alpha WebP around 1200×1500, targeting <=200 KB after visual review; transparent default.webp is mandatory. The checked-in sheet is a style reference, not a production sprite to crop in CSS.
+
+Keep reusable files flat in public/images/categories/<image-key>.webp. Vite copies them to dist. Backend imageUrl chooses each card asset; frontend navigation ids do not derive that URL. Optional imageKey references in the local tree select representative category illustrations only. Preserve alpha during optimization and verify appearance on paper, wash and dialog surfaces. Test fallback once to avoid loops. Existing 13 jacket styles are only the initial coverage; add the agreed sweaters/hoodies, jeans and trousers.
+
+Generation details are owned by `catalog-imagery` and `image-generation.md`. The baseline manifest has 17 garment-style keys plus default (18 files), retaining the 13 jacket keys and adding sweater, hoodie, jeans and trousers. The garment table supplies distinguishing details and one shared reference-based prompt. Additional keys are required for actually used product-specific silhouettes; do not duplicate the set for each color, size or browsing root. Keep a build/review manifest of prompt/reference/revision/status/export data, generate one distinct asset per request and review individual images plus a mixed grid before release. The manifest is a tooling/release input, not product-facing UI or a runtime image-generation service.
+
+### 7. Editable category hierarchy and browsing contract
+
+Keep `src/data/categories.json` as the editable build-time navigation source, with `{ id, name, imageKey?, children }`. Roots Men/men and Women/women each contain Jackets & Coats, Sweaters, Jeans and Trousers, with deeper jacket types. T-shirts may be added later. Exclude underwear, lingerie, undershirts, tank tops and bras. Labels/order are frontend concerns; ids/parentage must align with backend category membership. Validate unique ids, fields and optional image files. Do not fetch a category-tree endpoint or duplicate the tree in components.
+
+Backend-owned proposed API:
+
 ```
-index.html               title, meta, root element
-src/main.tsx             React entry, imports fonts and styles
-src/App.tsx              <Storefront/>
-src/components/Header, Hero, SearchBar, ExamplePrompts, RotatingPlaceholder,
-           ConversationTrail, InterpretationBar, ResultsGrid, ProductCard,
-           ColorSwatches, QuickView, LoadingStory, SkeletonCard,
-           RejectionNotice, ErrorNotice, EmptyResults
-src/lib/api/             types.ts, search.ts
-src/lib/format.ts        EUR formatting (Intl, en-IE), price chip wording, match count
-src/lib/colors.ts        color name → hex map (catalog colors) with neutral fallback
-src/lib/examples.ts      example prompts and placeholder rotation list
-src/lib/brand.ts         wordmark constant
+GET /api/v1/products?limit=24[&category=<URL-encoded id>][&cursor=<opaque URL-encoded token>]
+200 { products: Product[], nextCursor: string | null }
+400 { error: string }
 ```
 
-**6. Visual language.**
-- Typography: `Cormorant Garamond` for the display headline and product titles, `Inter` for UI and body, self-hosted through the `@fontsource` npm packages (no request to Google Fonts, no layout shift from a late font, `font-display: swap`). The headline is large, with tight leading and a light weight. Labels use small uppercase text with letter spacing.
-- Palette: off-white background (`#FAFAF8`), near-black text (`#111`), greys for secondary text and hairline borders. No accent color. Product color swatches are the only color on the page.
-- Layout: generous white space and a centered hero at about 70 vh. After the first search the search bar becomes a slim sticky bar with the trail and interpretation below it. Cards have no borders or shadows. Hovering a card zooms the image slightly (`scale 1.03`, 400 ms) and underlines the title.
-- Motion: subtle fades only, disabled under `prefers-reduced-motion`.
-- Brand wordmark: placeholder `ATELIER` in one constant (`src/lib/brand.ts`).
+The backend includes direct and descendant members once per SKU, traverses deterministically and binds cursors to category, page size and catalog revision. The frontend forwards tokens unchanged; never emulate browsing with search, offsets or a bundled product CSV. The owning backend spec defines the full traversal/error contract. No category parameter means All clothing. Roots and intermediate categories always show combined product lists.
 
-**7. Example prompts.**
-They are curated to show off the concept and to hit the catalog:
-- "A light rain jacket for cycling to work"
-- "Something warm for winter walks, no wool, under €200"
-- "The cheapest puffer jacket you have"
-- "A smart coat for the office"
-- "Eine wasserdichte Jacke zum Wandern" (non-English)
-- "Une veste en cuir style vintage" (non-English)
+Header Men/Women links navigate to `/catalog?category=men|women`. Catalog has a quiet tree on the left and heading/breadcrumb/grid on the right, reflowing above the grid on mobile. All clothing lives within catalog navigation. Preserve campaign parameters. Selection changes abort old requests, close dialogs, reset products/cursor and load the first page after readiness. Re-entry/history restores URL selection and starts its first page. Unknown ids show Category not found without requesting that id; valid empty categories keep navigation visible.
 
-The placeholder rotates through these every 3.5 s while the field is empty and unfocused.
+Use IntersectionObserver with a keyboard Load more fallback, one in-flight request, generation guards and defensive SKU deduplication. Append in backend order, preserve focus and earlier cards, announce new items. Null nextCursor shows the end message. Failed append preserves the cursor/cards; retry is explicit. Invalid/expired cursor offers Reload collection for the same category. Catalog requests use 30 s timeouts. Category navigation itself works while asleep; product fetching uses availability.
 
-**8. Loading story.**
-Progress steps are timed on the client at 0 s / 1.5 s / 3 s: "Reading your request" → "Searching the collection" → "Picking the best matches". Eight skeleton cards are shown on the first search. During a refinement the current grid dims to 40 % opacity instead. The step text is mirrored into an `aria-live="polite"` region.
+### 8. Demonstration and reuse of MagicPath React source
 
-**9. Images: one black-and-white image per category, delivered as static files.**
-- Location and naming: `public/images/categories/<slug>.webp` for the 13 backend slugs plus `default.webp`. Vite copies `public/` into `dist/` unchanged, so the files are served at `/images/categories/<slug>.webp` from the same S3 bucket and CloudFront domain as the page. This is the contract with backend `product-catalog`, and the backend sends `imageUrl = /images/categories/<slug>.webp`.
-- Format: 4:5 portrait, 1200×1500, WebP quality about 80, at most 200 KB each, true grayscale.
-- Rendering: a plain `<img>` with `width`/`height` (4:5 frame, no layout shift), `loading="lazy"` below the fold, `decoding="async"`, and a `srcset` only if smaller variants are added later (the single 1200×1500 file is at most 200 KB). Any absolute `imageUrl` host works, since there is no image optimizer to configure. A CSS `grayscale` filter guarantees black and white even if a future per-product photo is in color. `onError` swaps to `default.webp`.
-- Production: images are generated once with an image-generation model, reviewed by a person and committed. The prompt template keeps the set consistent: *"Black and white studio product photograph of a single {item} on an invisible mannequin, front view, centered, soft diffused light, seamless light grey background, high detail fabric texture, minimal luxury fashion catalog style, no text, no logo, no person, 4:5 portrait."*
-  - `{item}` per slug: puffer → "quilted down puffer jacket"; parka → "hooded travel parka with large pockets"; coat → "tailored trench coat"; rain → "lightweight water-resistant nylon rain jacket"; softshell → "minimalist softshell jacket"; fleece → "zip-up fleece jacket"; track → "retro track jacket with contrast stripes"; technical → "technical ski and hiking shell jacket"; field → "waxed cotton field jacket"; bomber → "classic bomber jacket with ribbed cuffs"; denim → "vintage denim trucker jacket"; leather → "leather biker jacket"; windbreaker → "packable sporty windbreaker"; default → "folded neutral jacket on a table".
-- Why static now and blob storage later: see backend design `storefront-search-api` decision 1. The frontend only ever uses `imageUrl` from the API, so moving images to a CDN is a backend configuration change only.
+SearchDemonstration has isolated fixtures, playback state and controls. It uses the same visual components and performs no API or readiness calls. Demonstration products are labelled examples. A real-field focus pauses automatic playback; real submission or leaving the homepage stops it. Limit automatic playback to one visible, unfocused cycle per entry; reduced motion provides a static/manual alternative. Final playback must be compared with an actual completed query/refinement flow; a final recording can be produced only then.
 
-**10. Testing.**
-- Vitest + React Testing Library + MSW for component and reducer tests: formatting, chip wording, card content, swatch fallback, the reducer state machine (supersede, retry, new search), and client-side validation.
-- Playwright end-to-end against the Vite dev or preview server with `page.route('**/api/v1/search*')` mocks for happy path, refinement, rejection, 400, 429 (both codes), 500/timeout and empty results; viewport checks at 390 and 1440 px; `@axe-core/playwright` audit.
-- `lib/api/search.ts` is unit-tested with MSW for every status, network failure and abort.
-- An optional smoke test against a running backend (`E2E_BACKEND=1`), excluded from the default run.
+The MagicPath frames contain React code and duplicated copies of common components. Export/inspect the pinned reference source and consolidate it into one local component set. Remove fixed-width mobile wrappers, state-switching review toolbars, sample matching, simulated timers, placeholder prices and fake Load more behavior from production paths. Component reuse must not bypass real API, routing, availability, cursor or accessibility requirements. UI-only fixtures remain in tests/demo modules.
+
+### 9. Suggested component boundaries
+
+```
+src/components/Header, Hero, SearchBar, ExamplePrompts, SearchDemonstration
+src/components/SearchWorkspace, ConversationHistory, CustomerMessage, AssistantReply,
+               FollowUpComposer, CurrentMatches, InterpretationBar, ProductGrid, ProductCard,
+               ProductDialog, CatalogNavigation, CategoryBreadcrumbs, CatalogList, LoadMore,
+               LoadingStory, SkeletonCard, RejectionNotice, LimitNotice, ErrorNotice, EmptyResults
+src/lib/api/types.ts, search.ts, catalog.ts
+src/lib/format.ts, examples.ts, brand.ts
+src/data/categories.json
+src/gate/*                         separate service-availability-gate change
+public/images/categories/*.webp
+```
+
+### 10. Verification and reference states
+
+Use Vitest/RTL/MSW for API status mapping, session races, stored result selection, no-request historical inspection/dialog opening, formatting and local category validation. Use Playwright for live-route behavior with API fixtures, modal focus/dismissal, mobile tabs, keyboard pagination, category switches, offline demonstration and service states. Check 390×844, 1440×900 and width extremes; assert no horizontal overflow and no missing products. Run axe-core on initial, workspace, catalog, dialog and gate states. Verify alpha assets on Sage surfaces. Final manual validation compares actual backend-ranked SKUs and interpretation, then records/reviews the homepage example. Lint, unit, E2E and production build must pass before implementation is considered complete.
 
 ## Risks / Trade-offs
 
-- [All cards in one category look identical, e.g. many puffers in one result] → Titles, prices and swatches differ. Per-product images later via the backend `image` CSV column, no frontend change.
-- [Client-timed loading steps do not reflect real progress] → The wording is honest about intent rather than claiming completion. Backend Server-Sent Events (SSE) are a follow-up.
-- [Contract drift with the in-flight backend changes] → Types mirror the backend specs. Playwright fixtures are taken from the backend spec scenarios, and the optional live smoke test catches drift.
-- [Reload loses the conversation] → By design: a reload creates a new token, so the backend history and the trail are both fresh. The backend never evicts or shares conversations of other tokens (`conversation-memory`).
-- [Generated images may contain artifacts or logos] → Manual review before commit; the prompt says "no text, no logo".
-- [LLM latency up to 30 s on cold start] → 30 s client timeout with retry. CloudFront's origin response timeout (default 30 s) must be at least as long; this is checked in `aws-edge-hosting`.
-- [Usage limits reached during a demo] → HTTP 429 shows a calm message with the wait time from `Retry-After` when present, never the retry button for `DAILY_BUDGET_EXHAUSTED`.
-- [Backend asleep] → handled by `service-availability-gate`; this change only reports failures to it.
+- Existing backend jacket-only import lacks hierarchical apparel browsing: implement `apparel-catalog-browsing` first or use explicit MSW fixtures during UI work.
+- Category configuration exists on both sides: compare stable ids/edges during integration, allowing frontend label/order changes.
+- A narrow viewport cannot show full history and products simultaneously: mobile tabs prioritize current matches while retaining history.
+- Category drawings may repeat across products: text and dialog data distinguish them; introduce per-product imageUrl values without changing the UI contract when available.
+- Prototype source is useful visual material but not production readiness evidence. Shared code must be consolidated and integrated deliberately.
+- Availability is governed by real UP/health responses; never enable search from a fixed prototype timer or use example playback to keep the backend alive.

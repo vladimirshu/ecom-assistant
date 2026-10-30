@@ -2,6 +2,10 @@ package com.ecomassistant.controller;
 
 import com.ecomassistant.limits.ClientKeyResolver;
 import com.ecomassistant.limits.SearchAdmission;
+import com.ecomassistant.listing.CatalogListingService;
+import com.ecomassistant.listing.CatalogPage;
+import com.ecomassistant.listing.CatalogRequestException;
+import com.ecomassistant.listing.CatalogUnavailableException;
 import com.ecomassistant.service.ProductSearchService;
 import com.ecomassistant.service.SearchResult;
 import java.util.List;
@@ -38,6 +42,9 @@ class ProductsControllerTest {
 
     @MockitoBean
     private ClientKeyResolver clientKeyResolver;
+
+    @MockitoBean
+    private CatalogListingService catalogListingService;
 
     @Test
     void angleBracketsReturnBadRequestWithoutInvokingSearch() throws Exception {
@@ -116,5 +123,39 @@ class ProductsControllerTest {
 
         verifyNoInteractions(productSearchService);
         verifyNoInteractions(chatMemory);
+    }
+
+    @Test
+    void catalogListingReturnsProductsAndCursor() throws Exception {
+        when(catalogListingService.list(null, null, null))
+                .thenReturn(new CatalogPage(List.of(), "opaque-cursor"));
+
+        mockMvc.perform(get("/api/v1/products"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.products").isArray())
+                .andExpect(jsonPath("$.nextCursor").value("opaque-cursor"));
+
+        verify(catalogListingService).list(null, null, null);
+        verifyNoInteractions(searchAdmission);
+    }
+
+    @Test
+    void catalogListingValidationErrorReturns400WithError() throws Exception {
+        when(catalogListingService.list("unknown-branch", null, null))
+                .thenThrow(new CatalogRequestException("Unknown category"));
+
+        mockMvc.perform(get("/api/v1/products").param("category", "unknown-branch"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Unknown category"));
+    }
+
+    @Test
+    void catalogListingUnavailableReturns503WithError() throws Exception {
+        when(catalogListingService.list(null, null, null))
+                .thenThrow(new CatalogUnavailableException("Catalog is not ready"));
+
+        mockMvc.perform(get("/api/v1/products"))
+                .andExpect(status().isServiceUnavailable())
+                .andExpect(jsonPath("$.error").value("Catalog is not ready"));
     }
 }

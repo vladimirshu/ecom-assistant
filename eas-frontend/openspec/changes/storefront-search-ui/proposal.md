@@ -1,34 +1,39 @@
 ## Why
 
-The assistant's value is that a customer describes what they want, in their own words and language, and gets the best matches without browsing a catalog. Today this is only reachable through a raw JSON endpoint. A storefront that looks like a real premium fashion shop and visibly shows "what we understood" makes the concept tangible for customers and stakeholders.
+The approved Sage design makes natural-language clothing search the primary action and lets visitors inspect both conversation history and current matches. The earlier monochrome, card-only specification conflicts with that design and must be aligned before implementation.
 
 ## What Changes
 
-- New standalone client-only Vite + React + TypeScript + Tailwind CSS single-page application in `eas-frontend/`, independent of the Gradle build. It builds to static files that are served from S3 behind CloudFront.
-- One-page storefront: a minimal header and a hero with a single large search field, rotating example placeholders (including non-English ones) and clickable example prompts. There is deliberately no category navigation.
-- Conversational search: the first request starts a conversation, follow-ups refine it ("same but in navy"), and "New search" clears it. The conversation token lives in application memory only: a new token on every page load and on "New search".
-- "We understood" bar showing the backend's interpretation: English search query, price limit, excluded items and lowest-price ordering, plus the trail of the customer's own messages.
-- Product grid of premium cards (black-and-white category image, serif title, EUR price, color swatches, sizes) and a quick-view panel with the full description.
-- Staged loading story during the backend's multi-second LLM pipeline, skeleton cards, cancellation of superseded requests.
-- Friendly states for rejection (HTTP 422 suggested prompts as clickable chips), invalid input (HTTP 400), usage limits (HTTP 429 `RATE_LIMITED` / `DAILY_BUDGET_EXHAUSTED`), empty results, and server/network failure with retry.
-- Black-and-white images, one per catalog category plus a default, in `public/images/categories/`.
-- The browser calls the same-origin path `/api/v1/search`. In production CloudFront routes `/api/v1/*` to the backend, and in development the Vite dev server proxies it to `http://localhost:8080`. No application proxy and no CORS configuration are needed.
-- Backend availability (the service is asleep outside business hours) is handled by the separate change `service-availability-gate`.
+- Standalone Vite + React + TypeScript + Tailwind static SPA, with `/` for search/workspace and `/catalog` for browsing.
+- Sage palette, system serif/sans typography, small header portfolio note, quiet Men/Women entry points and a compact full-width search field. No separate Catalog link.
+- Homepage copy and an isolated, accessible search/refinement demonstration based on bundled fixtures; final example reviewed against the completed live flow.
+- Desktop conversation/history beside one selected results grid, historical snapshot selection without API calls, and mobile Matches/Conversation tabs.
+- Compact shared product cards with transparent graphite drawings, title and price; complete details in an accessible local dialog, without a new product endpoint or page.
+- Preserve editable `src/data/categories.json`, Men/Women hierarchy and descendant-inclusive category browsing with cursor pagination, no attribute-filter panels.
+- Actual API loading, empty, rejection, validation, quota and failure behavior; keep drafts/history/results appropriately labelled and integrate the Sage availability panel.
+- Add a complete catalog image-generation brief: light graphite style, genuine transparency, 17 garment types plus fallback, reusable prompts, manifest/provenance, alpha WebP delivery and whole-set review.
+- Record pinned MagicPath references and implementation checks; reuse React source only after consolidating shared components and replacing prototype logic.
 
 ## Capabilities
 
 ### New Capabilities
-- `storefront-shell`: page layout, brand, hero, example prompts, visual language, responsiveness and accessibility baseline.
-- `conversational-search`: submitting and refining searches, conversation lifecycle, backend communication, loading, rejection, validation and error states.
-- `search-results`: interpretation bar, product cards and grid, category images, quick view, empty results.
+- `storefront-shell`: Sage search-first layout, header, copy, responsive composition and accessibility.
+- `conversational-search`: real API requests, conversation lifecycle, request races and feedback.
+- `search-results`: side-by-side workspace, result snapshots, mobile tabs, interpretation and ranking.
+- `product-details`: compact cards and accessible product dialog using loaded data.
+- `search-demonstration`: isolated local playback, controls, motion preferences and final live-flow review.
+- `catalog-browsing`: local category tree, URL state, descendant product listing and cursor pagination.
+- `catalog-imagery`: generation style/reference, full garment coverage, prompts, transparent assets, mapping/provenance and release acceptance.
 
 ### Modified Capabilities
-<!-- none: first change of the frontend project -->
+None; this remains an unimplemented frontend change.
 
 ## Impact
 
-- New project `eas-frontend/` (package.json, Vite app, tests, static images); no changes to backend code.
-- No runtime configuration: the browser uses relative `/api/v1/...` URLs. The Vite dev server proxy target is a development setting (`VITE_DEV_BACKEND_URL`, default `http://localhost:8080`).
-- API contract consumed: backend `GET /api/v1/search` as specified by backend changes `api-versioned-search-path`, `storefront-search-api`, `rag-product-filtering`, `query-analysis-guardrail`, `conversation-memory` and `demo-cost-controls` (`../eas-backend/openspec/changes/`). Category slugs must match the backend `product-catalog` category list.
-- Depends on: backend change `storefront-search-api` for titles, images and interpretation, and `api-versioned-search-path` for the path. Until they are deployed, end-to-end tests run against a mocked backend.
-- Deployment (S3 + CloudFront) is out of scope here; see the root-level `aws-edge-hosting` change.
+- Documentation changes only in this update; application implementation remains unchecked in tasks.md.
+- Existing search/Product DTO contract is unchanged. No product-detail or category-tree endpoint is introduced.
+- New backend dependency: `../eas-backend/openspec/changes/apparel-catalog-browsing` owns expanded apparel and cursor-paged GET /api/v1/products. The frontend category file remains the navigation source.
+- Backend content/relevance dependency: `seed-catalog-quality` owns the curated dataset and real-model scenario acceptance; final frontend examples must use its verified catalog cases.
+- Coordinated with frontend `service-availability-gate` for non-modal Sage status presentation and actual readiness behavior.
+- Static hosting and SPA route fallback remain in root `aws-edge-hosting`. Development proxies `/api` to the backend; production uses same-origin CloudFront routing.
+- MagicPath project/revision references and a reviewed illustration sheet are recorded in design-reference.md and reference-assets/; the production asset plan and prompts are in image-generation.md. Prototype sample data, timers and state selectors must not become production API logic.

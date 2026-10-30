@@ -30,6 +30,8 @@ servers:
 tags:
   - name: Search
     description: Natural-language product search
+  - name: Catalog
+    description: Category-aware catalog browsing (no LLM)
   - name: Health
     description: Application readiness
 
@@ -249,6 +251,98 @@ paths:
               example:
                 status: DOWN
 
+  /api/v1/products:
+    get:
+      tags:
+        - Catalog
+      summary: Browse the product catalog by category with cursor pagination
+      description: |
+        Returns one page of the apparel catalog in a deterministic traversal order.
+        Browsing never calls the search pipeline, an embedding model or any LLM, and
+        never consumes the search rate limit or daily LLM budget.
+
+        A successful response is `{ "products": Product[], "nextCursor": string | null }`,
+        using exactly the `Product` representation returned by search. `nextCursor` is an
+        opaque, signed token bound to the category scope, page size and catalog revision;
+        it is forwarded unchanged for the next page and is `null` on the last page.
+      operationId: listProducts
+      parameters:
+        - name: category
+          in: query
+          required: false
+          description: |
+            A stable browsing category id (for example `men`, `women`, `men-jackets-coats`,
+            `men-jeans`). Selecting any root, intermediate node or leaf returns products
+            assigned directly to that node or any descendant, once per SKU. Omit to select
+            the full apparel assortment across both roots.
+          schema:
+            type: string
+          example: men-jeans
+        - name: limit
+          in: query
+          required: false
+          description: |
+            Page size. Defaults to 24; allowed integers are 1 through 100. A cursor is
+            bound to the page size used on its first page; using a different `limit` with
+            that cursor returns HTTP 400.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 24
+          example: 24
+        - name: cursor
+          in: query
+          required: false
+          description: |
+            Opaque token from the previous page's `nextCursor`. Bound to the catalog
+            revision, category scope and page size. Invalid, expired, tampered or mismatched
+            cursors return HTTP 400. A cursor issued by a previous revision or a restarted
+            service may be invalidated.
+          schema:
+            type: string
+          example: eyJyZXZpc2lvbiI6...
+      responses:
+        '200':
+          description: A page of products in deterministic traversal order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogPage'
+              example:
+                products:
+                  - sku: M-JEANS-001
+                    title: Mens Straight-Leg Jeans 1
+                    category: Jeans
+                    colors: [indigo]
+                    sizes: [30, 32, 34]
+                    price: 62.00
+                    description: Straight-leg men's jeans in durable denim.
+                    imageUrl: /images/categories/jeans.webp
+                nextCursor: eyJyZXZpc2lvbiI6...
+        '400':
+          description: |
+            Bad request. Returned with `{ "error": string }` for an unknown category id, an
+            invalid `limit`, or a malformed, expired, tampered or mismatched cursor. The
+            body exposes no internal cursor state.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogError'
+              example:
+                error: Unknown category
+        '503':
+          description: |
+            The catalog is not ready to serve a verified complete current revision (import
+            not yet verified, or the vector store is unavailable). Never returns a
+            successful partial page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogError'
+              example:
+                error: Catalog is not ready
+
 components:
   schemas:
     HealthStatus:
@@ -261,6 +355,33 @@ components:
           type: string
           enum: [UP, DOWN]
           description: Whether the application is ready to serve searches.
+    CatalogPage:
+      type: object
+      description: One page of the catalog listing.
+      required:
+        - products
+        - nextCursor
+      properties:
+        products:
+          type: array
+          description: Products in deterministic traversal order.
+          items:
+            $ref: '#/components/schemas/Product'
+        nextCursor:
+          type: string
+          nullable: true
+          description: |
+            Opaque cursor for the next page, or `null` on the last page.
+    CatalogError:
+      type: object
+      description: Catalog listing error body (HTTP 400 and HTTP 503).
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: Short, stable error message. Exposes no internal cursor state.
+          example: Unknown category
     Product:
       type: object
       description: A product from the apparel catalog.

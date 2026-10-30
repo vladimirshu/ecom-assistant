@@ -3,6 +3,7 @@ package com.ecomassistant.controller;
 import com.ecomassistant.dto.ProductSearchRequestDto;
 import com.ecomassistant.limits.ClientKeyResolver;
 import com.ecomassistant.limits.SearchAdmission;
+import com.ecomassistant.listing.CatalogListingService;
 import com.ecomassistant.service.ProductSearchService;
 import com.ecomassistant.service.SearchResult;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,8 @@ class ProductsControllerConcurrencyTest {
         ChatMemory memory = mock(ChatMemory.class);
         SearchAdmission searchAdmission = mock(SearchAdmission.class);
         ClientKeyResolver clientKeyResolver = mock(ClientKeyResolver.class);
-        ProductsController controller = new ProductsController(service, memory, searchAdmission, clientKeyResolver);
+        ProductsController controller = new ProductsController(service, memory, searchAdmission, clientKeyResolver,
+                mock(CatalogListingService.class));
         CountDownLatch firstStarted = new CountDownLatch(1);
         CountDownLatch finishFirst = new CountDownLatch(1);
         SearchResult result = new SearchResult(List.of(), null);
