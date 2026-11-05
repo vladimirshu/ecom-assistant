@@ -1,17 +1,35 @@
-version: '3.8'
-
 services:
-#  ecom-assistant:
-#    build: ./backend
-#    ports:
-#      - "8080:8080"
+  backend:
+    build: ./eas-backend
+    ports:
+      - "8080:8080"
+    environment:
+      OPEN_AI_TOKEN: ${OPEN_AI_TOKEN}
+      QDRANT_HOST: qdrant
+      QDRANT_PORT: 6334
+    depends_on:
+      qdrant:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "bash", "-c", ": > /dev/tcp/127.0.0.1/8080"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
 
-#  chroma:
-#    image: chromadb/chroma:latest
-#    ports:
-#      - "8000:8000"
-#    volumes:
-#      - chroma-data:/chroma/chroma
+  frontend:
+    build:
+      context: ./eas-frontend
+      args:
+        VITE_OPEN_TZ: ${VITE_OPEN_TZ:-Europe/Berlin}
+        VITE_OPEN_DAYS: ${VITE_OPEN_DAYS:-mon,tue,wed,thu,fri}
+        VITE_OPEN_FROM: ${VITE_OPEN_FROM:-08:00}
+        VITE_OPEN_TO: ${VITE_OPEN_TO:-22:00}
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
 
   qdrant:
     image: qdrant/qdrant:latest
@@ -23,7 +41,12 @@ services:
     environment:
       - QDRANT__SERVICE__HTTP_PORT=6333
       - QDRANT__SERVICE__GRPC_PORT=6334
+    healthcheck:
+      test: ["CMD", "bash", "-c", ": > /dev/tcp/127.0.0.1/6333"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
 
 volumes:
-#  chroma-data:
   qdrant-data:

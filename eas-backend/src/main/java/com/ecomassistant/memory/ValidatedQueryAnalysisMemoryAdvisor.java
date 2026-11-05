@@ -15,7 +15,6 @@ import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.ai.util.JacksonUtils;
-import org.springframework.ai.util.json.schema.JsonSchemaGenerator;
 import tools.jackson.databind.json.JsonMapper;
 
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ import java.util.Objects;
 public final class ValidatedQueryAnalysisMemoryAdvisor implements CallAdvisor {
     private static final JsonMapper JSON = JacksonUtils.getDefaultJsonMapper();
     private static final Schema SCHEMA = SchemaRegistry.withDefaultDialect(SpecificationVersion.DRAFT_2020_12)
-            .getSchema(JSON.readTree(JsonSchemaGenerator.generateForType(QueryAnalysis.class)));
+            .getSchema(JSON.readTree(QueryAnalysis.jsonSchema()));
     private final ChatMemory memory;
 
     public ValidatedQueryAnalysisMemoryAdvisor(ChatMemory memory) {

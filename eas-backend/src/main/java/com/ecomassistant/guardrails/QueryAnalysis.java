@@ -1,6 +1,9 @@
 package com.ecomassistant.guardrails;
 
 import org.jspecify.annotations.Nullable;
+import org.springframework.ai.util.JacksonUtils;
+import org.springframework.ai.util.json.schema.JsonSchemaGenerator;
+import tools.jackson.databind.node.ObjectNode;
 
 import java.util.List;
 
@@ -29,4 +32,22 @@ public record QueryAnalysis(
         List<String> negativeExamples,
         @Nullable PriceConstraint priceConstraint,
         boolean sortByLowestPrice) {
+
+    private static final String JSON_SCHEMA = createJsonSchema();
+
+    public static String jsonSchema() {
+        return JSON_SCHEMA;
+    }
+
+    private static String createJsonSchema() {
+        var schema = (ObjectNode) JacksonUtils.getDefaultJsonMapper()
+                .readTree(JsonSchemaGenerator.generateForType(QueryAnalysis.class));
+        var properties = (ObjectNode) schema.get("properties");
+        var priceConstraint = properties.remove("priceConstraint");
+        // The generated schema treats the optional object as non-null when present.
+        var alternatives = properties.putObject("priceConstraint").putArray("anyOf");
+        alternatives.add(priceConstraint);
+        alternatives.addObject().put("type", "null");
+        return schema.toString();
+    }
 }

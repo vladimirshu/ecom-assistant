@@ -1,5 +1,5 @@
-# Use OpenJDK 17 as base image for building
-FROM openjdk:17-jdk-slim as builder
+# Use Eclipse Temurin JDK 17 as the base image for building
+FROM eclipse-temurin:17-jdk AS builder
 
 # Set working directory
 WORKDIR /app
@@ -18,8 +18,8 @@ COPY src/ src/
 # Build the application
 RUN ./gradlew build -x test --no-daemon
 
-# Use OpenJDK 17 runtime for the final image
-FROM openjdk:17-jdk-slim
+# Use Eclipse Temurin JRE 17 runtime for the final image
+FROM eclipse-temurin:17-jre
 
 # Set working directory
 WORKDIR /app

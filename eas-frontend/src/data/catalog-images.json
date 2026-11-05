@@ -1,0 +1,599 @@
+{
+  "styleReference": "reference-assets/graphite-garment-style.png",
+  "sharedPromptVersion": "1",
+  "commonPrompt": "Use case: product-mockup. Asset type: one standalone clothing illustration for an ATELIER apparel product card. Primary request: {garment-specific subject from the asset plan}. Reference: match the supplied approved light graphite garment reference in pencil line weight, shading density, material detail and overall refinement. Draw only the requested garment. Style: delicate graphite pencil contours, sparse controlled crosshatching, soft neutral gray midtones, generous unshaded areas. Clearly hand-drawn. No dense black fills or photographic rendering. Composition: one complete garment, front view, centered and fully visible with consistent clear margins in a 4:5 portrait frame. Natural garment construction, no visible person or mannequin. Background: genuinely transparent alpha outside the garment silhouette, including natural gaps between sleeves and body or between trouser legs. Keep fabric interiors and graphite marks intact. Materials: indicate the requested fabric with subtle marks; do not add product-specific features or material claims absent from the garment brief. Constraints: no paper, background texture, white panel, checkerboard, floor, cast shadow, hanger, props, extra garment, text, price, brand, logo or watermark. Do not crop sleeves, hood, hem or legs. The final drawing should feel light and consistent with the reference when placed next to the other catalog garments on a soft Sage website.",
+  "entries": [
+    {
+      "imageKey": "puffer",
+      "filename": "puffer.webp",
+      "garment": "Puffer jacket",
+      "brief": "Quilted puffer jacket, clear padded horizontal baffles, zip front, stand collar; lightly shaded rather than solid black",
+      "categoryIds": [
+        "men-puffer",
+        "women-puffer"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/puffer.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/puffer.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 184704,
+        "alpha": true
+      },
+      "promptOverride": "Generate one transparent product-mockup asset for ATELIER. Use the supplied sheet only as the graphite style reference. One complete front-view quilted puffer jacket with padded horizontal baffles, zip front and stand collar. Light fine graphite contours, sparse crosshatching, neutral pale shading. Center it with clear margins on a portrait canvas. Genuine transparent alpha outside silhouette and in gaps. No person, shadow, texture, paper, checkerboard, logos or text.",
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "parka",
+      "filename": "parka.webp",
+      "garment": "Parka",
+      "brief": "Mid-thigh hooded parka, longer hem, simple flap pockets, weather-protective silhouette; no fur trim",
+      "categoryIds": [
+        "men-parka",
+        "women-parka"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/parka.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/parka.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 187572,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "coat",
+      "filename": "coat.webp",
+      "garment": "Overcoat",
+      "brief": "Mid-length single-breasted coat, notched lapels, straight hem and clear button closure",
+      "categoryIds": [
+        "men-coats",
+        "women-coats"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/coat.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/coat.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 199986,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "rain",
+      "filename": "rain.webp",
+      "garment": "Rain jacket",
+      "brief": "Lightweight hooded rain jacket, simple zip front, adjustable cuffs, smooth fabric without heavy padding",
+      "categoryIds": [
+        "men-rain",
+        "women-rain"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/rain.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/rain.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 180622,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "softshell",
+      "filename": "softshell.webp",
+      "garment": "Softshell jacket",
+      "brief": "Close-fitting softshell jacket with stand collar, shaped seams and zip pockets, smooth flexible fabric",
+      "categoryIds": [
+        "men-softshell",
+        "women-softshell"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/softshell.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/softshell.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 178082,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "fleece",
+      "filename": "fleece.webp",
+      "garment": "Fleece jacket",
+      "brief": "Zip-front fleece jacket, stand collar and subtly suggested soft pile texture, restrained pencil marks",
+      "categoryIds": [
+        "men-fleece",
+        "women-fleece"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/fleece.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/fleece.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 195268,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "track",
+      "filename": "track.webp",
+      "garment": "Track jacket",
+      "brief": "Track jacket with ribbed hem/cuffs, zip front and simple panel seams; no logos, lettering or bright stripes",
+      "categoryIds": [
+        "men-track",
+        "women-track"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/track.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/track.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 184408,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "technical",
+      "filename": "technical.webp",
+      "garment": "Technical shell jacket",
+      "brief": "Technical outdoor shell jacket with structured hood, high collar and articulated panels, no bulky insulation",
+      "categoryIds": [
+        "men-technical",
+        "women-technical"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/technical.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/technical.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 191346,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "field",
+      "filename": "field.webp",
+      "garment": "Field jacket",
+      "brief": "Field jacket with four flap pockets, structured collar and simple front fastening, subtle woven fabric",
+      "categoryIds": [
+        "men-field",
+        "women-field"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/field.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/field.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 191380,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "bomber",
+      "filename": "bomber.webp",
+      "garment": "Bomber jacket",
+      "brief": "Waist-length bomber jacket, ribbed collar/hem/cuffs, zip front and rounded sleeves",
+      "categoryIds": [
+        "men-bomber",
+        "women-bomber"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/bomber.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/bomber.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 196630,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "denim",
+      "filename": "denim.webp",
+      "garment": "Denim trucker jacket",
+      "brief": "Denim trucker jacket, pointed collar, button front, chest flap pockets and visible yoke seams",
+      "categoryIds": [
+        "men-denim",
+        "women-denim"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/denim.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/denim.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 195054,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "leather",
+      "filename": "leather.webp",
+      "garment": "Leather biker jacket",
+      "brief": "Leather biker jacket matching the approved sample: notched lapels, asymmetric zip, two zipped pockets; convey leather with sparse folds and highlights",
+      "categoryIds": [
+        "men-leather",
+        "women-leather"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/leather.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/leather.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 198350,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "windbreaker",
+      "filename": "windbreaker.webp",
+      "garment": "Windbreaker",
+      "brief": "Lightweight packable windbreaker, simple hood and zip, thin fabric folds and elastic cuffs",
+      "categoryIds": [
+        "men-windbreaker",
+        "women-windbreaker"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/windbreaker.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/windbreaker.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 177128,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "sweater",
+      "filename": "sweater.webp",
+      "garment": "Crew-neck cable-knit sweater",
+      "brief": "Crew-neck cable-knit sweater matching the approved sample, full sleeves, ribbed collar/hem/cuffs, readable but delicate knit pattern",
+      "categoryIds": [
+        "men-sweaters",
+        "women-sweaters"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/sweater.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/sweater.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 198166,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "hoodie",
+      "filename": "hoodie.webp",
+      "garment": "Pullover hoodie",
+      "brief": "Pullover hoodie matching the approved sample, hood, plausible drawstrings, kangaroo pocket and ribbed cuffs",
+      "categoryIds": [
+        "men-sweaters",
+        "women-sweaters"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/hoodie.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/hoodie.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 176280,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "jeans",
+      "filename": "jeans.webp",
+      "garment": "Straight-leg jeans",
+      "brief": "Complete straight-leg five-pocket jeans, waistband/belt loops/fly and two fully visible legs, lightly indicated denim texture",
+      "categoryIds": [
+        "men-jeans",
+        "women-jeans"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/jeans.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/jeans.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 188838,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "trousers",
+      "filename": "trousers.webp",
+      "garment": "Tailored trousers",
+      "brief": "Straight-leg tailored trousers or chinos, waistband, simple fly and slanted side pockets; distinguish from denim jeans with cleaner fabric and construction",
+      "categoryIds": [
+        "men-trousers",
+        "women-trousers"
+      ],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/trousers.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/trousers.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 157968,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    },
+    {
+      "imageKey": "default",
+      "filename": "default.webp",
+      "garment": "Folded crew-neck sweater",
+      "brief": "A simple folded crew-neck sweater, compact neutral silhouette and sparse knit marks; no text, question mark, box, hanger or background",
+      "categoryIds": [],
+      "status": "approved",
+      "promptVersion": "1",
+      "source": "artwork/catalog/default.png",
+      "generation": {
+        "tool": "built-in image_gen",
+        "date": "2026-11-04",
+        "revision": 1
+      },
+      "export": {
+        "path": "public/images/categories/default.webp",
+        "width": 1200,
+        "height": 1500,
+        "bytes": 173340,
+        "alpha": true
+      },
+      "review": {
+        "date": "2026-11-04",
+        "checks": [
+          "complete garment and construction",
+          "clean silhouette and alpha",
+          "mixed grid on paper, wash, dialog and contrasting surfaces"
+        ]
+      }
+    }
+  ]
+}

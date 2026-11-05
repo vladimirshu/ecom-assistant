@@ -1,0 +1,200 @@
+{
+  "roots": [
+    {
+      "id": "men",
+      "name": "Men",
+      "children": [
+        {
+          "id": "men-jackets-coats",
+          "name": "Jackets & Coats",
+          "children": [
+            {
+              "id": "men-jackets",
+              "name": "Jackets",
+              "children": [
+                {
+                  "id": "men-puffer",
+                  "name": "Puffer Jackets",
+                  "imageKey": "puffer"
+                },
+                {
+                  "id": "men-parka",
+                  "name": "Parkas",
+                  "imageKey": "parka"
+                },
+                {
+                  "id": "men-rain",
+                  "name": "Rain Jackets",
+                  "imageKey": "rain"
+                },
+                {
+                  "id": "men-softshell",
+                  "name": "Softshell Jackets",
+                  "imageKey": "softshell"
+                },
+                {
+                  "id": "men-fleece",
+                  "name": "Fleece Jackets",
+                  "imageKey": "fleece"
+                },
+                {
+                  "id": "men-track",
+                  "name": "Track Jackets",
+                  "imageKey": "track"
+                },
+                {
+                  "id": "men-technical",
+                  "name": "Technical Jackets",
+                  "imageKey": "technical"
+                },
+                {
+                  "id": "men-field",
+                  "name": "Field Jackets",
+                  "imageKey": "field"
+                },
+                {
+                  "id": "men-bomber",
+                  "name": "Bomber Jackets",
+                  "imageKey": "bomber"
+                },
+                {
+                  "id": "men-denim",
+                  "name": "Denim Jackets",
+                  "imageKey": "denim"
+                },
+                {
+                  "id": "men-leather",
+                  "name": "Leather Jackets",
+                  "imageKey": "leather"
+                },
+                {
+                  "id": "men-windbreaker",
+                  "name": "Windbreakers",
+                  "imageKey": "windbreaker"
+                }
+              ]
+            },
+            {
+              "id": "men-coats",
+              "name": "Coats",
+              "imageKey": "coat"
+            }
+          ]
+        },
+        {
+          "id": "men-sweaters",
+          "name": "Sweaters",
+          "imageKey": "sweater"
+        },
+        {
+          "id": "men-jeans",
+          "name": "Jeans",
+          "imageKey": "jeans"
+        },
+        {
+          "id": "men-trousers",
+          "name": "Trousers",
+          "imageKey": "trousers"
+        }
+      ]
+    },
+    {
+      "id": "women",
+      "name": "Women",
+      "children": [
+        {
+          "id": "women-jackets-coats",
+          "name": "Jackets & Coats",
+          "children": [
+            {
+              "id": "women-jackets",
+              "name": "Jackets",
+              "children": [
+                {
+                  "id": "women-puffer",
+                  "name": "Puffer Jackets",
+                  "imageKey": "puffer"
+                },
+                {
+                  "id": "women-parka",
+                  "name": "Parkas",
+                  "imageKey": "parka"
+                },
+                {
+                  "id": "women-rain",
+                  "name": "Rain Jackets",
+                  "imageKey": "rain"
+                },
+                {
+                  "id": "women-softshell",
+                  "name": "Softshell Jackets",
+                  "imageKey": "softshell"
+                },
+                {
+                  "id": "women-fleece",
+                  "name": "Fleece Jackets",
+                  "imageKey": "fleece"
+                },
+                {
+                  "id": "women-track",
+                  "name": "Track Jackets",
+                  "imageKey": "track"
+                },
+                {
+                  "id": "women-technical",
+                  "name": "Technical Jackets",
+                  "imageKey": "technical"
+                },
+                {
+                  "id": "women-field",
+                  "name": "Field Jackets",
+                  "imageKey": "field"
+                },
+                {
+                  "id": "women-bomber",
+                  "name": "Bomber Jackets",
+                  "imageKey": "bomber"
+                },
+                {
+                  "id": "women-denim",
+                  "name": "Denim Jackets",
+                  "imageKey": "denim"
+                },
+                {
+                  "id": "women-leather",
+                  "name": "Leather Jackets",
+                  "imageKey": "leather"
+                },
+                {
+                  "id": "women-windbreaker",
+                  "name": "Windbreakers",
+                  "imageKey": "windbreaker"
+                }
+              ]
+            },
+            {
+              "id": "women-coats",
+              "name": "Coats",
+              "imageKey": "coat"
+            }
+          ]
+        },
+        {
+          "id": "women-sweaters",
+          "name": "Sweaters",
+          "imageKey": "sweater"
+        },
+        {
+          "id": "women-jeans",
+          "name": "Jeans",
+          "imageKey": "jeans"
+        },
+        {
+          "id": "women-trousers",
+          "name": "Trousers",
+          "imageKey": "trousers"
+        }
+      ]
+    }
+  ]
+}

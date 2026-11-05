@@ -61,7 +61,7 @@ public class AiConfig {
     @Bean
     public StructuredOutputValidationAdvisor queryAnalysisSchemaValidationAdvisor() {
         return StructuredOutputValidationAdvisor.builder()
-            .outputType(QueryAnalysis.class)
+            .outputJsonSchema(QueryAnalysis.jsonSchema())
             .maxRepeatAttempts(1)
             .build();
     }
