@@ -161,6 +161,26 @@ test('catalog renders local category navigation', async ({ page }) => {
   await expect(page.getByRole('navigation', { name: 'Catalog categories' })).toBeVisible()
 })
 
+test('returning from an unknown category reloads All clothing', async ({ page }) => {
+  await stubBackend(page)
+  const categories: (string | null)[] = []
+  await page.route('**/api/v1/products*', (route) => {
+    categories.push(new URL(route.request().url()).searchParams.get('category'))
+    return route.fulfill({ json: { products: [puffer], nextCursor: null } })
+  })
+  await page.goto('/catalog')
+  await expect(page.getByText(puffer.title)).toBeVisible()
+  await page.evaluate(() => {
+    history.pushState({}, '', '/catalog?category=all')
+    window.dispatchEvent(new PopStateEvent('popstate'))
+  })
+  await expect(page.getByText('Category not found')).toBeVisible()
+  expect(categories).toEqual([null])
+  await page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('button', { name: 'All clothing' }).click()
+  await expect(page.getByText(puffer.title)).toBeVisible()
+  expect(categories).toEqual([null, null])
+})
+
 test('desktop keeps the composer and first row visible while refining or inspecting history', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await stubBackend(page)
@@ -360,4 +380,142 @@ test('catalog navigation stays usable before readiness and fetches only the sele
   await page.clock.fastForward(3_000)
   await expect(page.getByText(puffer.title)).toBeVisible()
   expect(requested).toEqual(['men'])
+})
+
+test('a hung control request times out and catalog loading resumes on readiness', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-11-08T01:00:00Z') })
+  let controlRequests = 0
+  let release!: () => void
+  const hung = new Promise<void>((resolve) => { release = resolve })
+  await page.route('**/api/v1/control/up', async (route) => {
+    if (++controlRequests === 1) await hung
+    await route.fulfill({ json: { state: 'UP' } })
+  })
+  await page.route('**/api/v1/products*', (route) =>
+    route.fulfill({ json: { products: [puffer], nextCursor: null } }),
+  )
+  try {
+    await page.goto('/catalog?category=women')
+    await expect.poll(() => controlRequests).toBe(1)
+    await page.clock.runFor(3000)
+    expect(controlRequests).toBe(1)
+    await page.clock.runFor(3500)
+    await expect(page.getByText(puffer.title)).toBeVisible()
+  } finally {
+    release()
+  }
+})
+
+test('search feedback remains available after inspecting a result snapshot', async ({ page }) => {
+  await stubBackend(page)
+  const suggestion = 'Try a light spring jacket'
+  let searches = 0
+  await page.route('**/api/v1/search*', (route) => {
+    searches++
+    const message = new URL(route.request().url()).searchParams.get('message')
+    if (message === 'rejected request') return route.fulfill({ status: 422, json: { suggestedPrompts: [suggestion] } })
+    return route.fulfill({
+      json: { products: [{ ...puffer, title: message === 'first request' ? 'Earlier jacket' : 'Later jacket' }], interpretation },
+    })
+  })
+  await page.goto('/')
+  const search = page.getByLabel('Describe the clothing you are looking for')
+  await search.fill('first request')
+  await search.press('Enter')
+  const pane = page.getByRole('region', { name: 'Selected matches' })
+  const refine = page.getByLabel('Refine your search')
+  const history = page.getByRole('list', { name: 'Conversation history' })
+  await expect(pane.getByText('Earlier jacket')).toBeVisible()
+  await refine.fill('rejected request')
+  await refine.press('Enter')
+  await expect(pane.getByRole('button', { name: suggestion })).toBeVisible()
+  await history.getByRole('button', { name: 'Show these matches' }).click()
+  await expect(pane.getByRole('button', { name: suggestion })).toHaveCount(0)
+  await history.getByRole('button', { name: 'View feedback' }).click()
+  await expect(pane.getByRole('button', { name: suggestion })).toBeVisible()
+  expect(searches).toBe(2)
+  await pane.getByRole('button', { name: suggestion }).click()
+  await expect(pane.getByText('Later jacket')).toBeVisible()
+  await history.getByRole('button', { name: 'View feedback' }).click()
+  await expect(pane.getByText('Earlier jacket')).toBeVisible()
+  await expect(pane.getByText('Later jacket')).toHaveCount(0)
+  expect(searches).toBe(3)
+})
+
+test('rate-limit countdown expires while browsing the catalog', async ({ page }) => {
+  await page.clock.install()
+  await stubBackend(page)
+  await page.route('**/api/v1/search*', (route) => route.fulfill({
+    status: 429, headers: { 'Retry-After': '30' }, json: { code: 'RATE_LIMITED' },
+  }))
+  await page.goto('/')
+  await page.getByPlaceholder('What are you looking for?').fill('navy jeans')
+  await page.getByRole('button', { name: 'Find my match' }).click()
+  await expect(page.getByRole('button', { name: 'Try again' })).toBeDisabled()
+  await page.getByRole('link', { name: 'Women', exact: true }).click()
+  await page.clock.fastForward(30_000)
+  await page.getByRole('button', { name: 'Back to search' }).click()
+  await expect(page.getByRole('button', { name: 'Try again' })).toBeEnabled()
+})
+
+test('interrupted automatic pagination waits for an explicit action after recovery', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-11-08T01:00:00Z') })
+  await page.addInitScript(() => {
+    window.IntersectionObserver = class {
+      callback: IntersectionObserverCallback
+      constructor(callback: IntersectionObserverCallback) { this.callback = callback }
+      observe(target: Element) {
+        this.callback([{ isIntersecting: true, target } as IntersectionObserverEntry], this as unknown as IntersectionObserver)
+      }
+      disconnect() {}
+      unobserve() {}
+      takeRecords() { return [] }
+      root = null
+      rootMargin = ''
+      thresholds = []
+    }
+  })
+  let ready = true
+  let pages = 0
+  await page.route('**/api/v1/control/up', (route) => route.fulfill({ json: { state: ready ? 'UP' : 'STARTING' } }))
+  await page.route('**/api/v1/health', (route) => route.fulfill({ json: { status: 'UP' } }))
+  await page.route('**/api/v1/products*', (route) => {
+    pages++
+    ready = false
+    return route.fulfill({ json: { products: [puffer], nextCursor: 'next-page' } })
+  })
+  await page.goto('/catalog?category=women')
+  await expect(page.getByText('Loading paused.', { exact: false })).toBeVisible()
+  expect(pages).toBe(1)
+  ready = true
+  await page.clock.fastForward(3_000)
+  await expect(page.getByRole('region', { name: 'Service availability' })).toHaveCount(0)
+  expect(pages).toBe(1)
+  await page.getByRole('button', { name: 'Load more' }).click()
+  await expect.poll(() => pages).toBe(2)
+})
+
+test('example completes one query/refinement cycle and supports replay without search requests', async ({ page }) => {
+  await page.clock.install()
+  await stubBackend(page)
+  let searches = 0
+  page.on('request', (request) => {
+    if (new URL(request.url()).pathname === '/api/v1/search') searches++
+  })
+  await page.goto('/')
+  const example = page.getByLabel('Example search demonstration')
+  await expect(example.getByRole('button', { name: 'Pause' })).toBeVisible()
+  await page.clock.runFor(1800)
+  await expect(example.getByText('Stretch Straight Jeans', { exact: true })).toBeVisible()
+  await expect(example.getByText('Example request: navy jeans', { exact: true })).toBeAttached()
+  await page.clock.runFor(5400)
+  await expect(example.getByRole('button', { name: 'Replay' })).toBeVisible()
+  await expect(example.getByText('Womens Black Skinny Jeans', { exact: true })).toBeVisible()
+  await page.clock.runFor(10_000)
+  await expect(example.getByRole('button', { name: 'Replay' })).toBeVisible()
+  await example.getByRole('button', { name: 'Replay' }).click()
+  await expect(example.getByRole('button', { name: 'Pause' })).toBeVisible()
+  expect(searches).toBe(0)
+  await page.getByRole('link', { name: 'Women', exact: true }).click()
+  await expect(example).toHaveCount(0)
 })

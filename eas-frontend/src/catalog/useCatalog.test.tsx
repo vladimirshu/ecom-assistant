@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { act, render, screen, waitFor } from '@testing-library/react'
+import { act, render, renderHook, screen, waitFor } from '@testing-library/react'
 import { beforeEach, expect, it, vi } from 'vitest'
 import { AvailabilityGateContext } from '../gate/GateContext'
 import type { AvailabilityGate } from '../gate/useAvailabilityGate'
@@ -30,6 +30,24 @@ function app(category: string) {
 }
 
 beforeEach(() => fetchPage.mockReset())
+
+it('preserves the cursor and pauses an append until an explicit action after readiness returns', async () => {
+  const ensureReady = vi.fn().mockResolvedValue(true)
+  const wrapper = ({ children }: { children: import('react').ReactNode }) => (
+    <AvailabilityGateContext.Provider value={{ ...gate, ensureReady }}>{children}</AvailabilityGateContext.Provider>
+  )
+  fetchPage.mockResolvedValue({ kind: 'success', products: [], nextCursor: 'opaque' })
+  const { result } = renderHook(() => useCatalog('men'), { wrapper })
+  await act(async () => { await result.current.loadFirst() })
+  ensureReady.mockResolvedValue(false)
+  await act(async () => { await result.current.loadMore() })
+  expect(result.current.status).toBe('paused')
+  expect(result.current.nextCursor).toBe('opaque')
+  expect(fetchPage).toHaveBeenCalledTimes(1)
+  ensureReady.mockResolvedValue(true)
+  await act(async () => { await result.current.loadMore() })
+  expect(fetchPage.mock.calls[1][0]).toEqual({ category: 'men', cursor: 'opaque' })
+})
 
 it('aborts the old category and ignores its late response when a new category loads', async () => {
   const old = deferred<CatalogOutcome>()

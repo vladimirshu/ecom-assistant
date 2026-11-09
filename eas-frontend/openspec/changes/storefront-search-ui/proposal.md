@@ -26,14 +26,14 @@ The approved Sage design makes natural-language clothing search the primary acti
 - `catalog-imagery`: generation style/reference, full garment coverage, prompts, transparent assets, mapping/provenance and release acceptance.
 
 ### Modified Capabilities
-None; this remains an unimplemented frontend change.
+None; these are new frontend capabilities. Implementation is present; final example release acceptance remains tracked in task 8.6.
 
 ## Impact
 
-- Documentation changes only in this update; application implementation remains unchecked in tasks.md.
+- Implements the standalone storefront in `src/`, with bundled illustrations, unit/API tests and browser checks. Task completion and release evidence are recorded in tasks.md and verification.md.
 - Existing search/Product DTO contract is unchanged. No product-detail or category-tree endpoint is introduced.
-- New backend dependency: `../eas-backend/openspec/changes/apparel-catalog-browsing` owns expanded apparel and cursor-paged GET /api/v1/products. The frontend category file remains the navigation source.
-- Backend content/relevance dependency: `seed-catalog-quality` owns the curated dataset and real-model scenario acceptance; final frontend examples must use its verified catalog cases.
+- Backend dependency: archived `apparel-catalog-browsing` owns expanded apparel and cursor-paged GET /api/v1/products. The frontend category file remains the navigation source.
+- Backend content/relevance dependency: archived `seed-catalog-quality` owns the curated dataset and real-model scenario acceptance. Its evaluation/publication tasks remain unchecked; final frontend examples must use its verified catalog cases.
 - Coordinated with frontend `service-availability-gate` for non-modal Sage status presentation and actual readiness behavior.
 - Static hosting and SPA route fallback remain in root `aws-edge-hosting`. Development proxies `/api` to the backend; production uses same-origin CloudFront routing.
 - MagicPath project/revision references and a reviewed illustration sheet are recorded in design-reference.md and reference-assets/; the production asset plan and prompts are in image-generation.md. Prototype sample data, timers and state selectors must not become production API logic.

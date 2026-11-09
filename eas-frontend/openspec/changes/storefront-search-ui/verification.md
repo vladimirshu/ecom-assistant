@@ -1,5 +1,70 @@
 # Storefront verification
 
+## Review, 2026-11-09
+
+- Control requests now time out after five seconds so a stalled response cannot
+  hold the storefront closed indefinitely. Submitting while startup has failed
+  preserves the draft and leaves restarting to the panel's Try again action.
+- Conversation history can reopen rejection, quota and error feedback without a
+  search request. Historical feedback shows only earlier results and only the
+  latest failed turn can be retried. Leaving during a retry restores its feedback,
+  and edits typed while a readiness check is pending survive dispatch.
+- The unknown URL category `all` has separate state from the unfiltered catalog.
+  Returning to All clothing starts a fresh first-page request.
+
+Lint, 51 unit tests, 23 Chromium tests with API fixtures, the production build,
+the 18-entry imagery check and strict OpenSpec validation passed.
+
+Task 8.6 still requires live acceptance and a published backend catalog revision.
+The backend's documented opt-in command registers `SearchEvaluationRunner` as a
+Spring bean. There is currently no entry point that loads the judged suite, invokes
+`run` and saves its report. Its metrics also use only the last turn of each
+conversation for scoring. The dated smoke test below remains the available live
+evidence for the bundled example.
+
+## Review, 2026-11-06
+
+Reviewed the implementation against the seven capability deltas. Fixed:
+
+- Catalog append blocked by readiness now enters a paused state, preserving cards
+  and cursor. Restored readiness cannot replay it through the scroll observer;
+  Load more explicitly resumes it. An interrupted initial load can still resume.
+- Search rate limits now store an absolute deadline with the turn. Catalog
+  navigation no longer restarts the wait, and retry also checks that deadline.
+- Animated demonstration requests now have screen-reader text without announcing
+  each typed character. The visible typing remains hidden from assistive technology.
+- Defensive SKU deduplication now also covers the first catalog page.
+
+Validation on the reviewed implementation:
+
+- `npm run lint`: passed.
+- `npm test`: 50 tests passed across eight files.
+- `npm run build`: passed.
+- `npm run check:images`: passed for all 18 entries.
+- `npm run test:e2e`: 20 Chromium tests passed, including axe checks, responsive
+  layouts, explicit pagination recovery, elapsed rate limits during navigation,
+  complete example query/refinement playback, replay and reduced-motion content.
+- `openspec validate storefront-search-ui --strict`: passed.
+
+The browser suite uses API fixtures; no new live-model relevance acceptance was
+performed in this review. The live evidence below remains dated 2026-11-04.
+
+### Remaining release dependency (task 8.6)
+
+The owning backend checklist is now at
+`../../../../eas-backend/openspec/changes/archive/2026-10-30-seed-catalog-quality/tasks.md`.
+Tasks 5.2–5.5 and 6.1–6.3 remain unchecked: imported-revision verification, full
+pipeline measurements, two independent budgeted model passes, diagnosis,
+accepted-content publication and final frontend handoff. Its archived location
+is not evidence of acceptance. There are no completed acceptance reports in the
+repository to replace those missing results.
+
+The existing bundled jeans example has observed live provenance and passing UI
+checks, but final approval against an accepted/published backend revision remains
+pending. Keep task 8.6 unchecked and this frontend change active until that
+dependency is satisfied. Proposal/design wording has been updated to distinguish
+implemented browsing from unfinished content acceptance.
+
 ## Live smoke test, 2026-11-04
 
 An isolated local Docker Compose backend and Qdrant loaded the repository’s

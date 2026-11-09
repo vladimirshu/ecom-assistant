@@ -111,7 +111,8 @@ export function CatalogList({
         <p className="mt-4 text-sm text-muted">You've seen the whole collection</p>
       )}
 
-      {nextCursor !== null && (status === 'ready' || status === 'appending') && (
+      {status === 'paused' && <p className="mt-3 text-sm text-muted">Loading paused. Select Load more when the shop is ready.</p>}
+      {nextCursor !== null && (status === 'ready' || status === 'appending' || status === 'paused') && (
         <div className="mt-4">
           <LoadMore onClick={onLoadMore} loading={status === 'appending'} />
         </div>

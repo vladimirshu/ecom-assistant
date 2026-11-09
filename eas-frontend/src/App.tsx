@@ -64,7 +64,7 @@ function AppShell() {
         <div className={gate.isHealthy ? '' : 'mt-6'}>
           {isCatalog ? (
             <CatalogPage
-              key={selectedId ?? 'all'}
+              key={selectedId === null ? 'all' : `category:${selectedId}`}
               selectedId={selectedId}
               onSelectCategory={handleSelectCategory}
               onBackToSearch={handleBackToSearch}

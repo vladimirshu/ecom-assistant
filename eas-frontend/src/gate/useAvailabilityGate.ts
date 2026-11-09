@@ -148,8 +148,9 @@ export function useAvailabilityGate(): AvailabilityGate {
       }
       return true
     }
-    // Not healthy: ensure a wake cycle is active and block.
-    if (phaseRef.current !== 'waking') beginWake(generationRef.current)
+    // Initial checks and active wake cycles already handle readiness.
+    // After a failed wake, the panel's retry action starts the next cycle.
+    if (phaseRef.current === 'closed') beginWake(generationRef.current)
     return false
   }, [beginWake, schedule])
 

@@ -130,6 +130,7 @@ export function SearchDemonstration({
         </div>
       ) : (
         <div className="mt-3">
+          <p className="sr-only">Example request: {stepData.query}</p>
           <p className="min-h-[1.5rem] text-sm text-ink" aria-hidden="true">
             “{typedQuery}
             {phase === 'typing' && <span className="animate-pulse">|</span>}”

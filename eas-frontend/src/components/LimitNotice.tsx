@@ -7,21 +7,22 @@ import { useEffect, useState } from 'react'
  */
 export function LimitNotice({
   code,
-  retryAfterSeconds,
+  retryAt,
   onRetry,
 }: {
   code: 'RATE_LIMITED' | 'DAILY_BUDGET_EXHAUSTED'
-  retryAfterSeconds: number | null
+  retryAt?: number
   onRetry?: () => void
 }) {
-  const [remaining, setRemaining] = useState(retryAfterSeconds ?? 0)
+  const effectiveDeadline = retryAt ?? 0
+  const [remaining, setRemaining] = useState(() => Math.max(0, Math.ceil((effectiveDeadline - Date.now()) / 1000)))
 
   useEffect(() => {
-    setRemaining(retryAfterSeconds ?? 0)
-    if (!retryAfterSeconds) return
-    const id = window.setInterval(() => setRemaining((s) => Math.max(0, s - 1)), 1000)
+    const update = () => setRemaining(Math.max(0, Math.ceil((effectiveDeadline - Date.now()) / 1000)))
+    update()
+    const id = window.setInterval(update, 1000)
     return () => window.clearInterval(id)
-  }, [retryAfterSeconds])
+  }, [effectiveDeadline])
 
   if (code === 'DAILY_BUDGET_EXHAUSTED') {
     return (
@@ -35,9 +36,9 @@ export function LimitNotice({
   return (
     <div className="rounded-sm border border-border bg-paper px-4 py-4">
       <p className="text-ink">That was a little too fast.</p>
-      <p className="mt-1 text-sm text-muted">
+      {onRetry && <p className="mt-1 text-sm text-muted">
         {remaining > 0 ? `Please wait about ${remaining} seconds and try again.` : 'You can try again now.'}
-      </p>
+      </p>}
       {onRetry && (
         <button
           type="button"

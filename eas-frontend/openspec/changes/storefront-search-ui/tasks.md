@@ -68,3 +68,4 @@
 - [x] 8.7 Run npm run lint, unit tests, Playwright tests and npm run build; verify static alpha images, SPA route fallback requirements and README handoff
 
 Verification evidence and the dependency for task 8.6 are recorded in [verification.md](verification.md).
+The 2026-11-06 review fixed interrupted pagination recovery, rate-limit deadline persistence and screen-reader access to animated example requests. Task 8.6 remains open because backend acceptance/publication is still incomplete; archiving that backend change did not complete its unchecked tasks.

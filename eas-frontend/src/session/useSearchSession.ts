@@ -24,6 +24,7 @@ export interface Turn {
   suggestedPrompts: string[]
   errorMessage?: string
   retryAfterSeconds?: number | null
+  retryAt?: number
 }
 
 export interface SearchSession {
@@ -115,7 +116,8 @@ export function useSearchSession(): SearchSession {
           setTurns((prev) =>
             prev.map((t) =>
               t.id === turnId
-                ? { ...t, status, errorMessage: outcome.message, retryAfterSeconds: outcome.retryAfterSeconds }
+                ? { ...t, status, errorMessage: outcome.message, retryAfterSeconds: outcome.retryAfterSeconds,
+                  retryAt: Date.now() + (outcome.retryAfterSeconds ?? 0) * 1000 }
                 : t,
             ),
           )
@@ -162,7 +164,7 @@ export function useSearchSession(): SearchSession {
       setActiveTurnId(turnId)
       selectedExplicitlyRef.current = false
       setNewMatchesAvailable(false)
-      setDraftState('')
+      setDraftState((current) => current === raw ? '' : current)
       setDraftError(null)
       setHasSubmitted(true)
 
@@ -187,7 +189,9 @@ export function useSearchSession(): SearchSession {
       ? prev.map((turn) => turn.id === pending.id ? pending.original! : turn)
       : prev.filter((turn) => turn.id !== pending.id))
     setDraftState((current) => current || pending.raw)
-    setActiveTurnId((current) => current === pending.id ? latestSuccessfulTurnIdRef.current : current)
+    if (!pending.original) {
+      setActiveTurnId((current) => current === pending.id ? latestSuccessfulTurnIdRef.current : current)
+    }
   }, [])
 
   const submit = useCallback(
@@ -199,6 +203,7 @@ export function useSearchSession(): SearchSession {
         return
       }
       setDraftState(raw)
+      setDraftError(null)
       cancelPending()
       const generation = ++requestGeneration.current
       const ready = await gate.ensureReady()
@@ -214,6 +219,7 @@ export function useSearchSession(): SearchSession {
     async (turnId: string) => {
       const turn = turns.find((t) => t.id === turnId)
       if (!turn || turn !== turns.at(-1) || (turn.status !== 'error' && turn.status !== 'rateLimited')) return
+      if (turn.status === 'rateLimited' && Date.now() < (turn.retryAt ?? 0)) return
       cancelPending()
       const intent = ++requestGeneration.current
       const ready = await gate.ensureReady()

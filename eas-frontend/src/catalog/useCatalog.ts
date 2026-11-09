@@ -3,7 +3,7 @@ import type { Product } from '../lib/api/types'
 import { fetchCatalogPage } from '../lib/api/catalog'
 import { useGate } from '../gate/GateContext'
 
-export type CatalogStatus = 'idle' | 'loading' | 'ready' | 'appending' | 'error' | 'invalidCursor'
+export type CatalogStatus = 'idle' | 'loading' | 'ready' | 'appending' | 'paused' | 'error' | 'invalidCursor'
 
 export interface CatalogState {
   products: Product[]
@@ -38,6 +38,7 @@ export function useCatalog(category: string | undefined): CatalogState {
       if (gen !== generation.current) return
       if (!ready) {
         inFlight.current = false
+        setStatus(append ? 'paused' : 'idle')
         return
       }
       abortRef.current?.abort()
@@ -59,14 +60,14 @@ export function useCatalog(category: string | undefined): CatalogState {
       switch (outcome.kind) {
         case 'success':
           setProducts((prev) => {
-            if (!append) return outcome.products
-            const seen = new Set(prev.map((p) => p.sku))
+            const retained = append ? prev : []
+            const seen = new Set(retained.map((p) => p.sku))
             const additions = outcome.products.filter((p) => {
               if (seen.has(p.sku)) return false
               seen.add(p.sku)
               return true
             })
-            return [...prev, ...additions]
+            return [...retained, ...additions]
           })
           setNextCursor(outcome.nextCursor)
           setStatus('ready')

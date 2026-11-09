@@ -21,11 +21,11 @@ function summaryFor(turn: Turn): string {
 
 export function AssistantReply({
   turn,
-  onShowMatches,
+  onSelectTurn,
   onRetry,
 }: {
   turn: Turn
-  onShowMatches: () => void
+  onSelectTurn: () => void
   onRetry?: () => void
 }) {
   const canShowMatches = turn.status === 'success' || turn.status === 'empty'
@@ -34,13 +34,13 @@ export function AssistantReply({
   return (
     <div className="text-sm text-ink">
       <span>{summaryFor(turn)}</span>
-      {canShowMatches && (
+      {turn.status !== 'pending' && (
         <button
           type="button"
-          onClick={onShowMatches}
+          onClick={onSelectTurn}
           className="ml-2 text-action underline-offset-2 hover:underline focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-action"
         >
-          Show these matches
+          {canShowMatches ? 'Show these matches' : 'View feedback'}
         </button>
       )}
       {canRetry && (

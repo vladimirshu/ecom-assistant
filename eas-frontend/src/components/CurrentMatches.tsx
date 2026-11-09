@@ -9,10 +9,9 @@ import { LimitNotice } from './LimitNotice'
 import { ErrorNotice } from './ErrorNotice'
 import { EmptyResults } from './EmptyResults'
 
-function lastSuccessfulTurn(turns: Turn[], beforeId?: string | null): Turn | null {
+function lastSuccessfulTurn(turns: Turn[]): Turn | null {
   for (let i = turns.length - 1; i >= 0; i -= 1) {
     const t = turns[i]
-    if (beforeId && t.id === beforeId) continue
     if (t.status === 'success' || t.status === 'empty') return t
   }
   return null
@@ -41,7 +40,12 @@ export function CurrentMatches({
 }) {
   const activeTurn = turns.find((t) => t.id === activeTurnId) ?? null
   const latest = lastSuccessfulTurn(turns)
-  const retained = activeTurn && isFailure(activeTurn.status) ? lastSuccessfulTurn(turns, activeTurn.id) : null
+  const retained = activeTurn && isFailure(activeTurn.status)
+    ? lastSuccessfulTurn(turns.slice(0, turns.indexOf(activeTurn)))
+    : null
+  const retryActive = activeTurn && activeTurn === turns.at(-1)
+    ? () => onRetry(activeTurn.id)
+    : undefined
 
   const isLatest = latest !== null && activeTurn?.id === latest.id
   const isEarlier = activeTurn?.status === 'success' || activeTurn?.status === 'empty'
@@ -52,12 +56,12 @@ export function CurrentMatches({
     rateLimited: 'Search rate limit reached',
     budgetExhausted: 'Daily search quota reached',
     error: 'Search failed',
-    pending: '',
+    pending: 'Search in progress',
   }[activeTurn?.status ?? 'pending']
 
   return (
     <section aria-label="Selected matches" className="flex flex-col gap-3">
-      <p className="sr-only" role="status">{announcement}</p>
+      <p className="sr-only" role="status">{activeTurn ? announcement : ''}</p>
       {!activeTurn ? <p className="text-muted">Your matches will appear here.</p> : <>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="font-serif text-lg text-ink">
@@ -117,16 +121,16 @@ export function CurrentMatches({
         {activeTurn.status === 'rateLimited' && (
           <LimitNotice
             code="RATE_LIMITED"
-            retryAfterSeconds={activeTurn.retryAfterSeconds ?? null}
-            onRetry={() => onRetry(activeTurn.id)}
+            retryAt={activeTurn.retryAt}
+            onRetry={retryActive}
           />
         )}
         {activeTurn.status === 'budgetExhausted' && (
-          <LimitNotice code="DAILY_BUDGET_EXHAUSTED" retryAfterSeconds={null} />
+          <LimitNotice code="DAILY_BUDGET_EXHAUSTED" />
         )}
-        {activeTurn.status === 'error' && <ErrorNotice onRetry={() => onRetry(activeTurn.id)} />}
+        {activeTurn.status === 'error' && <ErrorNotice onRetry={retryActive} />}
 
-        {retained && (
+        {retained?.status === 'success' && (
           <div className="rounded-sm border border-dashed border-border p-3">
             <p className="text-xs uppercase tracking-wide text-muted">Last successful results</p>
             <div className="mt-2">

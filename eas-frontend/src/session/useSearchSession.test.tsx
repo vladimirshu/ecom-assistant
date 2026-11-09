@@ -63,6 +63,23 @@ beforeEach(() => {
 })
 
 describe('useSearchSession', () => {
+  it('does not retry a rate-limited turn before its original deadline', async () => {
+    const now = vi.spyOn(Date, 'now').mockReturnValue(1000)
+    try {
+      mockedSearch.mockResolvedValueOnce({ kind: 'rateLimited', code: 'RATE_LIMITED', message: '', retryAfterSeconds: 30 })
+        .mockResolvedValueOnce(success(['RETRY']))
+      const { result } = renderHook(() => useSearchSession(), { wrapper })
+      await act(async () => { await result.current.submit('navy jeans') })
+      const id = result.current.activeTurnId!
+      await act(async () => { await result.current.retry(id) })
+      expect(mockedSearch).toHaveBeenCalledTimes(1)
+      now.mockReturnValue(31_000)
+      await act(async () => { await result.current.retry(id) })
+      expect(mockedSearch).toHaveBeenCalledTimes(2)
+    } finally {
+      now.mockRestore()
+    }
+  })
   it('sends clearMemory=true only on the first request', async () => {
     mockedSearch.mockResolvedValue(success(['A']))
     const { result } = renderHook(() => useSearchSession(), { wrapper })
@@ -76,6 +93,26 @@ describe('useSearchSession', () => {
     expect(mockedSearch.mock.calls[0][0].clearMemory).toBe(true)
     expect(mockedSearch.mock.calls[1][0].clearMemory).toBe(false)
     expect(mockedSearch.mock.calls[0][0].conversationId).toBe(mockedSearch.mock.calls[1][0].conversationId)
+  })
+
+  it('keeps edits made while a submitted request waits for readiness', async () => {
+    const ready = deferred<boolean>()
+    const ensureReady = vi.spyOn(gate, 'ensureReady').mockReturnValueOnce(ready.promise)
+    try {
+      mockedSearch.mockResolvedValueOnce(success(['FIRST']))
+      const { result } = renderHook(() => useSearchSession(), { wrapper })
+      let submit!: Promise<void>
+      act(() => { submit = result.current.submit('navy jeans') })
+      act(() => result.current.setDraft('make them black'))
+      await act(async () => {
+        ready.resolve(true)
+        await submit
+      })
+      expect(mockedSearch).toHaveBeenCalledWith(expect.objectContaining({ message: 'navy jeans' }), expect.anything())
+      expect(result.current.draft).toBe('make them black')
+    } finally {
+      ensureReady.mockRestore()
+    }
   })
 
   it('supersedes a pending request and renders only the latest response', async () => {
@@ -238,6 +275,7 @@ describe('useSearchSession', () => {
     await waitFor(() => expect(result.current.turns[0].status).toBe('pending'))
     act(() => result.current.cancelPending())
     expect(result.current.turns[0].status).toBe('error')
+    expect(result.current.activeTurnId).toBe(turnId)
     act(() => pending.resolve(success(['LATE'])))
     await act(async () => { await retry })
     expect(result.current.turns[0].status).toBe('error')

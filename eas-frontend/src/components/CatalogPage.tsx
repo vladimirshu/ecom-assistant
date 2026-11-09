@@ -30,6 +30,7 @@ export function CatalogPage({
   }, [effectiveCategory])
 
   useEffect(() => {
+    if (!isHealthy && catalog.status === 'idle') startedRef.current = false
     if (!unknown && isHealthy && !startedRef.current) {
       startedRef.current = true
       void catalog.loadFirst()

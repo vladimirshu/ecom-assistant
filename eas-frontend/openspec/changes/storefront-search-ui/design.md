@@ -18,7 +18,7 @@ Interpretation = { searchQuery, negativeExamples: string[],
   sortByLowestPrice: boolean }
 ```
 
-Search returns at most 10 products in ranked order. The product dialog can be populated entirely from this representation: no product-detail endpoint or new material attribute is needed. The expanded apparel assortment and browsing API are owned by backend change `apparel-catalog-browsing`; they are not yet implemented.
+Search returns at most 10 products in ranked order. The product dialog can be populated entirely from this representation: no product-detail endpoint or new material attribute is needed. The expanded apparel assortment and implemented browsing API are owned by archived backend change `apparel-catalog-browsing`.
 
 ## Goals / Non-Goals
 
@@ -72,7 +72,7 @@ Generation details are owned by `catalog-imagery` and `image-generation.md`. The
 
 Keep `src/data/categories.json` as the editable build-time navigation source, with `{ id, name, imageKey?, children }`. Roots Men/men and Women/women each contain Jackets & Coats, Sweaters, Jeans and Trousers, with deeper jacket types. T-shirts may be added later. Exclude underwear, lingerie, undershirts, tank tops and bras. Labels/order are frontend concerns; ids/parentage must align with backend category membership. Validate unique ids, fields and optional image files. Do not fetch a category-tree endpoint or duplicate the tree in components.
 
-Backend-owned proposed API:
+Backend-owned implemented API:
 
 ```
 GET /api/v1/products?limit=24[&category=<URL-encoded id>][&cursor=<opaque URL-encoded token>]
@@ -113,7 +113,7 @@ Use Vitest/RTL/MSW for API status mapping, session races, stored result selectio
 
 ## Risks / Trade-offs
 
-- Existing backend jacket-only import lacks hierarchical apparel browsing: implement `apparel-catalog-browsing` first or use explicit MSW fixtures during UI work.
+- The apparel browsing API is implemented; final release acceptance of its curated seed remains a separate dependency tracked in the archived `seed-catalog-quality` checklist.
 - Category configuration exists on both sides: compare stable ids/edges during integration, allowing frontend label/order changes.
 - A narrow viewport cannot show full history and products simultaneously: mobile tabs prioritize current matches while retaining history.
 - Category drawings may repeat across products: text and dialog data distinguish them; introduce per-product imageUrl values without changing the UI contract when available.

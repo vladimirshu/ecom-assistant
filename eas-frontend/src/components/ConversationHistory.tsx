@@ -18,12 +18,13 @@ export function ConversationHistory({
       {turns.map((turn) => (
         <li
           key={turn.id}
+          aria-current={turn.id === activeTurnId ? 'true' : undefined}
           className={`rounded-sm border px-3 py-2 ${turn.id === activeTurnId ? 'border-action bg-wash/30' : 'border-transparent'}`}
         >
           <CustomerMessage text={turn.customerText} />
           <AssistantReply
             turn={turn}
-            onShowMatches={() => onSelectTurn(turn.id)}
+            onSelectTurn={() => onSelectTurn(turn.id)}
             onRetry={turn === turns.at(-1) ? () => onRetry(turn.id) : undefined}
           />
         </li>
