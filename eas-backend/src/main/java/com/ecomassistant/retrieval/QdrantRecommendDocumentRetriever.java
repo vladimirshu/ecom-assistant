@@ -8,6 +8,8 @@ import io.qdrant.client.VectorInputFactory;
 import io.qdrant.client.WithPayloadSelectorFactory;
 import io.qdrant.client.grpc.Common;
 import io.qdrant.client.grpc.Points;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.rag.Query;
@@ -31,6 +33,8 @@ import java.util.concurrent.ExecutionException;
  * </ul>
  */
 public class QdrantRecommendDocumentRetriever implements DocumentRetriever {
+
+    private static final Logger log = LoggerFactory.getLogger(QdrantRecommendDocumentRetriever.class);
 
     private final QdrantClient qdrantClient;
     private final EmbeddingModel embeddingModel;
@@ -92,7 +96,9 @@ public class QdrantRecommendDocumentRetriever implements DocumentRetriever {
         }
 
         try {
+            long startTime = System.currentTimeMillis();
             List<Points.ScoredPoint> scoredPoints = qdrantClient.queryAsync(queryPoints.build()).get();
+            log.info("Vector DB query completed in {} ms", (System.currentTimeMillis() - startTime));
             return scoredPoints.stream().map(VectorStoreUtils::qdrantPointToDocument).toList();
         }
         catch (InterruptedException e) {

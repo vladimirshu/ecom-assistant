@@ -1,7 +1,5 @@
 package com.ecomassistant.rag;
 
-import com.ecomassistant.guardrails.PriceConstraint;
-import com.ecomassistant.guardrails.PriceOperator;
 import com.ecomassistant.guardrails.QueryAnalysis;
 import com.ecomassistant.support.OpenAiWireMockStubs;
 import com.github.tomakehurst.wiremock.WireMockServer;
@@ -23,23 +21,21 @@ import org.testcontainers.qdrant.QdrantContainer;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
-import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * End-to-end tests for the RAG product-filtering pipeline: {@code GET /api/v1/search} over a
- * real HTTP connection with Testcontainers Qdrant, the {@code FakeEmbeddingModel}
- * and WireMock stubs for both LLM calls.
+ * End-to-end tests for the product-search pipeline: {@code GET /api/v1/search} over a real
+ * HTTP connection with Testcontainers Qdrant, the {@code FakeEmbeddingModel} and WireMock
+ * stubs for the single query-analysis LLM call. The retrieved products are returned
+ * directly, without a product-filtering call.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers
-class RagProductFilteringIntegrationTest {
+class ProductSearchIntegrationTest {
 
     private static final JsonMapper JSON_MAPPER = JsonMapper.builder().build();
 
@@ -57,10 +53,10 @@ class RagProductFilteringIntegrationTest {
     @DynamicPropertySource
     static void registerProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.ai.vectorstore.type", () -> "qdrant");
-        registry.add("spring.ai.model.chat", () -> "openai");
+        registry.add("spring.ai.model.chat", () -> "deepseek");
         registry.add("spring.ai.model.embedding", () -> "none");
-        registry.add("spring.ai.openai.api-key", () -> "test-key");
-        registry.add("spring.ai.openai.base-url", wireMock::baseUrl);
+        registry.add("spring.ai.deepseek.api-key", () -> "test-key");
+        registry.add("spring.ai.deepseek.base-url", wireMock::baseUrl);
         registry.add("ecom.import.sample-file", () -> "sampledata/test-apparel.csv");
         // Keep the rate limiter and daily budget out of the way of these pipeline tests.
         registry.add("ecom.limits.per-minute", () -> "1000000");
@@ -80,19 +76,16 @@ class RagProductFilteringIntegrationTest {
     RestClient.Builder restClientBuilder;
 
     @Test
-    void happyPathReturnsProductsWithNewFieldsAndInterpretation() throws Exception {
+    void happyPathReturnsProductsWithFieldsAndInterpretation() throws Exception {
         OpenAiWireMockStubs.stubQueryAnalysis(wireMock, new QueryAnalysis(true, List.of(), List.of(),
-                "rain jacket", List.of("wool"), new PriceConstraint(PriceOperator.LESS_THAN, new BigDecimal("200")),
-                false));
-        OpenAiWireMockStubs.stubProductSelection(wireMock,
-                new ProductSelection(List.of("HALLUCINATED999", "RAIN2", "RAIN1")));
+                "rain jacket", List.of(), null, false));
 
-        HttpResult result = get("blue cotton jacket under 200 euro, no wool", java.util.UUID.randomUUID().toString());
+        HttpResult result = get("blue cotton jacket", java.util.UUID.randomUUID().toString());
 
         assertThat(result.status()).isEqualTo(HttpStatus.OK.value());
         JsonNode root = JSON_MAPPER.readTree(result.body());
-        assertThat(skus(root)).containsExactly(retrievalOrder(productFilterBody(), "RAIN1", "RAIN2"));
-        assertThat(skus(root)).doesNotContain("HALLUCINATED999");
+
+        assertThat(skus(root)).contains("RAIN1");
 
         JsonNode rain1 = productBySku(root, "RAIN1");
         assertThat(rain1.get("title").asText()).isEqualTo("Lightweight Rain Shell");
@@ -107,33 +100,23 @@ class RagProductFilteringIntegrationTest {
         JsonNode interpretation = root.get("interpretation");
         assertThat(interpretation).isNotNull();
         assertThat(interpretation.get("searchQuery").asText()).isEqualTo("rain jacket");
-        assertThat(interpretation.get("negativeExamples")).hasSize(1);
-        assertThat(interpretation.get("negativeExamples").get(0).asText()).isEqualTo("wool");
-        assertThat(interpretation.get("priceConstraint").get("operator").asText()).isEqualTo("LESS_THAN");
-        assertThat(interpretation.get("priceConstraint").get("value").asDouble()).isEqualTo(200.0);
-        assertThat(interpretation.get("sortByLowestPrice").asBoolean()).isFalse();
         assertThat(root.get("suggestedPrompts").isNull()).isTrue();
 
-        List<LoggedRequest> requests = requests();
-        assertThat(requests).hasSize(2);
-        assertThat(requests).anySatisfy(request -> assertThat(request.getBodyAsString())
-            .contains(OpenAiWireMockStubs.QUERY_ANALYSIS_MARKER));
-        String productFilterBody = productFilterBody();
-        assertThat(productFilterBody).contains("wool", "RAIN1", "RAIN2");
-        assertThat(productFilterBody).doesNotContain("HALLUCINATED999", "RAIN3");
+        // Exactly one LLM call: the query analysis.
+        assertThat(requests()).hasSize(1);
+        assertThat(requests().get(0).getBodyAsString()).contains(OpenAiWireMockStubs.QUERY_ANALYSIS_MARKER);
     }
 
     @Test
     void lowestPriceOrderingIsPreservedInResponse() throws Exception {
         OpenAiWireMockStubs.stubQueryAnalysis(wireMock, new QueryAnalysis(true, List.of(), List.of(),
                 "rain jacket", List.of(), null, true));
-        OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of("RAIN3", "RAIN1")));
 
         HttpResult result = get("cheapest rain jacket", java.util.UUID.randomUUID().toString());
 
         assertThat(result.status()).isEqualTo(HttpStatus.OK.value());
         JsonNode root = JSON_MAPPER.readTree(result.body());
-        assertThat(skus(root)).containsExactly("RAIN1", "RAIN3");
+        assertThat(prices(root)).isNotEmpty();
         assertThat(prices(root)).isSorted();
     }
 
@@ -165,25 +148,6 @@ class RagProductFilteringIntegrationTest {
     }
 
     @Test
-    void refinementReturnsSecondAnalysisSearchQuery() throws Exception {
-        QueryAnalysis first = new QueryAnalysis(true, List.of(), List.of(),
-                "warm winter jacket", List.of(), null, false);
-        QueryAnalysis second = new QueryAnalysis(true, List.of(), List.of(),
-                "warm navy winter jacket", List.of(), null, false);
-
-        OpenAiWireMockStubs.stubChatCompletionForMarkerSequence(wireMock, OpenAiWireMockStubs.QUERY_ANALYSIS_MARKER,
-                OpenAiWireMockStubs.queryAnalysisJson(first), OpenAiWireMockStubs.queryAnalysisJson(second));
-        OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of()));
-
-        get("warm winter jacket", "refine-conv");
-        HttpResult secondResult = get("same but in navy", "refine-conv");
-
-        assertThat(secondResult.status()).isEqualTo(HttpStatus.OK.value());
-        JsonNode root = JSON_MAPPER.readTree(secondResult.body());
-        assertThat(root.get("interpretation").get("searchQuery").asText()).isEqualTo("warm navy winter jacket");
-    }
-
-    @Test
     void nonEnglishRejectionPassesSuggestionsThroughUnchanged() throws Exception {
         QueryAnalysis analysis = new QueryAnalysis(false,
                 List.of("The request is contradictory: a winter jacket cannot be for summer."),
@@ -199,20 +163,6 @@ class RagProductFilteringIntegrationTest {
         assertThat(root.get("suggestedPrompts")).hasSize(2);
         assertThat(root.get("suggestedPrompts").get(0).asText()).isEqualTo("лёгкая летняя куртка");
         assertThat(root.get("suggestedPrompts").get(1).asText()).isEqualTo("тёплая зимняя куртка");
-    }
-
-    @Test
-    void persistentInvalidSelectionReturns500() throws Exception {
-        OpenAiWireMockStubs.stubQueryAnalysis(wireMock, new QueryAnalysis(true, List.of(), List.of(),
-                "rain jacket", List.of(), null, false));
-        OpenAiWireMockStubs.stubChatCompletionForMarker(wireMock, OpenAiWireMockStubs.PRODUCT_FILTER_MARKER,
-                "{\"skus\": 123}");
-
-        HttpResult result = get("rain jacket", java.util.UUID.randomUUID().toString());
-
-        assertThat(result.status()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        JsonNode root = JSON_MAPPER.readTree(result.body());
-        assertThat(root.get("error").asText()).isEqualTo("Illegal assistant response");
     }
 
     private HttpResult get(String message, String conversationId) {
@@ -237,21 +187,6 @@ class RagProductFilteringIntegrationTest {
 
     private static List<LoggedRequest> requests() {
         return wireMock.getAllServeEvents().stream().map(event -> event.getRequest()).toList();
-    }
-
-    private static String productFilterBody() {
-        return requests().stream()
-            .map(LoggedRequest::getBodyAsString)
-            .filter(body -> body.contains(OpenAiWireMockStubs.PRODUCT_FILTER_MARKER))
-            .findFirst()
-            .orElseThrow();
-    }
-
-    /** Orders the given SKUs by their position in the candidate list of the filtering prompt. */
-    private static String[] retrievalOrder(String productFilterBody, String... skus) {
-        return Arrays.stream(skus)
-            .sorted(Comparator.comparingInt(productFilterBody::indexOf))
-            .toArray(String[]::new);
     }
 
     private static List<String> skus(JsonNode root) {

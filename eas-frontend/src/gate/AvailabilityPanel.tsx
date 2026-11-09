@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useGate } from './GateContext'
-import { openingHoursLabel, parseSchedule } from './schedule'
+import { openingHoursLabel } from './schedule'
+import { loadSchedule } from '../config/schedule'
 import { useReducedMotion } from '../lib/useReducedMotion'
 import {
   RESTING_MESSAGE,
@@ -26,13 +27,8 @@ export function AvailabilityPanel() {
   const [announcement, setAnnouncement] = useState('')
 
   const hours = useMemo(() => {
-    const result = parseSchedule({
-      tz: import.meta.env.VITE_OPEN_TZ,
-      days: import.meta.env.VITE_OPEN_DAYS,
-      from: import.meta.env.VITE_OPEN_FROM,
-      to: import.meta.env.VITE_OPEN_TO,
-    })
-    return result.ok ? openingHoursLabel(result.config) : null
+    const config = loadSchedule()
+    return config ? openingHoursLabel(config) : null
   }, [])
 
   const isStarting = gate.phase === 'waking'

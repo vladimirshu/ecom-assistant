@@ -13,10 +13,10 @@ import java.util.Map;
 
 /**
  * Outermost advisor of the {@code productSearchChatClient}. Runs the single query-analysis
- * LLM call (call #1), validates its result and either rejects the request (throwing
+ * LLM call, validates its result and either rejects the request (throwing
  * {@link GuardrailRejectedException}) or rewrites the request for retrieval: the user
  * message is replaced with the English {@code searchQuery}, and the retrieval parameters
- * plus the customer's original message are added to the request context.
+ * plus the validated {@link QueryAnalysis} are added to the request context.
  */
 @Component
 public class QueryAnalysisGuardrailAdvisor implements BaseAdvisor {
@@ -45,11 +45,7 @@ public class QueryAnalysisGuardrailAdvisor implements BaseAdvisor {
 
         Map<String, Object> context = new HashMap<>(chatClientRequest.context());
         context.putAll(retrievalParametersMapper.toContext(analysis));
-        context.put(ProductFilterContextKeys.ORIGINAL_MESSAGE, message);
         context.put(ProductFilterContextKeys.QUERY_ANALYSIS, analysis);
-        if (analysis.priceConstraint() != null) {
-            context.put(ProductFilterContextKeys.PRICE_CONSTRAINT, analysis.priceConstraint());
-        }
 
         return chatClientRequest.mutate()
             .prompt(chatClientRequest.prompt().augmentUserMessage(analysis.searchQuery()))

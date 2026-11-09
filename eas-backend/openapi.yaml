@@ -8,7 +8,7 @@ info:
     *"Show me a red waterproof jacket under €100"*.
 
     The assistant combines semantic search (Qdrant vector store + OpenAI
-    embeddings) with AI-based interpretation of the user's request, a
+    embeddings) with AI-based interpretation of the user's request (DeepSeek), a
     clarification loop for ambiguous or incomplete queries, negative-example
     filtering, price filtering and optional lowest-price ordering.
 

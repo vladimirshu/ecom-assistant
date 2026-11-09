@@ -4,14 +4,22 @@ spring:
 
   # AI Configuration
   ai:
+    # Chat is served by DeepSeek; embeddings stay on OpenAI (DeepSeek has no embeddings API).
+    model:
+      chat: deepseek
+    deepseek:
+      api-key: ${DEEPSEEK_API_KEY}
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-flash
+          thinking:
+            type: disabled
     openai:
+      api-key: ${OPENAI_API_KEY}
       embedding:
         options:
           model: text-embedding-3-small
-      api-key: ${OPEN_AI_TOKEN}
-      chat:
-        options:
-          model: gpt-4o-mini
     vectorstore:
       qdrant:
         collection-name: "products"
@@ -29,8 +37,8 @@ spring:
 # Application Configuration
 ecom:
   search:
-    top-k: 30
-    max-results: 10
+    # Max documents returned by the vector DB
+    top-k: 10
     similarity-threshold: 0.15
   memory:
     inactivity-timeout: 24h
@@ -42,7 +50,6 @@ ecom:
     trusted-proxy-hops: 1
   llm:
     query-analysis-max-output-tokens: 500
-    product-filter-max-output-tokens: 300
   import:
     sample-file: sampledata/apparel_catalog.csv
   assets:

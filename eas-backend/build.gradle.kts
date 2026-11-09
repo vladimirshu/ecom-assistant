@@ -20,6 +20,7 @@ repositories {
 
 dependencies {
     implementation(platform("org.springframework.ai:spring-ai-bom:2.0.2"))
+    implementation("org.springframework.ai:spring-ai-starter-model-deepseek")
     implementation("org.springframework.ai:spring-ai-starter-model-openai")
 //    implementation("org.springframework.ai:spring-ai-starter-model-ollama")
 //    implementation("org.springframework.ai:spring-ai-chroma-store")
@@ -29,6 +30,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-restclient")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-aspectj")
     implementation("org.apache.commons:commons-csv:1.14.1")
 
     // Security and validation dependencies
@@ -38,6 +40,10 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     implementation("org.apache.commons:commons-lang3:3.21.0")
+
+    // Auto-restart the app on classpath changes during local development.
+    // Excluded from packaged jars and disabled by default in production.
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-webmvc-test")

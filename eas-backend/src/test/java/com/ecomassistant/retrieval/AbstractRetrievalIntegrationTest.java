@@ -24,9 +24,9 @@ public abstract class AbstractRetrievalIntegrationTest {
         // Disambiguate auto-configuration because spring-ai-spring-boot-testcontainers
         // brings several vector-store and model auto-configurations onto the classpath.
         registry.add("spring.ai.vectorstore.type", () -> "qdrant");
-        registry.add("spring.ai.model.chat", () -> "openai");
+        registry.add("spring.ai.model.chat", () -> "deepseek");
         registry.add("spring.ai.model.embedding", () -> "none");
-        registry.add("spring.ai.openai.api-key", () -> "test-key");
+        registry.add("spring.ai.deepseek.api-key", () -> "test-key");
         registry.add("ecom.import.sample-file", () -> "sampledata/test-apparel.csv");
         // The rate limiter and daily budget are exercised by their own tests; keep them
         // effectively unlimited so unrelated integration tests never hit a 429.

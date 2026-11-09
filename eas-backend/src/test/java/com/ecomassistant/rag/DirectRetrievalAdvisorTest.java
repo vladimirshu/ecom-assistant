@@ -16,47 +16,52 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
-class EmptyRetrievalAdvisorTest {
+class DirectRetrievalAdvisorTest {
 
-    private final EmptyRetrievalAdvisor advisor = new EmptyRetrievalAdvisor();
+    private final DirectRetrievalAdvisor advisor = new DirectRetrievalAdvisor();
 
     @Test
-    void emptyDocumentsReturnSyntheticResponseWithoutCallingNext() {
-        ChatClientRequest request = request(Map.of(RetrievalAugmentationAdvisor.DOCUMENT_CONTEXT, List.of()));
+    void returnsRetrievedDocumentsInResponseMetadataWithoutCallingNext() {
+        List<Document> documents = List.of(
+                Document.builder().id("a").text("a").metadata(Map.of("sku", "A")).build(),
+                Document.builder().id("b").text("b").metadata(Map.of("sku", "B")).build());
+        ChatClientRequest request = request(Map.of(RetrievalAugmentationAdvisor.DOCUMENT_CONTEXT, documents));
         CallAdvisorChain chain = mock(CallAdvisorChain.class);
 
         ChatClientResponse response = advisor.adviseCall(request, chain);
 
         verify(chain, never()).nextCall(request);
-        assertThat(response.chatResponse().getResult().getOutput().getText()).isEqualTo("{\"skus\":[]}");
+        assertThat(returnedDocuments(response)).isEqualTo(documents);
+        assertThat(response.context()).containsEntry(RetrievalAugmentationAdvisor.DOCUMENT_CONTEXT, documents);
     }
 
     @Test
-    void missingDocumentContextReturnsSyntheticResponseWithoutCallingNext() {
+    void missingDocumentContextReturnsEmptyListWithoutCallingNext() {
         ChatClientRequest request = request(Map.of());
         CallAdvisorChain chain = mock(CallAdvisorChain.class);
 
         ChatClientResponse response = advisor.adviseCall(request, chain);
 
         verify(chain, never()).nextCall(request);
-        assertThat(response.chatResponse().getResult().getOutput().getText()).isEqualTo("{\"skus\":[]}");
+        assertThat(returnedDocuments(response)).isEmpty();
     }
 
     @Test
-    void nonEmptyDocumentsDelegateToNext() {
-        ChatClientRequest request = request(Map.of(
-                RetrievalAugmentationAdvisor.DOCUMENT_CONTEXT,
-                List.of(Document.builder().id("a").text("a").metadata(Map.of("sku", "A")).build())));
+    void emptyDocumentContextReturnsEmptyListWithoutCallingNext() {
+        ChatClientRequest request = request(Map.of(RetrievalAugmentationAdvisor.DOCUMENT_CONTEXT, List.of()));
         CallAdvisorChain chain = mock(CallAdvisorChain.class);
-        ChatClientResponse expected = ChatClientResponse.builder().build();
-        when(chain.nextCall(request)).thenReturn(expected);
 
         ChatClientResponse response = advisor.adviseCall(request, chain);
 
-        verify(chain).nextCall(request);
-        assertThat(response).isSameAs(expected);
+        verify(chain, never()).nextCall(request);
+        assertThat(returnedDocuments(response)).isEmpty();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<Document> returnedDocuments(ChatClientResponse response) {
+        Object value = response.chatResponse().getMetadata().get(RetrievalAugmentationAdvisor.DOCUMENT_CONTEXT);
+        return value instanceof List<?> list ? (List<Document>) list : List.of();
     }
 
     private static ChatClientRequest request(Map<String, Object> context) {

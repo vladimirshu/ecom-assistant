@@ -1,7 +1,6 @@
 package com.ecomassistant.config;
 
 import com.ecomassistant.rag.OrderPreservingDocumentJoiner;
-import com.ecomassistant.rag.ProductFilterQueryAugmenter;
 import com.ecomassistant.retrieval.QdrantRecommendDocumentRetriever;
 import io.qdrant.client.QdrantClient;
 import org.springframework.ai.embedding.EmbeddingModel;
@@ -24,19 +23,16 @@ public class RetrievalConfig {
     }
 
     /**
-     * Retrieval step of the product-search pipeline: no transformers, no expander, the
-     * Qdrant recommend retriever and the product-filtering query augmenter. The order is
-     * set so it runs after the query-analysis guardrail and before the empty-retrieval
-     * short-circuit.
+     * Retrieval step of the product-search pipeline: no transformers, no expander, just
+     * the Qdrant recommend retriever. The order is set so it runs after the
+     * query-analysis guardrail and before the direct-retrieval short-circuit.
      */
     @Bean
     public RetrievalAugmentationAdvisor productSearchRetrievalAdvisor(
-            QdrantRecommendDocumentRetriever qdrantRecommendDocumentRetriever,
-            ProductFilterQueryAugmenter productFilterQueryAugmenter) {
+            QdrantRecommendDocumentRetriever qdrantRecommendDocumentRetriever) {
         return RetrievalAugmentationAdvisor.builder()
             .documentRetriever(qdrantRecommendDocumentRetriever)
             .documentJoiner(new OrderPreservingDocumentJoiner())
-            .queryAugmenter(productFilterQueryAugmenter)
             .order(-300)
             .build();
     }

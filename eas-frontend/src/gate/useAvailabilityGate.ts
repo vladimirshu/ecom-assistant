@@ -1,27 +1,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { checkHealth } from '../lib/api/health'
 import { checkControl } from '../lib/api/control'
-import {
-  isWithinOpeningHours,
-  parseSchedule,
-  type ScheduleConfig,
-} from './schedule'
+import { isWithinOpeningHours } from './schedule'
+import { loadSchedule } from '../config/schedule'
 
 export type GatePhase = 'checking' | 'closed' | 'waking' | 'healthy' | 'stuck'
 
 const CONTROL_POLL_MS = 3000
 const STUCK_AFTER_MS = 180_000
 const START_DEBOUNCE_MS = 1000
-
-function loadSchedule(): ScheduleConfig | null {
-  const result = parseSchedule({
-    tz: import.meta.env.VITE_OPEN_TZ,
-    days: import.meta.env.VITE_OPEN_DAYS,
-    from: import.meta.env.VITE_OPEN_FROM,
-    to: import.meta.env.VITE_OPEN_TO,
-  })
-  return result.ok ? result.config : null
-}
 
 export interface AvailabilityGate {
   phase: GatePhase

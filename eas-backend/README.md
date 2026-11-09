@@ -17,7 +17,6 @@ and bounds the per-search LLM cost. The limits are configurable defaults in
 | `ecom.limits.daily-budget` | 300 | accepted searches per UTC day across all clients |
 | `ecom.limits.trusted-proxy-hops` | 1 | trusted `X-Forwarded-For` entries, counted from the right |
 | `ecom.llm.query-analysis-max-output-tokens` | 500 | max output tokens for the query-analysis call |
-| `ecom.llm.product-filter-max-output-tokens` | 300 | max output tokens for the product-filtering call |
 
 A rejected search returns HTTP 429 with a `Retry-After` header and a body
 `{"code":"RATE_LIMITED"|"DAILY_BUDGET_EXHAUSTED","message":"..."}` (see `openapi.yaml`).
@@ -33,10 +32,13 @@ application (below).
 ### Required before the first public link (runbook step)
 
 The application-level limits are soft guards only — an application bug or a restart can
-bypass them. Set the hard backstop in OpenAI before sending the first public link:
+bypass them. Set hard spending caps on both model providers before sending the first
+public link:
 
-1. Create a **dedicated OpenAI project** used only by this demo.
-2. Give it a **monthly budget limit** (or **prepaid credit**), and set **auto-recharge off**.
-3. Add **notification e-mails** for budget threshold alerts.
+1. **DeepSeek (chat):** top up a dedicated account with prepaid balance and leave
+   **auto-top-up off**, so spend is capped by the balance.
+2. **OpenAI (embeddings only):** create a dedicated project with a **monthly budget limit**
+   (or prepaid credit) and set **auto-recharge off**.
+3. Add **notification e-mails** for threshold alerts on each account.
 
 This is the only control that cannot be exceeded by an application bug or a restart.

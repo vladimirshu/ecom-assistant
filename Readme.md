@@ -37,7 +37,7 @@ backend, the frontend (served by nginx), and Qdrant.
 ### Full stack with Docker Compose
 
 ```bash
-cp .env.example .env   # then set OPEN_AI_TOKEN
+cp .env.example .env   # then set DEEPSEEK_API_KEY (and OPENAI_API_KEY for embeddings)
 docker compose up --build
 ```
 
@@ -51,6 +51,6 @@ docker compose up --build
 
 ```bash
 docker compose up -d qdrant                     # vector DB only
-cd eas-backend && OPEN_AI_TOKEN=... ./gradlew bootRun   # API on http://localhost:8080
+cd eas-backend && DEEPSEEK_API_KEY=... OPENAI_API_KEY=... ./gradlew bootRun   # API on http://localhost:8080
 cd eas-frontend && npm install && npm run dev   # storefront on http://localhost:3000
 ```

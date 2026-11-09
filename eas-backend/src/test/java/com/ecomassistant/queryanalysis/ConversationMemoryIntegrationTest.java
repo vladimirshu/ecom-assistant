@@ -1,7 +1,6 @@
 package com.ecomassistant.queryanalysis;
 
 import com.ecomassistant.guardrails.QueryAnalysis;
-import com.ecomassistant.rag.ProductSelection;
 import com.ecomassistant.support.AbstractQueryAnalysisIntegrationTest;
 import com.ecomassistant.support.OpenAiWireMockStubs;
 import org.junit.jupiter.api.Test;
@@ -33,7 +32,6 @@ class ConversationMemoryIntegrationTest extends AbstractQueryAnalysisIntegration
 
     private void stubAllowed(String searchQuery) {
         OpenAiWireMockStubs.stubQueryAnalysis(wireMock, allowed(searchQuery));
-        OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of("RAIN1")));
     }
 
     private void search(String message, String conversationId, boolean clear, int expectedStatus) throws Exception {
@@ -61,12 +59,11 @@ class ConversationMemoryIntegrationTest extends AbstractQueryAnalysisIntegration
     }
 
     @Test
-    void refinementSeesPreviousTurnAndFilteringDoesNot() throws Exception {
+    void refinementSeesPreviousTurn() throws Exception {
         OpenAiWireMockStubs.stubChatCompletionForMarkerSequence(wireMock,
                 OpenAiWireMockStubs.QUERY_ANALYSIS_MARKER,
                 OpenAiWireMockStubs.queryAnalysisJson(allowed("warm winter jacket marker-one")),
                 OpenAiWireMockStubs.queryAnalysisJson(allowed("navy winter jacket marker-two")));
-        OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of("RAIN1")));
         String id = UUID.randomUUID().toString();
 
         search("warm winter jacket", id);
@@ -78,9 +75,6 @@ class ConversationMemoryIntegrationTest extends AbstractQueryAnalysisIntegration
         assertThat(second).contains("warm winter jacket", "marker-one", "same but in navy");
         assertThat(second.indexOf("warm winter jacket")).isLessThan(second.indexOf("same but in navy"));
         assertThat(analysis.get(0)).doesNotContain("same but in navy");
-        List<String> filtering = bodies(OpenAiWireMockStubs.PRODUCT_FILTER_MARKER);
-        assertThat(filtering).hasSize(2);
-        assertThat(filtering.get(1)).contains("marker-two").doesNotContain("marker-one", "warm winter jacket");
     }
 
     @Test
@@ -101,7 +95,6 @@ class ConversationMemoryIntegrationTest extends AbstractQueryAnalysisIntegration
                 OpenAiWireMockStubs.QUERY_ANALYSIS_MARKER,
                 OpenAiWireMockStubs.queryAnalysisJson(rejected),
                 OpenAiWireMockStubs.queryAnalysisJson(allowed("light summer jacket")));
-        OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of("RAIN1")));
         String id = UUID.randomUUID().toString();
 
         search("a winter jacket for summer", id, false, 422);
@@ -118,7 +111,6 @@ class ConversationMemoryIntegrationTest extends AbstractQueryAnalysisIntegration
                 OpenAiWireMockStubs.queryAnalysisJson(allowed("original jacket")),
                 invalid, invalid, invalid,
                 OpenAiWireMockStubs.queryAnalysisJson(allowed("refined jacket")));
-        OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of("RAIN1")));
         String id = UUID.randomUUID().toString();
 
         search("original jacket", id);
@@ -140,7 +132,6 @@ class ConversationMemoryIntegrationTest extends AbstractQueryAnalysisIntegration
                 OpenAiWireMockStubs.QUERY_ANALYSIS_MARKER,
                 "{\"allowed\":\"not-a-boolean\"}",
                 OpenAiWireMockStubs.queryAnalysisJson(allowed("rain jacket")));
-        OpenAiWireMockStubs.stubProductSelection(wireMock, new ProductSelection(List.of("RAIN1")));
         String id = UUID.randomUUID().toString();
 
         search("rain jacket", id);

@@ -16,7 +16,7 @@ import org.testcontainers.qdrant.QdrantContainer;
 
 /**
  * Base class for search rate-limit and daily-budget integration tests: Testcontainers
- * Qdrant, the {@code FakeEmbeddingModel}, a WireMock server standing in for the OpenAI
+ * Qdrant, the {@code FakeEmbeddingModel}, a WireMock server standing in for the DeepSeek
  * chat-completions endpoint, and MockMvc to exercise {@code GET /api/v1/search}. The
  * limits keep their configured defaults; subclasses override as needed.
  */
@@ -39,10 +39,10 @@ public abstract class AbstractSearchLimitIntegrationTest {
     @DynamicPropertySource
     static void registerProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.ai.vectorstore.type", () -> "qdrant");
-        registry.add("spring.ai.model.chat", () -> "openai");
+        registry.add("spring.ai.model.chat", () -> "deepseek");
         registry.add("spring.ai.model.embedding", () -> "none");
-        registry.add("spring.ai.openai.api-key", () -> "test-key");
-        registry.add("spring.ai.openai.base-url", wireMock::baseUrl);
+        registry.add("spring.ai.deepseek.api-key", () -> "test-key");
+        registry.add("spring.ai.deepseek.base-url", wireMock::baseUrl);
         registry.add("ecom.import.sample-file", () -> "sampledata/test-apparel.csv");
     }
 

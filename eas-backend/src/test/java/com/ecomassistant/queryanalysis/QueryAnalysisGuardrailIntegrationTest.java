@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 /**
  * Guardrail and request-shape integration tests. The retriever is mocked so rejection
- * can be asserted to not touch the vector store, while the real OpenAI client, the
+ * can be asserted to not touch the vector store, while the real DeepSeek client, the
  * structured-output advisor chain and the controller/exception wiring are exercised
  * through WireMock.
  */

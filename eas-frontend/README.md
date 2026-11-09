@@ -33,13 +33,13 @@ Copy `.env.example` to `.env` for local development. Run `npx playwright install
 | Variable | Purpose |
 |---|---|
 | `VITE_DEV_BACKEND_URL` | Backend target for the Vite `/api` dev proxy (default `http://localhost:8080`) |
-| `VITE_OPEN_TZ` | IANA time zone for the availability schedule (e.g. `Europe/Berlin`) |
-| `VITE_OPEN_DAYS` | Comma-separated opening days (`mon,tue,wed,thu,fri`) |
-| `VITE_OPEN_FROM` / `VITE_OPEN_TO` | Opening window `HH:MM` in the configured zone |
 
-The production build fails when the schedule configuration is missing or
-invalid. The schedule is generated from the same deployment configuration as
-the infrastructure; changing it requires a frontend rebuild.
+## Availability schedule configuration
+
+The service availability schedule is configured in code, not via environment
+variables. Edit `src/config/schedule.ts` (`tz`, `days`, `from`, `to`) to change
+opening hours. Changing it requires a frontend rebuild, and the values are
+validated by `src/config/schedule.test.ts`.
 
 ## API contract
 

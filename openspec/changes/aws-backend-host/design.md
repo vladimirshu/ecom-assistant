@@ -38,7 +38,7 @@ A private ECR repository holds the arm64 image (lifecycle policy: keep the last 
 Build stage: a JDK 17 image (Eclipse Temurin); runtime stage: a JRE-only Temurin image, non-root user, `JAVA_TOOL_OPTIONS` supplied by the unit (`-Xmx384m -XX:+UseSerialGC -XX:MaxMetaspaceSize=128m`). The build runs in CI/on the developer machine with `docker buildx --platform linux/arm64`, not on the instance.
 
 **4. Secrets in SSM Parameter Store SecureString.**
-Parameters under `/ecom/prod/`: `openai-api-key`, `qdrant-api-key`, `qdrant-host`, `origin-verify-secret`. The instance role may call `ssm:GetParameters` on that path only. A small start script (`ExecStartPre`) reads them into the container environment (`OPEN_AI_TOKEN`, `QDRANT_HOST`, `QDRANT_API_KEY`, `QDRANT_USE_TLS=true`, `ECOM_ORIGIN_VERIFY_SECRET`). Standard-tier parameters are assumed free; verify.
+Parameters under `/ecom/prod/`: `deepseek-api-key`, `openai-api-key`, `qdrant-api-key`, `qdrant-host`, `origin-verify-secret`. The instance role may call `ssm:GetParameters` on that path only. A small start script (`ExecStartPre`) reads them into the container environment (`DEEPSEEK_API_KEY`, `OPENAI_API_KEY`, `QDRANT_HOST`, `QDRANT_API_KEY`, `QDRANT_USE_TLS=true`, `ECOM_ORIGIN_VERIFY_SECRET`). Standard-tier parameters are assumed free; verify.
 - Alternative: Secrets Manager (a per-secret monthly fee, which is not justified for four values).
 
 **5. `aws` Spring profile and log hygiene.**
@@ -49,7 +49,7 @@ A servlet filter registered only when `ecom.origin-verify.secret` is non-empty. 
 - Local development: the property is unset, so the filter is not registered.
 
 **7. Operations without SSH.**
-SSM Session Manager (instance role `AmazonSSMManagedInstanceCore`) replaces SSH; port 22 is never opened. The instance has a public IPv4 (the Elastic IP) and reaches SSM, ECR, SSM Parameter Store, OpenAI and Qdrant Cloud over the internet, so no NAT gateway is needed.
+SSM Session Manager (instance role `AmazonSSMManagedInstanceCore`) replaces SSH; port 22 is never opened. The instance has a public IPv4 (the Elastic IP) and reaches SSM, ECR, SSM Parameter Store, DeepSeek, OpenAI and Qdrant Cloud over the internet, so no NAT gateway is needed.
 
 **8. Readiness before traffic.**
 The unit reports healthy only when `GET /api/v1/health` returns 200 (readiness after the catalog import). Nothing on the host depends on that for routing, but the control-plane Lambda and the SPA do.

@@ -34,9 +34,9 @@ class CatalogBrowsingIntegrationTest {
     @DynamicPropertySource
     static void registerProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.ai.vectorstore.type", () -> "qdrant");
-        registry.add("spring.ai.model.chat", () -> "openai");
+        registry.add("spring.ai.model.chat", () -> "deepseek");
         registry.add("spring.ai.model.embedding", () -> "none");
-        registry.add("spring.ai.openai.api-key", () -> "test-key");
+        registry.add("spring.ai.deepseek.api-key", () -> "test-key");
         registry.add("ecom.import.sample-file", () -> "sampledata/test-browsing.csv");
         registry.add("ecom.limits.per-minute", () -> "1000000");
         registry.add("ecom.limits.per-hour", () -> "1000000");

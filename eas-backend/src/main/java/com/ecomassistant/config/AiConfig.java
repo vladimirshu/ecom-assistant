@@ -4,8 +4,7 @@ import com.ecomassistant.guardrails.QueryAnalysis;
 import com.ecomassistant.memory.ExpiringInMemoryChatMemoryRepository;
 import com.ecomassistant.guardrails.QueryAnalysisGuardrailAdvisor;
 import com.ecomassistant.memory.ValidatedQueryAnalysisMemoryAdvisor;
-import com.ecomassistant.rag.EmptyRetrievalAdvisor;
-import com.ecomassistant.rag.ProductSelection;
+import com.ecomassistant.rag.DirectRetrievalAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.ChatClientRequest;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
@@ -17,7 +16,6 @@ import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.model.tool.ToolCallingChatOptions;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -27,8 +25,6 @@ import java.time.Clock;
 
 @Configuration
 public class AiConfig {
-    public static final String REASONING_MODEL = "gpt-4o-mini";
-    public static final String EMBEDDING_MODEL = "nomic-embed-text:latest";
     public static final int MAX_MESSAGES = 20;
     private static final double TEMPERATURE = 0.1;
     private static final double FREQUENCY_PENALTY = 1.0;
@@ -70,7 +66,6 @@ public class AiConfig {
     public ChatClient queryAnalysisChatClient(ChatModel chatModel, ChatMemory chatMemory,
             EcomLlmProperties llmProperties) {
         ToolCallingChatOptions.Builder chatOptionsBuilder = ToolCallingChatOptions.builder()
-                .model(REASONING_MODEL)
                 .temperature(TEMPERATURE)
                 .topP(TOP_P)
                 .frequencyPenalty(FREQUENCY_PENALTY)
@@ -85,44 +80,22 @@ public class AiConfig {
                 .build();
     }
 
-    @Bean
-    public StructuredOutputValidationAdvisor productSelectionSchemaValidationAdvisor() {
-        return StructuredOutputValidationAdvisor.builder()
-            .outputType(ProductSelection.class)
-            .maxRepeatAttempts(1)
-            .advisorOrder(-100)
-            .build();
-    }
-
     /**
      * The single chat client backing the search endpoint. Its advisor chain (outer to
-     * inner) runs: query-analysis guardrail (call #1), retrieval augmentation, the
-     * empty-retrieval short-circuit, product-selection schema validation (call #2 with
-     * retries) and logging. No memory advisor: the selection does not need history, which
-     * call #1 already compressed into {@code searchQuery}.
+     * inner) runs: query-analysis guardrail (the only LLM call), retrieval augmentation,
+     * and the direct-retrieval short-circuit that returns the retrieved documents without
+     * ever invoking the model. No memory advisor: the query-analysis call already
+     * compressed history into {@code searchQuery}, and retrieval does not need it.
      */
     @Bean
     public ChatClient productSearchChatClient(ChatModel chatModel,
             QueryAnalysisGuardrailAdvisor queryAnalysisGuardrailAdvisor,
             RetrievalAugmentationAdvisor productSearchRetrievalAdvisor,
-            EmptyRetrievalAdvisor emptyRetrievalAdvisor,
-            @Qualifier("productSelectionSchemaValidationAdvisor") StructuredOutputValidationAdvisor productSelectionSchemaValidationAdvisor,
-            SimpleLoggerAdvisor loggingAdvisor,
-            EcomLlmProperties llmProperties) {
-        ToolCallingChatOptions.Builder chatOptionsBuilder = ToolCallingChatOptions.builder()
-                .model(REASONING_MODEL)
-                .temperature(TEMPERATURE)
-                .topP(TOP_P)
-                .frequencyPenalty(FREQUENCY_PENALTY)
-                .presencePenalty(PRESENCE_PENALTY)
-                .maxTokens(llmProperties.productFilterMaxOutputTokens());
+            DirectRetrievalAdvisor directRetrievalAdvisor) {
         return ChatClient.builder(chatModel)
-                .defaultOptions(chatOptionsBuilder)
                 .defaultAdvisors(queryAnalysisGuardrailAdvisor,
                         productSearchRetrievalAdvisor,
-                        emptyRetrievalAdvisor,
-                        productSelectionSchemaValidationAdvisor,
-                        loggingAdvisor)
+                        directRetrievalAdvisor)
                 .build();
     }
 

@@ -1,7 +1,6 @@
 package com.ecomassistant.support;
 
 import com.ecomassistant.guardrails.QueryAnalysis;
-import com.ecomassistant.rag.ProductSelection;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.stubbing.Scenario;
@@ -12,10 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * WireMock stubs for the OpenAI chat-completions endpoint. Each stub returns an OpenAI
- * chat-completion response whose {@code choices[0].message.content} is the provided JSON
- * string (typically a {@link QueryAnalysis} or {@link ProductSelection} serialized to
- * JSON).
+ * WireMock stubs for the DeepSeek (OpenAI-compatible) chat-completions endpoint. Each stub
+ * returns an OpenAI-compatible chat-completion response whose {@code choices[0].message.content}
+ * is the provided JSON string (typically a {@link QueryAnalysis} serialized to JSON).
  */
 public final class OpenAiWireMockStubs {
 
@@ -24,9 +22,6 @@ public final class OpenAiWireMockStubs {
 
     /** Marker present in the query-analysis system prompt. */
     public static final String QUERY_ANALYSIS_MARKER = "query-analysis step";
-
-    /** Marker present in the product-filtering prompt. */
-    public static final String PRODUCT_FILTER_MARKER = "product-filtering step";
 
     private static final JsonMapper JSON_MAPPER = JsonMapper.builder().build();
 
@@ -46,10 +41,8 @@ public final class OpenAiWireMockStubs {
     }
 
     /**
-     * Stubs a single response matched on the request body containing the given marker.
-     * Used to distinguish the query-analysis call from the product-filtering call, whose
-     * prompts carry the {@link #QUERY_ANALYSIS_MARKER} and
-     * {@link #PRODUCT_FILTER_MARKER} markers respectively.
+     * Stubs a single response matched on the request body containing the given marker,
+     * e.g. the {@link #QUERY_ANALYSIS_MARKER} carried by the query-analysis prompt.
      */
     public static void stubChatCompletionForMarker(WireMockServer server, String marker, String content) {
         server.stubFor(WireMock.post(WireMock.urlPathMatching(CHAT_COMPLETIONS_PATH_PATTERN))
@@ -85,11 +78,6 @@ public final class OpenAiWireMockStubs {
         }
     }
 
-    /** Stubs the product-filtering call to return the given {@link ProductSelection}. */
-    public static void stubProductSelection(WireMockServer server, ProductSelection selection) {
-        stubChatCompletionForMarker(server, PRODUCT_FILTER_MARKER, productSelectionJson(selection));
-    }
-
     /** Stubs a sequence of responses, one per successive request, using a scenario. */
     public static void stubChatCompletionSequence(WireMockServer server, String... contents) {
         String scenario = "chat-completion-sequence";
@@ -123,19 +111,12 @@ public final class OpenAiWireMockStubs {
         return write(map);
     }
 
-    /** Serializes a {@link ProductSelection} to JSON. */
-    public static String productSelectionJson(ProductSelection selection) {
-        Map<String, Object> map = new LinkedHashMap<>();
-        map.put("skus", selection.skus());
-        return write(map);
-    }
-
     private static String chatCompletionResponse(String content) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("id", "chatcmpl-test");
         body.put("object", "chat.completion");
         body.put("created", 1700000000L);
-        body.put("model", "gpt-4o-mini");
+        body.put("model", "deepseek-chat");
         body.put("choices", List.of(Map.of(
                 "index", 0,
                 "message", Map.of("role", "assistant", "content", content),

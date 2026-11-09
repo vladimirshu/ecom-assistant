@@ -27,7 +27,7 @@ When `ECOM_ORIGIN_VERIFY_SECRET` is set, the backend SHALL answer HTTP 403 with 
 - **THEN** requests are processed without the header
 
 ### Requirement: Secrets outside the image and the repository
-The system SHALL store the OpenAI API key, the Qdrant Cloud URL and API key, and the origin-verification secret as SSM Parameter Store SecureString parameters, SHALL grant the instance role read access to only that parameter path, and SHALL NOT include any of them in the container image, instance user data, repository files or application logs.
+The system SHALL store the DeepSeek API key, the OpenAI API key, the Qdrant Cloud URL and API key, and the origin-verification secret as SSM Parameter Store SecureString parameters, SHALL grant the instance role read access to only that parameter path, and SHALL NOT include any of them in the container image, instance user data, repository files or application logs.
 
 #### Scenario: Start with secrets
 - **WHEN** the backend container starts on the instance

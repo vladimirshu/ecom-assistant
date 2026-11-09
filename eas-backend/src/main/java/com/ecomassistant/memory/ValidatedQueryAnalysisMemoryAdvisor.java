@@ -49,7 +49,7 @@ public final class ValidatedQueryAnalysisMemoryAdvisor implements CallAdvisor {
         Message user = request.prompt().getLastUserOrToolResponseMessage();
         List<Message> messages = new ArrayList<>(memory.get(id));
         messages.addAll(request.prompt().getInstructions());
-        // OpenAI requires the system message to precede the conversation.
+        // The chat model requires the system message to precede the conversation.
         for (int i = 0; i < messages.size(); i++) {
             if (messages.get(i) instanceof SystemMessage) {
                 messages.add(0, messages.remove(i));

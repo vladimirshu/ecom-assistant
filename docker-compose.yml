@@ -4,7 +4,8 @@ services:
     ports:
       - "8080:8080"
     environment:
-      OPEN_AI_TOKEN: ${OPEN_AI_TOKEN}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
       QDRANT_HOST: qdrant
       QDRANT_PORT: 6334
     depends_on:
@@ -20,11 +21,6 @@ services:
   frontend:
     build:
       context: ./eas-frontend
-      args:
-        VITE_OPEN_TZ: ${VITE_OPEN_TZ:-Europe/Berlin}
-        VITE_OPEN_DAYS: ${VITE_OPEN_DAYS:-mon,tue,wed,thu,fri}
-        VITE_OPEN_FROM: ${VITE_OPEN_FROM:-08:00}
-        VITE_OPEN_TO: ${VITE_OPEN_TO:-22:00}
     ports:
       - "3000:80"
     depends_on:

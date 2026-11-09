@@ -14,7 +14,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Global daily search budget: an atomic counter tied to the UTC date it belongs to. The
  * first search of a new UTC day resets it. The counter lives in process memory, so it also
- * resets on restart; the external OpenAI project budget is the hard cap (see the runbook).
+ * resets on restart; the external DeepSeek/OpenAI spending caps are the hard cap (see the
+ * runbook).
  */
 @Component
 public class DailySearchBudget {
