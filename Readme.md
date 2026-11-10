@@ -54,3 +54,36 @@ docker compose up -d qdrant                     # vector DB only
 cd eas-backend && DEEPSEEK_API_KEY=... OPENAI_API_KEY=... ./gradlew bootRun   # API on http://localhost:8080
 cd eas-frontend && npm install && npm run dev   # storefront on http://localhost:3000
 ```
+
+### Using a Qdrant Cloud cluster instead of local Qdrant
+
+The backend connects to local Qdrant by default. For a managed Qdrant Cloud
+cluster, pass these variables to the backend process or container. The local
+Docker Compose stack uses its bundled Qdrant service.
+
+| Variable          | Default     | Meaning                                          |
+|-------------------|-------------|--------------------------------------------------|
+| `QDRANT_HOST`     | `localhost` | Cluster hostname only, without a scheme or port |
+| `QDRANT_PORT`     | `6334`      | gRPC port (Qdrant Cloud serves gRPC on 6334)     |
+| `QDRANT_USE_TLS`  | `false`     | set `true` for Qdrant Cloud                      |
+| `QDRANT_API_KEY`  | *(empty)*   | Cluster database API key with catalog write access |
+
+For example, running the backend directly against Qdrant Cloud:
+
+```bash
+cd eas-backend
+QDRANT_HOST=cluster-id.region.provider.cloud.qdrant.io \
+QDRANT_PORT=6334 \
+QDRANT_USE_TLS=true \
+QDRANT_API_KEY=... \
+DEEPSEEK_API_KEY=... OPENAI_API_KEY=... \
+./gradlew bootRun
+```
+
+The backend checks the catalog on every startup and skips re-embedding when
+the current revision is already present. Qdrant suspends free clusters after
+one week of inactivity and deletes them after four weeks if they stay inactive.
+Reactivate a suspended cluster in the Qdrant Cloud console. For a deleted
+cluster, configure a replacement and restart the backend to recreate the
+collection and rebuild the catalog from the bundled CSV.
+[Qdrant Cloud free cluster lifecycle](https://qdrant.tech/documentation/cloud/create-cluster/#free-clusters)

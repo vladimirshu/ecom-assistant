@@ -20,9 +20,9 @@ The deployed backend will not run Qdrant on its own small instance: the free Qdr
 
 ## Impact
 
-- Code/config: `application.yml` (Qdrant block uses the four variables); possibly one configuration class if the auto-configured client does not honor TLS and key for every consumer; startup logging.
+- Code/config: `application.yml` binds the four variables, and the shared Qdrant client handles blank keys and startup diagnostics.
 - Dependencies: none new.
 - Tests: configuration binding test; the Testcontainers integration tests keep using plain local Qdrant with defaults.
 - Operations: the cluster URL and API key live in the instance's secret store (see `aws-backend-host`); local development needs no change.
-- Free-tier cluster behavior to verify when deploying: inactive free clusters are suspended after about a week and may be deleted later. The startup import check (`countAsync`, from `remove-mysql`) contacts the cluster on every start, which counts as activity; if the cluster is ever lost, the idempotent import recreates the collection and re-embeds the catalog (about $0.0002).
+- Free-tier clusters can be suspended or deleted after inactivity. After configuring a replacement cluster, startup recreates the collection and imports the bundled catalog.
 - Depends on: `remove-mysql` (archived), which made Qdrant the only product store and the startup import its only caller.

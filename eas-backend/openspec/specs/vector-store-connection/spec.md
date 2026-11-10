@@ -1,4 +1,9 @@
-## ADDED Requirements
+# vector-store-connection Specification
+
+## Purpose
+Define how the backend connects to Qdrant, shares its client, protects credentials and reports connection failures.
+
+## Requirements
 
 ### Requirement: Environment-driven Qdrant connection
 The system SHALL read the Qdrant host, port, TLS flag and API key from the environment variables `QDRANT_HOST`, `QDRANT_PORT`, `QDRANT_USE_TLS` and `QDRANT_API_KEY`, and SHALL default to host `localhost`, port `6334`, TLS off and no API key when a variable is not set.
@@ -11,12 +16,12 @@ The system SHALL read the Qdrant host, port, TLS flag and API key from the envir
 - **WHEN** the application starts with `QDRANT_HOST=abc.eu-central.aws.cloud.qdrant.io`, `QDRANT_PORT=6334`, `QDRANT_USE_TLS=true` and `QDRANT_API_KEY=secret`
 - **THEN** it connects to that host over TLS and sends the API key with every request
 
-#### Scenario: Empty key is no key
-- **WHEN** `QDRANT_API_KEY` is set to an empty value
+#### Scenario: Blank key is no key
+- **WHEN** `QDRANT_API_KEY` is unset, empty or whitespace only
 - **THEN** no API key is sent
 
 ### Requirement: One connection configuration for every consumer
-The vector store, the catalog import, the price payload index initializer and the recommend retriever SHALL use the same Qdrant connection configuration, so that TLS and the API key apply to every Qdrant call.
+The vector store, catalog import, payload index initializers, recommend retriever, catalog listing and health indicator SHALL use the same Qdrant client, so that TLS and the API key apply to every Qdrant call.
 
 #### Scenario: Retriever uses TLS and key
 - **WHEN** the application is configured for a TLS cluster with an API key and a search is performed

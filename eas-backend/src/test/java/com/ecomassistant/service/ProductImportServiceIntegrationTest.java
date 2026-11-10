@@ -1,8 +1,13 @@
 package com.ecomassistant.service;
 
 import com.ecomassistant.VectorStoreUtils;
+import com.ecomassistant.catalog.CategoryPathIdsPayloadIndexInitializer;
 import com.ecomassistant.catalog.Product;
+import com.ecomassistant.health.QdrantHealthIndicator;
+import com.ecomassistant.listing.CatalogListingService;
 import com.ecomassistant.retrieval.FakeEmbeddingModel;
+import com.ecomassistant.retrieval.PricePayloadIndexInitializer;
+import com.ecomassistant.retrieval.QdrantRecommendDocumentRetriever;
 import io.qdrant.client.QdrantClient;
 import io.qdrant.client.grpc.Common;
 import io.qdrant.client.grpc.Points;
@@ -16,10 +21,12 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.qdrant.QdrantContainer;
@@ -69,6 +76,9 @@ class ProductImportServiceIntegrationTest {
     @Autowired
     private FakeEmbeddingModel fakeEmbeddingModel;
 
+    @Autowired
+    private ApplicationContext applicationContext;
+
     @Value("${spring.ai.vectorstore.qdrant.collection-name:products}")
     private String collectionName;
 
@@ -84,6 +94,18 @@ class ProductImportServiceIntegrationTest {
 
         assertThat(qdrantPointCount()).isEqualTo(8);
         assertThat(fakeEmbeddingModel.getEmbedCount()).isGreaterThan(0);
+    }
+
+    @Test
+    void sharesOneQdrantClientWithEveryConsumer() {
+        assertThat(applicationContext.getBeansOfType(QdrantClient.class)).hasSize(1);
+        assertThat(vectorStore.<QdrantClient>getNativeClient()).containsSame(qdrantClient);
+        for (Class<?> consumer : List.of(ProductImportService.class, PricePayloadIndexInitializer.class,
+                CategoryPathIdsPayloadIndexInitializer.class, QdrantRecommendDocumentRetriever.class,
+                CatalogListingService.class, QdrantHealthIndicator.class)) {
+            assertThat(ReflectionTestUtils.getField(applicationContext.getBean(consumer), "qdrantClient"))
+                    .as(consumer.getSimpleName()).isSameAs(qdrantClient);
+        }
     }
 
     @Test
